@@ -1,0 +1,40 @@
+version: "3.8"
+
+services:
+  mongodb:
+    image: mongo:latest
+    env_file:
+      - .env
+    ports:
+      - "27017:27017"
+    expose:
+      - "27017"
+    volumes:
+      - trdk02mongodb:/data/db
+      # path-eller-volum-på-local-maskin:path-i-docker-image
+  hoddb:
+    image: gtfierro/hod:0.6.1
+    ports:
+      - "47808:47808"
+    expose:
+      - "47808"
+    volumes:
+      - ./backend/hoddb:/etc/hod/
+  server:
+    build: ./backend
+    depends_on:
+      - mongodb
+    env_file:
+      - .env
+    environment:
+      DB_HOST: mongodb
+    ports:
+      - "3000:3000"
+    expose:
+      - "3000"
+    volumes:
+      - ./backend:/srv/app
+    command: npm start
+
+volumes:
+  trdk02mongodb:
