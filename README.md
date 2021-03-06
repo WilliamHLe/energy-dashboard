@@ -1,5 +1,16 @@
-# trdk02
+# TRDK02: Interactive Energy Dashboard
 
-## setup
+## Quickstart
 
-Copy and rename .env.exmaple to .env change variables
+### Prerequisites
+
+- [Docker](https://www.docker.com/products/docker-desktop)
+
+### Local development
+
+1. Navigate to the root project directory
+1. Configure the environment variables
+   1. Copy and rename `.env.example` to `.env`
+   1. Change the variable values in `.env`
+1. Start Docker
+1. Start the application with `docker-compose up`

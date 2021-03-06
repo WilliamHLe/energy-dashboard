@@ -1,15 +1,13 @@
 {
-  "name": "trdk02",
+  "name": "energy-dashboard-backend",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "license": "GPL-3.0",
+  "private": true,
   "scripts": {
     "start": "node src/index.js"
   },
-  "author": "",
-  "license": "ISC",
   "dependencies": {
     "express": "^4.17.1",
-    "osrs-hiscores": "^1.1.3"
+    "mongoose": "^5.11.19"
   }
 }
