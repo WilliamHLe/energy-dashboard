@@ -12,11 +12,13 @@
     color: white;
 }
 .menuitems:hover {
-    background-color: #738EA4;
+    /*background-color: #738EA4;*/
+    background-color: rgba(115,142,164,0.5);
     color: white;
 }
 .selected {
-    background-color: #738EA4;
+    /*background-color: #738EA4;*/
+    background-color: rgba(115,142,164,0.5);
 }
 .oversikt {
     background-image: url("../icons/Oversikt.png");
@@ -65,4 +67,5 @@
 }
 .energiF {
     background-image: url("../icons/EnergiTipsF.png");
+    background-position-x: 10px;
 }
