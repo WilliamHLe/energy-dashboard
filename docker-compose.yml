@@ -1,0 +1,56 @@
+version: "3.8"
+
+services:
+  hoddb:
+    container_name: trdk02_ed_hoddb
+    image: gtfierro/hod:0.6.1
+    ports:
+      - "47808:47808"
+    expose:
+      - "47808"
+    volumes:
+      - ./backend/database/hoddb/:/etc/hod/
+  mongodb:
+    container_name: trdk02_ed_mongodb
+    image: mongo:4.4.4
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=${DB_ROOT_USERNAME}
+      - MONGO_INITDB_ROOT_PASSWORD=${DB_ROOT_PASSWORD}
+      - MONGO_INITDB_DATABASE=${DB_DATABASE}
+      - DB_USERNAME=${DB_USERNAME}
+      - DB_PASSWORD=${DB_PASSWORD}
+    ports:
+      - "27018:27017"
+    expose:
+      - "27018"
+    volumes:
+      - ./backend/database/mongodb/mongod.conf:/etc/mongod.conf
+      - ./backend/database/mongodb/initdb.d/:/docker-entrypoint-initdb.d/
+      - trdk02-mongodb:/data/db/
+    command: --config /etc/mongod.conf
+  backend:
+    container_name: trdk02_ed_backend
+    build:
+      context: ./backend/
+      dockerfile: Dockerfile
+    depends_on:
+      - mongodb
+      - hoddb
+    environment:
+      - BRICK_HOST=hoddb # Same as the hoddb service name
+      - BRICK_PORT=47808 # Same as the hoddb service port
+      - DB_HOST=mongodb # Same as the mongodb service name
+      - DB_PORT=27017 # Same as the mongodb service port
+      - DB_DATABASE=${DB_DATABASE}
+      - DB_USERAME=${DB_USERNAME}
+      - DB_PASSWORD=${DB_PASSWORD}
+    ports:
+      - "3000:3000"
+    expose:
+      - "3000"
+    volumes:
+      - ./backend/:/srv/app/
+    command: npm start
+
+volumes:
+  trdk02-mongodb:
