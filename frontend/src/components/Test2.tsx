@@ -2,10 +2,10 @@ import React from 'react';
 import Highcharts from 'highcharts';
 import HighchartsReact from 'highcharts-react-official';
 
-function Test(props:any) {
+function Test2(props:any) {
   const options = {
     chart: {
-      type: 'line',
+      type: 'spline',
     },
     title: {
       text: 'My chart',
@@ -25,7 +25,7 @@ function Test(props:any) {
   return (
     <div>
       <p>
-        Dette er en
+        Dette er ikke en
         {' '}
         {/* eslint-disable-next-line react/destructuring-assignment */}
         {props.bygg}
@@ -36,4 +36,4 @@ function Test(props:any) {
   );
 }
 
-export default Test;
+export default Test2;
