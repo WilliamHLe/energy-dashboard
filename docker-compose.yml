@@ -24,10 +24,11 @@ services:
     expose:
       - "27018"
     volumes:
+      - ./backend/database/mongodb/seed/:/seed/
       - ./backend/database/mongodb/mongod.conf:/etc/mongod.conf
       - ./backend/database/mongodb/initdb.d/:/docker-entrypoint-initdb.d/
       - trdk02-mongodb:/data/db/
-    command: --config /etc/mongod.conf
+    command: ["-f", "/etc/mongod.conf"]
   backend:
     container_name: trdk02_ed_backend
     build:
