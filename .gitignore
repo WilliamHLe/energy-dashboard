@@ -9,6 +9,8 @@ coverage/
 # production
 build/
 dist/
+out/
+env/
 
 # misc
 .env
