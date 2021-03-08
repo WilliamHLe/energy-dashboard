@@ -2,8 +2,13 @@ from collections import defaultdict
 import os
 import json
 import bson
+import pathlib
 
-DATA_LOCATION = './source_data'
+SOURCE_DATA_PATH = './source_data'
+OUT_DATA_PATH = './out'
+OUT_DATA_PATH_SENSORS = f'{OUT_DATA_PATH}/sensors'
+
+pathlib.Path(OUT_DATA_PATH_SENSORS).mkdir(parents=True, exist_ok=True) 
 
 def load_esave_exports():
     """
@@ -19,7 +24,7 @@ def load_esave_exports():
 
     for part in range(1, 8):
         filename = f'EsaveExport_10121314_part{part}.csv'
-        with open(f'{DATA_LOCATION}/{filename}', 'r') as f:
+        with open(f'{SOURCE_DATA_PATH}/{filename}', 'r') as f:
             sensor_names = f.readline().replace('\n', '').split(';')[1:]
             for line in f:
                 clean_data = line.replace('\n', '').replace(',','.').split(';')
@@ -49,7 +54,7 @@ def load_sensors():
     sensors = defaultdict(list)
     headers = ['object', 'description', 'measurement', 'name', 'unit_of_measurement', 'type']
 
-    with open(f'{DATA_LOCATION}/Sensors.csv', 'r') as f:
+    with open(f'{SOURCE_DATA_PATH}/Sensors.csv', 'r') as f:
         next(f)
 
         building = ''
@@ -89,7 +94,7 @@ def load_etcurves():
     'dy4', 'dy5', 'dy6', 'etxmin', 'etxmax', 'etymin', 'etymax', 'base_load', 'etcolor', 'description']
     
 
-    with open(f'{DATA_LOCATION}/ETCurves.csv', 'r') as f:
+    with open(f'{SOURCE_DATA_PATH}/ETCurves.csv', 'r') as f:
         next(f)
 
         for line in f:
@@ -116,46 +121,66 @@ def generate_mongodb_objectid():
     their Ids. This ObjectId can then be used to create relations between
     objects.
     """
-    return bson.objectid.ObjectId()
+    return {
+        "$oid": bson.objectid.ObjectId()
+    }
 
-def dump_to_json(filename, content):
+def dump_to_json(filename, content, sensor=False):
     """
     Dumps content (Python Dict) to a readable json file for storage
     """
     base = os.path.basename(filename)
-    base = os.path.splitext(base)[0]
+    path = OUT_DATA_PATH_SENSORS if sensor else OUT_DATA_PATH
 
-    with open(f'out/{base}.json', 'w', encoding='utf8') as f:
+    with open(f'{path}/{os.path.splitext(base)[0]}.json', 'w', encoding='utf8') as f:
         json.dump(content, f, ensure_ascii=False, default=str)
 
 def transform():
     """
+    Loads and transforms data from the .csv files into MongoDB insertable .json files. These files contain
+    relations between the different objects using ObjectIds and can be used as a seed for the database.
+
+    Sensors are split into files containing the individual sensors and measurements per building. This is to
+    reduce the filesize as a 2GB+ json causes issues when editing and importing to MongoDB.
     """
     sensors = load_sensors()
     sensor_measurements = load_esave_exports()
+    etcurves = load_etcurves()
 
     buildings = []
+    curves = []
 
-    for building_name in sensors:
+    for i, building_name in enumerate(sensors):
         building = {
             '_id': generate_mongodb_objectid(),
             'name': building_name
         }
         buildings.append(building)
 
+        etcurve = {
+            '_id': generate_mongodb_objectid(),
+            'building': building['_id'],
+            'etcurves': etcurves[building_name]
+        }
+        curves.append(etcurve)
+
         for sensor in sensors[building_name]:
             sensor['_id'] = generate_mongodb_objectid()
             sensor['building'] = building['_id']
             sensor['measurements'] = sensor_measurements[sensor['name']]
         
-        # Dumping each building individually as the file file would otherwise get too large to handle
-        dump_to_json(f'sensors_{building_name}', sensors[building_name])
+        # Dumping each building individually as a single file would otherwise get too large to resonably handle
+        print(f'Writing sensors_{i}.json...')
+        dump_to_json(f'sensors_{i}', sensors[building_name], True)
 
+    print('Writing buildings.json...')
     dump_to_json('buildings', buildings)
+
+    print('Writing etcurve.json...')
+    dump_to_json('etcurves', curves)
 
 
 def main():
-    # et curves are not being outputted currently - need to look into them
     transform()
     
 
