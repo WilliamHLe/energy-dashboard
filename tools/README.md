@@ -21,3 +21,10 @@ To deactivate the virtual environment: `deactivate`
 #### Scripts
 
 The script `datatransform.py` handles parsing the data from `.csv` to the format used to populate the MongoDB.
+
+### Generate data and prepare for seeding
+
+1. Inside the virtual environment run: `python datatransformation.py`
+2. Move the generated seeds to the seed location: `mv -v ./out/* ../backend/database/mongodb/seed`
+
+In short the files generated in the `tools/out` folder needs to be moved to `backend/database/mongodb/seed`.

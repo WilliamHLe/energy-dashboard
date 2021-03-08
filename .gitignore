@@ -12,6 +12,9 @@ dist/
 out/
 env/
 
+# Seed data
+**/seed/
+
 # misc
 .env
 .env.local
