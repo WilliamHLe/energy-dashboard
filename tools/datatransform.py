@@ -155,19 +155,8 @@ def transform():
 
 
 def main():
-    # etcurves = load_etcurves()
-    # transform()
-    # print(f'Completed loading esave exports. Sensors loaded: {len(sensor_measurements)}')
-    # for key in sensor_measurements:
-    #     test = defaultdict(dict)
-    #     test[key] = sensor_measurements[key]
-    #     dump_to_json('out.json', test)
-    #     break
-    # sensor_measurements = load_esave_exports()
-    # dump_to_json('out.json', sensor_measurements)
-    # transform()
+    # et curves are not being outputted currently - need to look into them
     transform()
-    # dump_to_json('etcurves', etcurves)
     
 
 if __name__ == '__main__':
