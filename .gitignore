@@ -15,6 +15,9 @@ env/
 # Seed data
 **/seed/
 
+# Seed data
+**/seed/
+
 # misc
 .env
 .env.local
