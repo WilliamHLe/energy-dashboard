@@ -10,6 +10,9 @@ function Test(props:any) {
     title: {
       text: 'My chart',
     },
+    credits: {
+      enabled: false,
+    },
     series: [
       {
         name: 'Year 1',

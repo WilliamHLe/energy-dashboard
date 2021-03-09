@@ -41,7 +41,7 @@
 
 .container {
   background-image: linear-gradient(90deg, #020E26,#0A374A,#04122C);
-  min-height: 100vh;
+  height: 100vh;
   display: flex;
   flex-direction: column;
   font-size: calc(10px + 2vmin);

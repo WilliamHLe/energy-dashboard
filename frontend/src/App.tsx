@@ -5,6 +5,7 @@ import './App.css';
 import Test from './components/Test';
 import Test2 from './components/Test2';
 import Navbar from './components/navbar/Navbar';
+import Main from './components/mainpage/Main';
 
 const { Content, Sider } = Layout;
 
@@ -22,7 +23,7 @@ function App() {
             <div className="container">
               <Switch>
                 <Route exact path="/">
-                  <Test bygg="Oversikt" />
+                  <Main />
                 </Route>
                 <Route path="/skoler">
                   <Test bygg="Skole" />
