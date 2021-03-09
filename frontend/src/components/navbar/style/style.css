@@ -1,0 +1,71 @@
+.menuitems {
+    margin: 10px;
+    text-align: justify;
+    background-size: auto;
+    background-repeat: no-repeat;
+    background-position: left;
+    background-position-x: 20px;
+    padding: 20px 20px 20px 90px;
+    font-size: 20px;
+    display: block;
+    border-radius: 5px;
+    color: white;
+}
+.menuitems:hover {
+    /*background-color: #738EA4;*/
+    background-color: rgba(115,142,164,0.5);
+    color: white;
+}
+.selected {
+    /*background-color: #738EA4;*/
+    background-color: rgba(115,142,164,0.5);
+}
+.oversikt {
+    background-image: url("../icons/Oversikt.png");
+}
+.oversiktF {
+    background-image: url("../icons/OversiktF.png");
+}
+.skoler {
+    background-image: url("../icons/Skole.png");
+}
+.skolerF {
+    background-image: url("../icons/SkoleF.png");
+}
+.barnehager {
+    background-image: url("../icons/Barnehage.png");
+}
+.barnehagerF {
+    background-image: url("../icons/BarnehageF.png");
+}
+.barnehager {
+    background-image: url("../icons/Barnehage.png");
+}
+.barnehagerF {
+    background-image: url("../icons/BarnehageF.png");
+}
+.sykehjem {
+    background-image: url("../icons/Sykehjem.png");
+}
+.sykehjemF {
+    background-image: url("../icons/SykehjemF.png");
+}
+.idrett {
+    background-image: url("../icons/Idretshall.png");
+}
+.idrettF {
+    background-image: url("../icons/IdretshallF.png");
+}
+.andre {
+    background-image: url("../icons/AndreBygg.png");
+}
+.andreF {
+    background-image: url("../icons/AndreByggF.png");
+}
+.energi {
+    background-image: url("../icons/EnergiTips.png");
+}
+.energiF {
+    background-image: url("../icons/EnergiTipsF.png");
+    background-position-x: 10px;
+}
