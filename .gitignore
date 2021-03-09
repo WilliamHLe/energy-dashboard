@@ -9,6 +9,11 @@ coverage/
 # production
 build/
 dist/
+out/
+env/
+
+# Seed data
+**/seed/
 
 # misc
 .env
