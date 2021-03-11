@@ -11,7 +11,7 @@ The data is located in `./data` and consist of multiple `.csv` files. The conten
 ### Parsing the data
 
 #### Development environment
-
+>Python 64-bit is required to be able to run this tool
 1. Setup a virtual environment: `python3 -m venv env`
 2. Activate the virtual environment: `source env/bin/activate`
 3. Install requirements: `pip install -r requirements.txt`
