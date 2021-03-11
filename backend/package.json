@@ -4,10 +4,14 @@
   "license": "GPL-3.0",
   "private": true,
   "scripts": {
-    "start": "node src/index.js"
+    "start": "node src/index.ts",
+    "build": "tsc"
   },
   "dependencies": {
     "express": "^4.17.1",
     "mongoose": "^5.11.19"
+  },
+  "devDependencies": {
+    "typescript": "^4.2.3"
   }
 }
