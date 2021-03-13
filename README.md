@@ -19,7 +19,7 @@
 
 >If you already completed the setup process, run `docker-compose up --build` to start the application anytime
 
-###Possible problems during installation
+### Possible problems during installation
 - If you run Windows be sure to set line separator settings to LF (Windows), especially for the files `init-mongo.sh` and `seed-mongo.sh`
 - If you need to delete the Docker volume:
 1. Run `docker-compose down`
