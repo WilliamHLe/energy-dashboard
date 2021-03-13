@@ -23,7 +23,7 @@ def load_esave_exports():
     measurements = defaultdict(list)
 
     for part in range(1, 8):
-        filename = f'EsaveExport_10121314_part{part}.csv'
+        filename = f'ESaveExport_10121314_part{part}.csv'
         with open(f'{SOURCE_DATA_PATH}/{filename}', 'r') as f:
             sensor_names = f.readline().replace('\n', '').split(';')[1:]
             for line in f:

@@ -11,7 +11,9 @@ The data is located in `./data` and consist of multiple `.csv` files. The conten
 ### Parsing the data
 
 #### Development environment
+>Python 64-bit is required to be able to run this tool
 
+1. Navigate to `/tools`
 1. Setup a virtual environment: `python3 -m venv env`
 2. Activate the virtual environment: `source env/bin/activate`
 3. Install requirements: `pip install -r requirements.txt`
@@ -24,7 +26,7 @@ The script `datatransform.py` handles parsing the data from `.csv` to the format
 
 ### Generate data and prepare for seeding
 
-1. Inside the virtual environment run: `python datatransformation.py`
+1. Inside the virtual environment run: `python datatransform.py`
 2. Move the generated seeds to the seed location: `mv -v ./out/* ../backend/database/mongodb/seed`
 
 In short the files generated in the `tools/out` folder needs to be moved to `backend/database/mongodb/seed`.
