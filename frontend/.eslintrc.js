@@ -1,5 +1,5 @@
 module.exports = {
-  extends: ['airbnb', 'airbnb/hooks'],
+  extends: ['airbnb', 'airbnb/hooks', 'plugin:jsx-a11y/recommended'],
   env: {
     browser: true,
     node: true,
@@ -17,4 +17,7 @@ module.exports = {
       devDependencies: false, optionalDependencies: false, peerDependencies: false, packageDir: './',
     }],
   },
+  plugins: [
+    'jsx-a11y',
+  ],
 };
