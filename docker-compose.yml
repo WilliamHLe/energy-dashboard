@@ -9,7 +9,7 @@ services:
     expose:
       - "47808"
     volumes:
-      - ./backend/database/hoddb/:/etc/hod/
+      - ./database/hoddb/:/etc/hod/
   mongodb:
     container_name: trdk02_ed_mongodb
     image: mongo:4.4.4
@@ -24,16 +24,16 @@ services:
     expose:
       - "27018"
     volumes:
-      - ./backend/database/mongodb/seed/:/seed/
-      - ./backend/database/mongodb/mongod.conf:/etc/mongod.conf
-      - ./backend/database/mongodb/initdb.d/:/docker-entrypoint-initdb.d/
+      - ./database/mongodb/seed/:/seed/
+      - ./database/mongodb/mongod.conf:/etc/mongod.conf
+      - ./database/mongodb/initdb.d/:/docker-entrypoint-initdb.d/
       - trdk02-mongodb:/data/db/
     command: ["-f", "/etc/mongod.conf"]
   backend:
     container_name: trdk02_ed_backend
     build:
       context: ./backend/
-      dockerfile: Dockerfile
+      dockerfile: backend/config/Dockerfile
     depends_on:
       - mongodb
       - hoddb
