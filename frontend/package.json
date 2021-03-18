@@ -23,7 +23,7 @@
     "build": "react-scripts build",
     "lint:fix": "eslint src/**/*.js --fix",
     "lint": "./node_modules/.bin/eslint",
-    "test": "ts-jest",
+    "test": "ts-jest --passWithNoTests",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
