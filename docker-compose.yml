@@ -33,7 +33,7 @@ services:
     container_name: trdk02_ed_backend
     build:
       context: ./backend/
-      dockerfile: backend/config/Dockerfile
+      dockerfile: config/Dockerfile
     depends_on:
       - mongodb
       - hoddb
