@@ -23,52 +23,52 @@
     background-color: var(--navbar-hover);
 }
 .oversikt {
-    background-image: url("../assets/icons/Oversikt.png");
+    background-image: url("../../assets/icons/Oversikt.png");
 }
 .oversiktF {
-    background-image: url("../assets/icons/OversiktF.png");
+    background-image: url("../../assets/icons/OversiktF.png");
 }
 .skoler {
-    background-image: url("../assets/icons/Skole.png");
+    background-image: url("../../assets/icons/Skole.png");
 }
 .skolerF {
-    background-image: url("../assets/icons/SkoleF.png");
+    background-image: url("../../assets/icons/SkoleF.png");
 }
 .barnehager {
-    background-image: url("../assets/icons/Barnehage.png");
+    background-image: url("../../assets/icons/Barnehage.png");
 }
 .barnehagerF {
-    background-image: url("../assets/icons/BarnehageF.png");
+    background-image: url("../../assets/icons/BarnehageF.png");
 }
 .barnehager {
-    background-image: url("../assets/icons/Barnehage.png");
+    background-image: url("../../assets/icons/Barnehage.png");
 }
 .barnehagerF {
-    background-image: url("../assets/icons/BarnehageF.png");
+    background-image: url("../../assets/icons/BarnehageF.png");
 }
 .sykehjem {
-    background-image: url("../assets/icons/Sykehjem.png");
+    background-image: url("../../assets/icons/Sykehjem.png");
 }
 .sykehjemF {
-    background-image: url("../assets/icons/SykehjemF.png");
+    background-image: url("../../assets/icons/SykehjemF.png");
 }
 .idrett {
-    background-image: url("../assets/icons/Idretshall.png");
+    background-image: url("../../assets/icons/Idretshall.png");
 }
 .idrettF {
-    background-image: url("../assets/icons/IdretshallF.png");
+    background-image: url("../../assets/icons/IdretshallF.png");
 }
 .andre {
-    background-image: url("../assets/icons/AndreBygg.png");
+    background-image: url("../../assets/icons/AndreBygg.png");
 }
 .andreF {
-    background-image: url("../assets/icons/AndreByggF.png");
+    background-image: url("../../assets/icons/AndreByggF.png");
 }
 .energi {
-    background-image: url("../assets/icons/EnergiTips.png");
+    background-image: url("../../assets/icons/EnergiTips.png");
 }
 .energiF {
-    background-image: url("../assets/icons/EnergiTipsF.png");
+    background-image: url("../../assets/icons/EnergiTipsF.png");
     background-position-x: 15px;
     background-size: 40px;
 }
