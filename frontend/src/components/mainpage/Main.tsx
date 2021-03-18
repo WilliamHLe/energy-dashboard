@@ -2,8 +2,8 @@ import React from 'react';
 // import Highcharts from 'highcharts';
 // import HighchartsReact from 'highcharts-react-official';
 
-import Sankey from '../graphs/Sankey';
-import CategoryUsage from '../graphs/CategoryUsage';
+import Sankey from './graphs/Sankey';
+import CategoryUsage from './graphs/CategoryUsage';
 import style from './main.module.css';
 
 function Main() {
