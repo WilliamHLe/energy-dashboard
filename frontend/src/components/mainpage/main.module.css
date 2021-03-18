@@ -13,10 +13,11 @@
 .ex {
     grid-area: content;
 }
-.ex2 {
+.energyPercentageSaved {
     grid-area: content2;
+    text-align: center;
 }
-.ex3 {
+.energySavedGraph {
     grid-area: content3;
 }
 .energyUsageGraph{

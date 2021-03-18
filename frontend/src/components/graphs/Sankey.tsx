@@ -6,8 +6,18 @@ require('highcharts/modules/sankey')(Highcharts);
 
 function Sankey() {
   const options = {
+    chart: {
+      backgroundColor: null,
+      color: 'white',
+    },
     title: {
-      text: 'My chart',
+      text: 'Energibærere',
+      style: {
+        color: 'white',
+      },
+    },
+    dataLabels: {
+
     },
     credits: {
       enabled: false,
@@ -28,12 +38,14 @@ function Sankey() {
           ['Andre bygg', 'Olje', 2],
         ],
         type: 'sankey',
-        name: 'Sankey demo series',
+        name: 'Energibærer',
       },
     ],
   };
 
-  return <HighchartsReact highcharts={Highcharts} options={options} />;
+  return (
+    <HighchartsReact highcharts={Highcharts} options={options} />
+  );
 }
 
 export default Sankey;
