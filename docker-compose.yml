@@ -51,7 +51,7 @@ services:
       - "3000"
     volumes:
       - ./backend/:/srv/app/
-      - ./srv/app/node_modules
+      - /srv/app/node_modules
     command: npm run dev
 
 volumes:

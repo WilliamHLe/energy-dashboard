@@ -2,6 +2,5 @@
   "ignore": ["**/*.test.ts", "**/*.spec.ts", "node_modules"],
   "watch": ["src/**/*.ts"],
   "verbose": true,
-  "exec": "npm start",
   "ext": "ts"
 }
