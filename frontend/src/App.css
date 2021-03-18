@@ -2,10 +2,16 @@
   --example-variable: #ccc; 
   --navbar-bg: #030E22; 
   --navbar-hover: rgba(115,142,164,0.5);
+  --font-color: #fff; 
+  --font-color-transparent: rgba(255, 255, 255, 0.6);
 }
 
 .example{
   color: var(--example-variable); 
+}
+
+body{
+  margin: 0;
 }
 
 #root {
