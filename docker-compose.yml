@@ -51,7 +51,8 @@ services:
       - "3000"
     volumes:
       - ./backend/:/srv/app/
-    command: npm start
+      - /srv/app/node_modules
+    command: npm run dev
 
 volumes:
   trdk02-mongodb:
