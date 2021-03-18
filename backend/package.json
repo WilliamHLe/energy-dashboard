@@ -4,11 +4,11 @@
   "license": "GPL-3.0",
   "private": true,
   "scripts": {
-    "start": "ts-node src/index.ts",
     "build": "tsc",
-    "lint": "eslint",
-    "lintf": "eslint --fix",
+    "start": "npm run build && node dist/index.js",
     "dev": "nodemon src/index.ts",
+    "lint": "eslint",
+    "lintf": "npm run lint -- --fix",
     "test": "jest --passWithNoTests",
     "test:watch": "npm run test -- --watch"
   },
