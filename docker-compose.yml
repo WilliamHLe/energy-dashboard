@@ -52,7 +52,6 @@ services:
     volumes:
       - ./backend/:/srv/app/
       - /srv/app/node_modules
-
     command: npm run dev
 
 volumes:
