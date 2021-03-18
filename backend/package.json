@@ -8,11 +8,8 @@
     "build": "tsc",
     "lint": "eslint",
     "lintf": "eslint --fix",
-<<<<<<< HEAD
     "dev": "nodemon src/index.ts",
-=======
->>>>>>> #62 Add jest testing framework
-    "test": "jest",
+    "test": "jest --passWithNoTests",
     "test:watch": "npm run test -- --watch"
   },
   "dependencies": {
