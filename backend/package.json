@@ -10,8 +10,7 @@
     "lintf": "eslint --fix",
     "dev": "nodemon src/index.ts",
     "test": "jest --passWithNoTests",
-    "test:watch": "npm run test -- --watch",
-    "dev": "nodemon src/index.ts"
+    "test:watch": "npm run test -- --watch"
   },
   "dependencies": {
     "express": "^4.17.1",
