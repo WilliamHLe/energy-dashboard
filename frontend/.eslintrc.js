@@ -2,7 +2,7 @@ module.exports = {
   extends: ['airbnb', 'airbnb/hooks', 'plugin:jsx-a11y/recommended'],
   env: {
     browser: true,
-    node: true,
+    jest: true,
   },
   parser: 'babel-eslint',
   globals: {
@@ -13,9 +13,6 @@ module.exports = {
     'react/jsx-filename-extension': [2, { extensions: ['.js', '.jsx', '.ts', '.tsx'] }],
     'import/no-unresolved': 0,
     'import/extensions': 0,
-    'import/no-extraneous-dependencies': ['error', {
-      devDependencies: false, optionalDependencies: false, peerDependencies: false, packageDir: './',
-    }],
   },
   plugins: [
     'jsx-a11y',
