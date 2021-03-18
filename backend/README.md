@@ -24,7 +24,7 @@ BRICK_PORT=         # Port of the brick service
             |__sensors.model.ts # naming for files in sensor directory
             |__sensors.controller.ts # controller
             |__sensors.routes.ts # REST routing
-            |__sesnors.logic # for calculations and other logic
+            |__sensors.logic # for calculations and other logic
         |__etcurves # directory for etcurves 
         |__buildings # directory for buildings
     |__ ....# other files not api-related
@@ -40,4 +40,4 @@ the controller. The controller should only deal with input/output logic.
 Test files will be put together with the functionality they test, except for those testing a bigger part of the system.
 These test files will be put in the ```test/``` folder. 
 
-The databases are located in the ```database/``` folder in the root directory. 
+The databases are located in the ```database/`` folder in the root directory. 
