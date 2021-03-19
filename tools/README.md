@@ -27,6 +27,6 @@ The script `datatransform.py` handles parsing the data from `.csv` to the format
 ### Generate data and prepare for seeding
 
 1. Inside the virtual environment run: `python datatransform.py`
-2. Move the generated seeds to the seed location: `mv -v ./out/* ../backend/database/mongodb/seed`
+2. Move the generated seeds to the seed location: `mv -v ./out/* ../database/mongodb/seed`
 
-In short the files generated in the `tools/out` folder needs to be moved to `backend/database/mongodb/seed`.
+In short the files generated in the `./tools/out` folder needs to be moved to `./database/mongodb/seed`.

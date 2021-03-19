@@ -1,0 +1,30 @@
+.wrapper{
+    width: 200px; 
+    height: 100%;
+    margin: 5px;
+    display: grid;
+    grid-template-columns: 45px 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    grid-template-areas:
+    "icon header"
+    "icon description"
+    ". description";
+}
+.icon{
+    width: 30px; 
+    height: auto;
+    margin-right: 15px;
+    grid-area: icon;
+    align-self: center;
+}
+.heading{
+    color: var(--font-color);
+    font-size: 16px; 
+    font-weight: bold;
+    grid-area: header;
+}
+.description{
+    color: var(--font-color-transparent);
+    font-size: 14px; 
+    grid-area: description;
+}
