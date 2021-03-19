@@ -8,7 +8,6 @@ import Main from './components/mainPage/Main';
 import InfoItem from './components/infobar/InfoItem';
 import Icon from './components/infobar/icons/noto_house.png';
 
-
 function App() {
   return (
     <>
