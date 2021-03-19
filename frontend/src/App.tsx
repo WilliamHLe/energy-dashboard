@@ -1,12 +1,13 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import './App.css';
-import Test from './components/Test';
-import Test2 from './components/Test2';
+import Test from './components/category/Test';
+import Test2 from './components/category/Test2';
 import Navbar from './components/navbar/Navbar';
-import Main from './components/mainpage/Main';
+import Main from './components/mainPage/Main';
 import InfoItem from './components/infobar/InfoItem';
 import Icon from './components/infobar/icons/noto_house.png';
+
 
 function App() {
   return (
