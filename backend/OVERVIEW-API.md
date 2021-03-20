@@ -1,4 +1,4 @@
-# API endpoints for the overview page
+# API endpoints - Overview page
 
 ## Search for a specific building
 
@@ -20,7 +20,30 @@ search query with `buildingName="Analysesenteret"`:
 ```json
 {
   "_id": ObjectId("60564970ecd73054d4869631"),
-  "name": "Trondheim Kommune - Hesteskoen barnehage"
+  "name": "Hesteskoen barnehage",
+  "category": "Barnehage",
+  "build_year": 1994,
+  "area_2019": 139,
+  "area_2020": 149
+}
+```
+
+## Get total energy usage
+
+**URL** : `/energy/usage`
+
+**Method** : `GET`
+
+
+### Success Responses
+
+**Code** : `200 OK`
+
+**Content example** : Response will reflect back the updated information:
+
+```json
+{
+  "energy-usage": 4000000
 }
 ```
 
@@ -34,8 +57,6 @@ Get the count of buildings that are monitored.
 
 ### Success Responses
 
-**Condition** : Data provided is valid.
-
 **Code** : `200 OK`
 
 **Content example** : Response will reflect back the updated information:
@@ -46,7 +67,7 @@ Get the count of buildings that are monitored.
 }
 ```
 
-## Get total area in m2 of all the buildings
+## Get total area in m<sup>2</sup> for all the buildings
 
 **URL** : `/buildings/area`
 
@@ -54,7 +75,6 @@ Get the count of buildings that are monitored.
 
 ### Success Responses
 
-**Condition** : Data provided is valid.
 
 **Code** : `200 OK`
 
@@ -68,7 +88,7 @@ Get the count of buildings that are monitored.
 
 ## Get energy saved compared to last year
 
-**URL** : `/energy`
+**URL** : `/energy/usageSave`
 
 **Method** : `GET`
 
@@ -82,19 +102,17 @@ Get the count of buildings that are monitored.
 
 ```json
 {
-    ?
+    "energy-saving": 2.8
 }
 ```
 ## Get energy saved for a building type
 
 **URL** : 
-- `/energy/schools`
-- `/energy/kindergardens`
-- `/energy/nursinghomes`
-- `/energy/sportfacilities`
-- `/energy/otherbuildings`
+- `/energy/usageSave/:buildingType`
 
 **Method** : `GET`
+
+**URL Parameters** : `buildingType=[string]` where buildingType is the type of building.
 
 ### Success Responses
 
@@ -106,6 +124,56 @@ Get the count of buildings that are monitored.
 
 ```json
 {
-    "id": 1234,
+  "category": "Barnehage",
+  "energy-saving": 1.8
+}
+```
+
+## Get energy carrier for a building type
+
+**URL** :
+- `/energy/carrier/:buildingType`
+
+**Method** : `GET`
+
+**URL Parameters** : `buildingType=[string]` where buildingType is the type of building.
+
+### Success Responses
+
+**Condition** : Data provided is valid.
+
+**Code** : `200 OK`
+
+**Content example** : Response will reflect back the updated information:
+
+```json
+{
+    "category": "Skole",
+    "Fjernvarme": 3000,
+    "Fastkraft": 2000
+}
+```
+
+## Get energy usage for a building type
+
+**URL** :
+- `/energy/usage/:buildingType`
+
+**Method** : `GET`
+
+**URL Parameters** : `buildingType=[string]` where buildingType is the type of building.
+
+### Success Responses
+
+**Condition** : Data provided is valid.
+
+**Code** : `200 OK`
+
+**Content example** : Response will reflect back the updated information:
+
+```json
+{
+  "category": "Skole",
+  "energy-usage": 30000
 }
 ```
