@@ -8,9 +8,13 @@ function CategotyUsage() {
   const options = {
     chart: {
       type: 'line',
+      backgroundColor: null,
     },
     title: {
       text: 'Forbruk fordelt på ulike byggkategorier',
+      style: {
+        color: 'white',
+      },
     },
     credits: {
       enabled: false,
@@ -18,12 +22,43 @@ function CategotyUsage() {
     yAxis: {
       title: {
         text: 'kWh',
+        style: {
+          color: 'white',
+        },
+      },
+      labels: {
+        style: {
+          color: 'white',
+        },
+      },
+    },
+    plotOptions: {
+      column: {
+        colorByPoint: true,
+      },
+      series: {
+        style: {
+          color: 'white',
+        },
+      },
+    },
+    legend: {
+      itemStyle: {
+        color: 'white',
       },
     },
     xAxis: {
       categories: [2016, 2017, 2018, 2019, 2020, 2021],
       title: {
         text: 'År',
+        style: {
+          color: 'white',
+        },
+      },
+      labels: {
+        style: {
+          color: 'white',
+        },
       },
     },
     series: [
@@ -50,7 +85,9 @@ function CategotyUsage() {
     ],
   };
 
-  return <HighchartsReact highcharts={Highcharts} options={options} />;
+  return (
+    <HighchartsReact highcharts={Highcharts} options={options} />
+  );
 }
 
 export default CategotyUsage;
