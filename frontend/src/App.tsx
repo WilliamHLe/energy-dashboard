@@ -4,9 +4,10 @@ import './App.css';
 import Test from './components/category/Test';
 import Test2 from './components/category/Test2';
 import Navbar from './components/navbar/Navbar';
-import Main from './components/mainPage/Main';
+import Main from './components/mainpage/Main';
 import InfoItem from './components/infobar/InfoItem';
 import Icon from './components/infobar/icons/noto_house.png';
+import Building from './components/building/Building';
 
 function App() {
   return (
@@ -22,26 +23,26 @@ function App() {
             <Route exact path="/">
               <Main />
             </Route>
-            <Route path="/skoler">
+            <Route exact path="/skoler">
               <Test bygg="Skole" />
             </Route>
-            <Route path="/bhager">
+            <Route exact path="/bhager">
               <Test bygg="Barnehage" />
             </Route>
-            <Route path="/sykehjem">
+            <Route exact path="/sykehjem">
               <Test bygg="Sykehjem" />
             </Route>
-            <Route path="/ibygg">
+            <Route exact path="/ibygg">
               <Test2 bygg="Idrettsbygg" />
             </Route>
-            <Route path="/abygg">
+            <Route exact path="/abygg">
               <Test2 bygg="Andre bygg" />
             </Route>
             <Route path="/energitips">
               <Test bygg="Energitips" />
             </Route>
-            <Route path="/">
-              <Test />
+            <Route path="/:category/:id">
+              <Building />
             </Route>
           </Switch>
         </div>
