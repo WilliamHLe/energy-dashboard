@@ -1,12 +1,12 @@
 import mongoose, { Document, Schema } from 'mongoose';
-import { IBuilding } from '../buildings/buildings.model.ts';
+import { IBuilding } from '../buildings/buildings.model';
 
 const SensorSchema:Schema = new Schema({
   description: {
     type: String,
   },
   measurement: {
-    type: String,
+    type: Object,
   },
   name: {
     type: String,
@@ -21,10 +21,18 @@ const SensorSchema:Schema = new Schema({
     type: Schema.Types.ObjectId,
     ref: 'Building',
   },
-  measurements: [String],
+  measurements: [{
+    date: String,
+    measurement: Number,
+  }],
 }, {
   collection: 'sensors',
 });
+
+interface IMeasurementsObjectTypes {
+    date: string;
+    measurement:number;
+}
 
 export interface ISensor extends Document{
    description: string;
@@ -32,7 +40,7 @@ export interface ISensor extends Document{
    name: string;
    unitOfMeasurement: string;
    building: IBuilding['_id'];
-   measurements: Array<String>;
+   measurements: Array<IMeasurementsObjectTypes>;
  }
 
 export default mongoose.model<ISensor>('Sensor', SensorSchema);
