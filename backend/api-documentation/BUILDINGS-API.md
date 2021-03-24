@@ -26,16 +26,16 @@ Be aware that some of these endpoints can also be used in other pages.**
 search query with `id="ObjectId("60564970ecd73054d4869631")"`:
 
 ```json
-[
-  {
+
+{
     "_id": "60564970ecd73054d4869631",
     "name": "Hesteskoen barnehage",
     "category": "Barnehage",
     "build_year": 1994,
     "area_2019": 139,
     "area_2020": 149
-  }
-]
+}
+
 ```
 
 ## Get highscore for a building type
@@ -44,6 +44,7 @@ search query with `id="ObjectId("60564970ecd73054d4869631")"`:
 - `/buildings/:buildingType/highscore?month=true` 
 - `/buildings/:buildingType/highscore?year=true`
 - `/buildings/highscore?buildingType={query}&year=true`
+- `/highscore/:buildingType?year=true`
 
 **Method** : `GET`
 
@@ -71,7 +72,7 @@ search query with `buildingName="Hesteskoen"`:
 
 ## Get badges for a specific building
 
-**URL** : `/buildings/:id/badges` lovlig?
+**URL** : `/buildings/:id/badges`
 
 **Method** : `GET`
 
@@ -191,11 +192,11 @@ search query with `buildingName="Hesteskoen"`:
 [
   {
     "expectedUsage": 40020,
-    "year": 2016
+    "date": 2016
   },
   {
     "expectedUsage": 38999,
-    "year": 2017
+    "date": 2017
   }
 ]
 ```
@@ -221,12 +222,12 @@ search query with `buildingName="Hesteskoen"`:
 ```json
 [
   {
-    "energyUsage": 40020,
-    "month": 2016
+    "energyUsageDifference": 40020,
+    "date": "20.12.20"
   },
   {
     "energyUsage": 38999,
-    "month": 2017
+    "month": "20.12.20"
   }
 ]
 ```

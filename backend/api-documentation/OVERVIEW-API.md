@@ -61,7 +61,6 @@ A query with `buildingType="Skole"`:
 ## Get energy usage for a building type
 
 **URL** :
-- `/energy/usage/:buildingType` ?
 - `/buildings/energy/usage?buildingType={query}` ? 
 
 **Method** : `GET`
@@ -96,7 +95,6 @@ A query with `buildingType="Skole"`:
 
 **URL** :
 - `/metrics?buildingType={barnehage}`
-- `/metrics?buildingType={overview}` for total metrics for the overview page
 
 **Method** : `GET`
 
