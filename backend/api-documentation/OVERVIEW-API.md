@@ -33,8 +33,6 @@ search query with `buildingName="Hesteskoen barnehage"`:
 ## Get energy carrier for a building type
 
 **URL** :
-- `/energy/carrier/:buildingType` ?
-- `/buildings/:buildingType/energy/carrier` ?
 - `/buildings/energy/carrier?buildingType={query}` ?
 
 **Method** : `GET`

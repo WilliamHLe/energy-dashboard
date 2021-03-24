@@ -40,10 +40,7 @@ search query with `id="ObjectId("60564970ecd73054d4869631")"`:
 
 ## Get highscore for a building type
 
-**URL** : 
-- `/buildings/:buildingType/highscore?month=true` 
-- `/buildings/:buildingType/highscore?year=true`
-- `/buildings/highscore?buildingType={query}&year=true`
+**URL** :
 - `/highscore/:buildingType?year=true`
 
 **Method** : `GET`
