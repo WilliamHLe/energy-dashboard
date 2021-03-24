@@ -1,5 +1,5 @@
 import mongoose, { Document, Schema } from 'mongoose';
-import { IBuilding } from '../buildings/buildings.model';
+import { IBuilding } from './buildings.model';
 
 const SensorSchema:Schema = new Schema({
   description: {
