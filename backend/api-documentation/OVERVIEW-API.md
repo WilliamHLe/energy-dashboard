@@ -33,7 +33,7 @@ search query with `buildingName="Hesteskoen barnehage"`:
 ## Get energy carrier for a building type
 
 **URL** :
-- `/buildings/energy/carrier?buildingType={query}` ?
+- `/buildingTypes/:id/energy/carrier` ?
 
 **Method** : `GET`
 
@@ -59,7 +59,7 @@ A query with `buildingType="Skole"`:
 ## Get energy usage for a building type
 
 **URL** :
-- `/buildings/energy/usage?buildingType={query}` ? 
+- `/buildingTypes/:id/energy/usage` ? 
 
 **Method** : `GET`
 
@@ -78,12 +78,12 @@ A query with `buildingType="Skole"`:
   {
     "category": "Skole",
     "energyUsage": 20000,
-    "year": 2019
+    "date": "20.12.20"
   },
   {
     "category": "Skole",
     "energyUsage": 30000,
-    "year": 2018
+    "date": "20.12.20"
   }
 ]
 ```

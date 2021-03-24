@@ -114,11 +114,11 @@ search query with `buildingName="Hesteskoen"`:
 [
   {
     "energyUsage": 20000,
-    "year": 2019
+    "date": "20.12.20"
   },
   {
     "energyUsage": 30000,
-    "year": 2018 
+    "date": "20.12.20"
   }
 ]
 ```
@@ -189,11 +189,11 @@ search query with `buildingName="Hesteskoen"`:
 [
   {
     "expectedUsage": 40020,
-    "date": 2016
+    "date": "20.12.20"
   },
   {
     "expectedUsage": 38999,
-    "date": 2017
+    "date": "20.12.20"
   }
 ]
 ```
@@ -224,7 +224,7 @@ search query with `buildingName="Hesteskoen"`:
   },
   {
     "energyUsage": 38999,
-    "month": "20.12.20"
+    "date": "20.12.20"
   }
 ]
 ```
