@@ -92,7 +92,11 @@ A query with `buildingType="Skole"`:
 ## Get energy usage, energy saved, total area and amount of buildings for a specific building/overview page
 
 **URL** :
-- `/metrics?buildingType={barnehage}`
+## - `/metrics?buildingType={barnehage}`
+- `/metrics/buildingTypes/:id` 
+- `/metrics/buildingTypes`
+- `/metrics/buildings/:id`
+- `/metrics/buildings`
 
 **Method** : `GET`
 
