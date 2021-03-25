@@ -22,7 +22,11 @@ BRICK_PORT=         # Port of the brick service
     |__api # all files related to apis
         |__models # directory for models
         |__controllers # directory for controllers 
-        |__logic # directory for logic
+            |__getAllBuildings # example of controller.
+        |__routes # directory for routes
+            |__/buildings # example route
+        |__services # directory for services
+            |__calculateExpectedUsage # example of service
     |__ ....# other files not api-related
     |__index.ts # main file
 |__test # test directory for additional tests
@@ -33,9 +37,9 @@ BRICK_PORT=         # Port of the brick service
 The project structure is organized by type and not feature. This is because of the relative small size of this project.
 
 ```models/```contains all mongoose models. 
-```controllers/``` contains all routing. Logic for routing should not be here to split logic from routing. We want reusable routing.  
-```logic/``` contains all logic. This should be kept apart from any routing and models. 
-
+```controllers/``` generates outputs. There should not be any calculations or other logic here. One controller can be used by several routes.  
+```services/``` contains all logic. This should be kept separate from any routing and models. Available for all the backend. One services can be used by several controllers.  
+```routes/``` all routing. This is what the frontend uses. 
 
 Test files will be put together with the functionality they test, except for those testing a bigger part of the system.
 These test files will be put in the ```test/``` folder. 
