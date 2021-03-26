@@ -5,7 +5,8 @@
 ### Prerequisites
 
 - [Docker](https://www.docker.com/products/docker-desktop)
-- [Python](https://www.python.org/downloads/)
+- [Nodejs](https://nodejs.org/en/)
+- [Python](https://www.python.org/downloads/) (Only required if generating data)
 
 ### Local development
 
