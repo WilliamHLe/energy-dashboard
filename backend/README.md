@@ -14,6 +14,12 @@ DB_PASSWORD=        # Login credentials for the database
 BRICK_HOST=         # URI of the brick service
 BRICK_PORT=         # Port of the brick service
 ```
+
+Environment variables are automatically set when running through docker.
+
+# API documentation
+
+See [API documentation](api-documentation/README.md) for instructions on the API.
 # Project structure 
 
 ````

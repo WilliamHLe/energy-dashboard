@@ -17,6 +17,10 @@
 1. Start Docker
 1. Start the application with `docker-compose up`
 
+Where to access the application?
+- Frontend is running on [localhost:80](http://localhost)
+- Backend is running on [localhost:3000](http://localhost:3000/api-docs)
+
 >If you already completed the setup process, run `docker-compose up --build` to start the application anytime
 
 ### Possible problems during installation
