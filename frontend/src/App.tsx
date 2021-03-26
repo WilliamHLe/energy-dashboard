@@ -17,6 +17,7 @@ function App() {
         <div style={{ display: 'flex' }}>
           <InfoItem heading="660" description="Bygg som overvåkes" icon={Icon} />
           <InfoItem heading="660" description="Bygg som overvåkes og mer som skal stå" icon={Icon} />
+          <InfoItem heading="660" description="Bygg som overvåkes og mer som skal stå" icon={Icon} />
         </div>
         <div className="content">
           <Switch>
