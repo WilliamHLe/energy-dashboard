@@ -43,7 +43,7 @@ services:
       - DB_HOST=mongodb # Same as the mongodb service name
       - DB_PORT=27017 # Same as the mongodb service port
       - DB_DATABASE=${DB_DATABASE}
-      - DB_USERAME=${DB_USERNAME}
+      - DB_USERNAME=${DB_USERNAME}
       - DB_PASSWORD=${DB_PASSWORD}
     ports:
       - "3000:3000"
