@@ -8,6 +8,8 @@ const BuildingSchema:Schema = new Schema({
   collection: 'buildings',
 });
 
+BuildingSchema.index({ name: 'text' });
+
 export interface IBuilding extends Document{
   name: string
 }

@@ -3,6 +3,8 @@ import mongoose from 'mongoose';
 import swaggerUi from 'swagger-ui-express';
 import swaggerDocument from '../api-documentation/swagger.json';
 
+const searchRoute = require('./api/routes/search.routes.ts');
+
 // Example mongodb connection
 if (process.env.DB_HOST && process.env.DB_DATABASE) { // TODO: Add username/password
   mongoose.connect(
@@ -24,6 +26,7 @@ if (process.env.DB_HOST && process.env.DB_DATABASE) { // TODO: Add username/pass
 const app = express();
 const port = 3000;
 
+app.use('/search', searchRoute);
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 app.get('/', (req, res) => {
   res.send(`DB_HOST${process.env.DB_HOST}`);
