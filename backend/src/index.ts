@@ -3,7 +3,7 @@ import mongoose from 'mongoose';
 import swaggerUi from 'swagger-ui-express';
 import swaggerDocument from '../api-documentation/swagger.json';
 
-const searchRoute = require('./api/routes/search.routes.ts');
+import searchRoute from './api/routes/search.routes';
 
 // Example mongodb connection
 if (process.env.DB_HOST && process.env.DB_DATABASE) { // TODO: Add username/password
