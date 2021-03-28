@@ -11,6 +11,7 @@ connectDb();
 const app = express();
 const port = 3000;
 
+app.use('/buildings', buildingRoute);
 app.use('/search', searchRoute);
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 app.use('/categories', categoryRoutes);
