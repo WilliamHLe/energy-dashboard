@@ -1,12 +1,12 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import './App.css';
-import Test from './components/category/Test';
+import Test from './components/buildingCategoryOverview/Test';
 import Navbar from './components/navbar/Navbar';
 import Main from './components/mainpage/Main';
 import InfoItem from './components/infobar/InfoItem';
 import Icon from './components/infobar/icons/noto_house.png';
-import Category from './components/category/Category';
+import BuildingCategoryOverview from './components/buildingCategoryOverview/BuildingCategoryOverview';
 
 function App() {
   return (
@@ -26,7 +26,7 @@ function App() {
               <Test />
             </Route>
             <Route exact path="/:category">
-              <Category />
+              <BuildingCategoryOverview />
             </Route>
             <Route path="/">
               <Test />

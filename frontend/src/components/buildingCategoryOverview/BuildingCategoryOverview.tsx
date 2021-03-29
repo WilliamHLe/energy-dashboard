@@ -1,15 +1,15 @@
 import React from 'react';
 import { useParams } from 'react-router';
 import style from './category.module.css';
-import CategotyUsage from './graphs/CategoryUsage';
+import CategoryUsage from './graphs/CategoryUsage';
 
-function Category() {
+function BuildingCategoryOverview() {
   const { category } = useParams<{category:string}>();
 
   return (
     <div className={style.category}>
       <div className={`container ${style.energyUsageGraph}`}>
-        <CategotyUsage />
+        <CategoryUsage />
       </div>
       <div className={`container ${style.buildingList}`}>
         Kategori:
@@ -22,4 +22,4 @@ function Category() {
   );
 }
 
-export default Category;
+export default BuildingCategoryOverview;
