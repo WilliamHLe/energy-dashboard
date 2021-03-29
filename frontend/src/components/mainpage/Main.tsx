@@ -3,7 +3,7 @@ import React from 'react';
 // import HighchartsReact from 'highcharts-react-official';
 
 import Sankey from './graphs/Sankey';
-import CategoryUsage from '../category/graphs/CategoryUsage';
+import CategoryUsage from '../buildingCategoryOverview/graphs/CategoryUsage';
 import style from './main.module.css';
 import EnergySaved from '../graphs/EnergySaved';
 

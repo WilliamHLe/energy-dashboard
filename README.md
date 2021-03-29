@@ -5,7 +5,8 @@
 ### Prerequisites
 
 - [Docker](https://www.docker.com/products/docker-desktop)
-- [Python](https://www.python.org/downloads/)
+- [Nodejs](https://nodejs.org/en/)
+- [Python](https://www.python.org/downloads/) (Only required if generating data)
 
 ### Local development
 
@@ -16,6 +17,10 @@
 1. Generate seed data by following instructions in [tools README](tools/README.md)
 1. Start Docker
 1. Start the application with `docker-compose up`
+
+Where to access the application?
+- Frontend is running on [localhost:80](http://localhost)
+- Backend is running on [localhost:3000](http://localhost:3000/api-docs)
 
 >If you already completed the setup process, run `docker-compose up --build` to start the application anytime
 

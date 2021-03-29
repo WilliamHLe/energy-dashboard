@@ -6,6 +6,15 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 In the project directory, you can run:
 
+## Environment 
+
+
+```
+API_URI=        # The url for the backend API 
+```
+
+Environment variables are automatically set when running through docker.
+
 ### `npm start`
 
 Runs the app in the development mode.\
@@ -44,3 +53,34 @@ You don’t have to ever use `eject`. The curated feature set is suitable for sm
 You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
 To learn React, check out the [React documentation](https://reactjs.org/).
+
+## File structure 
+
+#### The frontend/src folder structure: 
+
+```
+src 
+|___ assets
+|___ components 
+|      |__ building
+|      |__ category
+|      |__ energyTips
+|      |__ headerBar
+|      |__ mainPage
+|      |__ navbar
+|___ tests
+|___ index.tsx
+|___ App.tsx
+|___ App.css
+```
+
+All tests is placed in the folder "test" and all images or icons in the "assets" folder. The components folder is seperated into several subfolders. These subfolders reflect this projects goal of achihieving high modularity, with logic split into small, seperate and reusable components. 
+
+### Styling
+In App.css global styling principles for the project are set. Examples of what should be defined in this file is font family, background-colors and styling on reccuring modules. Styling on individual components is located in seperate CSS files in the same folder where the related component is placed. 
+
+
+
+
+
+

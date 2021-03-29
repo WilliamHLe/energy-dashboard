@@ -1,0 +1,27 @@
+.category {
+    margin:20px;
+    max-height: calc(100vh - 200px);
+    display: grid;
+    grid-template-columns: repeat(9, 1fr);
+    grid-template-rows: repeat(5, 1fr);
+    column-gap: 20px;
+    row-gap: 20px;
+    grid-template-areas: 
+    "usage usage usage usage usage usage list list list"
+    "usage usage usage usage usage usage list list list"
+    "usage usage usage usage usage usage list list list"
+    "pie pie tips tips tips tips list list list"
+    "pie pie tips tips tips tips list list list"
+}
+.energyUsageGraph{
+    grid-area: usage;
+}
+.buildingList {
+    grid-area: list;
+}
+.energyCarriers {
+    grid-area: pie;
+}
+.tips {
+    grid-area: tips;
+}

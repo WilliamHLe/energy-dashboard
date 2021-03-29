@@ -14,19 +14,25 @@ DB_PASSWORD=        # Login credentials for the database
 BRICK_HOST=         # URI of the brick service
 BRICK_PORT=         # Port of the brick service
 ```
+
+Environment variables are automatically set when running through docker.
+
+# API documentation
+
+See [API documentation](api-documentation/README.md) for instructions on the API.
 # Project structure 
 
 ````
 |__config # config files
 |__src 
     |__api # all files related to apis
-        |__sensors # directory for sensor-related files, may contain models, controllers etc
-            |__sensors.model.ts # naming for files in sensor directory
-            |__sensors.controller.ts # controller
-            |__sensors.routes.ts # REST routing
-            |__sensors.logic # for calculations and other logic
-        |__etcurves # directory for etcurves 
-        |__buildings # directory for buildings
+        |__models # directory for models
+        |__controllers # directory for controllers 
+            |__getAllBuildings # example of controller.
+        |__routes # directory for routes
+            |__/buildings # example route
+        |__services # directory for services
+            |__calculateExpectedUsage # example of service
     |__ ....# other files not api-related
     |__index.ts # main file
 |__test # test directory for additional tests
@@ -34,8 +40,12 @@ BRICK_PORT=         # Port of the brick service
 
 
 ````
-```sensors/``` is an example for how all other api-sub-directories can be structured. Logic-file includes all logic not contained in 
-the controller. The controller should only deal with input/output logic. 
+The project structure is organized by type and not feature. This is because of the relative small size of this project.
+
+```models/```contains all mongoose models. 
+```controllers/``` generates outputs. There should not be any calculations or other logic here. One controller can be used by several routes.  
+```services/``` contains all logic. This should be kept separate from any routing and models. Available for all the backend. One services can be used by several controllers.  
+```routes/``` all routing. This is what the frontend uses. 
 
 Test files will be put together with the functionality they test, except for those testing a bigger part of the system.
 These test files will be put in the ```test/``` folder. 
