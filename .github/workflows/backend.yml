@@ -8,7 +8,7 @@ name: Backend CI
 on:
   pull_request:
     paths:
-    - './backend**'
+    - 'backend/**'
 
 defaults:
   run:
