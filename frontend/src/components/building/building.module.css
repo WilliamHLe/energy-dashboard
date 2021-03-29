@@ -1,0 +1,44 @@
+.building {
+    margin:20px;
+    max-height: calc(100vh - 200px);
+    display: grid;
+    grid-template-columns: repeat(13, 1fr);
+    grid-template-rows: repeat(9, 1fr);
+    column-gap: 20px;
+    row-gap: 20px;
+    grid-template-areas: 
+    "usage usage usage usage usage usage usage usage usage compare compare compare compare"
+    "usage usage usage usage usage usage usage usage usage compare compare compare compare"
+    "usage usage usage usage usage usage usage usage usage compare compare compare compare"
+    "usage usage usage usage usage usage usage usage usage previous previous previous previous"
+    "usage usage usage usage usage usage usage usage usage previous previous previous previous"
+    "average average average total total total percentage percentage percentage previous previous previous previous"
+    "average average average total total total percentage percentage percentage badges badges badges badges"
+    "average average average total total total percentage percentage percentage badges badges badges badges"
+    "average average average tips tips tips percentage percentage percentage badges badges badges badges"
+}
+.energyUsageGraph {
+    grid-area: usage;
+}
+.compareBuildings {
+    grid-area: compare;
+    text-align: center;
+}
+.previousYears {
+    grid-area: previous;
+}
+.energyAverage{
+    grid-area: average;
+}
+.energyTotal{
+    grid-area: total;
+}
+.getTips{
+    grid-area: tips;
+}
+.energyPercentageSaved{
+    grid-area: percentage;
+}
+.badges {
+    grid-area: badges;
+}

@@ -1,0 +1,1423 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "Energy Dashboard API",
+    "version": "1.0.0"
+  },
+  "tags": [
+    {
+      "name": "badges",
+      "description": "Overview of achievements"
+    },
+    {
+      "name": "building",
+      "description": "Information about buildings"
+    },
+    {
+      "name": "category",
+      "description": "Information about building categories"
+    },
+    {
+      "name": "energy",
+      "description": "Energy calculations and measurements"
+    },
+    {
+      "name": "highscores",
+      "description": "Highscores for a building category"
+    },
+    {
+      "name": "metrics",
+      "description": "Miscellaneous metrics for a building or category"
+    }
+  ],
+  "paths": {
+    "/badges": {
+      "get": {
+        "tags": [
+          "badges"
+        ],
+        "summary": "Get all badges",
+        "description": "Returns a list of badges",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Badge"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/badges/{slug}": {
+      "get": {
+        "tags": [
+          "badges"
+        ],
+        "summary": "Get badges by building name",
+        "description": "Returns an object with badges for a building",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "slug",
+            "in": "path",
+            "description": "Name of a building",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "schema": {
+              "$ref": "#/definitions/BadgeBuilding"
+            }
+          }
+        }
+      }
+    },
+    "/buildings": {
+      "get": {
+        "tags": [
+          "building"
+        ],
+        "summary": "Get all buildings",
+        "description": "Returns a list of buildings",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "category_id",
+            "in": "query",
+            "description": "ID of the category of buildings to return",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Building"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/buildings/{id}": {
+      "get": {
+        "tags": [
+          "building"
+        ],
+        "summary": "Get a building by ID",
+        "description": "Returns a single building",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID of the building to return",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "schema": {
+              "$ref": "#/definitions/Building"
+            }
+          }
+        }
+      }
+    },
+    "/buildings/{id}/badges": {
+      "get": {
+        "tags": [
+          "building"
+        ],
+        "summary": "Get badges by building ID",
+        "description": "Returns an object with badges for the building.\nAlternative route for [/badges/{slug}](#/badges/get_badges__slug_) with a building name slug.",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID of the building",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/BadgeBuilding"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/buildings/{id}/energy/average": {
+      "get": {
+        "tags": [
+          "building"
+        ],
+        "summary": "Get average energy usage for a building by ID",
+        "description": "Returns an object with average energy usage for a building.\nAlternative route for [/energy/average/{slug}](#/energy/get_energy_average__slug_) with a building name slug.",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID of the building",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "from_date",
+            "in": "query",
+            "description": "The earliest date (including) to return data for. Defaults to earliest datapoint. Example: `12-03-21`",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "to_date",
+            "in": "query",
+            "description": "The latest date (including) to return data for. Defaults to latest datapoint. Example: `12-03-21`",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "schema": {
+              "$ref": "#/definitions/UsageAverage"
+            }
+          }
+        }
+      }
+    },
+    "/buildings/{id}/energy/carriers": {
+      "get": {
+        "tags": [
+          "building"
+        ],
+        "summary": "Get energy carriers for a building by ID",
+        "description": "Returns energy carriers for a single building.\nAlternative route for [/energy/carriers/{slug}](#/energy/get_energy_carriers__slug_) with a building name slug.",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID of the building",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "from_date",
+            "in": "query",
+            "description": "The earliest date (including) to return data for. Defaults to earliest datapoint. Example: `12-03-21`",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "to_date",
+            "in": "query",
+            "description": "The latest date (including) to return data for. Defaults to latest datapoint. Example: `12-03-21`",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Carrier"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/buildings/{id}/energy/total": {
+      "get": {
+        "tags": [
+          "building"
+        ],
+        "summary": "Get total energy usage for a building by ID",
+        "description": "Returns an object with total energy usage for a building.\nAlternative route for [/energy/total/{slug}](#/energy/get_energy_total__slug_) with a building name slug.",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID of the building",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "from_date",
+            "in": "query",
+            "description": "The earliest date (including) to return data for. Defaults to earliest datapoint. Example: `12-03-21`",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "to_date",
+            "in": "query",
+            "description": "The latest date (including) to return data for. Defaults to latest datapoint. Example: `12-03-21`",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "schema": {
+              "$ref": "#/definitions/UsageTotal"
+            }
+          }
+        }
+      }
+    },
+    "/buildings/{id}/energy/usage": {
+      "get": {
+        "tags": [
+          "building"
+        ],
+        "summary": "Get energy usage for a building by ID",
+        "description": "Returns energy usage for a single building.\nAlternative route for [/energy/usage/{slug}](#/usage/get_energy_usage__slug_) with a building name slug.",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID of the building",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "from_date",
+            "in": "query",
+            "description": "The earliest date (including) to return data for. Defaults to earliest datapoint. Example: `12-03-21`",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "to_date",
+            "in": "query",
+            "description": "The latest date (including) to return data for. Defaults to latest datapoint. Example: `12-03-21`",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "expected",
+            "in": "query",
+            "description": "`True` returns expected instead of actual. Defaults to `False`",
+            "required": false,
+            "type": "boolean"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Measurement"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/buildings/{id}/metrics": {
+      "get": {
+        "tags": [
+          "building"
+        ],
+        "summary": "Get metrics for a building by ID",
+        "description": "Returns metrics for a single building.\nAlternative route for [/metrics/{slug}](#/metrics/get_metrics__slug_) with a building name slug.",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID of the building to return",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "from_date",
+            "in": "query",
+            "description": "The earliest date (including) to return data for. Defaults to earliest datapoint. Example: `12-03-21`",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "to_date",
+            "in": "query",
+            "description": "The latest date (including) to return data for. Defaults to latest datapoint. Example: `12-03-21`",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "schema": {
+              "$ref": "#/definitions/Metrics"
+            }
+          }
+        }
+      }
+    },
+    "/categories": {
+      "get": {
+        "tags": [
+          "category"
+        ],
+        "summary": "Get all building categories",
+        "description": "Returns a list of building categories",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Category"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/categories/{name}": {
+      "get": {
+        "tags": [
+          "category"
+        ],
+        "summary": "Get a building category by name",
+        "description": "Returns a single building category",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "name",
+            "in": "path",
+            "description": "Name of the category to return",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "schema": {
+              "$ref": "#/definitions/Category"
+            }
+          }
+        }
+      }
+    },
+    "/categories/{name}/energy/average": {
+      "get": {
+        "tags": [
+          "category"
+        ],
+        "summary": "Get average energy usage for a category by name",
+        "description": "Returns an object with average energy usage for a category.\nAlternative route for [/energy/average/{slug}](#/energy/get_energy_average__slug_) with a category name slug.",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "name",
+            "in": "path",
+            "description": "Name of the category",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "from_date",
+            "in": "query",
+            "description": "The earliest date (including) to return data for. Defaults to earliest datapoint. Example: `12-03-21`",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "to_date",
+            "in": "query",
+            "description": "The latest date (including) to return data for. Defaults to latest datapoint. Example: `12-03-21`",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "schema": {
+              "$ref": "#/definitions/UsageAverage"
+            }
+          }
+        }
+      }
+    },
+    "/categories/{name}/energy/carriers": {
+      "get": {
+        "tags": [
+          "category"
+        ],
+        "summary": "Get energy carriers for a building category by name",
+        "description": "Returns energy carriers for a single building category.\nAlternative route for [/energy/carriers/{slug}](#/carrier/get_energy_carriers__slug_) with a category name slug.",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "name",
+            "in": "path",
+            "description": "Name of the category",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "from_date",
+            "in": "query",
+            "description": "The earliest date (including) to return data for. Defaults to earliest datapoint. Example: `12-03-21`",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "to_date",
+            "in": "query",
+            "description": "The latest date (including) to return data for. Defaults to latest datapoint. Example: `12-03-21`",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Carrier"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/categories/{name}/energy/total": {
+      "get": {
+        "tags": [
+          "category"
+        ],
+        "summary": "Get total energy usage for a category by name",
+        "description": "Returns an object with total energy usage for a category.\nAlternative route for [/energy/total/{slug}](#/energy/get_energy_total__slug_) with a category name slug.",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "name",
+            "in": "path",
+            "description": "Name of the category",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "from_date",
+            "in": "query",
+            "description": "The earliest date (including) to return data for. Defaults to earliest datapoint",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "to_date",
+            "in": "query",
+            "description": "The latest date (including) to return data for. Defaults to latest datapoint",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "schema": {
+              "$ref": "#/definitions/UsageTotal"
+            }
+          }
+        }
+      }
+    },
+    "/categories/{name}/energy/usage": {
+      "get": {
+        "tags": [
+          "category"
+        ],
+        "summary": "Get energy usage for a building category by name",
+        "description": "Returns energy usage for a single building category.\nAlternative route for [/energy/usage/{slug}](#/usage/get_energy_usage__slug_) with a category name slug.",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "name",
+            "in": "path",
+            "description": "Name of the category",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "from_date",
+            "in": "query",
+            "description": "The earliest date (including) to return data for. Defaults to earliest datapoint",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "to_date",
+            "in": "query",
+            "description": "The latest date (including) to return data for. Defaults to latest datapoint",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "expected",
+            "in": "query",
+            "description": "`True` returns expected instead of actual. Defaults to `False`",
+            "required": false,
+            "type": "boolean"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Measurement"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/categories/{name}/highscores": {
+      "get": {
+        "tags": [
+          "category"
+        ],
+        "summary": "Get highscores by category name",
+        "description": "Returns an object with highscores for the category.\nAlternative route for [/highscores/{slug}](#/highscores/get_highscores__slug_) with a category name slug.",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "name",
+            "in": "path",
+            "description": "Name of the category",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "filter",
+            "in": "query",
+            "description": "WIP: Filter query parameters for desired optional filters (TEK standard etc.)",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Highscores"
+
+              }
+            }
+          }
+        }
+      }
+    },
+    "/categories/{name}/metrics": {
+      "get": {
+        "tags": [
+          "category"
+        ],
+        "summary": "Get metrics for a building category by name",
+        "description": "Returns metrics for a single building category.\nAlternative route for [/metrics/{slug}](#/metrics/get_metrics__slug_) with a category name slug.",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "name",
+            "in": "path",
+            "description": "Name of the category",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "from_date",
+            "in": "query",
+            "description": "The earliest date (including) to return data for. Defaults to earliest datapoint. Example: `12-03-21`",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "to_date",
+            "in": "query",
+            "description": "The latest date (including) to return data for. Defaults to latest datapoint. Example: `12-03-21`",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "schema": {
+              "$ref": "#/definitions/Metrics"
+            }
+          }
+        }
+      }
+    },
+    "/energy/average": {
+      "get": {
+        "tags": [
+          "energy"
+        ],
+        "summary": "Get average energy usage for all categories",
+        "description": "Returns an object with average energy usage for all categories",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "from_date",
+            "in": "query",
+            "description": "The earliest date (including) to return data for. Defaults to earliest datapoint. Example: `12-03-21`",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "to_date",
+            "in": "query",
+            "description": "The latest date (including) to return data for. Defaults to latest datapoint. Example: `12-03-21`",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/UsageAverageCategory"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/energy/average/{slug}": {
+      "get": {
+        "tags": [
+          "energy"
+        ],
+        "summary": "Get average energy usage by building or category name",
+        "description": "Returns an object with average energy usage for the building or category",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "slug",
+            "in": "path",
+            "description": "Name of a building or category",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "from_date",
+            "in": "query",
+            "description": "The earliest date (including) to return data for. Defaults to earliest datapoint. Example: `12-03-21`",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "to_date",
+            "in": "query",
+            "description": "The latest date (including) to return data for. Defaults to latest datapoint. Example: `12-03-21`",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "schema": {
+              "$ref": "#/definitions/UsageAverage"
+            }
+          }
+        }
+      }
+    },
+    "/energy/carriers": {
+      "get": {
+        "tags": [
+          "energy"
+        ],
+        "summary": "Get energy carriers for all categories",
+        "description": "Returns an object with energy carriers for all categories",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "from_date",
+            "in": "query",
+            "description": "The earliest date (including) to return data for. Defaults to earliest datapoint. Example: `12-03-21`",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "to_date",
+            "in": "query",
+            "description": "The latest date (including) to return data for. Defaults to latest datapoint. Example: `12-03-21`",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/CarrierCategory"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/energy/carriers/{slug}": {
+      "get": {
+        "tags": [
+          "energy"
+        ],
+        "summary": "Get energy carriers by building or category name",
+        "description": "Returns a list of energy carriers for a building or category",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "slug",
+            "in": "path",
+            "description": "Name of a building or category",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "from_date",
+            "in": "query",
+            "description": "The earliest date (including) to return data for. Defaults to earliest datapoint. Example: `12-03-21`",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "to_date",
+            "in": "query",
+            "description": "The latest date (including) to return data for. Defaults to latest datapoint. Example: `12-03-21`",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Carrier"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/energy/total": {
+      "get": {
+        "tags": [
+          "energy"
+        ],
+        "summary": "Get total energy usage for all categories",
+        "description": "Returns an object with total energy usage for all categories",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "from_date",
+            "in": "query",
+            "description": "The earliest date (including) to return data for. Defaults to earliest datapoint. Example: `12-03-21`",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "to_date",
+            "in": "query",
+            "description": "The latest date (including) to return data for. Defaults to latest datapoint. Example: `12-03-21`",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/UsageTotalCategory"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/energy/total/{slug}": {
+      "get": {
+        "tags": [
+          "energy"
+        ],
+        "summary": "Get total energy usage by building or category name",
+        "description": "Returns an object with total energy usage for the building or category",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "slug",
+            "in": "path",
+            "description": "Name of a building or category",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "from_date",
+            "in": "query",
+            "description": "The earliest date (including) to return data for. Defaults to earliest datapoint. Example: `12-03-21`",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "to_date",
+            "in": "query",
+            "description": "The latest date (including) to return data for. Defaults to latest datapoint. Example: `12-03-21`",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "schema": {
+              "$ref": "#/definitions/UsageTotal"
+            }
+          }
+        }
+      }
+    },
+    "/energy/usage": {
+      "get": {
+        "tags": [
+          "energy"
+        ],
+        "summary": "Get energy usage for all categories",
+        "description": "Returns an object with energy usage for all categories",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "from_date",
+            "in": "query",
+            "description": "The earliest date (including) to return data for. Defaults to earliest datapoint. Example: `12-03-21`",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "to_date",
+            "in": "query",
+            "description": "The latest date (including) to return data for. Defaults to latest datapoint. Example: `12-03-21`",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "expected",
+            "in": "query",
+            "description": "`True` returns expected instead of actual. Defaults to `False`",
+            "required": false,
+            "type": "boolean"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/UsageCategory"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/energy/usage/{slug}": {
+      "get": {
+        "tags": [
+          "energy"
+        ],
+        "summary": "Get energy usage by building or category name",
+        "description": "Returns a list of energy usage for a building or category",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "slug",
+            "in": "path",
+            "description": "Name of a building or category",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "from_date",
+            "in": "query",
+            "description": "The earliest date (including) to return data for. Defaults to earliest datapoint. Example: `12-03-21`",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "to_date",
+            "in": "query",
+            "description": "The latest date (including) to return data for. Defaults to latest datapoint. Example: `12-03-21`",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "expected",
+            "in": "query",
+            "description": "`True` returns expected instead of actual. Defaults to `False`",
+            "required": false,
+            "type": "boolean"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Measurement"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/highscores/{slug}": {
+      "get": {
+        "tags": [
+          "highscores"
+        ],
+        "summary": "Get highscores by category name",
+        "description": "Returns an object with highscores for a category",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "slug",
+            "in": "path",
+            "description": "Name of a category",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "filter",
+            "in": "query",
+            "description": "WIP: Filter query parameters for desired optional filters (TEK standard etc.)",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Highscores"
+
+              }
+            }
+          }
+        }
+      }
+    },
+    "/metrics": {
+      "get": {
+        "tags": [
+          "metrics"
+        ],
+        "summary": "Get metrics for all categories",
+        "description": "Returns an object with metrics for all categories",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "from_date",
+            "in": "query",
+            "description": "The earliest date (including) to return data for. Defaults to earliest datapoint. Example: `12-03-21`",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "to_date",
+            "in": "query",
+            "description": "The latest date (including) to return data for. Defaults to latest datapoint. Example: `12-03-21`",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "schema": {
+              "$ref": "#/definitions/Metrics"
+            }
+          }
+        }
+      }
+    },
+    "/metrics/{slug}": {
+      "get": {
+        "tags": [
+          "metrics"
+        ],
+        "summary": "Get metrics by building or category name",
+        "description": "Returns an object with metrics for a building or category",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "slug",
+            "in": "path",
+            "description": "Name of a building or category",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "from_date",
+            "in": "query",
+            "description": "The earliest date (including) to return data for. Defaults to earliest datapoint. Example: `12-03-21`",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "to_date",
+            "in": "query",
+            "description": "The latest date (including) to return data for. Defaults to latest datapoint. Example: `12-03-21`",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "schema": {
+              "$ref": "#/definitions/Metrics"
+            }
+          }
+        }
+      }
+    },
+    "/search": {
+      "get": {
+        "tags": [
+          "building"
+        ],
+        "summary": "Search for buildings",
+        "description": "Returns a list of buildings matching the search criteria",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "name",
+            "in": "query",
+            "description": "(Partial) name of a building",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "category",
+            "in": "query",
+            "description": "Name of a building category",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Building"
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "Badge": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "example": "4edd40c86762e0fb12000003"
+        },
+        "name": {
+          "type": "string",
+          "example": "Super awesome badge name"
+        }
+      }
+    },
+    "BadgeBuilding": {
+      "type": "object",
+      "properties": {
+        "badge": {
+          "$ref": "#/definitions/Badge"
+        },
+        "date_obtained": {
+          "type": "string",
+          "example": "12.02.12 00:00"
+        }
+      }
+    },
+    "Building": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "example": "4edd40c86762e0fb12000003"
+        },
+        "name": {
+          "type": "string",
+          "example": "Solsiden Barnehage"
+        },
+        "category": {
+          "$ref": "#/definitions/Category"
+        }
+      }
+    },
+    "Carrier": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "example": "Fjermvarme"
+        },
+        "amount": {
+          "type": "integer",
+          "example": 1234567
+        }
+      }
+    },
+    "CarrierCategory": {
+      "type": "object",
+      "properties": {
+        "category": {
+          "$ref": "#/definitions/Category"
+        },
+        "carriers": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Carrier"
+          }
+        }
+      }
+    },
+    "Category": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "example": "4edd40c86762e0fb12000003"
+        },
+        "name": {
+          "type": "string",
+          "example": "Barnehage"
+        }
+      }
+    },
+    "Highscores": {
+      "type": "object",
+      "properties": {
+        "building": {
+          "$ref": "#/definitions/Building"
+        },
+        "score": {
+          "type": "integer",
+          "example": 98
+        }
+      }
+    },
+    "Measurement": {
+      "type": "object",
+      "properties": {
+        "date": {
+          "type": "date",
+          "example": "12.02.12 00:00"
+        },
+        "value": {
+          "type": "number",
+          "example": 1234567
+        }
+      }
+    },
+    "Metrics": {
+      "type": "object",
+      "properties": {
+        "energyUsed": {
+          "type": "integer",
+          "example": 1234567
+        },
+        "energySaved": {
+          "type": "integer",
+          "example": 1234567
+        },
+        "buildingArea": {
+          "type": "integer",
+          "example": 1234567
+        },
+        "buildings": {
+          "type": "integer",
+          "example": 1234
+        }
+      }
+    },
+    "UsageCategory": {
+      "type": "object",
+      "properties": {
+        "category": {
+          "$ref": "#/definitions/Category"
+        },
+        "usage": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Measurement"
+          }
+        }
+      }
+    },
+    "UsageAverage": {
+      "type": "object",
+      "properties": {
+        "average": {
+          "type": "integer",
+          "example": 1234567
+        },
+        "averageCategory": {
+          "type": "integer",
+          "example": 1234567
+        }
+      }
+    },
+    "UsageAverageCategory": {
+      "type": "object",
+      "properties": {
+        "category": {
+          "$ref": "#/definitions/Category"
+        },
+        "average": {
+          "type": "integer",
+          "example": 1234567
+        }
+      }
+    },
+    "UsageTotal": {
+      "type": "object",
+      "properties": {
+        "total": {
+          "type": "integer",
+          "example": 1234567
+        }
+      }
+    },
+    "UsageTotalCategory": {
+      "type": "object",
+      "properties": {
+        "category": {
+          "$ref": "#/definitions/Category"
+        },
+        "total": {
+          "type": "integer",
+          "example": 1234567
+        }
+      }
+    }
+  }
+}

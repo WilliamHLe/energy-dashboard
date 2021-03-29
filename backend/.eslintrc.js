@@ -6,6 +6,9 @@ module.exports = {
   },
   extends: [
     'airbnb-base',
+    'plugin:import/errors',
+    'plugin:import/warnings',
+    'plugin:import/typescript',
   ],
   parser: '@typescript-eslint/parser',
   parserOptions: {
@@ -22,5 +25,6 @@ module.exports = {
     'jest/no-identical-title': 'error',
     'jest/prefer-to-have-length': 'warn',
     'jest/valid-expect': 'error',
+    'import/extensions': 'off',
   },
 };

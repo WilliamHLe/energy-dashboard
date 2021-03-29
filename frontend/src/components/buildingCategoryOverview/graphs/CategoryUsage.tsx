@@ -4,7 +4,7 @@ import HighchartsReact from 'highcharts-react-official';
 
 require('highcharts/modules/sankey')(Highcharts);
 
-function CategotyUsage() {
+function CategoryUsage() {
   const options = {
     chart: {
       type: 'line',
@@ -90,4 +90,4 @@ function CategotyUsage() {
   );
 }
 
-export default CategotyUsage;
+export default CategoryUsage;

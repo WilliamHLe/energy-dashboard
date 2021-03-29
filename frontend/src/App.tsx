@@ -1,15 +1,16 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import './App.css';
-import Test from './components/category/Test';
+import Test from './components/buildingCategoryOverview/Test';
 import Navbar from './components/navbar/Navbar';
 import Main from './components/mainpage/Main';
 import InfoItem from './components/infobar/InfoItem';
 import Icon from './components/infobar/icons/noto_house.png';
+import BuildingCategoryOverview from './components/buildingCategoryOverview/BuildingCategoryOverview';
 
 function App() {
   return (
-    <>
+    <div>
       <Router>
         <Navbar />
         <div style={{ display: 'flex' }}>
@@ -21,19 +22,19 @@ function App() {
             <Route exact path="/">
               <Main />
             </Route>
+            <Route exact path="/energitips">
+              <Test />
+            </Route>
             <Route exact path="/:category">
-              <Test />
+              <BuildingCategoryOverview />
             </Route>
-            <Route path="/energitips">
-              <Test />
-            </Route>
-            <Route path="/">
-              <Test />
+            <Route path="/:category/:id">
+              <Building />
             </Route>
           </Switch>
         </div>
       </Router>
-    </>
+    </div>
   );
 }
 

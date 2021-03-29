@@ -1,9 +1,11 @@
 import React from 'react';
 import Highcharts from 'highcharts';
 import HighchartsReact from 'highcharts-react-official';
+import { Link, useRouteMatch } from 'react-router-dom';
 import { useParams } from 'react-router';
 
-function Test() {
+function Test(props:any) {
+  const match = useRouteMatch();
   const { category } = useParams<{category:string}>();
 
   const options = {
@@ -39,6 +41,7 @@ function Test() {
         .
       </p>
       <div><HighchartsReact highcharts={Highcharts} options={options} /></div>
+      <Link to={`${match.url}/243`}>Se bygg</Link>
     </div>
   );
 }

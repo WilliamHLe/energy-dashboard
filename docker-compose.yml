@@ -43,7 +43,7 @@ services:
       - DB_HOST=mongodb # Same as the mongodb service name
       - DB_PORT=27017 # Same as the mongodb service port
       - DB_DATABASE=${DB_DATABASE}
-      - DB_USERAME=${DB_USERNAME}
+      - DB_USERNAME=${DB_USERNAME}
       - DB_PASSWORD=${DB_PASSWORD}
     ports:
       - "3000:3000"
@@ -53,6 +53,21 @@ services:
       - ./backend/:/srv/app/
       - /srv/app/node_modules
     command: npm run dev
+  frontend:
+    container_name: trkd02_ed_frontend
+    build:
+      context: ./frontend/
+      dockerfile: Dockerfile
+    depends_on: 
+      - backend
+    environment: 
+      - API_URI=backend # Same as the backend service name
+    ports:
+      - "80:3000"
+    expose:
+      - "80"
+    volumes:
+      - ./frontend/:/srv/app/
 
 volumes:
   trdk02-mongodb:
