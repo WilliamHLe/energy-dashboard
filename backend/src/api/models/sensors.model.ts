@@ -30,7 +30,7 @@ const SensorSchema:Schema = new Schema({
 });
 
 interface IMeasurementsObjectTypes {
-    date: string;
+    date: Date;
     measurement:number;
 }
 

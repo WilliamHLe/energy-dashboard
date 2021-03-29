@@ -7,7 +7,7 @@ const etcurvesSchema = new Schema({
     ref: 'Building',
   },
   etcurves: [{
-    fromDate: String,
+    fromDate: Date,
     dx1: Number,
     dx2: Number,
     dx3: Number,

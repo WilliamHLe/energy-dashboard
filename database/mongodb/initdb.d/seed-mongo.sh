@@ -1,7 +1,9 @@
 #! /bin/bash
 
 BUILDINGS=buildings
-readonly NAME
+readonly BUILDINGS
+CATEGORIES=categories
+readonly CATEGORIES
 ETCURVES=etcurves
 readonly ETCURVES
 SENSORS=sensors
@@ -12,14 +14,24 @@ mongoimport --db $MONGO_INITDB_DATABASE \
             --username $DB_USERNAME --password $DB_PASSWORD \
             --type json \
             --collection $BUILDINGS \
-            --file ../seed/$BUILDINGS.json --jsonArray
+            --file ../seed/$BUILDINGS.json --jsonArray \
+            --quiet
+
+# import building category data
+mongoimport --db $MONGO_INITDB_DATABASE \
+            --username $DB_USERNAME --password $DB_PASSWORD \
+            --type json \
+            --collection $CATEGORIES \
+            --file ../seed/$CATEGORIES.json --jsonArray \
+            --quiet
 
 # import et curves
 mongoimport --db $MONGO_INITDB_DATABASE \
             --username $DB_USERNAME --password $DB_PASSWORD \
             --type json \
             --collection $ETCURVES \
-            --file ../seed/$ETCURVES.json --jsonArray
+            --file ../seed/$ETCURVES.json --jsonArray \
+            --quiet
 
 # import sensor and timeseries data
 for filename in ../seed/sensors/*.json; 
@@ -29,5 +41,6 @@ do
                 --username $DB_USERNAME --password $DB_PASSWORD \
                 --type json \
                 --collection $SENSORS \
-                --file $filename --jsonArray
+                --file $filename --jsonArray \
+                --quiet
 done

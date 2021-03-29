@@ -1,11 +1,11 @@
 Objekt,Navn,Type,Formel,UoM,Målernivå
-Bygg,Trondheim Kommune - Ranheimsfjæra barnehage,,,,
-Bygg,Trondheim Kommune - Hesteskoen barnehage,,,,
+Bygg,Ranheimsfjæra barnehage,,,,
+Bygg,Hesteskoen barnehage,,,,
 VIS-Måler,Temp middel,Temperatur,Eklima_68860_TAM,°C,Annen måler
-Bygg,Trondheim Kommune - Torvet,,,,
+Bygg,Torvet,,,,
 VIS-Måler,Fjernvarme 66217271,Fjernvarme,ESAVE_279829-980396002_EAN,kWh,Forbruksmåler
 VIS-Måler,Temp middel,Temperatur,Eklima_68860_TAM,°C,Annen måler
-Bygg,Trondheim Kommune - Helsevakta,,,,
+Bygg,Helsevakta,,,,
 VIS-Måler,COP Kjølemaskin,Virkningsgrad,EID_942110464_00041/EID_942110464_00015,,Annen måler
 VIS-Måler,Fastkraft 360.06,Fastkraft,EID_942110464_00024,kWh,Annen måler
 VIS-Måler,Fastkraft 360.05,Fastkraft,EID_942110464_00023,kWh,Annen måler
@@ -27,78 +27,78 @@ VIS-Måler,Trondheim VOLL,Temperatur,Eklima_68860_TAM,°C,Annen måler
 VIS-Måler,Voll TAN,Temperatur,Eklima_68860_TAN,°C,Annen måler
 VIS-Måler,Fjernvarme 69191852,Fjernvarme,ESAVE_284350-980396002_EAN,kWh,Forbruksmåler
 VIS-Måler,Fastkraft 6970631401219665,Fastkraft,707057500068999637,kWh,Forbruksmåler
-Bygg,Trondheim Kommune - Avanti,,,,
+Bygg,Avanti,,,,
 VIS-Måler,VOLL GRDG,Graddager,Eklima_68860_GD17,grdg,Annen måler
 VIS-Måler,VOLL MIDDEL,Temperatur,Eklima_68860_TAM,°C,Annen måler
 VIS-Måler,Fastkraft 268015369,Fastkraft,707057500068614509,kWh,Forbruksmåler
-Bygg,Trondheim Kommune - Uffa-huset Innherredsveien,,,,
+Bygg,Uffa-huset Innherredsveien,,,,
 VIS-Måler,VOLL GRDG,Graddager,Eklima_68860_GD17,grdg,Annen måler
 VIS-Måler,VOLL MIDDEL,Temperatur,Eklima_68860_TAM,°C,Annen måler
 VIS-Måler,Fastkraft 7350049085518834,Fastkraft,707057500068858439,kWh,Forbruksmåler
-Bygg,Trondheim Kommune - Buranhus AKKS musikksenter,,,,
+Bygg,Buranhus AKKS musikksenter,,,,
 VIS-Måler,Voll TAN,Temperatur,Eklima_68860_TAN,°C,Annen måler
 VIS-Måler,VOLL GRDG,Graddager,Eklima_68860_GD17,grdg,Annen måler
 VIS-Måler,VOLL MIDDEL,Temperatur,Eklima_68860_TAM,°C,Annen måler
 VIS-Måler,Fastkraft 268015387,Fastkraft,707057500068614424,kWh,Forbruksmåler
-Bygg,Trondheim Kommune - Granåsen leir,,,,
+Bygg,Granåsen leir,,,,
 VIS-Måler,Voll TAN,Temperatur,Eklima_68860_TAN,°C,Annen måler
 VIS-Måler,VOLL GRDG,Graddager,Eklima_68860_GD17,grdg,Annen måler
 VIS-Måler,VOLL MIDDEL,Temperatur,Eklima_68860_TAM,°C,Annen måler
 VIS-Måler,Fastkraft 265953021,Fastkraft,707057500068449453,kWh,Forbruksmåler
-Bygg,Trondheim Kommune - Vidarheim dagsenter,,,,
+Bygg,Vidarheim dagsenter,,,,
 VIS-Måler,Voll TAN,Temperatur,Eklima_68860_TAN,°C,Annen måler
 VIS-Måler,VOLL GRDG,Graddager,Eklima_68860_GD17,grdg,Annen måler
 VIS-Måler,VOLL MIDDEL,Temperatur,Eklima_68860_TAM,°C,Annen måler
 VIS-Måler,Fastkraft 268024206,Fastkraft,707057500068615612,kWh,Forbruksmåler
-Bygg,Trondheim Kommune - Dalgård avlastningsbolig,,,,
+Bygg,Dalgård avlastningsbolig,,,,
 VIS-Måler,VOLL GRDG,Graddager,Eklima_68860_GD17,grdg,Annen måler
 VIS-Måler,VOLL MIDDEL,Temperatur,Eklima_68860_TAM,°C,Annen måler
 VIS-Måler,Fastkraft 268014022,Fastkraft,707057500067866848,kWh,Forbruksmåler
-Bygg,Trondheim Kommune - Analysesenteret,,,,
+Bygg,Analysesenteret,,,,
 VIS-Måler,Voll TAN,Temperatur,Eklima_68860_TAN,°C,Annen måler
 VIS-Måler,VOLL GRDG,Graddager,Eklima_68860_GD17,grdg,Annen måler
 VIS-Måler,VOLL MIDDEL,Temperatur,Eklima_68860_TAM,°C,Annen måler
 VIS-Måler,Fjernvarme 68517341,Fjernvarme,ESAVE_103621-980396002_EAN,kWh,Forbruksmåler
 VIS-Måler,Fastkraft 228975163,Fastkraft,707057500068154920,kWh,Forbruksmåler
-Bygg,Trondheim Kommune - Jonsvannsvegen 489 (Tjønnlia),,,,
+Bygg,Jonsvannsvegen 489 (Tjønnlia),,,,
 VIS-Måler,Trondheim_VOLL,Temperatur,Eklima_68860_TAM,°C,Annen måler
-Bygg,Trondheim Kommune - General Wibes veg 1,,,,
+Bygg,General Wibes veg 1,,,,
 VIS-Måler,Temperatur 68860,Temperatur,Eklima_68860_TAN,°C,Annen måler
 VIS-Måler,Graddager 68860,Graddager,Eklima_68860_GD17,grdg,Annen måler
 VIS-Måler,Fastkraft 265953069,Fastkraft,707057500068610792,kWh,Forbruksmåler
 VIS-Måler,Temperatur 68860,Temperatur,Eklima_68860_TAM,°C,Annen måler
 VIS-Måler,Fjernvarme 66156300,Fjernvarme,ESAVE_249000-980396002_EAN,kWh,Forbruksmåler
-Bygg,Trondheim Kommune - Catharinasenteret,,,,
+Bygg,Catharinasenteret,,,,
 VIS-Måler,Trondheim_VOLL,Temperatur,Eklima_68860_TAM,°C,Annen måler
-Bygg,Trondheim Kommune - Kongsvegen 130 - Skoggruppa,,,,
+Bygg,Kongsvegen 130 - Skoggruppa,,,,
 VIS-Måler,Voll TAN,Temperatur,Eklima_68860_TAN,°C,Annen måler
 VIS-Måler,VOLL GRDG,Graddager,Eklima_68860_GD17,grdg,Annen måler
 VIS-Måler,VOLL MIDDEL,Temperatur,Eklima_68860_TAM,°C,Annen måler
 VIS-Måler,Fastkraft 268014064,Fastkraft,707057500068516421,kWh,Forbruksmåler
-Bygg,Trondheim Kommune - Valøya Sentralanlegg,,,,
+Bygg,Valøya Sentralanlegg,,,,
 VIS-Måler,Fjernvarme 68590120,Fjernvarme,ESAVE_284273-980396002_EAN,kWh,Forbruksmåler
 VIS-Måler,Fjernvarme 65878957,Fjernvarme,ESAVE_228361-980396002_EAN,kWh,Forbruksmåler
 VIS-Måler,VOLL GRDG,Graddager,Eklima_68860_GD17,grdg,Annen måler
 VIS-Måler,VOLL MIDDEL,Temperatur,Eklima_68860_TAM,°C,Annen måler
 VIS-Måler,Fastkraft 265943771,Fastkraft,707057500068613045,kWh,Forbruksmåler
 VIS-Måler,Fastkraft 228975295,Fastkraft,707057500067932932,kWh,Forbruksmåler
-Bygg,Trondheim Kommune - Zion sykehjem,,,,
+Bygg,Zion sykehjem,,,,
 VIS-Måler,Trondheim_VOLL,Temperatur,Eklima_68860_TAM,°C,Annen måler
 VIS-Måler,Graddager 68860,Graddager,Eklima_68860_GD17,grdg,Annen måler
 VIS-Måler,Temperatur 68860,Temperatur,Eklima_68860_TAN,°C,Annen måler
 VIS-Måler,Fjernvarme 66467815,Fjernvarme,ESAVE_136346-980396002_EAN,kWh,Forbruksmåler
 VIS-Måler,Fastkraft 265953087,Fastkraft,707057500068615537,kWh,Forbruksmåler
-Bygg,Trondheim Kommune - Jarleveien 10,,,,
+Bygg,Jarleveien 10,,,,
 VIS-Måler,TAN,Temperatur,Eklima_68860_TAN,°C,Annen måler
 VIS-Måler,Fjernvarme 68473198,Fjernvarme,ESAVE_283652-980396002_EAN,kWh,Forbruksmåler
 VIS-Måler,Fastkraft 7359992891260927,Fastkraft,707057500068933747,kWh,Forbruksmåler
 VIS-Måler,Fastkraft 7359992891275006,Fastkraft,707057500068980536,kWh,Forbruksmåler
-Bygg,Trondheim Kommune - Spongdal skole og Byneshallen,,,,
+Bygg,Spongdal skole og Byneshallen,,,,
 VIS-Måler,Temperatur 68860,Temperatur,Eklima_68860_TAM,°C,Annen måler
 VIS-Måler,Fjernvarme ,Fjernvarme,ESAVE_320.01_WM01_Fh_1_EAN,kWh,Forbruksmåler
 VIS-Måler,Fastkraft 7350049087609585,Fastkraft,707057500068891160,kWh,Forbruksmåler
 VIS-Måler,Fastkraft 7350049087545272,Fastkraft,707057500068890699,kWh,Forbruksmåler
-Bygg,Trondheim Kommune - Persaunet helse- og velferdssenter,,,,
+Bygg,Persaunet helse- og velferdssenter,,,,
 VIS-Måler,Snøsmeltekurs,Fjernvarme,EID_942110464_00012,kWh,Annen måler
 VIS-Måler,Gulvvarmekurs,Fjernvarme,EID_942110464_00011,kWh,Annen måler
 VIS-Måler,Radiatorkurs,Fjernvarme,EID_942110464_00010,kWh,Annen måler
@@ -108,30 +108,30 @@ VIS-Måler,Temperatur VOLL TAN,Temperatur,Eklima_68860_TAN,°C,Annen måler
 VIS-Måler,Trondheim VOLL,Temperatur,Eklima_68860_TAM,°C,Annen måler
 VIS-Måler,Fjernvarme 68622366,Fjernvarme,ESAVE_284216-980396002_EAN,kWh,Forbruksmåler
 VIS-Måler,Fastkraft 50812612,Fastkraft,707057500068947812,kWh,Forbruksmåler
-Bygg,Trondheim Kommune - Tonstad b og u skole - paviljong,,,,
+Bygg,Tonstad b og u skole - paviljong,,,,
 VIS-Måler,Voll TAN,Temperatur,Eklima_68860_TAN,°C,Annen måler
 VIS-Måler,Fastkraft 68923243,Fastkraft,707057500068923243,kWh,Forbruksmåler
 VIS-Måler,Trondheim-VOLL,Temperatur,Eklima_68860_TAM,°C,Annen måler
-Bygg,Trondheim Kommune - Stubban Barnehage,,,,
+Bygg,Stubban Barnehage,,,,
 VIS-Måler,Voll TAN,Temperatur,Eklima_68860_TAN,°C,Annen måler
 VIS-Måler,Fjernvarme 67255348,Fjernvarme,ESAVE_283574-980396002_EAN,kWh,Forbruksmåler
 VIS-Måler,Trondheim-VOLL,Temperatur,Eklima_68860_TAM,°C,Annen måler
 VIS-Måler,Fastkraft 7350049088526133,Fastkraft,707057500068935277,kWh,Forbruksmåler
-Bygg,Trondheim Kommune - Flatåsen nedre skole,,,,
+Bygg,Flatåsen nedre skole,,,,
 VIS-Måler,Vann,Vann,ESAVE_942110464_33_ID,m3,Annen måler
 VIS-Måler,Voll TAN,Temperatur,Eklima_68860_TAN,°C,Annen måler
 VIS-Måler,Fjernvarme 65852553,Fjernvarme,ESAVE_245503-980396002_EAN,kWh,Forbruksmåler
 VIS-Måler,Trondheim-VOLL,Temperatur,Eklima_68860_TAM,°C,Annen måler
 VIS-Måler,Fastkraft 261944386,Fastkraft,707057500068615742,kWh,Forbruksmåler
-Bygg,Trondheim Kommune - Skjetlein barnehage,,,,
+Bygg,Skjetlein barnehage,,,,
 VIS-Måler,Voll TAN,Temperatur,Eklima_68860_TAN,°C,Annen måler
 VIS-Måler,Trondheim-VOLL,Temperatur,Eklima_68860_TAM,°C,Annen måler
 VIS-Måler,Fastkraft 68544639,Fastkraft,707057500068544693,kWh,Forbruksmåler
-Bygg,Trondheim Kommune - Breidablikk (gml) skole,,,,
+Bygg,Breidablikk (gml) skole,,,,
 VIS-Måler,Voll TAN,Temperatur,Eklima_68860_TAN,°C,Annen måler
 VIS-Måler,Trondheim-VOLL,Temperatur,Eklima_68860_TAM,°C,Annen måler
 VIS-Måler,Fastkraft 268964595,Fastkraft,707057500068428106,kWh,Forbruksmåler
-Bygg,Trondheim Kommune - Ladesletta helse- og velferdssenter,,,,
+Bygg,Ladesletta helse- og velferdssenter,,,,
 VIS-Måler,Vann,Vann,ESAVE_942110464_25_ID,m3,Annen måler
 VIS-Måler,Lade Alle 80 el bygg G innkjøp,Fastkraft,ESAVE_Lade80x18116022_EAN,kWh,Annen måler
 VIS-Måler,Barnehagen El til Bygg A,Fastkraft,ESAVE_Lade80x15150184_EAN,kWh,Annen måler
@@ -157,7 +157,7 @@ VIS-Måler,Voll TAN,Temperatur,Eklima_68860_TAN,°C,Annen måler
 VIS-Måler,Trondheim-VOLL,Temperatur,Eklima_68860_TAM,°C,Annen måler
 VIS-Måler,Fjernvarme 280058 66587000,Fjernvarme,ESAVE_280058-980396002_EAN,kWh,Forbruksmåler
 VIS-Måler,EL 7350049087543250,Fastkraft,707057500068858477,kWh,Forbruksmåler
-Bygg,Trondheim Kommune - Leangen Ishall,,,,
+Bygg,Leangen Ishall,,,,
 VIS-Måler,WM13 Tørrkjølere arena,Fjernvarme,ESAVE_LeaIsh:US03_B_E_MtrH13_CumEg_EAN,kWh,Annen måler
 VIS-Måler,WM05 Varme curling,Fjernvarme,ESAVE_LeaIsh:US05_B_E_MtrH5_CumEg_EAN,kWh,Annen måler
 VIS-Måler,WM06 Undervarme curling,Fjernvarme,ESAVE_LeaIsh:US05_B_E_MtrH6_CumEg_EAN,kWh,Annen måler
@@ -178,7 +178,7 @@ VIS-Måler,Fjernvarme Ny-treningssal 65786873,Fjernvarme,ESAVE_235940-980396002_
 VIS-Måler,Elkjel 261914208,Elkjel,707057500068564378,kWh,Forbruksmåler
 VIS-Måler,Trondheim-VOLL,Temperatur,Eklima_68860_TAM,°C,Annen måler
 VIS-Måler,Fastkraft 267933023,Fastkraft,707057500068616404,kWh,Forbruksmåler
-Bygg,Trondheim Kommune - Åsveien skole og Åsveihallen,,,,
+Bygg,Åsveien skole og Åsveihallen,,,,
 VIS-Måler,Ventilasjon idrettshall,Fastkraft,EID_942110464_00077,kWh,Annen måler
 VIS-Måler,Belysning idrettshall,Fastkraft,EID_942110464_00061,kWh,Annen måler
 VIS-Måler,Varmemåler Åsveihallen (VP og FV),Fjernvarme,EID_942110464_00071,kWh,Annen måler
@@ -198,7 +198,7 @@ VIS-Måler,Voll TAN,Temperatur,Eklima_68860_TAN,°C,Annen måler
 VIS-Måler,Trondheim-VOLL,Temperatur,Eklima_68860_TAM,°C,Annen måler
 VIS-Måler,Fjernvarme 67624294,Fjernvarme,ESAVE_283078-980396002_EAN,kWh,Forbruksmåler
 VIS-Måler,Fastkraft 7350049088280677,Fastkraft,707057500068906314,kWh,Forbruksmåler
-Bygg,Trondheim Kommune - Spongdal skole,,,,
+Bygg,Spongdal skole,,,,
 VIS-Måler,Fastkraft Byneshallen,Fastkraft,707057500068891160,kWh,Forbruksmåler
 VIS-Måler,FV skole,Fjernvarme,EID_942110464_00004-EID_942110464_00005,kWh,Forbruksmåler
 VIS-Måler,FV Byneshallen,Fjernvarme,EID_942110464_00005,kWh,Annen måler
@@ -208,18 +208,18 @@ VIS-Måler,Vann,Vann,ESAVE_942110464_18_ID,m3,Annen måler
 VIS-Måler,Voll TAN,Temperatur,Eklima_68860_TAN,°C,Annen måler
 VIS-Måler,Trondheim-VOLL,Temperatur,Eklima_68860_TAM,°C,Annen måler
 VIS-Måler,Fastkraft 7350049087545272,Fastkraft,707057500068890699,kWh,Forbruksmåler
-Bygg,Trondheim Kommune - Trondheim Hovedbrannstasjon (Sluppen),,,,
+Bygg,Trondheim Hovedbrannstasjon (Sluppen),,,,
 VIS-Måler,Voll TAN,Temperatur,Eklima_68860_TAN,°C,Annen måler
 VIS-Måler,Trondheim-VOLL,Temperatur,Eklima_68860_TAM,°C,Annen måler
 VIS-Måler,Fjernvarme 67631468,Fjernvarme,ESAVE_280233-980396002_EAN,kWh,Forbruksmåler
 VIS-Måler,Fastkraft 7350049088282640,Fastkraft,707057500068898756,kWh,Forbruksmåler
-Bygg,Trondheim Kommune - Stavset bskole,,,,
+Bygg,Stavset bskole,,,,
 VIS-Måler,Vann,Vann,ESAVE_942110464_19_ID,m3,Annen måler
 VIS-Måler,Voll TAN,Temperatur,Eklima_68860_TAN,°C,Annen måler
 VIS-Måler,Elkjel 265953083,Elkjel,707057500068564491,kWh,Forbruksmåler
 VIS-Måler,Trondheim-VOLL,Temperatur,Eklima_68860_TAM,°C,Annen måler
 VIS-Måler,Fastkraft 265953006,Fastkraft,707057500068613014,kWh,Forbruksmåler
-Bygg,Trondheim Kommune - Brøset Interim skole,,,,
+Bygg,Brøset Interim skole,,,,
 VIS-Måler,Voll TAN,Temperatur,Eklima_68860_TAN,°C,Annen måler
 VIS-Måler,FK Pavljong 8 - 7350049083768194,Fastkraft,707057500068823741,kWh,Forbruksmåler
 VIS-Måler,FK Pavljong 7 - 7350049083771231,Fastkraft,707057500068823734,kWh,Forbruksmåler
@@ -230,18 +230,18 @@ VIS-Måler,FK Pavljong 3 - 7350049083769672,Fastkraft,707057500068823697,kWh,For
 VIS-Måler,FK Pavljong 2 - 7350049083771835,Fastkraft,707057500068823680,kWh,Forbruksmåler
 VIS-Måler,FK Pavljong 1 - 7350049083241840,Fastkraft,707057500068823727,kWh,Forbruksmåler
 VIS-Måler,Trondheim-VOLL,Temperatur,Eklima_68860_TAM,°C,Annen måler
-Bygg,Trondheim Kommune - Lilleby skole,,,,
+Bygg,Lilleby skole,,,,
 VIS-Måler,Voll TAN,Temperatur,Eklima_68860_TAN,°C,Annen måler
 VIS-Måler,Trondheim-VOLL,Temperatur,Eklima_68860_TAM,°C,Annen måler
 VIS-Måler,Fjernvarme 65667360,Fjernvarme,ESAVE_225538-980396002_EAN,kWh,Forbruksmåler
 VIS-Måler,Fastkraft 265953027,Fastkraft,707057500068614752,kWh,Forbruksmåler
-Bygg,Trondheim Kommune - Kalvskinnet bskole,,,,
+Bygg,Kalvskinnet bskole,,,,
 VIS-Måler,Vann,Vann,ESAVE_942110464_26_ID,m3,Annen måler
 VIS-Måler,Voll TAN,Temperatur,Eklima_68860_TAN,°C,Annen måler
 VIS-Måler,Fjernvarme 66474265,Fjernvarme,ESAVE_86192-980396002_EAN,kWh,Forbruksmåler
 VIS-Måler,Trondheim-VOLL,Temperatur,Eklima_68860_TAM,°C,Annen måler
 VIS-Måler,Fastkraft 228994332,Fastkraft,707057500068614547,kWh,Forbruksmåler
-Bygg,Trondheim Kommune - Sverresmyr interimskole,,,,
+Bygg,Sverresmyr interimskole,,,,
 VIS-Måler,Vann paviljong 7,Vann,ESAVE_942110464_53_ID,m3,Annen måler
 VIS-Måler,"Vann paviljong 6, 2. etg",Vann,ESAVE_942110464_52_ID,m3,Annen måler
 VIS-Måler,"Vann paviljong 6, 1. etg",Vann,ESAVE_942110464_51_ID,m3,Annen måler
@@ -256,19 +256,19 @@ VIS-Måler,Voll TAN,Temperatur,Eklima_68860_TAN,°C,Annen måler
 VIS-Måler,Fastkraft 95989055,Fastkraft,707057500068799947,kWh,Forbruksmåler
 VIS-Måler,Trondheim-VOLL,Temperatur,Eklima_68860_TAM,°C,Annen måler
 VIS-Måler,Fastkraft 28395772,Fastkraft,707057500068709168,kWh,Forbruksmåler
-Bygg,Trondheim Kommune - Byneset sykehjem,,,,
+Bygg,Byneset sykehjem,,,,
 VIS-Måler,Nærvarme til sykehjem,Fjernvarme,EID_942110464_00091-EID_942110464_00090,kWh,Forbruksmåler
 VIS-Måler,Nærvarme til Tobb,Fjernvarme,EID_942110464_00090,kWh,Annen måler
 VIS-Måler,Nærvarme til sykehjem og Tobb,Fjernvarme,EID_942110464_00091,kWh,Annen måler
 VIS-Måler,Voll TAN,Temperatur,Eklima_68860_TAN,°C,Annen måler
 VIS-Måler,Trondheim-VOLL,Temperatur,Eklima_68860_TAM,°C,Annen måler
 VIS-Måler,Fastkraft 268015290,Fastkraft,707057500068635016,kWh,Forbruksmåler
-Bygg,Trondheim Kommune - Husebyhallen,,,,
+Bygg,Husebyhallen,,,,
 VIS-Måler,Voll TAN,Temperatur,Eklima_68860_TAN,°C,Annen måler
 VIS-Måler,Fjernvarme 68474803,Fjernvarme,ESAVE_283766-980396002_EAN,kWh,Forbruksmåler
 VIS-Måler,Trondheim-VOLL,Temperatur,Eklima_68860_TAM,°C,Annen måler
 VIS-Måler,Fastkraft 7350049088524542,Fastkraft,707057500068939640,kWh,Forbruksmåler
-Bygg,Trondheim Kommune - Jakobsli skole,,,,
+Bygg,Jakobsli skole,,,,
 VIS-Måler,Fastkraft gymsalbygg,Fastkraft,707057500068978700,kWh,Forbruksmåler
 VIS-Måler,Hovedmåler elkjel 68563876,Elkjel,707057500068563876,kWh,Annen måler
 VIS-Måler, 19615447.1.m elkjel i bhg,Ikke valgt,ESAVE_942110464_19615447.1.m_EAN,kWh,Annen måler
@@ -277,7 +277,7 @@ VIS-Måler,Elkjel 228974741 uten elkjel bhg,Elkjel,707057500068563876-ESAVE_9421
 VIS-Måler,Trondheim-VOLL,Temperatur,Eklima_68860_TAM,°C,Annen måler
 VIS-Måler,Fastkraft 268015519,Fastkraft,707057500068617289,kWh,Forbruksmåler
 VIS-Måler,Fastkraft 7350049085520158,Fastkraft,707057500068285990,kWh,Forbruksmåler
-Bygg,Trondheim Kommune - Granåsen-Skianlegg,,,,
+Bygg,Granåsen-Skianlegg,,,,
 VIS-Måler,Voll TAN,Temperatur,Eklima_68860_TAN,°C,Annen måler
 VIS-Måler,Trondheim-VOLL,Temperatur,Eklima_68860_TAM,°C,Annen måler
 VIS-Måler,Snøproduksjon og lys,Fastkraft,707057500069078416,kWh,Annen måler
@@ -288,188 +288,188 @@ VIS-Måler,Fastkraft T.H Hopparena P-plass 7350028679276206,Fastkraft,7070575000
 VIS-Måler,Fastkraft T.L Langrenn 229975323,Fastkraft,707057500068449545,kWh,Forbruksmåler
 VIS-Måler,Fastkraft 229983149 Trafo 2,Fastkraft,707057500068957897,kWh,Forbruksmåler
 VIS-Måler,Fastkraft 229975342 Trafo 1,Fastkraft,707057500068957880,kWh,Forbruksmåler
-Bygg,Trondheim Kommune - Nyhavna Brannstasjon,,,,
+Bygg,Nyhavna Brannstasjon,,,,
 VIS-Måler,Voll TAN,Temperatur,Eklima_68860_TAN,°C,Annen måler
 VIS-Måler,Elkjel 7350049088384955,Elkjel,707057500068907038,kWh,Forbruksmåler
 VIS-Måler,Trondheim-VOLL,Temperatur,Eklima_68860_TAM,°C,Annen måler
 VIS-Måler,Fastkraft 7350049088384542,Fastkraft,707057500068902293,kWh,Forbruksmåler
-Bygg,Trondheim Kommune - Tyholt aktivitets- og sansesenter,,,,
+Bygg,Tyholt aktivitets- og sansesenter,,,,
 VIS-Måler,Voll TAN,Temperatur,Eklima_68860_TAN,°C,Annen måler
 VIS-Måler,Trondheim-VOLL,Temperatur,Eklima_68860_TAM,°C,Annen måler
 VIS-Måler,Fastkraft 265943868,Fastkraft,707057500068614707,kWh,Forbruksmåler
-Bygg,Trondheim Kommune - Solbakken skole,,,,
+Bygg,Solbakken skole,,,,
 VIS-Måler,COP varmepumpe,Virkningsgrad,EID_942110464_00045/EID_942110464_00044,Ikke valgt,Annen måler
 VIS-Måler,Produsert energi varmepumpe,Fjernvarme,EID_942110464_00045,kWh,Annen måler
 VIS-Måler,Tilført energi varmepumpe,Fastkraft,EID_942110464_00044,kWh,Annen måler
 VIS-Måler,Voll TAN,Temperatur,Eklima_68860_TAN,°C,Annen måler
 VIS-Måler,Trondheim-VOLL,Temperatur,Eklima_68860_TAM,°C,Annen måler
 VIS-Måler,Fastkraft 268015745,Fastkraft,707057500068614202,kWh,Forbruksmåler
-Bygg,Trondheim Kommune - Breidablikk utbyggingsområde- bygg D,,,,
+Bygg,Breidablikk utbyggingsområde- bygg D,,,,
 VIS-Måler,Voll TAN,Temperatur,Eklima_68860_TAN,°C,Annen måler
 VIS-Måler,Trondheim-VOLL,Temperatur,Eklima_68860_TAM,°C,Annen måler
 VIS-Måler,Fastkraft 265943770,Fastkraft,707057500068613373,kWh,Forbruksmåler
-Bygg,Trondheim Kommune - Øya Barnehage,,,,
+Bygg,Øya Barnehage,,,,
 VIS-Måler,Vann,Vann,ESAVE_942110464_13_ID,m3,Annen måler
 VIS-Måler,Voll TAN,Temperatur,Eklima_68860_TAN,°C,Annen måler
 VIS-Måler,Fjernvarme 68246396,Fjernvarme,ESAVE_283206-980396002_EAN,kWh,Forbruksmåler
 VIS-Måler,Trondheim-VOLL,Temperatur,Eklima_68860_TAM,°C,Annen måler
 VIS-Måler,Fastkraft 7350049085519299,Fastkraft,707057500068917730,kWh,Forbruksmåler
-Bygg,Trondheim Kommune - Trøndelag brann- og redningstjeneste IKS (Sluppen),,,,
+Bygg,Trøndelag brann- og redningstjeneste IKS (Sluppen),,,,
 VIS-Måler,Voll TAN,Temperatur,Eklima_68860_TAN,°C,Annen måler
 VIS-Måler,Fjernvarme 67708665,Fjernvarme,ESAVE_280234-980396002_EAN,kWh,Forbruksmåler
 VIS-Måler,Trondheim-VOLL,Temperatur,Eklima_68860_TAM,°C,Annen måler
 VIS-Måler,Fastkraft 7350049088284620,Fastkraft,707057500068898763,kWh,Forbruksmåler
-Bygg,Trondheim Kommune - Lade Idrettsanlegg,,,,
+Bygg,Lade Idrettsanlegg,,,,
 VIS-Måler,Voll TAN,Temperatur,Eklima_68860_TAN,°C,Annen måler
 VIS-Måler,Trondheim-VOLL,Temperatur,Eklima_68860_TAM,°C,Annen måler
 VIS-Måler,Fjernvarme 102601,Fjernvarme,ESAVE_102601-980396002_EAN,kWh,Forbruksmåler
 VIS-Måler,6970631409915866,Fastkraft,707057500068260980,kWh,Forbruksmåler
 VIS-Måler,6970631402145154,Fastkraft,707057500068260973,kWh,Forbruksmåler
-Bygg,Trondheim Kommune - Ranheimsletta barnehage,,,,
+Bygg,Ranheimsletta barnehage,,,,
 VIS-Måler,Trondheim-VOLL,Temperatur,Eklima_68860_TAM,°C,Annen måler
 VIS-Måler,Voll TAN,Temperatur,Eklima_68860_TAN,°C,Annen måler
 VIS-Måler, 19615447.1.m Fra skole og til elkjel bhg,Elkjel,ESAVE_942110464_19615447.1.m_EAN,kWh,Forbruksmåler
 VIS-Måler,Fastkraft 7350049083243141,Fastkraft,707057500068819607,kWh,Forbruksmåler
-Bygg,Trondheim Kommune - Granåsen barnehage,,,,
+Bygg,Granåsen barnehage,,,,
 VIS-Måler,Voll TAN,Temperatur,Eklima_68860_TAN,°C,Annen måler
 VIS-Måler,Trondheim-VOLL,Temperatur,Eklima_68860_TAM,°C,Annen måler
 VIS-Måler,Fastkraft 7350049088375359,Fastkraft,707057500068918645,kWh,Forbruksmåler
-Bygg,Trondheim Kommune - Breidablikk-ny (nedre)-barnehage,,,,
+Bygg,Breidablikk-ny (nedre)-barnehage,,,,
 VIS-Måler,Voll TAN,Temperatur,Eklima_68860_TAN,°C,Annen måler
 VIS-Måler,Fjernvarme 68879225,Fjernvarme,ESAVE_240621-980396002_EAN,kWh,Forbruksmåler
 VIS-Måler,Trondheim-VOLL,Temperatur,Eklima_68860_TAM,°C,Annen måler
 VIS-Måler,Fastkraft 265934159,Fastkraft,707057500068796502,kWh,Forbruksmåler
-Bygg,Trondheim Kommune - Kristiansten Barnehage,,,,
+Bygg,Kristiansten Barnehage,,,,
 VIS-Måler,Vann,Vann,ESAVE_942110464_8_ID,m3,Annen måler
 VIS-Måler,Voll TAN,Temperatur,Eklima_68860_TAN,°C,Annen måler
 VIS-Måler,Trondheim-VOLL,Temperatur,Eklima_68860_TAM,°C,Annen måler
 VIS-Måler,Fastkraft 7350049085520189,Fastkraft,707057500068894031,kWh,Forbruksmåler
-Bygg,Trondheim Kommune - Lyngmyra barnehage,,,,
+Bygg,Lyngmyra barnehage,,,,
 VIS-Måler,Voll TAN,Temperatur,Eklima_68860_TAN,°C,Annen måler
 VIS-Måler,Fastkraft 68542192,Fastkraft,707057500068542192,kWh,Forbruksmåler
 VIS-Måler,Fastkraft 68542123,Fastkraft,707057500068542123,kWh,Forbruksmåler
 VIS-Måler,Fastkraft 68542185,Fastkraft,707057500068542185,kWh,Forbruksmåler
 VIS-Måler,Trondheim-VOLL,Temperatur,Eklima_68860_TAM,°C,Annen måler
-Bygg,Trondheim Kommune - Leistad (Midlertidig))Barnehage,,,,
+Bygg,Leistad (Midlertidig))Barnehage,,,,
 VIS-Måler,Voll TAN,Temperatur,Eklima_68860_TAN,°C,Annen måler
 VIS-Måler,Trondheim-VOLL,Temperatur,Eklima_68860_TAM,°C,Annen måler
 VIS-Måler,Fastkraft 40439292,Fastkraft,707057500068731534,kWh,Forbruksmåler
-Bygg,Trondheim Kommune - Øya stadion,,,,
+Bygg,Øya stadion,,,,
 VIS-Måler,Voll TAN,Temperatur,Eklima_68860_TAN,°C,Annen måler
 VIS-Måler,Fastkraft 68683628,Fastkraft,707057500068683628,kWh,Forbruksmåler
 VIS-Måler,Trondheim-VOLL,Temperatur,Eklima_68860_TAM,°C,Annen måler
-Bygg,Trondheim Kommune - Viktor Baumannsvei-37(Svalsberget bhg),,,,
+Bygg,Viktor Baumannsvei-37(Svalsberget bhg),,,,
 VIS-Måler,Voll TAN,Temperatur,Eklima_68860_TAN,°C,Annen måler
 VIS-Måler,Fastkraft 68742110 UTGÅTT,Fastkraft,707057500068742110,kWh,Forbruksmåler
 VIS-Måler,Trondheim-VOLL,Temperatur,Eklima_68860_TAM,°C,Annen måler
-Bygg,Trondheim Kommune - Nidarvoll bskole - Paviljong,,,,
+Bygg,Nidarvoll bskole - Paviljong,,,,
 VIS-Måler,Voll TAN,Temperatur,Eklima_68860_TAN,°C,Annen måler
 VIS-Måler,Trondheim-VOLL,Temperatur,Eklima_68860_TAM,°C,Annen måler
 VIS-Måler,Fastkraft ny paviljong,Fastkraft,707057500069011062,kWh,Forbruksmåler
 VIS-Måler,Fastkraft 68925667,Fastkraft,707057500068925667,kWh,Forbruksmåler
-Bygg,Trondheim Kommune - Nilsbyen Friluftsbarnehage(tidlgHaukvannet bhg),,,,
+Bygg,Nilsbyen Friluftsbarnehage(tidlgHaukvannet bhg),,,,
 VIS-Måler,Voll TAN,Temperatur,Eklima_68860_TAN,°C,Annen måler
 VIS-Måler,Trondheim-VOLL,Temperatur,Eklima_68860_TAM,°C,Annen måler
 VIS-Måler,Fastkraft 67866121,Fastkraft,707057500067866121,kWh,Forbruksmåler
-Bygg,Trondheim Kommune - Brundalen barnehage,,,,
+Bygg,Brundalen barnehage,,,,
 VIS-Måler,Voll TAN,Temperatur,Eklima_68860_TAN,°C,Annen måler
 VIS-Måler,Trondheim-VOLL,Temperatur,Eklima_68860_TAM,°C,Annen måler
 VIS-Måler,Fastkraft 68136179,Fastkraft,707057500068136179,kWh,Forbruksmåler
-Bygg,Trondheim Kommune - Øvre Stubban barnehage,,,,
+Bygg,Øvre Stubban barnehage,,,,
 VIS-Måler,Voll TAN,Temperatur,Eklima_68860_TAN,°C,Annen måler
 VIS-Måler,Trondheim-VOLL,Temperatur,Eklima_68860_TAM,°C,Annen måler
 VIS-Måler,Fastkraft 67987208 UTGÅTT,Fastkraft,707057500067987208,kWh,Forbruksmåler
-Bygg,Trondheim Kommune - Sverresborg Friluftsbarnehage,,,,
+Bygg,Sverresborg Friluftsbarnehage,,,,
 VIS-Måler,Voll TAN,Temperatur,Eklima_68860_TAN,°C,Annen måler
 VIS-Måler,Trondheim-VOLL,Temperatur,Eklima_68860_TAM,°C,Annen måler
 VIS-Måler,Fastkraft 67794271 UTGÅTT,Fastkraft,707057500067794271,kWh,Forbruksmåler
-Bygg,Trondheim Kommune - Flatåsen barnehage,,,,
+Bygg,Flatåsen barnehage,,,,
 VIS-Måler,Voll TAN,Temperatur,Eklima_68860_TAN,°C,Annen måler
 VIS-Måler,Trondheim-VOLL,Temperatur,Eklima_68860_TAM,°C,Annen måler
 VIS-Måler,Fastkraft 68610723 UTGÅTT,Fastkraft,707057500068610723,kWh,Forbruksmåler
-Bygg,Trondheim Kommune - Åsveihallen,,,,
+Bygg,Åsveihallen,,,,
 VIS-Måler,Varmemåler Åsveihallen (oMUC),Fjernvarme,EID_942110464_00071,kWh,Forbruksmåler
 VIS-Måler,Fastkraft Vent XQ10 (oMUC),Fastkraft,EID_942110464_00077,kWh,Forbruksmåler
 VIS-Måler,Fastkraft belysning 433.25 (oMUC),Fastkraft,EID_942110464_00061,kWh,Forbruksmåler
 VIS-Måler,Voll TAN,Temperatur,Eklima_68860_TAN,°C,Annen måler
 VIS-Måler,Trondheim-VOLL,Temperatur,Eklima_68860_TAM,°C,Annen måler
-Bygg,Trondheim Kommune - Byneshallen,,,,
+Bygg,Byneshallen,,,,
 VIS-Måler,Fjernvarme,Fjernvarme,EID_942110464_00005,kWh,Forbruksmåler
 VIS-Måler,FV varmt tappevann,Fjernvarme,EID_942110464_00002,kWh,Annen måler
 VIS-Måler,FV Dusj,Fjernvarme,EID_942110464_00001,kWh,Annen måler
 VIS-Måler,Voll TAN,Temperatur,Eklima_68860_TAN,°C,Annen måler
 VIS-Måler,Spongdal Byneshall- fastkraft- 68891160 - timesmål,Fastkraft,707057500068891160,kWh,Forbruksmåler
 VIS-Måler,Trondheim-VOLL,Temperatur,Eklima_68860_TAM,°C,Annen måler
-Bygg,Trondheim Kommune - Tirilltoppen barnehage,,,,
+Bygg,Tirilltoppen barnehage,,,,
 VIS-Måler,Voll TAN,Temperatur,Eklima_68860_TAN,°C,Annen måler
 VIS-Måler,Tirilltoppen bhg - fastkraft - 68899968 - timesmål,Fastkraft,707057500068899968,kWh,Forbruksmåler
 VIS-Måler,Tirilltoppen bhg - fastkraft - 68899975 - timesmål,Fastkraft,707057500068899975,kWh,Forbruksmåler
 VIS-Måler,Trondheim-VOLL,Temperatur,Eklima_68860_TAM,°C,Annen måler
-Bygg,Trondheim Kommune - Ilsvika barnehage,,,,
+Bygg,Ilsvika barnehage,,,,
 VIS-Måler,Fjernvarme,Fjernvarme,EID_942110464_00046,kWh,Forbruksmåler
 VIS-Måler,Vann,Vann,ESAVE_942110464_4_ID,m3,Annen måler
 VIS-Måler,Voll TAN,Temperatur,Eklima_68860_TAN,°C,Annen måler
 VIS-Måler,Fastkraft 268015284 - Tkorgkode 042136,Fastkraft,707057500068878284,kWh,Forbruksmåler
 VIS-Måler,Trondheim-VOLL,Temperatur,Eklima_68860_TAM,°C,Annen måler
-Bygg,Trondheim Kommune - Hårstad barnehage,,,,
+Bygg,Hårstad barnehage,,,,
 VIS-Måler,Voll TAN,Temperatur,Eklima_68860_TAN,°C,Annen måler
 VIS-Måler,Hårstad bhg-fastkraft-68742172-timesmålt,Fastkraft,707057500068742172,kWh,Forbruksmåler
 VIS-Måler,Trondheim-VOLL,Temperatur,Eklima_68860_TAM,°C,Annen måler
-Bygg,Trondheim Kommune - Aastahagen barnehage,,,,
+Bygg,Aastahagen barnehage,,,,
 VIS-Måler,Voll TAN,Temperatur,Eklima_68860_TAN,°C,Annen måler
 VIS-Måler,Graddager,Graddager,Eklima_68860_GD17,grdg,Annen måler
 VIS-Måler,Trondheim-VOLL,Temperatur,Eklima_68860_TAM,°C,Annen måler
 VIS-Måler,Fjernvarme 68664468,Fjernvarme,ESAVE_280552-980396002_EAN,kWh,Forbruksmåler
 VIS-Måler,Aastahagen Barnehage - fastkraft - 68895090 - time,Fastkraft,707057500068895090,kWh,Forbruksmåler
-Bygg,Trondheim Kommune - Trøndelag brann- og redningstjeneste IKS - Sandmoen brannstasjon,,,,
+Bygg,Trøndelag brann- og redningstjeneste IKS - Sandmoen brannstasjon,,,,
 VIS-Måler,Voll TAN,Temperatur,Eklima_68860_TAN,°C,Annen måler
 VIS-Måler,Trondheim-VOLL,Ikke valgt,Eklima_68860_TAM,°C,Annen måler
 VIS-Måler,Fjernvarme 66822826,Fjernvarme,ESAVE_279926-980396002_EAN,kWh,Forbruksmåler
 VIS-Måler,Sandmoen brannst .- fastkraft - 68837021 - timesmå,Fastkraft,707057500068837021,kWh,Forbruksmåler
-Bygg,Trondheim Kommune - Rådhuset,,,,
+Bygg,Rådhuset,,,,
 VIS-Måler,Voll TAN,Temperatur,Eklima_68860_TAN,°C,Annen måler
 VIS-Måler,Rådhuset-fastkraft-68615261-timesmålt,Fastkraft,707057500068615261,kWh,Forbruksmåler
 VIS-Måler,Trondheim-VOLL,Temperatur,Eklima_68860_TAM,°C,Annen måler
-Bygg,Trondheim Kommune - Ranheim brann og ambulansestasjon,,,,
+Bygg,Ranheim brann og ambulansestasjon,,,,
 VIS-Måler,Voll TAN,Temperatur,Eklima_68860_TAN,°C,Annen måler
 VIS-Måler,Fjernvarme 279954,Fjernvarme,ESAVE_279954-980396002_EAN,kWh,Forbruksmåler
 VIS-Måler,Fastkraft 68870271,Fastkraft,707057500068870271,kWh,Forbruksmåler
 VIS-Måler,Fastkraft Brann 68855421 UTGÅTT,Fastkraft,707057500068855421,kWh,Forbruksmåler
 VIS-Måler,Trondheim-VOLL,Temperatur,Eklima_68860_TAM,°C,Annen måler
-Bygg,Trondheim Kommune - Produksjonskjøkkenet,,,,
+Bygg,Produksjonskjøkkenet,,,,
 VIS-Måler,Fjernvarme 67221935,Fjernvarme,ESAVE_280228-980396002_EAN,kWh,Forbruksmåler
 VIS-Måler,Voll TAN,Temperatur,Eklima_68860_TAN,°C,Annen måler
 VIS-Måler,Produksjonskjøkkenet-fastkraft-68621392-timesmålt,Fastkraft,707057500068621392,kWh,Forbruksmåler
 VIS-Måler,Produksjonskjøkken-fastkraft(varmepumpe)-68630158-,Fastkraft,707057500068630158,kWh,Forbruksmåler
 VIS-Måler,Trondheim-VOLL,Temperatur,Eklima_68860_TAM,°C,Annen måler
-Bygg,Trondheim Kommune - Trikkestallen Skatepark,,,,
+Bygg,Trikkestallen Skatepark,,,,
 VIS-Måler,Voll TAN,Temperatur,Eklima_68860_TAN,°C,Annen måler
 VIS-Måler,Fjernvarme 65864351,Fjernvarme,ESAVE_101101-980396002_EAN,kWh,Forbruksmåler
 VIS-Måler,Fastkraft 228993002,Fastkraft,707057500068231621,kWh,Forbruksmåler
 VIS-Måler,Trondheim-VOLL,Temperatur,Eklima_68860_TAM,°C,Annen måler
-Bygg,Trondheim Kommune - LKV Lademoen Kunstnerverksted,,,,
+Bygg,LKV Lademoen Kunstnerverksted,,,,
 VIS-Måler,Voll TAN,Temperatur,Eklima_68860_TAN,°C,Annen måler
 VIS-Måler,Trondheim-VOLL,Temperatur,Eklima_68860_TAM,°C,Annen måler
 VIS-Måler,Fjernvarme 68411418,Fjernvarme,ESAVE_49960-980396002_EAN,kWh,Forbruksmåler
 VIS-Måler,Fastkraft 6970631400157487,Fastkraft,707057500068807222,kWh,Annen måler
 VIS-Måler,LKV(Mellomv 5)-fastkraft-68614806-timesmålt,Fastkraft,707057500068614806,kWh,Forbruksmåler
-Bygg,Trondheim Kommune - Leangen gård,,,,
+Bygg,Leangen gård,,,,
 VIS-Måler,Graddager,Graddager,Eklima_68860_GD17,grdg,Annen måler
 VIS-Måler,Voll TAN,Temperatur,Eklima_68860_TAN,°C,Annen måler
 VIS-Måler,Trondheim-VOLL,Temperatur,Eklima_68860_TAM,°C,Annen måler
 VIS-Måler,Kurs og konfer bygg C 68262298,Fastkraft,707057500068262298,kWh,Forbruksmåler
 VIS-Måler,Hovedbygg A 68262267,Fastkraft,707057500068262267,kWh,Forbruksmåler
-Bygg,Trondheim Kommune - Kultursenteret ISAK,,,,
+Bygg,Kultursenteret ISAK,,,,
 VIS-Måler,Voll TAN,Temperatur,Eklima_68860_TAN,°C,Annen måler
 VIS-Måler,Fjernvarme 65430488,Fjernvarme,ESAVE_86806-980396002_EAN,kWh,Forbruksmåler
 VIS-Måler,Fjernvarme 65448010,Fjernvarme,ESAVE_86803-980396002_EAN,kWh,Forbruksmåler
 VIS-Måler,ISAK adm.fastkraft-kultursenter-68615056-timesmålt,Fastkraft,707057500068615056,kWh,Forbruksmåler
 VIS-Måler,Trondheim-VOLL,Temperatur,Eklima_68860_TAM,°C,Annen måler
-Bygg,Trondheim Kommune - Lundamo Auto AS,,,,
+Bygg,Lundamo Auto AS,,,,
 VIS-Måler,Voll TAN,Temperatur,Eklima_68860_TAN,°C,Annen måler
 VIS-Måler,Fastkraft 265943003,Fastkraft,707057500068610822,kWh,Forbruksmåler
 VIS-Måler,Trondheim-VOLL,Temperatur,Eklima_68860_TAM,°C,Annen måler
-Bygg,Trondheim Kommune - Hornemansgården (PFO) Eldres Hus,,,,
+Bygg,Hornemansgården (PFO) Eldres Hus,,,,
 VIS-Måler,Graddager,Graddager,Eklima_68860_GD17,grdg,Annen måler
 VIS-Måler,Voll TAN,Temperatur,Eklima_68860_TAN,°C,Annen måler
 VIS-Måler,Trondheim-VOLL,Temperatur,Eklima_68860_TAM,°C,Annen måler
@@ -477,70 +477,70 @@ VIS-Måler, Fastkraft C 68581870 UTGÅTT,Fastkraft,707057500068581870,kWh,Forbru
 VIS-Måler,Fastkraft A,Fastkraft,707057500068581887,kWh,Forbruksmåler
 VIS-Måler,Hornemannsg vk fotgj.felt-fastkraft-68612130-times,Fastkraft,707057500068612130,kWh,Forbruksmåler
 VIS-Måler,Hornemannsg vk fortau-fastkraft-68612123-timesmålt,Fastkraft,707057500068612123,kWh,Forbruksmåler
-Bygg,Trondheim Kommune - Trondheim folkebibliotek Hovedbiblioteket,,,,
+Bygg,Trondheim folkebibliotek Hovedbiblioteket,,,,
 VIS-Måler,Graddager,Graddager,Eklima_68860_GD17,grdg,Annen måler
 VIS-Måler,Trondheim-VOLL,Temperatur,Eklima_68860_TAM,°C,Annen måler
 VIS-Måler,Fjernvarme 67034811,Fjernvarme,ESAVE_87886-980396002_EAN,kWh,Forbruksmåler
 VIS-Måler,Fastkraft 265943849,Fastkraft,707057500068615582,kWh,Forbruksmåler
-Bygg,Trondheim Kommune - Ranheimsvegen 149,,,,
+Bygg,Ranheimsvegen 149,,,,
 VIS-Måler,Voll TAN,Temperatur,Eklima_68860_TAN,°C,Annen måler
 VIS-Måler,Fjernvarme 66298146,Fjernvarme,ESAVE_250423-980396002_EAN,kWh,Forbruksmåler
 VIS-Måler,Bolig-Ranheimsvegen 149--68807574-fastkraft-timesm,Fastkraft,707057500068807574,kWh,Forbruksmåler
 VIS-Måler,Trondheim-VOLL,Temperatur,Eklima_68860_TAM,°C,Annen måler
-Bygg,Trondheim Kommune - Åsheimhallen,,,,
+Bygg,Åsheimhallen,,,,
 VIS-Måler,Voll TAN,Temperatur,Eklima_68860_TAN,°C,Annen måler
 VIS-Måler,Fjernvarme 66362757,Fjernvarme,ESAVE_129309-980396002_EAN,kWh,Forbruksmåler
 VIS-Måler,Åsheimhallen-fastkraft-68690626-timesmålt,Fastkraft,707057500068690626,kWh,Forbruksmåler
 VIS-Måler,Trondheim-VOLL,Temperatur,Eklima_68860_TAM,°C,Annen måler
-Bygg,Trondheim Kommune - Vikåsenhallen,,,,
+Bygg,Vikåsenhallen,,,,
 VIS-Måler,Vann,Vann,ESAVE_942110464_37_ID,m3,Annen måler
 VIS-Måler,Nærvarme gammel,Fjernvarme,ESAVE_942110464_78188540.8.m_EAN,kWh,Annen måler
 VIS-Måler,Voll TAN,Temperatur,Eklima_68860_TAN,°C,Annen måler
 VIS-Måler,Trondheim-VOLL,Temperatur,Eklima_68860_TAM,°C,Annen måler
 VIS-Måler,Nærvarme,Varme,EID_942110464_00088,kWh,Forbruksmåler
 VIS-Måler,Vikåsen idrettshall-fastkraft-68670130 -time,Fastkraft,707057500068670130,kWh,Forbruksmåler
-Bygg,Trondheim Kommune - Rostenhallen,,,,
+Bygg,Rostenhallen,,,,
 VIS-Måler,Voll TAN,Temperatur,Eklima_68860_TAN,°C,Annen måler
 VIS-Måler,Fjernvarme 66828040,Fjernvarme,ESAVE_67067-980396002_EAN,kWh,Forbruksmåler
 VIS-Måler,Rostenhallen-fastkraft-68612789-timesmålt,Fastkraft,707057500068612789,kWh,Forbruksmåler
 VIS-Måler,Trondheim-VOLL,Temperatur,Eklima_68860_TAM,°C,Annen måler
-Bygg,Trondheim Kommune - Rosenborghallen,,,,
+Bygg,Rosenborghallen,,,,
 VIS-Måler,Voll TAN,Temperatur,Eklima_68860_TAN,°C,Annen måler
 VIS-Måler,Fjernvarme 68666415,Fjernvarme,ESAVE_238742-980396002_EAN,kWh,Forbruksmåler
 VIS-Måler,Rosenborg Idrettshall-fastkraft-68794997-timesmålt,Fastkraft,707057500068794997,kWh,Forbruksmåler
 VIS-Måler,Trondheim-VOLL,Temperatur,Eklima_68860_TAM,°C,Annen måler
-Bygg,Trondheim Kommune - Ranheim Friidrettshall,,,,
+Bygg,Ranheim Friidrettshall,,,,
 VIS-Måler,Voll TAN,Temperatur,Eklima_68860_TAN,°C,Annen måler
 VIS-Måler,Fjernvarme 66156229,Fjernvarme,ESAVE_248080-980396002_EAN,kWh,Forbruksmåler
 VIS-Måler,Ranheim Friidrettshall-fastkraft-68802678-timesmål,Fastkraft,707057500068802678,kWh,Forbruksmåler
 VIS-Måler,Trondheim-VOLL,Temperatur,Eklima_68860_TAM,°C,Annen måler
-Bygg,Trondheim Kommune - Munkvollhallen,,,,
+Bygg,Munkvollhallen,,,,
 VIS-Måler,Voll TAN,Temperatur,Eklima_68860_TAN,°C,Annen måler
 VIS-Måler,Fjernvarme 65864357,Fjernvarme,ESAVE_230801-980396002_EAN,kWh,Forbruksmåler
 VIS-Måler,Munkvollhallen-Fastkraft-68786671-Timesmålt,Fastkraft,707057500068786671,kWh,Forbruksmåler
 VIS-Måler,Trondheim-VOLL,Temperatur,Eklima_68860_TAM,°C,Annen måler
-Bygg,Trondheim Kommune - Leangen Garderobebygg,,,,
+Bygg,Leangen Garderobebygg,,,,
 VIS-Måler,Voll TAN,Temperatur,Eklima_68860_TAN,°C,Annen måler
 VIS-Måler,Leangen Garderobebygg-fastkraft-68156429-timesmålt,Fastkraft,707057500068156429,kWh,Forbruksmåler
 VIS-Måler,Trondheim-VOLL,Temperatur,Eklima_68860_TAM,°C,Annen måler
-Bygg,Trondheim Kommune - Husebybadet,,,,
+Bygg,Husebybadet,,,,
 VIS-Måler,Overskuddsvarme fra Heimdal vgs.,Fjernvarme,ESAVE_942110464_8447_E08_Energi_0_3_1030_EAN,kWh,Forbruksmåler
 VIS-Måler,Voll TAN,Temperatur,Eklima_68860_TAN,°C,Annen måler
 VIS-Måler,Fjernvarme 68443266,Fjernvarme,ESAVE_283768-980396002_EAN,kWh,Forbruksmåler
 VIS-Måler,Eklima_68860_GD17,Graddager,Eklima_68860_GD17,grdg,Annen måler
 VIS-Måler,Husebybad-fastkraft-68939633-timesmålt,Fastkraft,707057500068939633,kWh,Forbruksmåler
 VIS-Måler,Trondheim-VOLL,Temperatur,Eklima_68860_TAM,°C,Annen måler
-Bygg,Trondheim Kommune - Dalgård Idrettsanlegg,,,,
+Bygg,Dalgård Idrettsanlegg,,,,
 VIS-Måler,Voll TAN,Temperatur,Eklima_68860_TAN,°C,Annen måler
 VIS-Måler,Dalgård Idrettsanlegg-fastkraft-67860464-timesmålt,Fastkraft,707057500067860464,kWh,Forbruksmåler
 VIS-Måler,Trondheim-VOLL,Temperatur,Eklima_68860_TAM,°C,Annen måler
-Bygg,Trondheim Kommune - Dalgård ishall,,,,
+Bygg,Dalgård ishall,,,,
 VIS-Måler,Voll TAN,Temperatur,Eklima_68860_TAN,°C,Annen måler
 VIS-Måler,Fjernvarme 65667341,Fjernvarme,ESAVE_223568-980396002_EAN,kWh,Forbruksmåler
 VIS-Måler,Dalgård maskinrom-fastk kjøl og smelteg-68846603,Fastkraft,707057500068846603,kWh,Forbruksmåler
 VIS-Måler,Dalgård Ishall-fastkraft-Maskinrom-68564477-timesm,Fastkraft,707057500068564477,kWh,Forbruksmåler
 VIS-Måler,Trondheim-VOLL,Temperatur,Eklima_68860_TAM,°C,Annen måler
-Bygg,Trondheim Kommune - Øya helsehus,,,,
+Bygg,Øya helsehus,,,,
 VIS-Måler,Undervisningsbygg uten undermålere,Fastkraft,707057500068771257-ESAVE_942110464_27619590.1.m_EAN-ESAVE_942110464_27619591.1.m_EAN-ESAVE_942110464_27619592.1.m_EAN-ESAVE_942110464_27619593.1.m_EAN-ESAVE_942110464_27632849.1.m_EAN,kWh,Annen måler
 VIS-Måler,FK Q132 Snøsmelting 27619592.1,Fastkraft,ESAVE_942110464_27619592.1.m_EAN,kWh,Annen måler
 VIS-Måler,FK Q123 Kjølemaskin OA02 171Kw - 27619593.1,Fastkraft,ESAVE_942110464_27619593.1.m_EAN,kWh,Annen måler
@@ -552,18 +552,18 @@ VIS-Måler,Fjernvarme 198823 65562166 kontorbygg,Fjernvarme,ESAVE_198823-9803960
 VIS-Måler,Fjernvarme 198824 68315196 Undervisningsbygg,Fjernvarme,ESAVE_198824-980396002_EAN,kWh,Forbruksmåler
 VIS-Måler,Øya sykehjem-fastkraft-undervis.bygg-68771257-time,Fastkraft,707057500068771257,kWh,Forbruksmåler
 VIS-Måler,Trondheim-VOLL,Temperatur,Eklima_68860_TAM,°C,Annen måler
-Bygg,Trondheim Kommune - Østbyen helsehus - Leistad,,,,
+Bygg,Østbyen helsehus - Leistad,,,,
 VIS-Måler,Voll TAN,Temperatur,Eklima_68860_TAN,°C,Annen måler
 VIS-Måler,Fjernvarme 65864362,Fjernvarme,ESAVE_249000-980396002_EAN,kWh,Forbruksmåler
 VIS-Måler,Leistad helsehus-fastkraft-68610792-timesmålt,Fastkraft,707057500068610792,kWh,Forbruksmåler
 VIS-Måler,Trondheim-VOLL,Temperatur,Eklima_68860_TAM,°C,Annen måler
-Bygg,Trondheim Kommune - Valentinlyst helse og velferdssenter,,,,
+Bygg,Valentinlyst helse og velferdssenter,,,,
 VIS-Måler,Vannmåler,Vann,ESAVE_942110464_54_ID,m3,Annen måler
 VIS-Måler,Voll TAN,Temperatur,Eklima_68860_TAN,°C,Annen måler
 VIS-Måler,Fjernvarme 66364872,Fjernvarme,ESAVE_134723-980396002_EAN,kWh,Forbruksmåler
 VIS-Måler,Valentinlyst helse og velferd senter-Fastkraft-68685356-Timesmå,Fastkraft,707057500068685356,kWh,Forbruksmåler
 VIS-Måler,Trondheim-VOLL,Temperatur,Eklima_68860_TAM,°C,Annen måler
-Bygg,Trondheim Kommune - Tiller helse og velferdssenter,,,,
+Bygg,Tiller helse og velferdssenter,,,,
 VIS-Måler,Voll TAN,Temperatur,Eklima_68860_TAN,°C,Annen måler
 VIS-Måler,Fjernvarme 65786875,Fjernvarme,ESAVE_114058-980396002_EAN,kWh,Forbruksmåler
 VIS-Måler,Fjernvarme 65864364,Fjernvarme,ESAVE_114060-980396002_EAN,kWh,Forbruksmåler
@@ -572,32 +572,32 @@ VIS-Måler,Tiller helse og velferd (sykehjem)-fastkraft-68661985-timesmålt,Fast
 VIS-Måler,Tiller helse og velferd (bofellesskap)-fastkraft-68661961-times,Fastkraft,707057500068661961,kWh,Forbruksmåler
 VIS-Måler,Tiller helse og velferd (aktivitetsbygg)-fastkraft-68661978-tim,Fastkraft,707057500068661978,kWh,Forbruksmåler
 VIS-Måler,Trondheim-VOLL,Temperatur,Eklima_68860_TAM,°C,Annen måler
-Bygg,Trondheim Kommune - Tempe helse og velferdssenter,,,,
+Bygg,Tempe helse og velferdssenter,,,,
 VIS-Måler,Voll TAN,Temperatur,Eklima_68860_TAN,°C,Annen måler
 VIS-Måler,Fjernvarme 65852528,Fjernvarme,ESAVE_106617-980396002_EAN,kWh,Forbruksmåler
 VIS-Måler,Tempe helse og velferd -fastkraft-68641505-timesmålt,Fastkraft,707057500068641505,kWh,Forbruksmåler
 VIS-Måler,Trondheim-VOLL,Temperatur,Eklima_68860_TAM,°C,Annen måler
-Bygg,Trondheim Kommune - Søbstad Helsehus,,,,
+Bygg,Søbstad Helsehus,,,,
 VIS-Måler,Voll TAN,Temperatur,Eklima_68860_TAN,°C,Annen måler
 VIS-Måler,Fjernvarme 67225661,Fjernvarme,ESAVE_178320-980396002_EAN,kWh,Forbruksmåler
 VIS-Måler,Søbstad helsehus-fastkraft-68614813-timesmålt,Fastkraft,707057500068614813,kWh,Forbruksmåler
 VIS-Måler,Trondheim-VOLL,Temperatur,Eklima_68860_TAM,°C,Annen måler
-Bygg,Trondheim Kommune - Ranheim helse og velferdssenter,,,,
+Bygg,Ranheim helse og velferdssenter,,,,
 VIS-Måler,Vann,Vann,ESAVE_942110464_35_ID,m3,Annen måler
 VIS-Måler,Voll TAN,Temperatur,Eklima_68860_TAN,°C,Annen måler
 VIS-Måler,Ranheim helse og velferd -fastkraft-68284627-timesmålt,Fastkraft,707057500068284627,kWh,Forbruksmåler
 VIS-Måler,Trondheim-VOLL,Temperatur,Eklima_68860_TAM,°C,Annen måler
-Bygg,Trondheim Kommune - Olavsgården rehabiliteringssenter,,,,
+Bygg,Olavsgården rehabiliteringssenter,,,,
 VIS-Måler,Voll TAN,Temperatur,Eklima_68860_TAN,°C,Annen måler
 VIS-Måler,Fjernvarme 65430486,Fjernvarme,ESAVE_89436-980396002_EAN,kWh,Forbruksmåler
 VIS-Måler,Olavsgården rehab-fastkraft-68238019-timesmålt,Fastkraft,707057500068238019,kWh,Forbruksmåler
 VIS-Måler,Trondheim-VOLL,Temperatur,Eklima_68860_TAM,°C,Annen måler
-Bygg,Trondheim Kommune - Nypantunet sykehjem,,,,
+Bygg,Nypantunet sykehjem,,,,
 VIS-Måler,Fjernvarme,Fjernvarme,ESAVE_942110464_7219716.8.m_EAN,kWh,Forbruksmåler
 VIS-Måler,Voll TAN,Temperatur,Eklima_68860_TAN,°C,Annen måler
 VIS-Måler,Fatskraft 21596428954286,Fastkraft,707057500068615964,kWh,Forbruksmåler
 VIS-Måler,Trondheim-VOLL,Temperatur,Eklima_68860_TAM,°C,Annen måler
-Bygg,Trondheim Kommune - Nidarvoll helsehus,,,,
+Bygg,Nidarvoll helsehus,,,,
 VIS-Måler,Voll TAN,Temperatur,Eklima_68860_TAN,°C,Annen måler
 VIS-Måler,Fjernvarme 66475772,Fjernvarme,ESAVE_19688-980396002_EAN,kWh,Forbruksmåler
 VIS-Måler,Fjernvarme 65747067,Fjernvarme,ESAVE_19686-980396002_EAN,kWh,Forbruksmåler
@@ -605,38 +605,38 @@ VIS-Måler,Nidarvoll helseh(hus2(A))-fastkraft-68615247-times,Fastkraft,70705750
 VIS-Måler,Nidarvoll helseh(hus1(B))-fastkraft-68615230-times,Fastkraft,707057500068615230,kWh,Forbruksmåler
 VIS-Måler,Nidarvoll helsehus(kjell.hus1(B))-fast-67926870-ti,Fastkraft,707057500067926870,kWh,Forbruksmåler
 VIS-Måler,Trondheim-VOLL,Temperatur,Eklima_68860_TAM,°C,Annen måler
-Bygg,Trondheim Kommune - Munkvoll hvs,,,,
+Bygg,Munkvoll hvs,,,,
 VIS-Måler,Voll TAN,Temperatur,Eklima_68860_TAN,°C,Annen måler
 VIS-Måler,Fjernvarme 66727550,Fjernvarme,ESAVE_115557-980396002_EAN,kWh,Forbruksmåler
 VIS-Måler,Munkvoll helse og velferd -fastkraft-68667505-timesmålt,Fastkraft,707057500068667505,kWh,Forbruksmåler
 VIS-Måler,Trondheim-VOLL,Temperatur,Eklima_68860_TAM,°C,Annen måler
-Bygg,Trondheim Kommune - Moholt helse- og velferdssenter,,,,
+Bygg,Moholt helse- og velferdssenter,,,,
 VIS-Måler,Voll TAN,Temperatur,Eklima_68860_TAN,°C,Annen måler
 VIS-Måler,Moholt helse og velferd -fastkraft-68115686-timesmålt,Fastkraft,707057500068115686,kWh,Forbruksmåler
 VIS-Måler,Trondheim-VOLL,Temperatur,Eklima_68860_TAM,°C,Annen måler
-Bygg,Trondheim Kommune - Kystad sykehjem,,,,
+Bygg,Kystad sykehjem,,,,
 VIS-Måler,Voll TAN,Temperatur,Eklima_68860_TAN,°C,Annen måler
 VIS-Måler,Fjernvarme 66361484,Fjernvarme,ESAVE_229044-980396002_EAN,kWh,Forbruksmåler
 VIS-Måler,Kystad sykehjem-fastkraft-68645787-timesmålt,Fastkraft,707057500068645787,kWh,Forbruksmåler
 VIS-Måler,Trondheim-VOLL,Temperatur,Eklima_68860_TAM,°C,Annen måler
-Bygg,Trondheim Kommune - Kattem helse- og velferdssenter,,,,
+Bygg,Kattem helse- og velferdssenter,,,,
 VIS-Måler,Voll TAN,Temperatur,Eklima_68860_TAN,°C,Annen måler
 VIS-Måler,Fastkraft 68799268,Fastkraft,707057500068799268,kWh,Forbruksmåler
 VIS-Måler,Fjernvarme 65959676,Fjernvarme,ESAVE_243200-980396002_EAN,kWh,Forbruksmåler
 VIS-Måler,Eklima_68860_OT,Ikke valgt,Eklima_68860_OT,timer,Annen måler
 VIS-Måler,Trondheim-VOLL,Temperatur,Eklima_68860_TAM,°C,Annen måler
-Bygg,Trondheim Kommune - Ilsvika helse og velferdssenter,,,,
+Bygg,Ilsvika helse og velferdssenter,,,,
 VIS-Måler,Voll TAN,Temperatur,Eklima_68860_TAN,°C,Annen måler
 VIS-Måler,Ilsvika helse og velferd -fastkra.-kafet. og dagsent-68619269-ti,Fastkraft,707057500068619269,kWh,Forbruksmåler
 VIS-Måler,Ilsvika helse og velferd -fastkraft-2. og 3.etg-68619252-timesmå,Fastkraft,707057500068619252,kWh,Forbruksmåler
 VIS-Måler,Ilsvika helse og velferd fastkr.syk.hj.bod vaskerom 67743972,Fastkraft,707057500067743972,kWh,Forbruksmåler
 VIS-Måler,Trondheim-VOLL,Temperatur,Eklima_68860_TAM,°C,Annen måler
-Bygg,Trondheim Kommune - Ilevollen helse og velferdssenter,,,,
+Bygg,Ilevollen helse og velferdssenter,,,,
 VIS-Måler,Voll TAN,Temperatur,Eklima_68860_TAN,°C,Annen måler
 VIS-Måler,Fjernvarme 65786872,Fjernvarme,ESAVE_232321-980396002_EAN,kWh,Forbruksmåler
 VIS-Måler,Ilevollen helse og velferd senter-fastkraft-68613861-timesmålt,Fastkraft,707057500068613861,kWh,Forbruksmåler
 VIS-Måler,Trondheim-VOLL,Temperatur,Eklima_68860_TAM,°C,Annen måler
-Bygg,Trondheim Kommune - Havsteinekra helse og velferdssenter,,,,
+Bygg,Havsteinekra helse og velferdssenter,,,,
 VIS-Måler,Vann,Vann,ESAVE_942110464_24_ID,m3,Annen måler
 VIS-Måler,Voll TAN,Temperatur,Eklima_68860_TAN,°C,Annen måler
 VIS-Måler,Fastkraft 68737444,Fastkraft,707057500068737444,kWh,Forbruksmåler
@@ -644,63 +644,63 @@ VIS-Måler,Fastkraft 40439311,Fastkraft,707057500068737550,kWh,Forbruksmåler
 VIS-Måler,Fjernvarme 67454373,Fjernvarme,ESAVE_181460-980396002_EAN,kWh,Forbruksmåler
 VIS-Måler,Fjernvarme 67221838,Fjernvarme,ESAVE_186380-980396002_EAN,kWh,Forbruksmåler
 VIS-Måler,Trondheim-VOLL,Temperatur,Eklima_68860_TAM,°C,Annen måler
-Bygg,Trondheim Kommune - Havstein sykehjem,,,,
+Bygg,Havstein sykehjem,,,,
 VIS-Måler,Vann,Vann,ESAVE_942110464_23_ID,m3,Annen måler
 VIS-Måler,Voll TAN,Temperatur,Eklima_68860_TAN,°C,Annen måler
 VIS-Måler,Fjernvarme 67591592,Fjernvarme,ESAVE_180280-980396002_EAN,kWh,Forbruksmåler
 VIS-Måler,Havstein bo og servicesenter (inng 1)-fastkraft-68614967-timesm,Fastkraft,707057500068614967,kWh,Forbruksmåler
 VIS-Måler,Trondheim-VOLL,Temperatur,Eklima_68860_TAM,°C,Annen måler
-Bygg,Trondheim Kommune - E C Dahls helse og velferdssenter,,,,
+Bygg,E C Dahls helse og velferdssenter,,,,
 VIS-Måler,Voll TAN,Temperatur,Eklima_68860_TAN,°C,Annen måler
 VIS-Måler,Fjernvarme 65667345,Fjernvarme,ESAVE_89423-980396002_EAN,kWh,Forbruksmåler
 VIS-Måler,E.C.Dahls helse og velferd -fastkraft-68595754-timesmålt,Fastkraft,707057500068595754,kWh,Forbruksmåler
 VIS-Måler,Trondheim-VOLL,Temperatur,Eklima_68860_TAM,°C,Annen måler
-Bygg,Trondheim Kommune - Dragvoll helse- og velferdssenter,,,,
+Bygg,Dragvoll helse- og velferdssenter,,,,
 VIS-Måler,Sol,Fastkraft,EID_942110464_00122,kWh,Forbruksmåler
 VIS-Måler,Vann,Vann,ESAVE_942110464_22_ID,m3,Annen måler
 VIS-Måler,Voll TAN,Temperatur,Eklima_68860_TAN,°C,Annen måler
 VIS-Måler,Fjernvarme 66822828,Fjernvarme,ESAVE_280154-980396002_EAN,kWh,Forbruksmåler
 VIS-Måler,Dragvoll helse og velferd senter- fastkraft- 68853533 - timesmål,Fastkraft,707057500068853533,kWh,Forbruksmåler
 VIS-Måler,Trondheim-VOLL,Temperatur,Eklima_68860_TAM,°C,Annen måler
-Bygg,Trondheim Kommune - Charlottenlund helse og velferdssenter,,,,
+Bygg,Charlottenlund helse og velferdssenter,,,,
 VIS-Måler,Vann,Vann,ESAVE_942110464_34_ID,m3,Annen måler
 VIS-Måler,Voll TAN,Temperatur,Eklima_68860_TAN,°C,Annen måler
 VIS-Måler,Fjernvarme 66582929,Fjernvarme,ESAVE_270445-980396002_EAN,kWh,Forbruksmåler
 VIS-Måler,Charlottenlund helse og velferd senter-fastkraft-68822829-timesm,Fastkraft,707057500068822829,kWh,Forbruksmåler
 VIS-Måler,Trondheim-VOLL,Temperatur,Eklima_68860_TAM,°C,Annen måler
-Bygg,Trondheim Kommune - Buran helse og Velferdssenter,,,,
+Bygg,Buran helse og Velferdssenter,,,,
 VIS-Måler,Voll TAN,Temperatur,Eklima_68860_TAN,°C,Annen måler
 VIS-Måler,Buran helse og velferd -fastkraft-68219421-timesmålt,Fastkraft,707057500068219421,kWh,Forbruksmåler
 VIS-Måler,Trondheim-VOLL,Temperatur,Eklima_68860_TAM,°C,Annen måler
-Bygg,Trondheim Kommune - Brundalen helse og velferdssenter,,,,
+Bygg,Brundalen helse og velferdssenter,,,,
 VIS-Måler,Vann,Vann,ESAVE_942110464_29_ID,m3,Annen måler
 VIS-Måler,Voll TAN,Temperatur,Eklima_68860_TAN,°C,Annen måler
 VIS-Måler,Fjernvarme 67222016,Fjernvarme,ESAVE_180381-980396002_EAN,kWh,Forbruksmåler
 VIS-Måler,Brundalen helse og velferd -fastkraft-68613342-timesmålt,Fastkraft,707057500068613342,kWh,Forbruksmåler
 VIS-Måler,Trondheim-VOLL,Temperatur,Eklima_68860_TAM,°C,Annen måler
-Bygg,Trondheim Kommune - Bromstad helse og velferdssenter,,,,
+Bygg,Bromstad helse og velferdssenter,,,,
 VIS-Måler,Vannmåler,Vann,ESAVE_942110464_55_ID,m3,Annen måler
 VIS-Måler,Voll TAN,Temperatur,Eklima_68860_TAN,°C,Annen måler
 VIS-Måler,Fjernvarme 68076566,Fjernvarme,ESAVE_220852-980396002_EAN,kWh,Forbruksmåler
 VIS-Måler,Bromstad helse og velferd-fastkraft-68130610-timesmålt,Fastkraft,707057500068130610,kWh,Forbruksmåler
 VIS-Måler,Trondheim-VOLL,Temperatur,Eklima_68860_TAM,°C,Annen måler
-Bygg,Trondheim Kommune - Åsvang barneskole,,,,
+Bygg,Åsvang barneskole,,,,
 VIS-Måler,Voll TAN,Temperatur,Eklima_68860_TAN,°C,Annen måler
 VIS-Måler,Fjernvarme 66727589,Fjernvarme,ESAVE_112136-980396002_EAN,kWh,Forbruksmåler
 VIS-Måler,Åsvang b.skole-fastkraft68636099-timesmålt-,Fastkraft,707057500068636099,kWh,Forbruksmåler
 VIS-Måler,Åsvang b.skole-fastkraft- Festsal-68614189-timesmå,Fastkraft,707057500068614189,kWh,Forbruksmåler
 VIS-Måler,Trondheim-VOLL,Temperatur,Eklima_68860_TAM,°C,Annen måler
-Bygg,Trondheim Kommune - Åsheim ungdomsskole,,,,
+Bygg,Åsheim ungdomsskole,,,,
 VIS-Måler,Voll TAN,Temperatur,Eklima_68860_TAN,°C,Annen måler
 VIS-Måler,Fjernvarme 66362760,Fjernvarme,ESAVE_128972-980396002_EAN,kWh,Forbruksmåler
 VIS-Måler,Åsheim u.skole-fastkraft-68688777-timesmålt,Fastkraft,707057500068688777,kWh,Forbruksmåler
 VIS-Måler,Trondheim-VOLL,Temperatur,Eklima_68860_TAM,°C,Annen måler
-Bygg,Trondheim Kommune - Åsheim barneskole,,,,
+Bygg,Åsheim barneskole,,,,
 VIS-Måler,Voll TAN,Temperatur,Eklima_68860_TAN,°C,Annen måler
 VIS-Måler,Fjernvarme 66008549,Fjernvarme,ESAVE_79905-980396002_EAN,kWh,Forbruksmåler
 VIS-Måler,Åsheim b.skole-fastkraft-68613588-timesmålt,Fastkraft,707057500068613588,kWh,Forbruksmåler
 VIS-Måler,Trondheim-VOLL,Temperatur,Eklima_68860_TAM,°C,Annen måler
-Bygg,Trondheim Kommune - Vikåsen barneskole,,,,
+Bygg,Vikåsen barneskole,,,,
 VIS-Måler,Vann,Vann,ESAVE_942110464_36_ID,m3,Annen måler
 VIS-Måler,Vann,Vann,ESAVE_942110464_36_ID,m3,Annen måler
 VIS-Måler,Nærvarme gammel,Fjernvarme,ESAVE_942110464_78188539.8.m_EAN,kWh,Annen måler
@@ -708,13 +708,13 @@ VIS-Måler,Voll TAN,Temperatur,Eklima_68860_TAN,°C,Annen måler
 VIS-Måler,Trondheim-VOLL,Temperatur,Eklima_68860_TAM,°C,Annen måler
 VIS-Måler,Nærvarme,Varme,EID_942110464_00087,kWh,Forbruksmåler
 VIS-Måler,Fastkraft 68618019,Fastkraft,707057500068618019,kWh,Forbruksmåler
-Bygg,Trondheim Kommune - Utleira barneskole,,,,
+Bygg,Utleira barneskole,,,,
 VIS-Måler,Voll TAN,Temperatur,Eklima_68860_TAN,°C,Annen måler
 VIS-Måler,Fjernvarme 66475764,Fjernvarme,ESAVE_25704-980396002_EAN,kWh,Forbruksmåler
 VIS-Måler,Utleira b.sk.-fastkraft-Tilfluktsrom-67987055-time,Fastkraft,707057500067987055,kWh,Forbruksmåler
 VIS-Måler,Utleira b.skole-fastkraft-68615520-timesmålt,Fastkraft,707057500068615520,kWh,Forbruksmåler
 VIS-Måler,Trondheim-VOLL,Temperatur,Eklima_68860_TAM,°C,Annen måler
-Bygg,Trondheim Kommune - Ugla ungdomsskole,,,,
+Bygg,Ugla ungdomsskole,,,,
 VIS-Måler,FK 2. etg brakke 2 27136348.1.m,Fastkraft,ESAVE_942110464_27136348.1.m_EAN,kWh,Annen måler
 VIS-Måler,FK 1. etg brakke 2 27136343.1.m,Fastkraft,ESAVE_942110464_27136343.1.m_EAN,kWh,Annen måler
 VIS-Måler,FK 2. etg brakke 1 27136349.1.m,Fastkraft,ESAVE_942110464_27136349.1.m_EAN,kWh,Annen måler
@@ -723,7 +723,7 @@ VIS-Måler,FK Skole uten brakker,Fastkraft,707057500068615315-ESAVE_942110464_27
 VIS-Måler,Voll TAN,Temperatur,Eklima_68860_TAN,°C,Annen måler
 VIS-Måler, Ugla u.skole fastkraft 68615315 timesmålt,Fastkraft,707057500068615315,kWh,Forbruksmåler
 VIS-Måler,Trondheim-VOLL,Temperatur,Eklima_68860_TAM,°C,Annen måler
-Bygg,Trondheim Kommune - Tonstad barne og ungdomsskole,,,,
+Bygg,Tonstad barne og ungdomsskole,,,,
 VIS-Måler,Vann,Vann,ESAVE_942110464_38_ID,m3,Annen måler
 VIS-Måler,FK Hovedbygg uten tilbygg og hvitbrakker,Fastkraft,707057500068613274-ESAVE_942110464_27136342.1.m_EAN-ESAVE_942110464_27136351.1.m_EAN-ESAVE_942110464_27136350.1.m_EAN,kWh,Annen måler
 VIS-Måler,FK Tilbygg 2012 - 27136342.1,Fastkraft,ESAVE_942110464_27136342.1.m_EAN,kWh,Annen måler
@@ -733,35 +733,35 @@ VIS-Måler,Voll TAN,Temperatur,Eklima_68860_TAN,°C,Annen måler
 VIS-Måler,Fjernvarme 68707464,Fjernvarme,ESAVE_67798-980396002_EAN,kWh,Forbruksmåler
 VIS-Måler,Tonstad b/u.skole-fastkraft-68613274-timesmålt,Fastkraft,707057500068613274,kWh,Forbruksmåler
 VIS-Måler,Trondheim-VOLL,Temperatur,Eklima_68860_TAM,°C,Annen måler
-Bygg,Trondheim Kommune - Sverresborg ungdomsskole,,,,
+Bygg,Sverresborg ungdomsskole,,,,
 VIS-Måler,Voll TAN,Temperatur,Eklima_68860_TAN,°C,Annen måler
 VIS-Måler,Fjernvarme 66996147,Fjernvarme,ESAVE_179802-980396002_EAN,kWh,Forbruksmåler
 VIS-Måler,Sverresborg.u.sk-fastkraft-gml.bygg-68732593-times,Fastkraft,707057500068732593,kWh,Forbruksmåler
 VIS-Måler,Trondheim-VOLL,Temperatur,Eklima_68860_TAM,°C,Annen måler
-Bygg,Trondheim Kommune - Sunnland ungdomsskole,,,,
+Bygg,Sunnland ungdomsskole,,,,
 VIS-Måler,Vann bygg B,Vann,ESAVE_942110464_31_ID,m3,Annen måler
 VIS-Måler,Vann bygg C,Vann,ESAVE_942110464_30_ID,m3,Annen måler
 VIS-Måler,Voll TAN,Temperatur,Eklima_68860_TAN,°C,Annen måler
 VIS-Måler,Fjernvarme 66255231,Fjernvarme,ESAVE_19727-980396002_EAN,kWh,Forbruksmåler
 VIS-Måler,Sunnland u.skole-fastkraft-68615254-timesmålt,Fastkraft,707057500068615254,kWh,Forbruksmåler
 VIS-Måler,Trondheim-VOLL,Temperatur,Eklima_68860_TAM,°C,Annen måler
-Bygg,Trondheim Kommune - Strindheim skole,,,,
+Bygg,Strindheim skole,,,,
 VIS-Måler,Voll TAN,Temperatur,Eklima_68860_TAN,°C,Annen måler
 VIS-Måler,Fjernvarme 66361515,Fjernvarme,ESAVE_40984-980396002_EAN,kWh,Forbruksmåler
 VIS-Måler,Strindheim b.skole-fastkraft-68667611-timesmålt,Fastkraft,707057500068667611,kWh,Forbruksmåler
 VIS-Måler,Trondheim-VOLL,Temperatur,Eklima_68860_TAM,°C,Annen måler
-Bygg,Trondheim Kommune - Steindal barneskole,,,,
+Bygg,Steindal barneskole,,,,
 VIS-Måler,Vann,Vann,ESAVE_942110464_41_ID,m3,Annen måler
 VIS-Måler,Voll TAN,Temperatur,Eklima_68860_TAN,°C,Annen måler
 VIS-Måler,Steindal b.skole-fastkraft-68613687 -timesmålt,Fastkraft,707057500068613687,kWh,Forbruksmåler
 VIS-Måler,Trondheim-VOLL,Temperatur,Eklima_68860_TAM,°C,Annen måler
-Bygg,Trondheim Kommune - Stabbursmoen barne og ungdomsskole,,,,
+Bygg,Stabbursmoen barne og ungdomsskole,,,,
 VIS-Måler,Voll TAN,Temperatur,Eklima_68860_TAN,°C,Annen måler
 VIS-Måler,Stabbursmoen b/u.skole-fastkraft-68613694-timesmål,Fastkraft,707057500068613694,kWh,Forbruksmåler
 VIS-Måler,Stabbursmoen b/usk-fastkr-pav.2.etg-68681655-times,Fastkraft,707057500068681655,kWh,Forbruksmåler
 VIS-Måler,Stabbursmoen b/u.sk-fastkr-Pavil.1.etg.-68681617-t,Fastkraft,707057500068681617,kWh,Forbruksmåler
 VIS-Måler,Trondheim-VOLL,Temperatur,Eklima_68860_TAM,°C,Annen måler
-Bygg,Trondheim Kommune - Sjetne barne og ungdomsskole,,,,
+Bygg,Sjetne barne og ungdomsskole,,,,
 VIS-Måler,Eltavler 433.01/02/03,Fastkraft,EID_942110464_00049,kWh,Annen måler
 VIS-Måler,Eltavle 433.04,Fastkraft,EID_942110464_00053,kWh,Annen måler
 VIS-Måler,Ladestasjon elbil,Fastkraft,EID_942110464_00048,kWh,Annen måler
@@ -775,12 +775,12 @@ VIS-Måler,Voll TAN,Temperatur,Eklima_68860_TAN,°C,Annen måler
 VIS-Måler,Sjetne b/u.sko.-uprio.-SFObygget og 360 hovedbygg,Fastkraft,707057500068563944,kWh,Forbruksmåler
 VIS-Måler,Sjetne b/u.skole fastkraft 68614059,Fastkraft,707057500068614059-EID_942110464_00048,kWh,Forbruksmåler
 VIS-Måler,Trondheim-VOLL,Temperatur,Eklima_68860_TAM,°C,Annen måler
-Bygg,Trondheim Kommune - Singsaker barneskole,,,,
+Bygg,Singsaker barneskole,,,,
 VIS-Måler,Voll TAN,Temperatur,Eklima_68860_TAN,°C,Annen måler
 VIS-Måler,Sinsaker b.skole-uprioritert-68563968-timesmålt,Fastkraft,707057500068563968,kWh,Forbruksmåler
 VIS-Måler,Singsaker b.skole-fastkraft-68614066 -timesmålt,Fastkraft,707057500068614066,kWh,Forbruksmåler
 VIS-Måler,Trondheim-VOLL,Temperatur,Eklima_68860_TAM,°C,Annen måler
-Bygg,Trondheim Kommune - Selsbakk ungdomsskole,,,,
+Bygg,Selsbakk ungdomsskole,,,,
 VIS-Måler,Vann,Vann,ESAVE_942110464_39_ID,m3,Annen måler
 VIS-Måler,Fjernvarme 66361518,Fjernvarme,ESAVE_129372-980396002_EAN,kWh,Forbruksmåler
 VIS-Måler,FK uten brakker,Fastkraft,707057500068614622-ESAVE_942110464_27216711.1.m_EAN-ESAVE_942110464_27216718.1.m_EAN-ESAVE_942110464_27216719.1.m_EAN-ESAVE_942110464_27216721.1.m_EAN-ESAVE_942110464_27216723.1.m_EAN,kWh,Annen måler
@@ -793,44 +793,44 @@ VIS-Måler,Voll TAN,Temperatur,Eklima_68860_TAN,°C,Annen måler
 VIS-Måler,Faskraft tilfluktsrom 67840121,Fastkraft,707057500067840121,kWh,Forbruksmåler
 VIS-Måler,Fastkraft 68614622,Fastkraft,707057500068614622,kWh,Forbruksmåler
 VIS-Måler,Trondheim-VOLL,Temperatur,Eklima_68860_TAM,°C,Annen måler
-Bygg,Trondheim Kommune - Saupstad barneskole,,,,
+Bygg,Saupstad barneskole,,,,
 VIS-Måler,Voll TAN,Temperatur,Eklima_68860_TAN,°C,Annen måler
 VIS-Måler,Trondheim-VOLL,Temperatur,Eklima_68860_TAM,°C,Annen måler
 VIS-Måler,Fjernvarme 66979649,Fjernvarme,ESAVE_180322-980396002_EAN,kWh,Forbruksmåler
 VIS-Måler,Fastkraft 68614899 ,Fastkraft,707057500068614899,kWh,Forbruksmåler
-Bygg,Trondheim Kommune - Rye barneskole,,,,
+Bygg,Rye barneskole,,,,
 VIS-Måler,Voll TAN,Temperatur,Eklima_68860_TAN,°C,Annen måler
 VIS-Måler,Rye b/u.skole-uprioritert-68564781-timesmålt,Fastkraft,707057500068564781,kWh,Forbruksmåler
 VIS-Måler,Rye b/u.skole-fastkraft-68615865-timesmålt,Fastkraft,707057500068615865,kWh,Forbruksmåler
 VIS-Måler,Trondheim-VOLL,Temperatur,Eklima_68860_TAM,°C,Annen måler
-Bygg,Trondheim Kommune - Rosten barne og ungdomsskole,,,,
+Bygg,Rosten barne og ungdomsskole,,,,
 VIS-Måler,Voll TAN,Temperatur,Eklima_68860_TAN,°C,Annen måler
 VIS-Måler,Fjernvarme 66633988,Fjernvarme,ESAVE_67069-980396002_EAN,kWh,Forbruksmåler
 VIS-Måler,Rosten b/u skole-fastkraft-68612796-timesmålt,Fastkraft,707057500068612796,kWh,Forbruksmåler
 VIS-Måler,Trondheim-VOLL,Temperatur,Eklima_68860_TAM,°C,Annen måler
-Bygg,Trondheim Kommune - Rosenborg ungdomsskole,,,,
+Bygg,Rosenborg ungdomsskole,,,,
 VIS-Måler,Voll TAN,Temperatur,Eklima_68860_TAN,°C,Annen måler
 VIS-Måler,Fjernvarme 68666417,Fjernvarme,ESAVE_128129-980396002_EAN,kWh,Forbruksmåler
 VIS-Måler,Rosenborg U.skole(NY)-fastkraft-68794874-timesmålt,Fastkraft,707057500068794874,kWh,Forbruksmåler
 VIS-Måler,Trondheim-VOLL,Temperatur,Eklima_68860_TAM,°C,Annen måler
-Bygg,Trondheim Kommune - Romolslia barneskole,,,,
+Bygg,Romolslia barneskole,,,,
 VIS-Måler,Vann,Vann,ESAVE_942110464_43_ID,m3,Annen måler
 VIS-Måler,Voll TAN,Temperatur,Eklima_68860_TAN,°C,Annen måler
 VIS-Måler,Romolslia b.skole-fastkraft-68617999-timesmålt,Fastkraft,707057500068617999,kWh,Forbruksmåler
 VIS-Måler,Trondheim-VOLL,Temperatur,Eklima_68860_TAM,°C,Annen måler
-Bygg,Trondheim Kommune - Ranheim barneskole,,,,
+Bygg,Ranheim barneskole,,,,
 VIS-Måler,Vann,Vann,ESAVE_942110464_28_ID,m3,Annen måler
 VIS-Måler,Voll TAN,Temperatur,Eklima_68860_TAN,°C,Annen måler
 VIS-Måler,Fjernvarme 66156120,Fjernvarme,ESAVE_246193-980396002_EAN,kWh,Forbruksmåler
 VIS-Måler,Ranheim(ny) b.skole - fastkraft - 68799732 - times,Fastkraft,707057500068799732,kWh,Forbruksmåler
 VIS-Måler,Trondheim-VOLL,Temperatur,Eklima_68860_TAM,°C,Annen måler
-Bygg,Trondheim Kommune - Okstad barneskole,,,,
+Bygg,Okstad barneskole,,,,
 VIS-Måler,Vann,Vann,ESAVE_942110464_42_ID,m3,Annen måler
 VIS-Måler,Voll TAN,Temperatur,Eklima_68860_TAN,°C,Annen måler
 VIS-Måler,Trondheim-VOLL,Temperatur,Eklima_68860_TAM,°C,Annen måler
 VIS-Måler,Fjernvarme 66474268,Fjernvarme,ESAVE_76656-980396002_EAN,kWh,Forbruksmåler
 VIS-Måler,Okstad b.skole-fastkraft-68496570-timesmålt,Fastkraft,707057500068496570,kWh,Forbruksmåler
-Bygg,Trondheim Kommune - Nypvang barneskole,,,,
+Bygg,Nypvang barneskole,,,,
 VIS-Måler,Vann,Vann,ESAVE_942110464_27_ID,m3,Annen måler
 VIS-Måler,Trondheim-VOLL,Temperatur,Eklima_68860_TAM,°C,Annen måler
 VIS-Måler,Voll TAN,Temperatur,Eklima_68860_TAN,°C,Annen måler
@@ -840,33 +840,33 @@ VIS-Måler, 27655053 Pavljong øst 1. etg,Fastkraft,ESAVE_942110464_27655053.1.m
 VIS-Måler,Fastkraft uten brakker,Fastkraft,707057500068615957-ESAVE_942110464_27655053.1.m_EAN-ESAVE_942110464_27655055.1.m_EAN-ESAVE_942110464_27655054.1.m_EAN,kWh,Annen måler
 VIS-Måler,Fjernvarme Pellets 7219713.8,Fjernvarme,ESAVE_942110464_7219713.8.m_EAN,kWh,Forbruksmåler
 VIS-Måler,Fastkraft 68615957,Fastkraft,707057500068615957,kWh,Forbruksmåler
-Bygg,Trondheim Kommune - Nyborg barneskole og barnehage,,,,
+Bygg,Nyborg barneskole og barnehage,,,,
 VIS-Måler,Vann,Vann,ESAVE_942110464_17_ID,m3,Annen måler
 VIS-Måler,Voll TAN,Temperatur,Eklima_68860_TAN,°C,Annen måler
 VIS-Måler,Fjernvarme 65878953,Fjernvarme,ESAVE_228360-980396002_EAN,kWh,Forbruksmåler
 VIS-Måler,Nyborg barnehage-fastkraft-68665600-timesmålt,Fastkraft,707057500068665600,kWh,Forbruksmåler
 VIS-Måler,Nyborg b.skole-fastkraft + Elkjel-nybygg-68687190-,Fastkraft,707057500068687190,kWh,Forbruksmåler
 VIS-Måler,Trondheim-VOLL,Temperatur,Eklima_68860_TAM,°C,Annen måler
-Bygg,Trondheim Kommune - Nidarvoll barneskole,,,,
+Bygg,Nidarvoll barneskole,,,,
 VIS-Måler,Voll TAN,Temperatur,Eklima_68860_TAN,°C,Annen måler
 VIS-Måler,Fjernvarme 67255365,Fjernvarme,ESAVE_24324-980396002_EAN,kWh,Forbruksmåler
 VIS-Måler,Fjernvarme 68443259,Fjernvarme,ESAVE_24323-980396002_EAN,kWh,Forbruksmåler
 VIS-Måler,Nidarvoll b.skole-fastkraft-68613199 -timesmålt,Fastkraft,707057500068613199,kWh,Forbruksmåler
 VIS-Måler,Trondheim-VOLL,Temperatur,Eklima_68860_TAM,°C,Annen måler
-Bygg,Trondheim Kommune - Nardo barneskole,,,,
+Bygg,Nardo barneskole,,,,
 VIS-Måler,Vann,Vann,ESAVE_942110464_16_ID,m3,Annen måler
 VIS-Måler,Undermåler 3201_MF02_IM02 Måler,Fjernvarme,ESAVE_NRS:OP01_B1_E_Mtr16_EAN,kWh,Annen måler
 VIS-Måler,Voll TAN,Temperatur,Eklima_68860_TAN,°C,Annen måler
 VIS-Måler,Fjernvarme 68304410,Fjernvarme,ESAVE_218170-980396002_EAN,kWh,Forbruksmåler
 VIS-Måler,Nardo b.skole(ny)-fastkraft-68778430-timesmålt,Fastkraft,707057500068778430,kWh,Forbruksmåler
 VIS-Måler,Trondheim-VOLL,Temperatur,Eklima_68860_TAM,°C,Annen måler
-Bygg,Trondheim Kommune - Markaplassen ungdomsskole,,,,
+Bygg,Markaplassen ungdomsskole,,,,
 VIS-Måler,Voll TAN,Temperatur,Eklima_68860_TAN,°C,Annen måler
 VIS-Måler,Nærvarme gammel,Fjernvarme,ESAVE_942110464_78188541.8.m_EAN,kWh,Annen måler
 VIS-Måler,Trondheim-VOLL,Temperatur,Eklima_68860_TAM,°C,Annen måler
 VIS-Måler,Nærvarme 78188541,Varme,EID_942110464_00089,kWh,Forbruksmåler
 VIS-Måler,Markaplassen uskole fastkraft 68315246,Fastkraft,707057500068315246,kWh,Forbruksmåler
-Bygg,Trondheim Kommune - Lade barneskole,,,,
+Bygg,Lade barneskole,,,,
 VIS-Måler,Temperatur VOLL,Temperatur,Eklima_68860_TAM,°C,Annen måler
 VIS-Måler,Voll TAN,Temperatur,Eklima_68860_TAN,°C,Annen måler
 VIS-Måler,Fjernvarme 284409,Fjernvarme,ESAVE_LaSk_US01_B_H_Eg_Mtr07_CumEg_EAN,kWh,Forbruksmåler
@@ -881,23 +881,23 @@ VIS-Måler,Gulvkurs hall,Fjernvarme,ESAVE_LaSk_US01_B_H_Eg_Mtr11_CumEg_EAN,kWh,A
 VIS-Måler,Tappevann skole,Fjernvarme,ESAVE_LaSk_US01_B_H_Eg_Mtr09_CumEg_EAN,kWh,Annen måler
 VIS-Måler,Tappevann hall,Fjernvarme,ESAVE_LaSk_US01_B_H_Eg_Mtr10_CumEg_EAN,kWh,Annen måler
 VIS-Måler,310.001 SM01 Vann,Vann,ESAVE_LaSk_US01_B_S_Dhw01_MtrW01_EAN,m3,Annen måler
-Bygg,Trondheim Kommune - Huseby skole avd. Kolstad,,,,
+Bygg,Huseby skole avd. Kolstad,,,,
 VIS-Måler,Voll TAN,Temperatur,Eklima_68860_TAN,°C,Annen måler
 VIS-Måler,Fjernvarme 66828041,Fjernvarme,ESAVE_175161-980396002_EAN,kWh,Forbruksmåler
 VIS-Måler,Kolstad b.skole-fastkraft-68614875-timesmålt,Fastkraft,707057500068614875,kWh,Forbruksmåler
 VIS-Måler,Trondheim-VOLL,Temperatur,Eklima_68860_TAM,°C,Annen måler
-Bygg,Trondheim Kommune - Kattem barneskole,,,,
+Bygg,Kattem barneskole,,,,
 VIS-Måler,Voll TAN,Temperatur,Eklima_68860_TAN,°C,Annen måler
 VIS-Måler,Fjernvarme 67225665,Fjernvarme,ESAVE_80889-980396002_EAN,kWh,Forbruksmåler
 VIS-Måler,Kattem b.skole-fastkraft-68614356 -timesmålt,Fastkraft,707057500068614356,kWh,Forbruksmåler
 VIS-Måler,Trondheim-VOLL,Temperatur,Eklima_68860_TAM,°C,Annen måler
-Bygg,Trondheim Kommune - Ila barneskole,,,,
+Bygg,Ila barneskole,,,,
 VIS-Måler,Vann,Vann,ESAVE_942110464_15_ID,m3,Annen måler
 VIS-Måler,Voll TAN,Temperatur,Eklima_68860_TAN,°C,Annen måler
 VIS-Måler,Fjernvarme 67255358,Fjernvarme,ESAVE_180304-980396002_EAN,kWh,Forbruksmåler
 VIS-Måler,Ila b.skole-fastkraft-68612956-timesmålt,Fastkraft,707057500068612956,kWh,Forbruksmåler
 VIS-Måler,Trondheim-VOLL,Temperatur,Eklima_68860_TAM,°C,Annen måler
-Bygg,Trondheim Kommune - Hårstad barneskole,,,,
+Bygg,Hårstad barneskole,,,,
 VIS-Måler,Vann,Vann,ESAVE_942110464_14_ID,m3,Annen måler
 VIS-Måler,Temperatur,Temperatur,Eklima_68860_TAM,°C,Annen måler
 VIS-Måler,Graddager,Graddager,Eklima_68860_GD17,grdg,Annen måler
@@ -905,44 +905,44 @@ VIS-Måler,Voll TAN,Temperatur,Eklima_68860_TAN,°C,Annen måler
 VIS-Måler,Fjernvarme 65864378,Fjernvarme,ESAVE_66159-980396002_EAN,kWh,Forbruksmåler
 VIS-Måler,Hårstad b.skole-fastkraft-68391608-Timesmålt,Fastkraft,707057500068391608,kWh,Forbruksmåler
 VIS-Måler,Trondheim-VOLL,Temperatur,Eklima_68860_TAM,°C,Annen måler
-Bygg,Trondheim Kommune - Huseby skole,,,,
+Bygg,Huseby skole,,,,
 VIS-Måler,Voll TAN,Temperatur,Eklima_68860_TAN,°C,Annen måler
 VIS-Måler,Fastkraft 68614844 UTGÅTT,Fastkraft,707057500068614844,kWh,Forbruksmåler
 VIS-Måler,Fjernvarme 66586999,Fjernvarme,ESAVE_180320-980396002_EAN,kWh,Forbruksmåler
 VIS-Måler,Trondheim-VOLL,Temperatur,Eklima_68860_TAM,°C,Annen måler
-Bygg,Trondheim Kommune - Hoeggen ungdomsskole,,,,
+Bygg,Hoeggen ungdomsskole,,,,
 VIS-Måler,Vann,Vann,ESAVE_942110464_21_ID,m3,Annen måler
 VIS-Måler,Voll TAN,Temperatur,Eklima_68860_TAN,°C,Annen måler
 VIS-Måler,Hoeggen u.skole-fastkraft-68613359-timesmålt,Fastkraft,707057500068613359,kWh,Forbruksmåler
 VIS-Måler,Trondheim-VOLL,Temperatur,Eklima_68860_TAM,°C,Annen måler
-Bygg,Trondheim Kommune - Hallset barneskole,,,,
+Bygg,Hallset barneskole,,,,
 VIS-Måler,Vann,Vann,ESAVE_942110464_40_ID,m3,Annen måler
 VIS-Måler,Voll TAN,Temperatur,Eklima_68860_TAN,°C,Annen måler
 VIS-Måler,Fjernvarme 66156230,Fjernvarme,ESAVE_129369-980396002_EAN,kWh,Forbruksmåler
 VIS-Måler,Hallset b.skole-fastkraft-68614721-timesmålt,Fastkraft,707057500068614721,kWh,Forbruksmåler
 VIS-Måler,Trondheim-VOLL,Temperatur,Eklima_68860_TAM,°C,Annen måler
-Bygg,Trondheim Kommune - Flatåsen øvre skole,,,,
+Bygg,Flatåsen øvre skole,,,,
 VIS-Måler,Voll TAN,Temperatur,Eklima_68860_TAN,°C,Annen måler
 VIS-Måler,Fjernvarme 66586998,Fjernvarme,ESAVE_179060-980396002_EAN,kWh,Forbruksmåler
 VIS-Måler,Fastkraft 40270290,Fastkraft,707057500068615513,kWh,Forbruksmåler
 VIS-Måler,Trondheim-VOLL,Temperatur,Eklima_68860_TAM,°C,Annen måler
-Bygg,Trondheim Kommune - Eberg barneskole,,,,
+Bygg,Eberg barneskole,,,,
 VIS-Måler,Voll TAN,Temperatur,Eklima_68860_TAN,°C,Annen måler
 VIS-Måler,Fjernvarme 68443261,Fjernvarme,ESAVE_102600-980396002_EAN,kWh,Forbruksmåler
 VIS-Måler,Eberg b.skole-fastkraft-68088737-timesmålt-,Fastkraft,707057500068088737,kWh,Forbruksmåler
 VIS-Måler,Trondheim-VOLL,Temperatur,Eklima_68860_TAM,°C,Annen måler
-Bygg,Trondheim Kommune - Dalgård barneskole,,,,
+Bygg,Dalgård barneskole,,,,
 VIS-Måler,Voll TAN,Temperatur,Eklima_68860_TAN,°C,Annen måler
 VIS-Måler,Fjernvarme 68138845,Fjernvarme,ESAVE_228100-980396002_EAN,kWh,Forbruksmåler
 VIS-Måler,Dalgård b.sk fastkr bygg B C D E F Pav 67866855,Fastkraft,707057500067866855,kWh,Forbruksmåler
 VIS-Måler,Dalgård b.skole-fastkraft-byggA-68614455-timesmålt,Fastkraft,707057500068614455,kWh,Forbruksmåler
 VIS-Måler,Trondheim-VOLL,Temperatur,Eklima_68860_TAM,°C,Annen måler
-Bygg,Trondheim Kommune - Charlottenlund ungdomsskole,,,,
+Bygg,Charlottenlund ungdomsskole,,,,
 VIS-Måler,Voll TAN,Temperatur,Eklima_68860_TAN,°C,Annen måler
 VIS-Måler,Fjernvarme 5313222,Fjernvarme,ESAVE_129449-980396002_EAN,kWh,Forbruksmåler
 VIS-Måler,Charlottenlund u.skole-fastkraft-68695195-timesmål,Fastkraft,707057500068695195,kWh,Forbruksmåler
 VIS-Måler,Trondheim-VOLL,Temperatur,Eklima_68860_TAM,°C,Annen måler
-Bygg,Trondheim Kommune - Charlottenlund barneskole,,,,
+Bygg,Charlottenlund barneskole,,,,
 VIS-Måler,"FK Hovedbygg uten bygg AB, svømmehall og 4 stk brakker",Fastkraft,707057500068612581-ESAVE_942110464_27315857.1.m_EAN-ESAVE_942110464_27315858.1.m_EAN-ESAVE_942110464_27315859.1.m_EAN-ESAVE_942110464_27315860.1.m_EAN-ESAVE_942110464_27315861.1.m_EAN-ESAVE_942110464_27315862.1.m_EAN-ESAVE_942110464_27315857.1.m_EAN,kWh,Annen måler
 VIS-Måler,FK Bygg AB 27315861.1,Fastkraft,ESAVE_942110464_27315861.1.m_EAN,kWh,Annen måler
 VIS-Måler,"FK 2. etg brakke 1 Skanska 60, ved pavljong AB 27315858.1",Fastkraft,ESAVE_942110464_27315858.1.m_EAN,kWh,Annen måler
@@ -955,7 +955,7 @@ VIS-Måler,FK Svømmehall 27315859.1,Fastkraft,ESAVE_942110464_27315859.1.m_EAN,
 VIS-Måler,Fjernvarme 68664458 (Svømmehall),Fjernvarme,ESAVE_284339-980396002_EAN,kWh,Forbruksmåler
 VIS-Måler,Fjernvarme 66475777,Fjernvarme,ESAVE_134169-980396002_EAN,kWh,Forbruksmåler
 VIS-Måler,Charlottenlund b.skole-fastkraft-68612581-timesmål,Fastkraft,707057500068612581,kWh,Forbruksmåler
-Bygg,Trondheim Kommune - Byåsen barneskole,,,,
+Bygg,Byåsen barneskole,,,,
 VIS-Måler,Bygg F (uten keramikkovn),Ikke valgt,ESAVE_942110464_26772182.1.m_EAN-ESAVE_942110464_26772183.1.m_EAN,Ikke valgt,Annen måler
 VIS-Måler,Bygg C (uten keramikkovn),Ikke valgt,707057500068743667-ESAVE_942110464_26772181.1.m_EAN-ESAVE_942110464_20708425.1.m_EAN-ESAVE_942110464_26772182.1.m_EAN-ESAVE_942110464_26772180.1.m_EAN,Ikke valgt,Annen måler
 VIS-Måler,Keramikkovn bygg F,Fastkraft,ESAVE_942110464_26772183.1.m_EAN,kWh,Annen måler
@@ -967,35 +967,35 @@ VIS-Måler,Voll TAN,Temperatur,Eklima_68860_TAN,°C,Annen måler
 VIS-Måler,Trondheim-VOLL,Temperatur,Eklima_68860_TAM,°C,Annen måler
 VIS-Måler,Fastkraft 68743667,Fastkraft,707057500068743667,kWh,Forbruksmåler
 VIS-Måler,Fjernvarme 66601961,Fjernvarme,ESAVE_184920-980396002_EAN,kWh,Forbruksmåler
-Bygg,Trondheim Kommune - Brundalen barneskole,,,,
+Bygg,Brundalen barneskole,,,,
 VIS-Måler,Voll TAN,Temperatur,Eklima_68860_TAN,°C,Annen måler
 VIS-Måler,Fjernvarme 68139685,Fjernvarme,ESAVE_283017-980396002_EAN,kWh,Forbruksmåler
 VIS-Måler,Fjernvarme 67252840,Fjernvarme,ESAVE_190460-980396002_EAN,kWh,Forbruksmåler
 VIS-Måler,Brundalen b.skole-fastkraft-68614714-t,Fastkraft,707057500068614714,kWh,Forbruksmåler
 VIS-Måler,Trondheim-VOLL,Temperatur,Eklima_68860_TAM,°C,Annen måler
-Bygg,Trondheim Kommune - Breidablikk barneskole,,,,
+Bygg,Breidablikk barneskole,,,,
 VIS-Måler,Vann,Vann,ESAVE_942110464_32_ID,m3,Annen måler
 VIS-Måler,Voll TAN,Temperatur,Eklima_68860_TAN,°C,Annen måler
 VIS-Måler,Fjernvarme 68443270,Fjernvarme,ESAVE_70166-980396002_EAN,kWh,Forbruksmåler
 VIS-Måler,Breidablikk b/u skole-fastkraft-68431670-timesmålt,Fastkraft,707057500068431670,kWh,Forbruksmåler
 VIS-Måler,Trondheim-VOLL,Temperatur,Eklima_68860_TAM,°C,Annen måler
-Bygg,Trondheim Kommune - Bratsberg barneskole,,,,
+Bygg,Bratsberg barneskole,,,,
 VIS-Måler,Voll TAN,Temperatur,Eklima_68860_TAN,°C,Annen måler
 VIS-Måler,Bratsberg b.skole-uprioritert-68344192-timesmålt,Fastkraft,707057500068344192,kWh,Forbruksmåler
 VIS-Måler,Bratsberg b.skole-fastkraft-68344185-timesmålt,Fastkraft,707057500068344185,kWh,Forbruksmåler
 VIS-Måler,Trondheim-VOLL,Temperatur,Eklima_68860_TAM,°C,Annen måler
-Bygg,Trondheim Kommune - Blussuvoll ungdomskole,,,,
+Bygg,Blussuvoll ungdomskole,,,,
 VIS-Måler,Voll TAN,Temperatur,Eklima_68860_TAN,°C,Annen måler
 VIS-Måler,Fjernvarme 67066469,Fjernvarme,ESAVE_192601-980396002_EAN,kWh,Forbruksmåler
 VIS-Måler,Trondheim-VOLL,Temperatur,Eklima_68860_TAM,°C,Annen måler
 VIS-Måler,Blussuvoll u.skole-fastkraft-68750207-timesmålt,Fastkraft,707057500068750207,kWh,Forbruksmåler
-Bygg,Trondheim Kommune - Bispehaugen barneskole,,,,
+Bygg,Bispehaugen barneskole,,,,
 VIS-Måler,Voll TAX,Temperatur,Eklima_68860_TAX,°C,Annen måler
 VIS-Måler,Voll TAN,Temperatur,Eklima_68860_TAN,°C,Annen måler
 VIS-Måler,Trondheim-VOLL,Temperatur,Eklima_68860_TAM,°C,Annen måler
 VIS-Måler,Fjernvarme 69191683,Fjernvarme,ESAVE_128009-980396002_EAN,kWh,Forbruksmåler
 VIS-Måler,Bispehaugen b.sk-fastkr(bygg G)-68613090-timesmålt,Fastkraft,707057500068613090,kWh,Forbruksmåler
-Bygg,Trondheim Kommune - Berg barneskole,,,,
+Bygg,Berg barneskole,,,,
 VIS-Måler,Graddager,Graddager,Eklima_68860_GD17,grdg,Annen måler
 VIS-Måler,Tilbygg Kumulert energi,Fjernvarme,ESAVE_BeSk:US01_B_E_Pwr_Mtr01_CumEg_EAN,kWh,Annen måler
 VIS-Måler,Voll TAN,Temperatur,Eklima_68860_TAN,°C,Annen måler
@@ -1003,435 +1003,435 @@ VIS-Måler,Trondheim-VOLL,Temperatur,Eklima_68860_TAM,°C,Annen måler
 VIS-Måler,Liten elkjel nybygg,Fastkraft,707057500068563982,kWh,Forbruksmåler
 VIS-Måler,Elkjel gammelt bygg,Fastkraft,707057500068973699,kWh,Forbruksmåler
 VIS-Måler,Berg b.skole fastkraft,Fastkraft,707057500068614233,kWh,Forbruksmåler
-Bygg,Trondheim Kommune - Åsvang (Grønnstein) Barnehage,,,,
+Bygg,Åsvang (Grønnstein) Barnehage,,,,
 VIS-Måler,Voll TAN,Temperatur,Eklima_68860_TAN,°C,Annen måler
 VIS-Måler,Åsvang(Grønnstein)bhg-fastkraft-68691296-timesmålt,Fastkraft,707057500068691296,kWh,Forbruksmåler
 VIS-Måler,Trondheim-VOLL,Temperatur,Eklima_68860_TAM,°C,Annen måler
-Bygg,Trondheim Kommune - Åsvang Bergslia barnehage,,,,
+Bygg,Åsvang Bergslia barnehage,,,,
 VIS-Måler,Voll TAN,Temperatur,Eklima_68860_TAN,°C,Annen måler
 VIS-Måler,Trondheim-VOLL,Temperatur,Eklima_68860_TAM,°C,Annen måler
 VIS-Måler,Åsvang(Bergslia)bhg-fastkraft-68152902-timesmålt,Fastkraft,707057500068152902,kWh,Forbruksmåler
-Bygg,Trondheim Kommune - Øvre Jakobsli Barnehage,,,,
+Bygg,Øvre Jakobsli Barnehage,,,,
 VIS-Måler,Voll TAN,Temperatur,Eklima_68860_TAN,°C,Annen måler
 VIS-Måler,Fjernvarme 67633126,Fjernvarme,ESAVE_280115-980396002_EAN,kWh,Forbruksmåler
 VIS-Måler,Øvre Jakobsli bhg - fastkraft - 68861835 - timesmå,Fastkraft,707057500068861835,kWh,Forbruksmåler
 VIS-Måler,Trondheim-VOLL,Temperatur,Eklima_68860_TAM,°C,Annen måler
-Bygg,Trondheim Kommune - Østmarkneset barnehage,,,,
+Bygg,Østmarkneset barnehage,,,,
 VIS-Måler,Voll TAN,Temperatur,Eklima_68860_TAN,°C,Annen måler
 VIS-Måler,Østmarkneset barnehage-fastkraft-68267583-Timesmål,Fastkraft,707057500068267583,kWh,Forbruksmåler
 VIS-Måler,Trondheim-VOLL,Temperatur,Eklima_68860_TAM,°C,Annen måler
-Bygg,Trondheim Kommune - Voldsminde barnehage,,,,
+Bygg,Voldsminde barnehage,,,,
 VIS-Måler,Voll TAN,Temperatur,Eklima_68860_TAN,°C,Annen måler
 VIS-Måler,Fjernvarme 65461074,Fjernvarme,ESAVE_89434-980396002_EAN,kWh,Forbruksmåler
 VIS-Måler,Voldsminde bhg-Fastkraft-68616428-Timesmålt,Fastkraft,707057500068616428,kWh,Forbruksmåler
 VIS-Måler,Trondheim-VOLL,Temperatur,Eklima_68860_TAM,°C,Annen måler
-Bygg,Trondheim Kommune - Vestlia Bjarnehuset barnehage,,,,
+Bygg,Vestlia Bjarnehuset barnehage,,,,
 VIS-Måler,Voll TAN,Temperatur,Eklima_68860_TAN,°C,Annen måler
 VIS-Måler,Vestlia (Bjarnehuset) bhg-fastkraft-68002153-tim,Fastkraft,707057500068002153,kWh,Forbruksmåler
 VIS-Måler,Trondheim-VOLL,Temperatur,Eklima_68860_TAM,°C,Annen måler
-Bygg,Trondheim Kommune - Vestlia Arnehuset barnehage,,,,
+Bygg,Vestlia Arnehuset barnehage,,,,
 VIS-Måler,Voll TAN,Temperatur,Eklima_68860_TAN,°C,Annen måler
 VIS-Måler,Vestlia (Arnehuset) bhg-fastkraft-67990000-ti,Fastkraft,707057500067990000,kWh,Forbruksmåler
 VIS-Måler,Trondheim-VOLL,Temperatur,Eklima_68860_TAM,°C,Annen måler
-Bygg,Trondheim Kommune - Vesletun barnehage,,,,
+Bygg,Vesletun barnehage,,,,
 VIS-Måler,Vann,Vann,ESAVE_942110464_12_ID,m3,Annen måler
 VIS-Måler,Voll TAN,Temperatur,Eklima_68860_TAN,°C,Annen måler
 VIS-Måler,Vesletun bhg-fastkraft-68061372-timesmålt,Fastkraft,707057500068061372,kWh,Forbruksmåler
 VIS-Måler,Trondheim-VOLL,Temperatur,Eklima_68860_TAM,°C,Annen måler
-Bygg,Trondheim Kommune - Thyra Torvsletta barnehage,,,,
+Bygg,Thyra Torvsletta barnehage,,,,
 VIS-Måler,Voll TAN,Temperatur,Eklima_68860_TAN,°C,Annen måler
 VIS-Måler,Thyra ( avd.Torvsletta) bhg-fastkraft-68515592-tim,Fastkraft,707057500068515592,kWh,Forbruksmåler
 VIS-Måler,Trondheim-VOLL,Temperatur,Eklima_68860_TAM,°C,Annen måler
-Bygg,Trondheim Kommune - Valset barnehage,,,,
+Bygg,Valset barnehage,,,,
 VIS-Måler,Voll TAN,Temperatur,Eklima_68860_TAN,°C,Annen måler
 VIS-Måler,Valset bhg-fastkraft-68786800-timesmålt,Fastkraft,707057500068786800,kWh,Forbruksmåler
 VIS-Måler,Trondheim-VOLL,Temperatur,Eklima_68860_TAM,°C,Annen måler
-Bygg,Trondheim Kommune - Valentinlyst barnehage,,,,
+Bygg,Valentinlyst barnehage,,,,
 VIS-Måler,Voll TAN,Temperatur,Eklima_68860_TAN,°C,Annen måler
 VIS-Måler,Valentinlyst bhg-fastkraft-68099450-timesmålt,Fastkraft,707057500068099450,kWh,Forbruksmåler
 VIS-Måler,Trondheim-VOLL,Temperatur,Eklima_68860_TAM,°C,Annen måler
-Bygg,Trondheim Kommune - Kastbrekka barnehage,,,,
+Bygg,Kastbrekka barnehage,,,,
 VIS-Måler,Voll TAN,Temperatur,Eklima_68860_TAN,°C,Annen måler
 VIS-Måler,Fjernvarme 67609517,Fjernvarme,ESAVE_234180-980396002_EAN,kWh,Forbruksmåler
 VIS-Måler,Utleir bhg - fastkraft - 68790470 - timesmålt,Fastkraft,707057500068790470,kWh,Forbruksmåler
 VIS-Måler,Trondheim-VOLL,Temperatur,Eklima_68860_TAM,°C,Annen måler
-Bygg,Trondheim Kommune - Trolla barnehage,,,,
+Bygg,Trolla barnehage,,,,
 VIS-Måler,Voll TAN,Temperatur,Eklima_68860_TAN,°C,Annen måler
 VIS-Måler,Trolla bhg-fastkraft-67749240-timesmålt,Fastkraft,707057500067749240,kWh,Forbruksmåler
 VIS-Måler,Trondheim-VOLL,Temperatur,Eklima_68860_TAM,°C,Annen måler
-Bygg,Trondheim Kommune - Tordenskjold barnehage,,,,
+Bygg,Tordenskjold barnehage,,,,
 VIS-Måler,Voll TAN,Temperatur,Eklima_68860_TAN,°C,Annen måler
 VIS-Måler,Tordenskjold bhg-Fastkraft-68094387-Timesmålt,Fastkraft,707057500068094387,kWh,Forbruksmåler
 VIS-Måler,Trondheim-VOLL,Temperatur,Eklima_68860_TAM,°C,Annen måler
-Bygg,Trondheim Kommune - Tonstad barnehage,,,,
+Bygg,Tonstad barnehage,,,,
 VIS-Måler,Voll TAN,Temperatur,Eklima_68860_TAN,°C,Annen måler
 VIS-Måler,Tonstad bhg-fastkraft-68406005-timesmålt,Fastkraft,707057500068406005,kWh,Forbruksmåler
 VIS-Måler,Trondheim-VOLL,Temperatur,Eklima_68860_TAM,°C,Annen måler
-Bygg,Trondheim Kommune - Thyra Ustmyra barnehage,,,,
+Bygg,Thyra Ustmyra barnehage,,,,
 VIS-Måler,Voll TAN,Temperatur,Eklima_68860_TAN,°C,Annen måler
 VIS-Måler,Thyra(avd.Ustmyra)bhg-fastkraft-68536337-Timesmålt,Fastkraft,707057500068536337,kWh,Forbruksmåler
 VIS-Måler,Trondheim-VOLL,Temperatur,Eklima_68860_TAM,°C,Annen måler
-Bygg,Trondheim Kommune - Teglverket barnehage (Eberg barnehager),,,,
+Bygg,Teglverket barnehage (Eberg barnehager),,,,
 VIS-Måler,Vann,Vann,ESAVE_942110464_11_ID,m3,Annen måler
 VIS-Måler,Voll TAN,Temperatur,Eklima_68860_TAN,°C,Annen måler
 VIS-Måler,Teglverket bhg-fastkraft-68145904-timesmålt,Fastkraft,707057500068145904,kWh,Forbruksmåler
 VIS-Måler,Trondheim-VOLL,Temperatur,Eklima_68860_TAM,°C,Annen måler
-Bygg,Trondheim Kommune - Sverresli barnehage,,,,
+Bygg,Sverresli barnehage,,,,
 VIS-Måler,Voll TAN,Temperatur,Eklima_68860_TAN,°C,Annen måler
 VIS-Måler,Sverresli barnehage-fastkraft-67764410-timesmålt,Fastkraft,707057500067764410,kWh,Forbruksmåler
 VIS-Måler,Trondheim-VOLL,Temperatur,Eklima_68860_TAM,°C,Annen måler
-Bygg,Trondheim Kommune - Sunnland rødthus barnehage,,,,
+Bygg,Sunnland rødthus barnehage,,,,
 VIS-Måler,Voll TAN,Temperatur,Eklima_68860_TAN,°C,Annen måler
 VIS-Måler,Sunnland bhg-Fastkraft-Rødthus-67927303-Timesmålt,Fastkraft,707057500067927303,kWh,Forbruksmåler
 VIS-Måler,Trondheim-VOLL,Temperatur,Eklima_68860_TAM,°C,Annen måler
-Bygg,Trondheim Kommune - Sunnland gulthus barnehage,,,,
+Bygg,Sunnland gulthus barnehage,,,,
 VIS-Måler,Voll TAN,Temperatur,Eklima_68860_TAN,°C,Annen måler
 VIS-Måler,Sunnland(gulthus)bhg-fastkraft-67927297-Timesmålt,Fastkraft,707057500067927297,kWh,Forbruksmåler
 VIS-Måler,Trondheim-VOLL,Temperatur,Eklima_68860_TAM,°C,Annen måler
-Bygg,Trondheim Kommune - Stabburet barnehage,,,,
+Bygg,Stabburet barnehage,,,,
 VIS-Måler,Voll TAN,Temperatur,Eklima_68860_TAN,°C,Annen måler
 VIS-Måler,Fjernvarme 66475708,Fjernvarme,ESAVE_146128-980396002_EAN,kWh,Forbruksmåler
 VIS-Måler,Stabburet bhg-Fastkraft-68704224-Timesmplt,Fastkraft,707057500068704224,kWh,Forbruksmåler
 VIS-Måler,Trondheim-VOLL,Temperatur,Eklima_68860_TAM,°C,Annen måler
-Bygg,Trondheim Kommune - Spongdal barnehage,,,,
+Bygg,Spongdal barnehage,,,,
 VIS-Måler,Voll TAN,Temperatur,Eklima_68860_TAN,°C,Annen måler
 VIS-Måler,Spongdal bhg-Fastkraft-68554652-timesmålt,Fastkraft,707057500068554652,kWh,Forbruksmåler
 VIS-Måler,Trondheim-VOLL,Temperatur,Eklima_68860_TAM,°C,Annen måler
-Bygg,Trondheim Kommune - Spannet barnehage,,,,
+Bygg,Spannet barnehage,,,,
 VIS-Måler,Voll TAN,Temperatur,Eklima_68860_TAN,°C,Annen måler
 VIS-Måler,Spannet bhg - fastkraft - 68264667 - timesmåltt,Fastkraft,707057500068264667,kWh,Forbruksmåler
 VIS-Måler,Trondheim-VOLL,Temperatur,Eklima_68860_TAM,°C,Annen måler
-Bygg,Trondheim Kommune - Singsaker barnehage,,,,
+Bygg,Singsaker barnehage,,,,
 VIS-Måler,Voll TAN,Temperatur,Eklima_68860_TAN,°C,Annen måler
 VIS-Måler,Trondheim-VOLL,Temperatur,Eklima_68860_TAM,°C,Annen måler
 VIS-Måler,Singsaker bhg-fastkraft-68058358-timesmålt,Fastkraft,707057500068058358,kWh,Forbruksmåler
-Bygg,Trondheim Kommune - Sollia barnehage,,,,
+Bygg,Sollia barnehage,,,,
 VIS-Måler,Voll TAN,Temperatur,Eklima_68860_TAN,°C,Annen måler
 VIS-Måler,Sollia bhg-fastkraft-68034918-timesmålt,Fastkraft,707057500068034918,kWh,Forbruksmåler
 VIS-Måler,Trondheim-VOLL,Temperatur,Eklima_68860_TAM,°C,Annen måler
-Bygg,Trondheim Kommune - Smidalen barnehage,,,,
+Bygg,Smidalen barnehage,,,,
 VIS-Måler,Voll TAN,Temperatur,Eklima_68860_TAN,°C,Annen måler
 VIS-Måler,Fastkraft 68736584 UTGÅTT,Fastkraft,707057500068736584,kWh,Forbruksmåler
 VIS-Måler,Trondheim-VOLL,Temperatur,Eklima_68860_TAM,°C,Annen måler
-Bygg,Trondheim Kommune - Skytterveien barnehage,,,,
+Bygg,Skytterveien barnehage,,,,
 VIS-Måler,Voll TAN,Temperatur,Eklima_68860_TAN,°C,Annen måler
 VIS-Måler,Skytterveien bhg-Fastkraft-68509102-timesmålt,Fastkraft,707057500068509102,kWh,Forbruksmåler
 VIS-Måler,Trondheim-VOLL,Temperatur,Eklima_68860_TAM,°C,Annen måler
-Bygg,Trondheim Kommune - Skjermveien barnehage,,,,
+Bygg,Skjermveien barnehage,,,,
 VIS-Måler,Voll TAN,Temperatur,Eklima_68860_TAN,°C,Annen måler
 VIS-Måler,Voll TAN,Temperatur,Eklima_68860_TAN,°C,Annen måler
 VIS-Måler,Skjermveien bhg-fyrkel-68774258-timesmålt,Fastkraft,707057500068774258,kWh,Forbruksmåler
 VIS-Måler,Skjermveien bhg-fastkraft-68774265-timesmålt,Fastkraft,707057500068774265,kWh,Forbruksmåler
 VIS-Måler,Trondheim-VOLL,Temperatur,Eklima_68860_TAM,°C,Annen måler
-Bygg,Trondheim Kommune - Sjetne barnehage,,,,
+Bygg,Sjetne barnehage,,,,
 VIS-Måler,Voll TAN,Temperatur,Eklima_68860_TAN,°C,Annen måler
 VIS-Måler,Sjetne bhg-fastkraft-68656769-timesmålt,Fastkraft,707057500068656769,kWh,Forbruksmåler
 VIS-Måler,Trondheim-VOLL,Temperatur,Eklima_68860_TAM,°C,Annen måler
-Bygg,Trondheim Kommune - Selsbakkhøgda barnehage,,,,
+Bygg,Selsbakkhøgda barnehage,,,,
 VIS-Måler,Voll TAN,Temperatur,Eklima_68860_TAN,°C,Annen måler
 VIS-Måler,Selsbakkhøgda bhg-fastkraft-67852025-timesmålt,Fastkraft,707057500067852025,kWh,Forbruksmåler
 VIS-Måler,Trondheim-VOLL,Temperatur,Eklima_68860_TAM,°C,Annen måler
-Bygg,Trondheim Kommune - Saupstad Barnehage,,,,
+Bygg,Saupstad Barnehage,,,,
 VIS-Måler,Voll TAN,Temperatur,Eklima_68860_TAN,°C,Annen måler
 VIS-Måler,Saupstad barnehage-fastkraft-68781201-timesmålt,Fastkraft,707057500068781201,kWh,Forbruksmåler
 VIS-Måler,Trondheim-VOLL,Temperatur,Eklima_68860_TAM,°C,Annen måler
-Bygg,Trondheim Kommune - Rønningen barnehage,,,,
+Bygg,Rønningen barnehage,,,,
 VIS-Måler,Voll TAN,Temperatur,Eklima_68860_TAN,°C,Annen måler
 VIS-Måler,Rønningen bhg-fastkraft-68248193-timesmålt,Fastkraft,707057500068248193,kWh,Forbruksmåler
 VIS-Måler,Trondheim-VOLL,Temperatur,Eklima_68860_TAM,°C,Annen måler
-Bygg,Trondheim Kommune - Rye barnehage,,,,
+Bygg,Rye barnehage,,,,
 VIS-Måler,Voll TAN,Temperatur,Eklima_68860_TAN,°C,Annen måler
 VIS-Måler,Rye bhg-Uprioritert-68740666-Timesmålt,Fastkraft,707057500068740666,kWh,Forbruksmåler
 VIS-Måler,Rye bhg-Fastkrft-68740659-Timesmålt,Fastkraft,707057500068740659,kWh,Forbruksmåler
 VIS-Måler,Trondheim-VOLL,Temperatur,Eklima_68860_TAM,°C,Annen måler
-Bygg,Trondheim Kommune - Romolslia Nybygg barnehage,,,,
+Bygg,Romolslia Nybygg barnehage,,,,
 VIS-Måler,Voll TAN,Temperatur,Eklima_68860_TAN,°C,Annen måler
 VIS-Måler,Romolslia(Nybygg)bhg-fastkraft-68741151-timesmålt,Fastkraft,707057500068741151,kWh,Forbruksmåler
 VIS-Måler,Trondheim-VOLL,Temperatur,Eklima_68860_TAM,°C,Annen måler
-Bygg,Trondheim Kommune - Romolslia Gammelbygg barnehage,,,,
+Bygg,Romolslia Gammelbygg barnehage,,,,
 VIS-Måler,Voll TAN,Temperatur,Eklima_68860_TAN,°C,Annen måler
 VIS-Måler,Romolslia bhg-Fastkraft-68449415-Timesmålt,Fastkraft,707057500068449415,kWh,Forbruksmåler
 VIS-Måler,Trondheim-VOLL,Temperatur,Eklima_68860_TAM,°C,Annen måler
-Bygg,Trondheim Kommune - Romemyra barnehage,,,,
+Bygg,Romemyra barnehage,,,,
 VIS-Måler,Voll TAN,Temperatur,Eklima_68860_TAN,°C,Annen måler
 VIS-Måler,Fjernvarme 68474800,Fjernvarme,ESAVE_68525-980396002_EAN,kWh,Forbruksmåler
 VIS-Måler,Romemyra bhg-fastkraft-68415243-timesmålt,Fastkraft,707057500068415243,kWh,Forbruksmåler
 VIS-Måler,Trondheim-VOLL,Temperatur,Eklima_68860_TAM,°C,Annen måler
-Bygg,Trondheim Kommune - Rognbudalen barnehage,,,,
+Bygg,Rognbudalen barnehage,,,,
 VIS-Måler,Voll TAN,Temperatur,Eklima_68860_TAN,°C,Annen måler
 VIS-Måler,Fjernvarme 66492771,Fjernvarme,ESAVE_66267-980396002_EAN,kWh,Forbruksmåler
 VIS-Måler,Rognbudalen bhg-Fastkraft-68392667-Timesmålt,Fastkraft,707057500068392667,kWh,Forbruksmåler
 VIS-Måler,Trondheim-VOLL,Temperatur,Eklima_68860_TAM,°C,Annen måler
-Bygg,Trondheim Kommune - Risvollan midlertidige barnehage,,,,
+Bygg,Risvollan midlertidige barnehage,,,,
 VIS-Måler,Voll TAN,Temperatur,Eklima_68860_TAN,°C,Annen måler
 VIS-Måler,Risvollan midl.bhg.-fastkraft-68762040-timesmål,Fastkraft,707057500068762040,kWh,Forbruksmåler
 VIS-Måler,Trondheim-VOLL,Temperatur,Eklima_68860_TAM,°C,Annen måler
-Bygg,Trondheim Kommune - Ringen barnehage,,,,
+Bygg,Ringen barnehage,,,,
 VIS-Måler,Voll TAN,Temperatur,Eklima_68860_TAN,°C,Annen måler
 VIS-Måler,Ringen bhg-fastkraft-68614882-timesmålt,Fastkraft,707057500068614882,kWh,Forbruksmåler
 VIS-Måler,Trondheim-VOLL,Temperatur,Eklima_68860_TAM,°C,Annen måler
-Bygg,Trondheim Kommune - Ranheim barnehage,,,,
+Bygg,Ranheim barnehage,,,,
 VIS-Måler,Voll TAN,Temperatur,Eklima_68860_TAN,°C,Annen måler
 VIS-Måler,Ranheim bhgf-fastkraft-68298990-timesmålt,Fastkraft,707057500068298990,kWh,Forbruksmåler
 VIS-Måler,Trondheim-VOLL,Temperatur,Eklima_68860_TAM,°C,Annen måler
-Bygg,Trondheim Kommune - Presthus gård barnehage,,,,
+Bygg,Presthus gård barnehage,,,,
 VIS-Måler,Voll TAN,Temperatur,Eklima_68860_TAN,°C,Annen måler
 VIS-Måler,Presthus gård bhg-fastkraft-68702657-timesmålt,Fastkraft,707057500068702657,kWh,Forbruksmåler
 VIS-Måler,Trondheim-VOLL,Temperatur,Eklima_68860_TAM,°C,Annen måler
-Bygg,Trondheim Kommune - Porsmyra barnehage,,,,
+Bygg,Porsmyra barnehage,,,,
 VIS-Måler,Voll TAN,Temperatur,Eklima_68860_TAN,°C,Annen måler
 VIS-Måler,Fjernvarme 67066238,Fjernvarme,ESAVE_182900-980396002_EAN,kWh,Forbruksmåler
 VIS-Måler,Porsmyra bhg-fastkraft-68742943-timesmålt,Fastkraft,707057500068742943,kWh,Forbruksmåler
 VIS-Måler,Trondheim-VOLL,Temperatur,Eklima_68860_TAM,°C,Annen måler
-Bygg,Trondheim Kommune - Persaunet barnehage,,,,
+Bygg,Persaunet barnehage,,,,
 VIS-Måler,Voll TAN,Temperatur,Eklima_68860_TAN,°C,Annen måler
 VIS-Måler,Fjernvarme 68139645,Fjernvarme,ESAVE_282798-980396002_EAN,kWh,Forbruksmåler
 VIS-Måler,Persaunet bhg-fastkraft-68094592-timesmålt,Fastkraft,707057500068094592,kWh,Forbruksmåler
 VIS-Måler,Trondheim-VOLL,Temperatur,Eklima_68860_TAM,°C,Annen måler
-Bygg,Trondheim Kommune - Okstadvegen Barnehage,,,,
+Bygg,Okstadvegen Barnehage,,,,
 VIS-Måler,Voll TAN,Temperatur,Eklima_68860_TAN,°C,Annen måler
 VIS-Måler,Trondheim-VOLL,Temperatur,Eklima_68860_TAM,°C,Annen måler
 VIS-Måler,Fjernvarme 65461081,Fjernvarme,ESAVE_186160-980396002_EAN,kWh,Forbruksmåler
 VIS-Måler,Fastkraft 68749249,Fastkraft,707057500068749249,kWh,Forbruksmåler
-Bygg,Trondheim Kommune - Okstad barnehage,,,,
+Bygg,Okstad barnehage,,,,
 VIS-Måler,Voll TAN,Temperatur,Eklima_68860_TAN,°C,Annen måler
 VIS-Måler,Trondheim-VOLL,Temperatur,Eklima_68860_TAM,°C,Annen måler
 VIS-Måler,Fjernvarme 65667343,Fjernvarme,ESAVE_8499-980396002_EAN,kWh,Forbruksmåler
 VIS-Måler,Okstad bhg-Fastkraft-67814986-Timesmålt,Fastkraft,707057500067814986,kWh,Forbruksmåler
-Bygg,Trondheim Kommune - Nypvang barnehage,,,,
+Bygg,Nypvang barnehage,,,,
 VIS-Måler,Voll TAN,Temperatur,Eklima_68860_TAN,°C,Annen måler
 VIS-Måler,Nypvang bhg - fastkraft-elkjel - 68770557 - timesm,Fastkraft,707057500068770557,kWh,Forbruksmåler
 VIS-Måler,Nypvang bhg - fastkraft - 68770540 - timesmålt,Fastkraft,707057500068770540,kWh,Forbruksmåler
 VIS-Måler,Trondheim-VOLL,Temperatur,Eklima_68860_TAM,°C,Annen måler
-Bygg,Trondheim Kommune - Leistad barnehage,,,,
+Bygg,Leistad barnehage,,,,
 VIS-Måler,Voll TAN,Temperatur,Eklima_68860_TAN,°C,Annen måler
 VIS-Måler,Voll TAN,Temperatur,Eklima_68860_TAN,°C,Annen måler
 VIS-Måler,Fjernvarme 6912994,Fjernvarme,ESAVE_276823-980396002_EAN,kWh,Forbruksmåler
 VIS-Måler,Nye Leistad bhg- fastkraft-68823307-timesmålt,Fastkraft,707057500068823307,kWh,Forbruksmåler
 VIS-Måler,Trondheim-VOLL,Temperatur,Eklima_68860_TAM,°C,Annen måler
-Bygg,Trondheim Kommune - Nordslettveien barnehage,,,,
+Bygg,Nordslettveien barnehage,,,,
 VIS-Måler,Voll TAN,Temperatur,Eklima_68860_TAN,°C,Annen måler
 VIS-Måler,Nordslettveien bhg-fastkraft-67971542-timesmålt,Fastkraft,707057500067971542,kWh,Forbruksmåler
 VIS-Måler,Trondheim-VOLL,Temperatur,Eklima_68860_TAM,°C,Annen måler
-Bygg,Trondheim Kommune - Nidarvoll barnehage,,,,
+Bygg,Nidarvoll barnehage,,,,
 VIS-Måler,Voll TAN,Temperatur,Eklima_68860_TAN,°C,Annen måler
 VIS-Måler,Fastkraft 7350049084517333,Fastkraft,707057500068835805,kWh,Forbruksmåler
 VIS-Måler,Fjernvarme 66704071,Fjernvarme,ESAVE_279876-980396002_EAN,kWh,Forbruksmåler
 VIS-Måler,Trondheim-VOLL,Temperatur,Eklima_68860_TAM,°C,Annen måler
-Bygg,Trondheim Kommune - Øvre Flatåsen Barnehage,,,,
+Bygg,Øvre Flatåsen Barnehage,,,,
 VIS-Måler,Voll TAN,Temperatur,Eklima_68860_TAN,°C,Annen måler
 VIS-Måler,Flatåsen bhg-fastkraft-68484218-timesmålt,Fastkraft,707057500068484218,kWh,Forbruksmåler
 VIS-Måler,Trondheim-VOLL,Temperatur,Eklima_68860_TAM,°C,Annen måler
-Bygg,Trondheim Kommune - Møllenberg barnehage,,,,
+Bygg,Møllenberg barnehage,,,,
 VIS-Måler,Vann,Vann,ESAVE_942110464_10_ID,m3,Annen måler
 VIS-Måler,Voll TAN,Temperatur,Eklima_68860_TAN,°C,Annen måler
 VIS-Måler,Trondheim-VOLL,Temperatur,Eklima_68860_TAM,°C,Annen måler
 VIS-Måler,Fastkraft 68613441,Fastkraft,707057500068613441,kWh,Forbruksmåler
-Bygg,Trondheim Kommune - Møllebakken Møllestua barnehage,,,,
+Bygg,Møllebakken Møllestua barnehage,,,,
 VIS-Måler,Voll TAN,Temperatur,Eklima_68860_TAN,°C,Annen måler
 VIS-Måler,Møllebakken Bhg-fastkraft-Møllestua-67751755-Times,Fastkraft,707057500067751755,kWh,Forbruksmåler
 VIS-Måler,Trondheim-VOLL,Temperatur,Eklima_68860_TAM,°C,Annen måler
-Bygg,Trondheim Kommune - Møllebakken barnehage,,,,
+Bygg,Møllebakken barnehage,,,,
 VIS-Måler,Voll TAN,Temperatur,Eklima_68860_TAN,°C,Annen måler
 VIS-Måler,Møllebakken Bhg-fastkraft-67755838-timesmålt,Fastkraft,707057500067755838,kWh,Forbruksmåler
 VIS-Måler,Trondheim-VOLL,Temperatur,Eklima_68860_TAM,°C,Annen måler
-Bygg,Trondheim Kommune - Myrskogen Barnehage,,,,
+Bygg,Myrskogen Barnehage,,,,
 VIS-Måler,Voll TAN,Temperatur,Eklima_68860_TAN,°C,Annen måler
 VIS-Måler,Fastkraft 68389407,Fastkraft,707057500068389407,kWh,Forbruksmåler
 VIS-Måler,Myrskogen bhg-fastkraft-68389414-timesmålt,Fastkraft,707057500068389414,kWh,Forbruksmåler
 VIS-Måler,Trondheim-VOLL,Temperatur,Eklima_68860_TAM,°C,Annen måler
-Bygg,Trondheim Kommune - Myra Barnehage,,,,
+Bygg,Myra Barnehage,,,,
 VIS-Måler,Voll TAN,Temperatur,Eklima_68860_TAN,°C,Annen måler
 VIS-Måler,Myra barnehage - fastkraft - 68828883 - timesmålt,Fastkraft,707057500068828883,kWh,Forbruksmåler
 VIS-Måler,Trondheim-VOLL,Temperatur,Eklima_68860_TAM,°C,Annen måler
-Bygg,Trondheim Kommune - Munkvoll barnehage,,,,
+Bygg,Munkvoll barnehage,,,,
 VIS-Måler,Voll TAN,Temperatur,Eklima_68860_TAN,°C,Annen måler
 VIS-Måler,Munkvoll bhg-fastkraft-67829539-timesmålt,Fastkraft,707057500067829539,kWh,Forbruksmåler
 VIS-Måler,Trondheim-VOLL,Temperatur,Eklima_68860_TAM,°C,Annen måler
-Bygg,Trondheim Kommune - Moltmyra Barnehage,,,,
+Bygg,Moltmyra Barnehage,,,,
 VIS-Måler,Voll TAN,Temperatur,Eklima_68860_TAN,°C,Annen måler
 VIS-Måler,Fjernvarme 67854243,Fjernvarme,ESAVE_246560-980396002_EAN,kWh,Forbruksmåler
 VIS-Måler,Moltmyra barnehage - fastkraft - 68801466 - timesm,Fastkraft,707057500068801466,kWh,Forbruksmåler
 VIS-Måler,Trondheim-VOLL,Temperatur,Eklima_68860_TAM,°C,Annen måler
-Bygg,Trondheim Kommune - Majorstuen barnehage,,,,
+Bygg,Majorstuen barnehage,,,,
 VIS-Måler,Voll TAN,Temperatur,Eklima_68860_TAN,°C,Annen måler
 VIS-Måler,Fjernvarme 67196211,Fjernvarme,ESAVE_186940-980396002_EAN,kWh,Forbruksmåler
 VIS-Måler,Majorstuen bhg-fastkraft-68732241-timesmålt,Fastkraft,707057500068732241,kWh,Forbruksmåler
 VIS-Måler,Trondheim-VOLL,Temperatur,Eklima_68860_TAM,°C,Annen måler
-Bygg,Trondheim Kommune - Lohove barnehage,,,,
+Bygg,Lohove barnehage,,,,
 VIS-Måler,Voll TAN,Temperatur,Eklima_68860_TAN,°C,Annen måler
 VIS-Måler,Uprioritert 68756391,Elkjel,707057500068756391,kWh,Forbruksmåler
 VIS-Måler,Fastkraft 68756384,Fastkraft,707057500068756384,kWh,Forbruksmåler
 VIS-Måler,Trondheim-VOLL,Temperatur,Eklima_68860_TAM,°C,Annen måler
-Bygg,Trondheim Kommune - Lidarende barnehage,,,,
+Bygg,Lidarende barnehage,,,,
 VIS-Måler,Vann,Vann,ESAVE_942110464_9_ID,m3,Annen måler
 VIS-Måler,Voll TAN,Temperatur,Eklima_68860_TAN,°C,Annen måler
 VIS-Måler,Fastkraft 68732319,Fastkraft,707057500068732319,kWh,Forbruksmåler
 VIS-Måler,Upriotitert 68732326,Elkjel,707057500068732326,kWh,Forbruksmåler
 VIS-Måler,Trondheim-VOLL,Temperatur,Eklima_68860_TAM,°C,Annen måler
-Bygg,Trondheim Kommune - Lian naturbarnehage,,,,
+Bygg,Lian naturbarnehage,,,,
 VIS-Måler,Voll TAN,Temperatur,Eklima_68860_TAN,°C,Annen måler
 VIS-Måler,Fastkraft 67898795,Fastkraft,707057500067898795,kWh,Forbruksmåler
 VIS-Måler,Fastkraft(Lianlaget)-67898801,Fastkraft,707057500067898801,kWh,Forbruksmåler
 VIS-Måler,Trondheim-VOLL,Temperatur,Eklima_68860_TAM,°C,Annen måler
-Bygg,Trondheim Kommune - Kyvannet naturbarnehage,,,,
+Bygg,Kyvannet naturbarnehage,,,,
 VIS-Måler,Voll TAN,Temperatur,Eklima_68860_TAN,°C,Annen måler
 VIS-Måler,Trondheim-VOLL,Temperatur,Eklima_68860_TAM,°C,Annen måler
 VIS-Måler,Fastkraft 68763597,Fastkraft,707057500068763597,kWh,Forbruksmåler
 VIS-Måler,Fastkraft og Fyrkjel 68763610,Fastkraft,707057500068763610,kWh,Forbruksmåler
-Bygg,Trondheim Kommune - Kystadåsen barnehage,,,,
+Bygg,Kystadåsen barnehage,,,,
 VIS-Måler,Voll TAN,Temperatur,Eklima_68860_TAN,°C,Annen måler
 VIS-Måler,Kystadåsen bhg-fastkraft-68778454-timesmålt,Fastkraft,707057500068778454,kWh,Forbruksmåler
 VIS-Måler,Trondheim-VOLL,Temperatur,Eklima_68860_TAM,°C,Annen måler
-Bygg,Trondheim Kommune - Kulsås barnehage,,,,
+Bygg,Kulsås barnehage,,,,
 VIS-Måler,Voll TAN,Temperatur,Eklima_68860_TAN,°C,Annen måler
 VIS-Måler,Kulsås bhg-fastkraft-68733071-timesmålt,Fastkraft,707057500068733071,kWh,Forbruksmåler
 VIS-Måler,Trondheim-VOLL,Temperatur,Eklima_68860_TAM,°C,Annen måler
-Bygg,Trondheim Kommune - Krinkelkroken Barnehage,,,,
+Bygg,Krinkelkroken Barnehage,,,,
 VIS-Måler,Vann,Vann,ESAVE_942110464_7_ID,m3,Annen måler
 VIS-Måler,Voll TAN,Temperatur,Eklima_68860_TAN,°C,Annen måler
 VIS-Måler,Fjernvarme 66996107,Fjernvarme,ESAVE_17985-980396002_EAN,kWh,Forbruksmåler
 VIS-Måler,Krinkelkroken bhg-fastkraft-68723027- timesmåltt,Fastkraft,707057500068723027,kWh,Forbruksmåler
 VIS-Måler,Trondheim-VOLL,Temperatur,Eklima_68860_TAM,°C,Annen måler
-Bygg,Trondheim Kommune - Korsvika barnehage,,,,
+Bygg,Korsvika barnehage,,,,
 VIS-Måler,Voll TAN,Temperatur,Eklima_68860_TAN,°C,Annen måler
 VIS-Måler,Korsvika bhg-fastkraft-68263301-timesmålt,Fastkraft,707057500068263301,kWh,Forbruksmåler
 VIS-Måler,Trondheim-VOLL,Temperatur,Eklima_68860_TAM,°C,Annen måler
-Bygg,Trondheim Kommune - Kongsgården barnehage,,,,
+Bygg,Kongsgården barnehage,,,,
 VIS-Måler,Vann,Vann,ESAVE_942110464_6_ID,m3,Annen måler
 VIS-Måler,Voll TAN,Temperatur,Eklima_68860_TAN,°C,Annen måler
 VIS-Måler,Kongsgården bhg-fastkraft-68605279-timesmålt,Fastkraft,707057500068605279,kWh,Forbruksmåler
 VIS-Måler,Trondheim-VOLL,Temperatur,Eklima_68860_TAM,°C,Annen måler
-Bygg,Trondheim Kommune - Kolstad barnehage,,,,
+Bygg,Kolstad barnehage,,,,
 VIS-Måler,Voll TAN,Temperatur,Eklima_68860_TAN,°C,Annen måler
 VIS-Måler,Kolstad bhg-fastkraft-68614868-timesmålt,Fastkraft,707057500068614868,kWh,Forbruksmåler
 VIS-Måler,Trondheim-VOLL,Temperatur,Eklima_68860_TAM,°C,Annen måler
-Bygg,Trondheim Kommune - Klæbuveien barnehage,,,,
+Bygg,Klæbuveien barnehage,,,,
 VIS-Måler,Vann,Vann,ESAVE_942110464_5_ID,m3,Annen måler
 VIS-Måler,Voll TAN,Temperatur,Eklima_68860_TAN,°C,Annen måler
 VIS-Måler,Fjernvarme 67221832,Fjernvarme,ESAVE_179883-980396002_EAN,kWh,Forbruksmåler
 VIS-Måler,Klæbuveien bhg-fastkraft-68741793-timesmålt,Fastkraft,707057500068741793,kWh,Forbruksmåler
 VIS-Måler,Trondheim-VOLL,Temperatur,Eklima_68860_TAM,°C,Annen måler
-Bygg,Trondheim Kommune - Kattem barnehager,,,,
+Bygg,Kattem barnehager,,,,
 VIS-Måler,Voll TAN,Temperatur,Eklima_68860_TAN,°C,Annen måler
 VIS-Måler,Fjernvarme 66467822,Fjernvarme,ESAVE_279626-980396002_EAN,kWh,Forbruksmåler
 VIS-Måler,Eklima_68860_FFM,Ikke valgt,Eklima_68860_FFM,m/s,Forbruksmåler
 VIS-Måler,Kattem barnehage - fastkraft - 68834891 - timesmål,Fastkraft,707057500068834891,kWh,Forbruksmåler
 VIS-Måler,Trondheim-VOLL,Temperatur,Eklima_68860_TAM,°C,Annen måler
-Bygg,Trondheim Kommune - Jotunheimen barnehage,,,,
+Bygg,Jotunheimen barnehage,,,,
 VIS-Måler,Voll TAN,Temperatur,Eklima_68860_TAN,°C,Annen måler
 VIS-Måler,Jotunheimen bhg-fastkraft-68016693-timesmålt,Fastkraft,707057500068016693,kWh,Forbruksmåler
 VIS-Måler,Trondheim-VOLL,Temperatur,Eklima_68860_TAM,°C,Annen måler
-Bygg,Trondheim Kommune - Iladalen barnehage,,,,
+Bygg,Iladalen barnehage,,,,
 VIS-Måler,Voll TAN,Temperatur,Eklima_68860_TAN,°C,Annen måler
 VIS-Måler,Iladalen bhg-fastkraft-68704231-timesmålt,Fastkraft,707057500068704231,kWh,Forbruksmåler
 VIS-Måler,Trondheim-VOLL,Temperatur,Eklima_68860_TAM,°C,Annen måler
-Bygg,Trondheim Kommune - Ila barnehage,,,,
+Bygg,Ila barnehage,,,,
 VIS-Måler,Voll TAN,Temperatur,Eklima_68860_TAN,°C,Annen måler
 VIS-Måler,Ila bhg-Fastkraft-68613267-timesmålt,Fastkraft,707057500068613267,kWh,Forbruksmåler
 VIS-Måler,Trondheim-VOLL,Temperatur,Eklima_68860_TAM,°C,Annen måler
-Bygg,Trondheim Kommune - Huseby barnehage,,,,
+Bygg,Huseby barnehage,,,,
 VIS-Måler,Voll TAN,Temperatur,Eklima_68860_TAN,°C,Annen måler
 VIS-Måler,Huseby bhg-Fastkraft-68615018-timesmålt,Fastkraft,707057500068615018,kWh,Forbruksmåler
 VIS-Måler,Trondheim-VOLL,Temperatur,Eklima_68860_TAM,°C,Annen måler
-Bygg,Trondheim Kommune - Havsteinaunet røde barnehage,,,,
+Bygg,Havsteinaunet røde barnehage,,,,
 VIS-Måler,Voll TAN,Temperatur,Eklima_68860_TAN,°C,Annen måler
 VIS-Måler,Havsteinaune(Ull/Lodotten)bhg-fastkraft-67807629-t,Fastkraft,707057500067807629,kWh,Forbruksmåler
 VIS-Måler,Trondheim-VOLL,Temperatur,Eklima_68860_TAM,°C,Annen måler
-Bygg,Trondheim Kommune - Havsteinaunet Gule barnehage,,,,
+Bygg,Havsteinaunet Gule barnehage,,,,
 VIS-Måler,Voll TAN,Temperatur,Eklima_68860_TAN,°C,Annen måler
 VIS-Måler,Havsteinaunet(Byåsen fam)bhg fastkraft 67807612,Fastkraft,707057500067807612,kWh,Forbruksmåler
 VIS-Måler,Havsteinaunet(Tvistdotten)bhg fastkraft 67807636,Fastkraft,707057500067807636,kWh,Forbruksmåler
 VIS-Måler,Trondheim-VOLL,Temperatur,Eklima_68860_TAM,°C,Annen måler
-Bygg,Trondheim Kommune - Haukåsen barnehage,,,,
+Bygg,Haukåsen barnehage,,,,
 VIS-Måler,Voll TAN,Temperatur,Eklima_68860_TAN,°C,Annen måler
 VIS-Måler,Haukåsen bhg (NY) - fastkraft - 68865116 - timers,Fastkraft,707057500068865116,kWh,Forbruksmåler
 VIS-Måler,Trondheim-VOLL,Temperatur,Eklima_68860_TAM,°C,Annen måler
-Bygg,Trondheim Kommune - Hammersborg barnehage,,,,
+Bygg,Hammersborg barnehage,,,,
 VIS-Måler,Voll TAN,Temperatur,Eklima_68860_TAN,°C,Annen måler
 VIS-Måler,Elmåler (Skanska læring),Fastkraft,707057500068766611,kWh,Forbruksmåler
 VIS-Måler,Fastkraft Cramo 687622 UTGÅTT,Fastkraft,707057500068762231,kWh,Forbruksmåler
 VIS-Måler,Trondheim-VOLL,Temperatur,Eklima_68860_TAM,°C,Annen måler
-Bygg,Trondheim Kommune - Grillstadfjæra barnehage,,,,
+Bygg,Grillstadfjæra barnehage,,,,
 VIS-Måler,Voll TAN,Temperatur,Eklima_68860_TAN,°C,Annen måler
 VIS-Måler,Fjernvarme 67221823,Fjernvarme,ESAVE_280155-980396002_EAN,kWh,Forbruksmåler
 VIS-Måler,Grilstadfjæra bhg - fastkraft - 68860340 - timesmå,Fastkraft,707057500068860340,kWh,Forbruksmåler
 VIS-Måler,Trondheim-VOLL,Temperatur,Eklima_68860_TAM,°C,Annen måler
-Bygg,Trondheim Kommune - Gjørtlervegen barnehage,,,,
+Bygg,Gjørtlervegen barnehage,,,,
 VIS-Måler,Voll TAN,Temperatur,Eklima_68860_TAN,°C,Annen måler
 VIS-Måler,Fjernvarme 65806460,Fjernvarme,ESAVE_179800-980396002_EAN,kWh,Forbruksmåler
 VIS-Måler,Gjørtlerv. bhg-fastkraft-68728855-timesmålt,Fastkraft,707057500068728855,kWh,Forbruksmåler
 VIS-Måler,Trondheim-VOLL,Temperatur,Eklima_68860_TAM,°C,Annen måler
-Bygg,Trondheim Kommune - Gartneriet barnehage,,,,
+Bygg,Gartneriet barnehage,,,,
 VIS-Måler,Vann,Vann,ESAVE_942110464_1_ID,m3,Annen måler
 VIS-Måler,Voll TAN,Temperatur,Eklima_68860_TAN,°C,Annen måler
 VIS-Måler,Fjernvarme 65484817,Fjernvarme,ESAVE_193683-980396002_EAN,kWh,Forbruksmåler
 VIS-Måler,Fastkraft 68769384,Fastkraft,707057500068769384,kWh,Forbruksmåler
 VIS-Måler,Trondheim-VOLL,Temperatur,Eklima_68860_TAM,°C,Annen måler
-Bygg,Trondheim Kommune - Furutoppen barnehage,,,,
+Bygg,Furutoppen barnehage,,,,
 VIS-Måler,Voll TAN,Temperatur,Eklima_68860_TAN,°C,Annen måler
 VIS-Måler,Furutoppen bhg(Regnbuen)-fastkraft-68755769-timesm,Fastkraft,707057500068755769,kWh,Forbruksmåler
 VIS-Måler,Furutoppen bhg-fastkraft-68615506-Timesmålt,Fastkraft,707057500068615506,kWh,Forbruksmåler
 VIS-Måler,Trondheim-VOLL,Temperatur,Eklima_68860_TAM,°C,Annen måler
-Bygg,Trondheim Kommune - Nedre Flatåsen barnehage,,,,
+Bygg,Nedre Flatåsen barnehage,,,,
 VIS-Måler,Voll TAN,Temperatur,Eklima_68860_TAN,°C,Annen måler
 VIS-Måler,Fjernvarme 68879224,Fjernvarme,ESAVE_241160-980396002_EAN,kWh,Forbruksmåler
 VIS-Måler,Nedre Flatåsenbhg - fastkraft - 68799404 - timesmå,Fastkraft,707057500068799404,kWh,Forbruksmåler
 VIS-Måler,Trondheim-VOLL,Temperatur,Eklima_68860_TAM,°C,Annen måler
-Bygg,Trondheim Kommune - Firkanten Barnehage,,,,
+Bygg,Firkanten Barnehage,,,,
 VIS-Måler,Voll TAN,Temperatur,Eklima_68860_TAN,°C,Annen måler
 VIS-Måler,Fastkraft 68610723 UTGÅTT,Fastkraft,707057500068610723,kWh,Forbruksmåler
 VIS-Måler,Trondheim-VOLL,Temperatur,Eklima_68860_TAM,°C,Annen måler
-Bygg,Trondheim Kommune - Festningen barnehage,,,,
+Bygg,Festningen barnehage,,,,
 VIS-Måler,Trondheim-VOLL,Temperatur,Eklima_68860_TAM,°C,Annen måler
 VIS-Måler,Voll TAN,Temperatur,Eklima_68860_TAN,°C,Annen måler
 VIS-Måler,Vann 2249760067,Vann,ESAVE_942110464_2249760067_EAN,m3,Annen måler
 VIS-Måler,Fastkraft 68794539,Fastkraft,707057500068794539,kWh,Forbruksmåler
 VIS-Måler,Fjernvarme 65848950,Fjernvarme,ESAVE_224511-980396002_EAN,kWh,Forbruksmåler
-Bygg,Trondheim Kommune - Ferista friluftsbarnehage,,,,
+Bygg,Ferista friluftsbarnehage,,,,
 VIS-Måler,Voll TAN,Temperatur,Eklima_68860_TAN,°C,Annen måler
 VIS-Måler,Ferista bhg-fastkraft-68720545-timesmålt,Fastkraft,707057500068720545,kWh,Forbruksmåler
 VIS-Måler,Trondheim-VOLL,Temperatur,Eklima_68860_TAM,°C,Annen måler
-Bygg,Trondheim Kommune - Charlottenlund barnehage,,,,
+Bygg,Charlottenlund barnehage,,,,
 VIS-Måler,Voll TAN,Temperatur,Eklima_68860_TAN,°C,Annen måler
 VIS-Måler,Charlottenlund bhg-Fastkraft-68631728-timesmålt,Fastkraft,707057500068631728,kWh,Forbruksmåler
 VIS-Måler,Trondheim-VOLL,Temperatur,Eklima_68860_TAM,°C,Annen måler
-Bygg,Trondheim Kommune - Cecilienborg barnehage,,,,
+Bygg,Cecilienborg barnehage,,,,
 VIS-Måler,Voll TAN,Temperatur,Eklima_68860_TAN,°C,Annen måler
 VIS-Måler,Cecilienborg barnehage-fastkraft-67764427-timesmål,Fastkraft,707057500067764427,kWh,Forbruksmåler
 VIS-Måler,Trondheim-VOLL,Temperatur,Eklima_68860_TAM,°C,Annen måler
-Bygg,Trondheim Kommune - Brøset Prestekragen barnehage,,,,
+Bygg,Brøset Prestekragen barnehage,,,,
 VIS-Måler,Vann,Vann,ESAVE_942110464_3_ID,m3,Annen måler
 VIS-Måler,Voll TAN,Temperatur,Eklima_68860_TAN,°C,Annen måler
 VIS-Måler,Brøset(Prestekragen)bhg-fastkraft-68750269-timesmå,Fastkraft,707057500068750269,kWh,Forbruksmåler
 VIS-Måler,Trondheim-VOLL,Temperatur,Eklima_68860_TAM,°C,Annen måler
-Bygg,Trondheim Kommune - Brøset Marikåpa barnehage,,,,
+Bygg,Brøset Marikåpa barnehage,,,,
 VIS-Måler,Vann,Vann,ESAVE_942110464_2_ID,m3,Annen måler
 VIS-Måler,Voll TAN,Temperatur,Eklima_68860_TAN,°C,Annen måler
 VIS-Måler,Brøsett(Marikåpa) bhg-Fastkraft-68744237-Timesmålt,Fastkraft,707057500068744237,kWh,Forbruksmåler
 VIS-Måler,Trondheim-VOLL,Temperatur,Eklima_68860_TAM,°C,Annen måler
-Bygg,Trondheim Kommune - Bromstad barnehage,,,,
+Bygg,Bromstad barnehage,,,,
 VIS-Måler,Voll TAN,Temperatur,Eklima_68860_TAN,°C,Annen måler
 VIS-Måler,Bromstad bhg-Fastkraft-68104048-timesmålt,Fastkraft,707057500068104048,kWh,Forbruksmåler
 VIS-Måler,Trondheim-VOLL,Temperatur,Eklima_68860_TAM,°C,Annen måler
-Bygg,Trondheim Kommune - Brinken barnehage,,,,
+Bygg,Brinken barnehage,,,,
 VIS-Måler,Brinken bhg-fastkraft-68402960-timesmålt,Fastkraft,707057500068402960,kWh,Forbruksmåler
 VIS-Måler,Trondheim-VOLL,Temperatur,Eklima_68860_TAM,°C,Annen måler
-Bygg,Trondheim Kommune - Breidablikk barnehage,,,,
+Bygg,Breidablikk barnehage,,,,
 VIS-Måler,Voll TAN,Temperatur,Eklima_68860_TAN,°C,Annen måler
 VIS-Måler,Breidablikk bhg-fastkraft-68425556-timesmålt,Fastkraft,707057500068425556,kWh,Forbruksmåler
 VIS-Måler,Trondheim-VOLL,Temperatur,Eklima_68860_TAM,°C,Annen måler
-Bygg,Trondheim Kommune - Brannhaugen Barnehage,,,,
+Bygg,Brannhaugen Barnehage,,,,
 VIS-Måler,Voll TAN,Temperatur,Eklima_68860_TAN,°C,Annen måler
 VIS-Måler,Trondheim-VOLL,Temperatur,Eklima_68860_TAM,°C,Annen måler
 VIS-Måler,Brannhaugen bhg - fastkraft - 68789658 - timesmålt,Fastkraft,707057500068789658,kWh,Forbruksmåler
-Bygg,Trondheim Kommune - Blomsterbyen barnehage,,,,
+Bygg,Blomsterbyen barnehage,,,,
 VIS-Måler,Voll TAN,Temperatur,Eklima_68860_TAN,°C,Annen måler
 VIS-Måler,Graddager,Graddager,Eklima_68860_GD17,grdg,Annen måler
 VIS-Måler,Fjernvarme 68590119,Fjernvarme,ESAVE_193681-980396002_EAN,kWh,Forbruksmåler
 VIS-Måler,Trondheim-VOLL,Temperatur,Eklima_68860_TAM,°C,Annen måler
 VIS-Måler,Fastkraft 68755066,Fastkraft,707057500068755066,kWh,Forbruksmåler
-Bygg,Trondheim Kommune - Angelltrøa barnehage,,,,
+Bygg,Angelltrøa barnehage,,,,
 VIS-Måler,Trondheim Voll,Temperatur,Eklima_68860_TAM,°C,Annen måler
 VIS-Måler,Voll TAN,Temperatur,Eklima_68860_TAN,°C,Annen måler
 VIS-Måler,Graddager,Graddager,Eklima_68860_GD17,grdg,Annen måler
