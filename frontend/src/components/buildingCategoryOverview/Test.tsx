@@ -4,7 +4,7 @@ import HighchartsReact from 'highcharts-react-official';
 import { Link, useRouteMatch } from 'react-router-dom';
 import { useParams } from 'react-router';
 
-function Test(props:any) {
+function Test() {
   const match = useRouteMatch();
   const { category } = useParams<{category:string}>();
 

@@ -7,10 +7,11 @@ import Main from './components/mainpage/Main';
 import InfoItem from './components/infobar/InfoItem';
 import Icon from './components/infobar/icons/noto_house.png';
 import BuildingCategoryOverview from './components/buildingCategoryOverview/BuildingCategoryOverview';
+import Building from './components/building/Building';
 
 function App() {
   return (
-    <div>
+    <>
       <Router>
         <Navbar />
         <div style={{ display: 'flex' }}>
@@ -34,7 +35,7 @@ function App() {
           </Switch>
         </div>
       </Router>
-    </div>
+    </>
   );
 }
 

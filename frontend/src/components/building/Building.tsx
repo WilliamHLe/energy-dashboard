@@ -1,7 +1,7 @@
 import React from 'react';
 import { useParams } from 'react-router';
 import style from './building.module.css';
-import CategoryUsage from '../category/graphs/CategoryUsage';
+import CategoryUsage from '../buildingCategoryOverview/graphs/CategoryUsage';
 
 function Building() {
   const { category, id } = useParams<{category: string, id: string}>();
