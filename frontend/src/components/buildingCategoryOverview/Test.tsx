@@ -2,9 +2,11 @@ import React from 'react';
 import Highcharts from 'highcharts';
 import HighchartsReact from 'highcharts-react-official';
 import { Link, useRouteMatch } from 'react-router-dom';
+import { useParams } from 'react-router';
 
 function Test(props:any) {
   const match = useRouteMatch();
+  const { category } = useParams<{category:string}>();
 
   const options = {
     chart: {
@@ -29,12 +31,13 @@ function Test(props:any) {
   };
 
   return (
+
     <div>
       <p>
         Dette er en
         {' '}
         {/* eslint-disable-next-line react/destructuring-assignment */}
-        {props.bygg}
+        {category}
         .
       </p>
       <div><HighchartsReact highcharts={Highcharts} options={options} /></div>
