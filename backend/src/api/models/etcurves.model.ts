@@ -33,7 +33,7 @@ const etcurvesSchema = new Schema({
 });
 
 interface IEtcurveObjectTypes {
-  fromDate: string;
+  fromDate: Date;
   dx1: number;
   dx2: number;
   dx3: number;
