@@ -66,5 +66,6 @@
     "src/**/*.ts*": [
       "npm run lint:fix"
     ]
-  }
+  },
+  "proxy": "http://localhost:3000"
 }
