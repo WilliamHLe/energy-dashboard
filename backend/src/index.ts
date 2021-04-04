@@ -5,6 +5,7 @@ import swaggerDocument from '../api-documentation/swagger.json';
 import categoryRoutes from './api/routes/categories.routes';
 import connectDb from './util/database';
 import searchRoute from './api/routes/search.routes';
+import buildingRoute from './api/routes/building.routes';
 
 connectDb();
 

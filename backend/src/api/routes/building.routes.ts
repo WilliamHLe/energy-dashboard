@@ -6,4 +6,4 @@ const router = express.Router();
 
 router.get('/:id/energy/total', buildingController.getTotalEnergyBuilding);
 
-module.exports = router;
+export default router;
