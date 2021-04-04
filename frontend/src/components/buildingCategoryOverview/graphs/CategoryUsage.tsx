@@ -4,12 +4,7 @@ import HighchartsReact from 'highcharts-react-official';
 
 function CategoryUsage() {
   const [data, setData] = useState<any>([]);
-
   useEffect(() => {
-    //  fetch('/categories')
-    //    .then((res) => res.json())
-    //   .then(
-    //      (result) => {
     const mockData = [
       {
         category: {
@@ -389,14 +384,18 @@ function CategoryUsage() {
       },
     ];
     const tempData:any[] = [];
-    for (let i = 0; i < mockData.length; i += 1) {
-      tempData.push({ name: mockData[i].category.name, data: [] });
-      for (let j = 0; j < mockData[i].usage.length; j += 1) {
-        const date = new Date(mockData[i].usage[j].date.replace(/(\d{2}).(\d{2}).(\d{2})/, '$2/$1/$3')).getTime();
-        tempData[i].data.push({ x: date, y: mockData[i].usage[j].value });
+    try {
+      for (let i = 0; i < mockData.length; i += 1) {
+        tempData.push({ name: mockData[i].category.name, data: [] });
+        for (let j = 0; j < mockData[i].usage.length; j += 1) {
+          const date = new Date(mockData[i].usage[j].date.replace(/(\d{2}).(\d{2}).(\d{2})/, '$2/$1/$3')).getTime();
+          tempData[i].data.push({ x: date, y: mockData[i].usage[j].value });
+        }
       }
+      setData(tempData);
+    } catch (e) {
+      console.log(e);
     }
-    setData(tempData);
   }, []);
   const options = {
     chart: {
