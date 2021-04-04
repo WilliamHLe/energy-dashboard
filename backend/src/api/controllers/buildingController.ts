@@ -49,7 +49,7 @@ const getTotalEnergyBuilding = async (req: Request, res: Response, next: NextFun
   const buildings = await Sensors.aggregate(query);
 
   if (buildings) {
-    res.send(buildings);
+    res.send(buildings[0]);
   } else {
     next('Unable to retrieve measurement');
   }
