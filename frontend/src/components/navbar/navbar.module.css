@@ -72,3 +72,35 @@
 .energiF {
     background-image: url("../../assets/icons/EnergiTipsF.png");
 }
+
+.wrapper {
+    width: 100%;
+    margin: 4% 0% 10% 5%;
+}
+
+.wrapper > div {
+    width: 100%;
+}
+
+input {
+    height: 34px;
+    background: white; 
+    border-radius: 5px;
+    width: 82%;
+    border: unset;
+    font-size: 15px;
+    padding-left: 7%;
+}
+
+input:focus{
+    outline: unset;
+}
+
+li {
+    cursor: pointer;
+    list-style: none;
+    text-transform: capitalize;
+    padding: 4px 8px;
+    font-size: 18px;
+  }
+
