@@ -1,6 +1,6 @@
 import express from 'express';
 
-const buildingController = require('../controllers/buildingController');
+import buildingController from '../controllers/buildingController';
 
 const router = express.Router();
 
