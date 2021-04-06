@@ -2,10 +2,11 @@ import React from 'react';
 import { useParams } from 'react-router';
 import style from './building.module.css';
 import CategoryUsage from '../buildingCategoryOverview/graphs/CategoryUsage';
+import AverageUsage from './graphs/AverageUsage';
 
 function Building() {
   const { category, id } = useParams<{category: string, id: string}>();
-
+  //
   return (
     <div className={style.building}>
       <div className={`container ${style.energyUsageGraph}`}>
@@ -20,7 +21,9 @@ function Building() {
         {id}
       </div>
       <div className={`container ${style.previousYears}`} />
-      <div className={`container ${style.energyAverage}`} />
+      <div className={`container ${style.energyAverage}`}>
+        <AverageUsage />
+      </div>
       <div className={`container ${style.energyTotal}`} />
       <div className={`container ${style.getTips}`} />
       <div className={`container ${style.energyPercentageSaved}`} />
