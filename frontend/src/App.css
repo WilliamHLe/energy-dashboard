@@ -4,6 +4,8 @@
   --navbar-hover: rgba(115,142,164,0.5);
   --font-color: #fff; 
   --font-color-transparent: rgba(255, 255, 255, 0.6);
+  --container: rgba(209, 209, 209, 0.1);
+  --container-hover: rgba(209, 209, 209, 0.15);
 }
 
 .example{
@@ -12,6 +14,20 @@
 
 body{
   margin: 0;
+}
+h1 {
+  font-size: 0.85em;
+  margin: 0px;
+  font-weight: 500;
+}
+h2 {
+  font-size: 0.85em;
+  font-weight: lighter;
+}
+p {
+  font-size: 0.65em;
+  color: rgba(255, 255, 255, 0.7);
+  font-weight: lighter;
 }
 
 #root {
@@ -35,6 +51,6 @@ body{
 
 /*The transparent container for the components*/ 
 .container{
-  background: rgba(209, 209, 209, 0.1);
+  background: var(--container);
   border-radius: 5px;  
 }
