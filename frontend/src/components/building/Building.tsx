@@ -6,7 +6,7 @@ import AverageUsage from './graphs/AverageUsage';
 
 function Building() {
   const { category, id } = useParams<{category: string, id: string}>();
-  //
+  // s
   return (
     <div className={style.building}>
       <div className={`container ${style.energyUsageGraph}`}>

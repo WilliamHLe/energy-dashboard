@@ -1,46 +1,47 @@
 import React, { useEffect, useState } from 'react';
 import Highcharts from 'highcharts';
 import HighchartsReact from 'highcharts-react-official';
+import style from '../building.module.css';
 
 require('highcharts/highcharts-more')(Highcharts);
 require('highcharts/modules/solid-gauge')(Highcharts);
-// ss
+// ssd
 function AverageUsage() {
   const [data, setData] = useState<any>([]);
+  const [category, setCategory] = useState<any>([]);
   useEffect(() => {
-    const mockData = [{
+    const mockBuilding = {
+      id: '1232131',
       name: 'Blomsterbyen barnehage',
-      data: [32000],
-      tooltip: {
-        valueSuffix: ' km/h',
+      category: {
+        id: '213231',
+        name: 'Barnehage',
       },
+    };
+    const mockAverage = {
+      average: 1234567,
+      averageCategory: 1204567,
+    };
+    const tempData = [{
+      name: mockBuilding.name,
+      data: [mockAverage.average],
       dial: {
         radius: '100%',
         baseWidth: 1,
         rearLength: '20%',
       },
       dataLabels: {
-        format: `<div style="text-align:center"><span style="font-size:17px;color:${
-          (Highcharts.theme) || 'silver'}">{y}</span><br/>`
-            + '<span style="font-size:17px;color:silver">km/h</span></div>',
+        format: `<div class=${style.gauge}><span style="font-size:17px;color:${
+          (Highcharts.theme) || 'silver'}">{y}</span><span style="font-size:17px;color:silver"> KWh</span></div>`,
       },
       showInLegend: true,
-    },
-    {
-      name: 'Gjennomsnitt',
-      data: [29000],
-      type: 'gauge',
-      dial: {
-        baseLength: '100%',
-        radius: '110%',
-        rearLength: '-45%',
-      },
-      dataLabels: {
-        enabled: false,
-      },
-      showInLegend: true,
+    }, {
+      name: mockBuilding.category.name,
+      average: mockAverage.averageCategory,
     }];
-    setData(mockData);
+    console.log(tempData[0]);
+    setData(tempData[0]);
+    setCategory(tempData[1]);
   }, []);
   const options = {
     chart: {
@@ -73,15 +74,33 @@ function AverageUsage() {
       minorTickInterval: null,
       tickPixelInterval: 400,
       tickAmount: 2,
-      title: {
-        y: -80,
-        text: 'Speed',
-      },
+      title: null,
       labels: {
         y: 16,
       },
       min: 0,
-      max: 100000,
+      max: 2000000,
+      plotBands: {
+        from: category.average + 150000,
+        to: category.average + 170000,
+        color: 'black',
+        thickness: '50%',
+        outerRadius: '105%',
+        useHTML: true,
+        zIndex: 5,
+        label: {
+          text: `${category.name}: ${category.average} KWh`,
+          style: {
+            color: 'white',
+          },
+          textAlign: 'center',
+          y: -10, // s
+        },
+        styles: {
+          color: 'white',
+          margin: '50px',
+        },
+      },
     },
     plotOptions: {
       column: {
@@ -91,6 +110,14 @@ function AverageUsage() {
         style: {
           color: 'white',
         },
+        states: {
+          inactive: {
+            opacity: 1,
+          },
+        },
+      },
+      tooltip: {
+        format: '{y} KWh',
       },
       solidgauge: {
         dataLabels: {
@@ -101,14 +128,32 @@ function AverageUsage() {
           format: '{y} KWh',
         },
       },
+      gauge: {
+        dataLabels: {
+          y: -20,
+          borderWidth: 0,
+          useHTML: true,
+          color: 'white',
+          format: '{y} KWh',
+        },
+      },
+      legend: {
+      },
     },
     legend: {
+      enableMouseTracking: false,
       verticalAlign: 'middle',
       y: 100,
       layout: 'vertical',
       itemStyle: {
         color: 'white',
       },
+      states: {
+        hover: {
+          enabled: false,
+        },
+      },
+
     },
     xAxis: {
       labels: {
@@ -118,9 +163,9 @@ function AverageUsage() {
       },
     },
     tooltip: {
-      enabled: false,
+      enabled: true,
     },
-    series: data,
+    series: [data],
   };
   return (
     <HighchartsReact highcharts={Highcharts} options={options} />
