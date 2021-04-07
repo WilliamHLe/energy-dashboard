@@ -21,7 +21,7 @@ function SearchBar() {
   useEffect(() => {
     // TODO: hent data fra api og legg det til state her
     // foreløpig til testing:
-    axios.get('/search?name=')
+    axios.get('/buildings')
       .then((response: any) => {
         setSearch(response.data);
       });
@@ -64,6 +64,7 @@ function SearchBar() {
         items={search.map((item: any) => ({
           id: item.id,
           label: item.name,
+          category: item.category.name,
         }))}
         shouldItemRender={(it: { label: string }, value: string) => it.label.indexOf(value) > -1}
         getItemValue={(item: { label: string; }) => item.label}
@@ -71,7 +72,9 @@ function SearchBar() {
         inputProps={{ placeholder: 'søk etter bygg' }}
         onChange={(e: any) => setInputs(e.target.value)}
         onSelect={selectBuilding}
-        renderItem={(item: { id: string, label: string }, highlighted: boolean) => (
+        renderItem={(item:
+                         { id: string, label: string, category: string, },
+        highlighted: boolean) => (
           <div
             key={item.id}
             style={{
@@ -80,7 +83,8 @@ function SearchBar() {
             }}
           >
             <li>
-              {item.label}
+              {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
+              <a href={`${item.category}/${item.label}`}>{item.label}</a>
             </li>
           </div>
         )}
