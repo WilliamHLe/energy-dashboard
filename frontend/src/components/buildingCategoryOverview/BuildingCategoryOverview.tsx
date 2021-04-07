@@ -14,6 +14,9 @@ function BuildingCategoryOverview() {
       <div className={`container ${style.energyCarriers}`}>
         <EnergyCarriers />
       </div>
+      <div className={`container ${style.energyCarriers}`}>
+        <EnergyCarriers />
+      </div>
       <div className={`container ${style.tips}`} />
     </div>
   );
