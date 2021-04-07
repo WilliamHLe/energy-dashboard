@@ -5,6 +5,7 @@ import swaggerDocument from '../api-documentation/swagger.json';
 import categoryRoutes from './api/routes/categories.routes';
 import connectDb from './util/database';
 import searchRoute from './api/routes/search.routes';
+import buildingsRoute from './api/routes/buildings.routes';
 
 connectDb();
 
@@ -14,6 +15,7 @@ const port = 3000;
 app.use('/search', searchRoute);
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 app.use('/categories', categoryRoutes);
+app.use('/buildings', buildingsRoute);
 
 app.listen(port, () => {
   // eslint-disable-next-line no-console
