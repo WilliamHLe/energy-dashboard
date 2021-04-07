@@ -4,11 +4,11 @@ import Autocomplete from 'react-autocomplete';
 import { Redirect } from 'react-router-dom';
 import style from './navbar.module.css';
 
+const axios = require('axios').default;
+
 function SearchBar() {
-  const [search, setSearch] = useState([{
-    id: '',
-    label: '',
-  }]);
+  // eslint-disable-next-line no-unused-vars
+  const [search, setSearch] = useState<any>([]);
   const [inputs, setInputs] = useState('');
 
   const selectBuilding = (item: any, key: { id: string, label: string }) => {
@@ -21,36 +21,49 @@ function SearchBar() {
   useEffect(() => {
     // TODO: hent data fra api og legg det til state her
     // foreløpig til testing:
-    setSearch([{
+    axios.get('/search?name=')
+      .then((response: any) => {
+        setSearch(response.data);
+      });
+    /* fetch('http://localhost:3000/categories')
+      .then((results) => {
+       y console.log(results);
+      });
+    /* const fetchData = async () => {
+      const results = await fetch(`${process.env.REACT_APP_API_URI}/categories`);
+      console.log(results);
+    };
+    /* setSearch([{
       id: '22',
-      label: 'banan',
+      name: 'banan',
     },
     {
       id: '26',
-      label: 'appelsin',
+      name: 'appelsin',
     },
     {
       id: '25',
-      label: 'eple',
+      name: 'eple',
     },
     {
       id: '27',
-      label: 'pære',
+      name: 'pære',
     },
     {
       id: '28',
-      label: 'drue',
+      name: 'drue',
     },
-    ]);
+    ]); */
+    // fetchData();
   }, []);
 
   return (
     <div className={style.wrapper}>
       <Autocomplete
         className={style.searchbar}
-        items={search.map((item) => ({
+        items={search.map((item: any) => ({
           id: item.id,
-          label: item.label,
+          label: item.name,
         }))}
         shouldItemRender={(it: { label: string }, value: string) => it.label.indexOf(value) > -1}
         getItemValue={(item: { label: string; }) => item.label}

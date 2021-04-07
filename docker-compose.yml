@@ -59,8 +59,8 @@ services:
       dockerfile: Dockerfile
     depends_on: 
       - backend
-    environment: 
-      - API_URI=backend # Same as the backend service name
+    environment:
+      - REACT_APP_API_URI=backend # Same as the backend service name
     ports:
       - "80:3000"
     expose:
