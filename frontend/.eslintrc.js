@@ -9,7 +9,7 @@ module.exports = {
     document: false,
   },
   rules: {
-    'linebreak-style': ['error', (process.platform === 'win32' ? 'windows' : 'unix')],
+    'linebreak-style': ['error', 'unix'],
     'react/jsx-filename-extension': [2, { extensions: ['.js', '.jsx', '.ts', '.tsx'] }],
     'import/no-unresolved': 0,
     'import/extensions': 0,

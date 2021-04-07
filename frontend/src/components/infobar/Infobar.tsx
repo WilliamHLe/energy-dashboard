@@ -25,7 +25,7 @@ const InfoBar = () => {
   const { category } = useParams<{category:string | undefined}>();
   return (
     <div className={style.infobar}>
-      <p className={style.categoryName}>{category?.toUpperCase() || 'TRONDHEIM KOMMUNE'}</p>
+      <h1 className={style.categoryName}>{category?.toUpperCase() || 'TRONDHEIM KOMMUNE'}</h1>
       <InfoItem heading={`${data.energyUsed} Kwh`} description="Brukt så langt i år" icon={Energy} />
       <InfoItem heading="utregning %" description="Spart så langt sammenlignet med i fjor" icon={Energygoal} />
       <InfoItem heading={`${data.buildingArea} m2`} description="Energioppfølges Trondheim kommune" icon={Squaremeters} />
