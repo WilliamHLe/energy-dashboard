@@ -1,6 +1,9 @@
+import mongoose from 'mongoose';
 import Sensors from '../models/sensors.model';
 
-const sumEnergyUsage = async (buildingId: any, fromDate: string, toDate: string): Promise<any> => {
+const sumEnergyUsage = async (
+  buildingId: mongoose.Types.ObjectId, fromDate: string, toDate: string,
+): Promise<any> => {
   const query = [
     {
       $match: {

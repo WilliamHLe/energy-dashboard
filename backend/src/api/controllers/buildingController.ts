@@ -1,6 +1,6 @@
 import { NextFunction, Request, Response } from 'express';
 import mongoose from 'mongoose';
-import sumEnergyUsage from '../services/buildingService';
+import buildingsService from '../services/buildings.service';
 
 const getTotalEnergyBuilding = async (req: Request, res: Response, next: NextFunction) => {
   const buildingId = mongoose.Types.ObjectId(req.params.id);
@@ -8,7 +8,7 @@ const getTotalEnergyBuilding = async (req: Request, res: Response, next: NextFun
   const toDate = req.query.to_date as string;
 
   try {
-    const buildings = await sumEnergyUsage(buildingId, fromDate, toDate);
+    const buildings = await buildingsService.sumEnergyUsage(buildingId, fromDate, toDate);
     if (buildings) {
       res.send(buildings[0]);
     }
