@@ -3,6 +3,7 @@ import { useParams } from 'react-router';
 import style from './building.module.css';
 import CategoryUsage from '../buildingCategoryOverview/graphs/CategoryUsage';
 import AverageUsage from './graphs/AverageUsage';
+import HeatMapChart from './heatmap/HeatmapChart';
 
 function Building() {
   const { category, id } = useParams<{category: string, id: string}>();
@@ -20,7 +21,9 @@ function Building() {
         {' '}
         {id}
       </div>
-      <div className={`container ${style.previousYears}`} />
+      <div className={`container ${style.previousYears}`}>
+        <HeatMapChart />
+      </div>
       <div className={`container ${style.energyAverage}`}>
         <AverageUsage />
       </div>
