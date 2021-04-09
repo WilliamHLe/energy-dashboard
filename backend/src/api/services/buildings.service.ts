@@ -2,13 +2,12 @@ import mongoose from 'mongoose';
 import Sensors from '../models/sensors.model';
 
 const sumEnergyUsage = async (
-  buildingId: mongoose.Types.ObjectId, fromDate: string, toDate: string,
+  buildingId?: mongoose.Types.ObjectId, fromDate?: string, toDate?: string,
 ): Promise<any> => {
   const query = [
     {
       $match: {
-        building: buildingId,
-        unit_of_measurement: 'kWh',
+        type: 'ForbruksmÃ¥ler',
       },
     },
     {
@@ -17,6 +16,12 @@ const sumEnergyUsage = async (
         total: {
           $sum: { $sum: '$measurements.measurement' },
         },
+      },
+    },
+    {
+      $project: {
+        _id: 0,
+        total: 1,
       },
     },
   ];
@@ -42,10 +47,33 @@ const sumEnergyUsage = async (
 
     query.splice(1, 0, filter);
   }
+
+  if (buildingId) {
+    const match: any = {
+      $match: {
+        building: buildingId,
+        type: 'ForbruksmÃ¥ler',
+      },
+    };
+
+    query.splice(0, 1, match);
+  }
+
   const results = await Sensors.aggregate(query);
   return results;
 };
 
+/* const sumEnergyUsageBySlug = async (
+  buildingIds: string[], fromDate?: string, toDate?: string,
+): Promise<any> => {
+  let query: object[] = [
+    {
+
+    }
+  ]
+}; */
+
 export default {
   sumEnergyUsage,
+  // sumEnergyUsageBySlug,
 };

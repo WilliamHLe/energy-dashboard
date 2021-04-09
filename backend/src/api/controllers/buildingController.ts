@@ -1,10 +1,15 @@
 import { NextFunction, Request, Response } from 'express';
 import mongoose from 'mongoose';
 import buildingsService from '../services/buildings.service';
-import Building, { IBuilding } from '../models/buildings.model';
+// import Building, { IBuilding } from '../models/buildings.model';
+// import Category, { ICategory } from '../models/categories.model';
 
-const getTotalEnergyBuilding = async (req: Request, res: Response, next: NextFunction) => {
-  const buildingId = mongoose.Types.ObjectId(req.params.id);
+/*
+  This will return total energy for a specific buildingId or
+  all buildings if no buildingId is defined
+*/
+const getTotalEnergyByBuilding = async (req: Request, res: Response, next: NextFunction) => {
+  const buildingId = req.params.id ? mongoose.Types.ObjectId(req.params.id) : undefined;
   const fromDate = req.query.from_date as string;
   const toDate = req.query.to_date as string;
 
@@ -18,23 +23,27 @@ const getTotalEnergyBuilding = async (req: Request, res: Response, next: NextFun
   }
 };
 
-const getTotalEnergyBuildingBySlug = async (req: Request, res: Response, next: NextFunction) => {
+/* const getTotalEnergyBySlug = async (req: Request, res: Response, next: NextFunction) => {
   const fromDate = req.query.from_date as string;
   const toDate = req.query.to_date as string;
-  const { slug } = req.params;
 
   try {
-    const building: IBuilding | null = await Building.findOne({ name: slug });
-    if (building) {
-      const buildings = await buildingsService.sumEnergyUsage(building.id, fromDate, toDate);
-      res.send(buildings[0]);
+    const name: RegExp = new RegExp(req.params.slug, 'i');
+    const category: ICategory | null = await Category.findOne({ name: { $regex: name } });
+
+    if (category) {
+      const buildings = await Building.find({ category: category.id });
+      const total = await buildingsService.sumEnergyUsage();
+
+      res.send(total);
     }
+
   } catch (e) {
     next(e);
   }
-};
+}; */
 
 export default {
-  getTotalEnergyBuilding,
-  getTotalEnergyBuildingBySlug,
+  getTotalEnergyByBuilding,
+  // getTotalEnergyBySlug,
 };

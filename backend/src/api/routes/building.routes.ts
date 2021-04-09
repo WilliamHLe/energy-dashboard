@@ -4,6 +4,6 @@ import buildingController from '../controllers/buildingController';
 
 const router = express.Router();
 
-router.get('/:id/energy/total', buildingController.getTotalEnergyBuilding);
+router.get('/:id/energy/total', buildingController.getTotalEnergyByBuilding);
 
 export default router;
