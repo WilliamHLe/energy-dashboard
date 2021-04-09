@@ -1,11 +1,12 @@
 import React from 'react';
-import { useParams } from 'react-router';
+// import { useParams } from 'react-router';
 import style from './building.module.css';
 import CategoryUsage from '../buildingCategoryOverview/graphs/CategoryUsage';
 import AverageUsage from './graphs/AverageUsage';
+import Compare from './compare/compare';
 
 function Building() {
-  const { category, id } = useParams<{category: string, id: string}>();
+  // const { category, id } = useParams<{ category: string, id: string }>();
   // s
   return (
     <div className={style.building}>
@@ -13,12 +14,7 @@ function Building() {
         <CategoryUsage />
       </div>
       <div className={`container ${style.compareBuildings}`}>
-        Bygg type:
-        {' '}
-        {category}
-        , ID:
-        {' '}
-        {id}
+        <Compare />
       </div>
       <div className={`container ${style.previousYears}`} />
       <div className={`container ${style.energyAverage}`}>
