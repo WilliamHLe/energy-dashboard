@@ -1,60 +1,25 @@
 import React, { useEffect, useState } from 'react';
 // @ts-ignore
 import Autocomplete from 'react-autocomplete';
-import { Redirect } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import style from './navbar.module.css';
 
+// eslint-disable-next-line no-unused-vars
 const axios = require('axios').default;
 
 function SearchBar() {
-  // eslint-disable-next-line no-unused-vars
   const [search, setSearch] = useState<any>([]);
   const [inputs, setInputs] = useState('');
 
-  const selectBuilding = (item: any, key: { id: string, label: string }) => {
-    console.log(key);
-    console.log(key.id); // henter ut id til byggg
-    console.log(key.label); // henter ut navn til bygg
-    return <Redirect to="/skoler" />;
-  };
-
+  console.log(process.env.REACT_APP_API_URI);
   useEffect(() => {
     // TODO: hent data fra api og legg det til state her
     // foreløpig til testing:
-    axios.get('/buildings')
-      .then((response: any) => {
-        setSearch(response.data);
-      });
-    /* fetch('http://localhost:3000/categories')
-      .then((results) => {
-       y console.log(results);
-      });
-    /* const fetchData = async () => {
-      const results = await fetch(`${process.env.REACT_APP_API_URI}/categories`);
-      console.log(results);
+    const fetchdata = async () => {
+      const response = await axios.get('/buildings');
+      setSearch(response.data);
     };
-    /* setSearch([{
-      id: '22',
-      name: 'banan',
-    },
-    {
-      id: '26',
-      name: 'appelsin',
-    },
-    {
-      id: '25',
-      name: 'eple',
-    },
-    {
-      id: '27',
-      name: 'pære',
-    },
-    {
-      id: '28',
-      name: 'drue',
-    },
-    ]); */
-    // fetchData();
+    fetchdata();
   }, []);
 
   return (
@@ -71,7 +36,17 @@ function SearchBar() {
         value={inputs}
         inputProps={{ placeholder: 'søk etter bygg' }}
         onChange={(e: any) => setInputs(e.target.value)}
-        onSelect={selectBuilding}
+        menuStyle={{
+          borderRadius: '3px',
+          boxShadow: '0 2px 12px rgba(0, 0, 0, 0.1)',
+          background: 'rgba(255, 255, 255, 0.9)',
+          padding: '2px 0',
+          fontSize: '90%',
+          position: 'fixed',
+          overflow: 'auto',
+          maxHeight: '50%',
+          zIndex: 10,
+        }}
         renderItem={(item:
                          { id: string, label: string, category: string, },
         highlighted: boolean) => (
@@ -83,8 +58,7 @@ function SearchBar() {
             }}
           >
             <li>
-              {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
-              <a href={`${item.category}/${item.label}`}>{item.label}</a>
+              <Link style={{ textDecoration: 'none', color: 'black' }} to={`${item.category}/${item.label}`}>{item.label}</Link>
             </li>
           </div>
         )}
