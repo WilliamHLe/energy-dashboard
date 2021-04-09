@@ -1,9 +1,9 @@
 import mongoose from 'mongoose';
-import Sensors from '../models/sensors.model';
+import Sensor from '../models/sensors.model';
 
 const sumEnergyUsage = async (
   buildingId?: mongoose.Types.ObjectId, fromDate?: string, toDate?: string,
-): Promise<any> => {
+): Promise<number> => {
   const query = [
     {
       $match: {
@@ -49,7 +49,7 @@ const sumEnergyUsage = async (
   }
 
   if (buildingId) {
-    const match: any = {
+    const match = {
       $match: {
         building: buildingId,
         type: 'ForbruksmÃ¥ler',
@@ -59,21 +59,62 @@ const sumEnergyUsage = async (
     query.splice(0, 1, match);
   }
 
-  const results = await Sensors.aggregate(query);
-  return results;
+  const results = await Sensor.aggregate(query);
+  return results[0];
 };
 
-/* const sumEnergyUsageBySlug = async (
+const sumEnergyUsageBySlug = async (
   buildingIds: string[], fromDate?: string, toDate?: string,
-): Promise<any> => {
-  let query: object[] = [
+): Promise<number> => {
+  const query = [
     {
+      $match: {
+        building: { $in: buildingIds.map((id) => mongoose.Types.ObjectId(id)) },
+        type: 'ForbruksmÃ¥ler',
+      },
+    },
+    {
+      $group: {
+        _id: null,
+        total: {
+          $sum: { $sum: '$measurements.measurement' },
+        },
+      },
+    },
+    {
+      $project: {
+        _id: 0,
+        total: 1,
+      },
+    },
+  ];
 
-    }
-  ]
-}; */
+  if (fromDate || toDate) {
+    const filter: any = {
+      $project: {
+        measurements: {
+          $filter: {
+            input: '$measurements',
+            as: 'measurement',
+            cond: {
+              $and: [
+                fromDate ? { $gte: ['$$measurement.date', new Date(fromDate as string)] } : {},
+                toDate ? { $lte: ['$$measurement.date', new Date(toDate as string)] } : {},
+              ],
+            },
+          },
+        },
+      },
+    };
+
+    query.splice(1, 0, filter);
+  }
+
+  const results = await Sensor.aggregate(query);
+  return results[0];
+};
 
 export default {
   sumEnergyUsage,
-  // sumEnergyUsageBySlug,
+  sumEnergyUsageBySlug,
 };

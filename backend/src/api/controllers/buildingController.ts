@@ -1,49 +1,67 @@
 import { NextFunction, Request, Response } from 'express';
 import mongoose from 'mongoose';
 import buildingsService from '../services/buildings.service';
-// import Building, { IBuilding } from '../models/buildings.model';
-// import Category, { ICategory } from '../models/categories.model';
+import Building, { IBuilding } from '../models/buildings.model';
+import Category, { ICategory } from '../models/categories.model';
 
 /*
   This will return total energy for a specific buildingId or
   all buildings if no buildingId is defined
 */
-const getTotalEnergyByBuilding = async (req: Request, res: Response, next: NextFunction) => {
-  const buildingId = req.params.id ? mongoose.Types.ObjectId(req.params.id) : undefined;
+const getTotalEnergyByBuilding = async (
+  req: Request, res: Response, next: NextFunction,
+): Promise<void> => {
   const fromDate = req.query.from_date as string;
   const toDate = req.query.to_date as string;
+  const buildingId = req.params.id ? mongoose.Types.ObjectId(req.params.id) : undefined;
 
   try {
-    const buildings = await buildingsService.sumEnergyUsage(buildingId, fromDate, toDate);
-    if (buildings) {
-      res.send(buildings[0]);
+    const totalEnergy: number = await buildingsService.sumEnergyUsage(
+      buildingId, fromDate, toDate,
+    );
+    if (totalEnergy) {
+      res.send(totalEnergy);
     }
   } catch (e) {
     next(e);
   }
 };
 
-/* const getTotalEnergyBySlug = async (req: Request, res: Response, next: NextFunction) => {
+const getTotalEnergyBySlug = async (
+  req: Request, res: Response, next: NextFunction,
+): Promise<void> => {
   const fromDate = req.query.from_date as string;
   const toDate = req.query.to_date as string;
+  const slug = req.params.slug as string;
 
   try {
-    const name: RegExp = new RegExp(req.params.slug, 'i');
-    const category: ICategory | null = await Category.findOne({ name: { $regex: name } });
+    const category: ICategory | null = await Category.findOne({ name: slug });
 
     if (category) {
-      const buildings = await Building.find({ category: category.id });
-      const total = await buildingsService.sumEnergyUsage();
+      const buildings: string[] = await Building.find({ category: category.id }).distinct('_id');
+      const totalEnergy: number = await buildingsService.sumEnergyUsageBySlug(
+        buildings, fromDate, toDate,
+      );
 
-      res.send(total);
+      res.send(totalEnergy);
+    } else {
+      const regex: RegExp = new RegExp(slug, 'i');
+      const building: IBuilding | null = await Building.findOne({ name: { $regex: regex } });
+
+      if (building) {
+        const totalEnergy: number = await buildingsService.sumEnergyUsageBySlug(
+          [building.id], fromDate, toDate,
+        );
+
+        res.send(totalEnergy);
+      }
     }
-
   } catch (e) {
     next(e);
   }
-}; */
+};
 
 export default {
   getTotalEnergyByBuilding,
-  // getTotalEnergyBySlug,
+  getTotalEnergyBySlug,
 };

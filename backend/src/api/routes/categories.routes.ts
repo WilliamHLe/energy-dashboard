@@ -1,12 +1,12 @@
 import express from 'express';
 
 import controllers from '../controllers/categories.controllers';
-// import buildingController from '../controllers/buildingController';
+import buildingController from '../controllers/buildingController';
 
 const router = express.Router();
 
 router.get('/', controllers.getAllCategories);
 router.get('/:name', controllers.getCategoryByName);
-// router.get('/:slug/energy/total', buildingController.getTotalEnergyBySlug);
+router.get('/:slug/energy/total', buildingController.getTotalEnergyBySlug);
 
 export default router;
