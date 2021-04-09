@@ -5,7 +5,6 @@ import HighchartsReact from 'highcharts-react-official';
 function CategoryUsage() {
   const [data, setData] = useState<any>([]);
   useEffect(() => {
-    // s
     const mockData = [
       {
         category: {

@@ -42,3 +42,8 @@
 .badges {
     grid-area: badges;
 }
+.gauge {
+    text-align:center;
+    border-radius: 4px;
+    padding:5px;
+}
