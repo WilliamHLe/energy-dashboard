@@ -1,6 +1,6 @@
 import { NextFunction, Request, Response } from 'express';
 import mongoose from 'mongoose';
-import buildingsService from '../services/buildings.service';
+import buildingService from '../services/buildings.service';
 import Building, { IBuilding } from '../models/buildings.model';
 import Category, { ICategory } from '../models/categories.model';
 
@@ -16,7 +16,7 @@ const getTotalEnergyByBuilding = async (
   const buildingId = req.params.id ? mongoose.Types.ObjectId(req.params.id) : undefined;
 
   try {
-    const totalEnergy: number = await buildingsService.sumEnergyUsage(
+    const totalEnergy: number = await buildingService.sumEnergyUsage(
       buildingId, fromDate, toDate,
     );
     if (totalEnergy) {
@@ -39,7 +39,7 @@ const getTotalEnergyBySlug = async (
 
     if (category) {
       const buildings: string[] = await Building.find({ category: category.id }).distinct('_id');
-      const totalEnergy: number = await buildingsService.sumEnergyUsageBySlug(
+      const totalEnergy: number = await buildingService.sumEnergyUsageBySlug(
         buildings, fromDate, toDate,
       );
 
@@ -49,7 +49,7 @@ const getTotalEnergyBySlug = async (
       const building: IBuilding | null = await Building.findOne({ name: { $regex: regex } });
 
       if (building) {
-        const totalEnergy: number = await buildingsService.sumEnergyUsageBySlug(
+        const totalEnergy: number = await buildingService.sumEnergyUsageBySlug(
           [building.id], fromDate, toDate,
         );
 
