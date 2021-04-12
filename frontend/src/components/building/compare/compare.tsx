@@ -159,7 +159,7 @@ function Compare() {
 
   return (
     <div className={`container ${style.wrapper}`}>
-      <h2>Sammenlign deg med andre lignende bygg </h2>
+      <h2 className={style.title}>Sammenlign deg med andre lignende bygg </h2>
       <div>
         {
                     checkedItems.map((item, index) => (
