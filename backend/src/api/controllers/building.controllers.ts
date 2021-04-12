@@ -58,7 +58,9 @@ const getTotalEnergyBySlug = async (
         buildings, fromDate, toDate,
       );
 
-      res.send(totalEnergy);
+      res.send({
+        total: totalEnergy,
+      });
     } else {
       const regex: RegExp = new RegExp(slug, 'i');
       const building: IBuilding | null = await Building.findOne({ name: { $regex: regex } });
@@ -68,7 +70,9 @@ const getTotalEnergyBySlug = async (
           [building.id], fromDate, toDate,
         );
 
-        res.send(totalEnergy);
+        res.send({
+          total: totalEnergy,
+        });
       }
     }
   } catch (e) {
