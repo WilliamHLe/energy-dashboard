@@ -6,7 +6,7 @@
     padding: 30px 45px 15px 45px;
 }
 .buildingList{
-    height: 35vh;
+    height: 24vh;
     overflow-y: scroll;
 }
 .buildingCard {

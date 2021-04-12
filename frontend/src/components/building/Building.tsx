@@ -3,7 +3,7 @@ import { useParams } from 'react-router';
 import style from './building.module.css';
 import CategoryUsage from '../buildingCategoryOverview/graphs/CategoryUsage';
 import AverageUsage from './graphs/AverageUsage';
-import Compare from './compare/compare';
+import Compare from './compare/Compare';
 
 function Building() {
   const { category, id } = useParams<{ category: string, id: string }>();
