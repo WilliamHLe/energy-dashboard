@@ -4,10 +4,24 @@ import buildingService from '../services/buildings.service';
 import Building, { IBuilding } from '../models/buildings.model';
 import Category, { ICategory } from '../models/categories.model';
 
-/*
-  This will return total energy for a specific buildingId or
-  all buildings if no buildingId is defined
-*/
+// Get total energy of each building category
+const getTotalEnergy = async (
+  req: Request, res: Response, next: NextFunction,
+): Promise<void> => {
+  const fromDate = req.query.from_date as string;
+  const toDate = req.query.to_date as string;
+  try {
+    const totalEnergy = await buildingService.sumEnergyUsageByCategory(
+      fromDate, toDate,
+    );
+
+    res.send(totalEnergy);
+  } catch (e) {
+    next(e);
+  }
+};
+
+// Get total energy by building ID
 const getTotalEnergyByBuilding = async (
   req: Request, res: Response, next: NextFunction,
 ): Promise<void> => {
@@ -27,6 +41,7 @@ const getTotalEnergyByBuilding = async (
   }
 };
 
+// Get total energy by category or building name
 const getTotalEnergyBySlug = async (
   req: Request, res: Response, next: NextFunction,
 ): Promise<void> => {
@@ -64,4 +79,5 @@ const getTotalEnergyBySlug = async (
 export default {
   getTotalEnergyByBuilding,
   getTotalEnergyBySlug,
+  getTotalEnergy,
 };

@@ -1,5 +1,7 @@
 import mongoose from 'mongoose';
 import Sensor from '../models/sensors.model';
+import { ICategory } from '../models/categories.model';
+import Building from '../models/buildings.model';
 
 const sumEnergyUsage = async (
   buildingId?: mongoose.Types.ObjectId, fromDate?: string, toDate?: string,
@@ -111,10 +113,52 @@ const sumEnergyUsageBySlug = async (
   }
 
   const results = await Sensor.aggregate(query);
-  return results[0];
+  return results[0].total;
+};
+
+export interface BuildingCategory {
+  category: ICategory,
+  buildings: string[]
+}
+
+const getBuildingsGroupedByCategory = async (): Promise<BuildingCategory[]> => {
+  const query = [
+    {
+      $group: {
+        _id: '$category',
+        buildings: { $push: '$_id' },
+      },
+    },
+    {
+      $lookup: {
+        from: 'categories',
+        localField: '_id',
+        foreignField: '_id',
+        as: 'category',
+      },
+    },
+    {
+      $unwind: '$category',
+    },
+  ];
+
+  return Building.aggregate(query);
+};
+
+const sumEnergyUsageByCategory = async (fromDate?: string, toDate?: string): Promise<any> => {
+  const buildingsGroupedByCategory = await getBuildingsGroupedByCategory();
+
+  return Promise.all(
+    buildingsGroupedByCategory.map(async (buildingCategory) => ({
+      category: buildingCategory.category,
+      total: await sumEnergyUsageBySlug(buildingCategory.buildings, fromDate, toDate),
+    })),
+  );
 };
 
 export default {
   sumEnergyUsage,
   sumEnergyUsageBySlug,
+  getBuildingsGroupedByCategory,
+  sumEnergyUsageByCategory,
 };
