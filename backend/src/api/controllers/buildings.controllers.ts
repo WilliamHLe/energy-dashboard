@@ -7,7 +7,23 @@ const getAllBuildings = async (
   next: NextFunction,
 ): Promise<void> => {
   try {
-    const buildings = await Building.find();
+    const categoryId: string | undefined = req.query.category as string;
+    let buildings;
+
+    if (categoryId) {
+      buildings = await Building.find({ category: categoryId }).lean();
+    } else {
+      buildings = await Building.find().lean();
+    }
+
+    // Temporary fix for missing values in database
+    buildings = buildings.map((building) => {
+      const b = building;
+      b.tek = 'TEK17';
+      b.energyLabel = 'A';
+      return b;
+    });
+
     res.send(buildings);
   } catch (err) {
     next(err);
@@ -22,7 +38,7 @@ const getBuildingById = async (
   try {
     const building = await Building.findOne({
       _id: req.params.id,
-    });
+    }).lean();
     res.send(building);
   } catch (err) {
     next(err);

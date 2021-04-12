@@ -25,7 +25,14 @@ const BuildingSchema: Schema = new Schema({
 });
 
 export interface IBuilding extends Document{
-  name: string
+  name: string;
+  year: number;
+  area: number;
+  categoryIdESave: number;
+  categoryDescription: string;
+  category: string;
+  tek?: string
+  energyLabel?: string
 }
 
 export default mongoose.model<IBuilding>('Building', BuildingSchema);
