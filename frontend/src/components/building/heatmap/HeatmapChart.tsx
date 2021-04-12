@@ -6,37 +6,38 @@ export default function HeatMapChart() {
   const xLabels = ['jan', 'feb', 'mar', 'apr', 'mai', 'jun', 'jul', 'aug', 'sep', 'okt', 'nov', 'des'];
   const yLabels = ['4', '3', '2', '1'];
 
+  // mock data
   const data = [[1, 3.1, 2.3, 1.9, 1, 3, 2, 1, 1, 3, 2, 1],
     [2, 4, 0, -5, 2, 4, 0, -5, 2, 4, 0, -5],
     [1, 2, -1, 3, 1, 2, -1, 3, 1, 2, -1, 3],
-    [-1, 2, 5, 6, -1, 2, 5, 6, -1, 2, 5, 6]];
+    [-1, 2, 5, 6, -1, 2, 5, 6, -1, 2, 5]];
 
   return (
     <>
-      <div style={{ marginBottom: '15px', marginLeft: '25px', marginTop: '10px' }}>
+      <div className={style.labels}>
         <h3>
           Forbruk per uke kontra i fjor
         </h3>
-        <div className={style.label} style={{ display: 'flex', alignItems: 'center', marginTop: '.5em' }}>
+        <div className={style.colorLabel}>
           <svg height="0.6em" width="0.6em"><circle cx="0.3em" cy="0.35em" r="0.25em" fill="rgba(149, 220, 237, 1)" /></svg>
-          <h4 className={style.labelText} style={{ marginLeft: '20px' }}>
+          <h4 className={style.labelText}>
             Nådd energisparemålet på 2%
           </h4>
         </div>
-        <div className={style.label} style={{ display: 'flex', alignItems: 'center' }}>
+        <div className={style.colorLabel}>
           <svg height="0.6em" width="0.6em"><circle cx="0.3em" cy="0.35em" r="0.25em" fill="rgba(92, 194, 219, 1)" /></svg>
-          <h4 className={style.labelText} style={{ marginLeft: '20px' }}>
+          <h4 className={style.labelText}>
             Brukt mindre energi, ikke nådd energisparemålet
           </h4>
         </div>
-        <div className={style.label} style={{ display: 'flex', alignItems: 'center' }}>
+        <div className={style.colorLabel}>
           <svg height="0.6em" width="0.6em"><circle cx="0.3em" cy="0.35em" r="0.25em" fill="rgba(49, 97, 114, 1)" /></svg>
-          <h4 className={style.labelText} style={{ marginLeft: '20px' }}>
+          <h4 className={style.labelText}>
             brukt mer energi kontra i fjor
           </h4>
         </div>
       </div>
-      <div style={{ padding: '5px 25px' }}>
+      <div className={style.heatmap}>
         <HeatMapGrid
           data={data}
           xLabels={xLabels}
