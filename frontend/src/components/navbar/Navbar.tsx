@@ -1,12 +1,25 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import style from './navbar.module.css';
 import SearchBar from './SearchBar';
 
+const axios = require('axios').default;
+
 export default function Navbar() {
+  const [search, setSearch] = useState<any>([]);
+  useEffect(() => {
+    // TODO: hent data fra api og legg det til state her
+    // foreløpig til testing:
+    const fetchdata = async () => {
+      const response = await axios.get('/buildings');
+      setSearch(response.data);
+    };
+    fetchdata();
+  }, []);
+
   return (
     <nav className={style.container}>
-      <SearchBar />
+      <SearchBar data={search} />
       <NavLink className={`${style.menuitems} ${style.oversikt}`} activeClassName={`${style.selected} ${style.oversiktF}`} exact to="/">Oversikt</NavLink>
       <NavLink className={`${style.menuitems} ${style.skoler}`} activeClassName={`${style.selected} ${style.skolerF}`} to="/skoler">Skoler</NavLink>
 

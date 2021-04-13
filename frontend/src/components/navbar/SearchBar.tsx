@@ -1,32 +1,18 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 // @ts-ignore
 import Autocomplete from 'react-autocomplete';
 import { Link } from 'react-router-dom';
 import style from './navbar.module.css';
 
-// eslint-disable-next-line no-unused-vars
-const axios = require('axios').default;
-
-function SearchBar() {
-  const [search, setSearch] = useState<any>([]);
+function SearchBar(props: { data: any; }) {
   const [inputs, setInputs] = useState('');
-
-  console.log(process.env.REACT_APP_API_URI);
-  useEffect(() => {
-    // TODO: hent data fra api og legg det til state her
-    // foreløpig til testing:
-    const fetchdata = async () => {
-      const response = await axios.get('/buildings');
-      setSearch(response.data);
-    };
-    fetchdata();
-  }, []);
+  const { data } = props;
 
   return (
     <div className={style.wrapper}>
       <Autocomplete
         className={style.searchbar}
-        items={search.map((item: any) => ({
+        items={data.map((item: any) => ({
           id: item.id,
           label: item.name,
           category: item.category.name,
