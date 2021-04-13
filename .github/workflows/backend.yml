@@ -1,14 +1,19 @@
 ###
 # This CI is only run if there are changes on the backend server
 # It will perform linting and matrix testing
-### 
+###
 
 name: Backend CI
 
 on:
   pull_request:
     paths:
-    - './backend**'
+      - "backend/**"
+  push:
+    branches:
+      - main
+    paths:
+      - "backend/**"
 
 defaults:
   run:

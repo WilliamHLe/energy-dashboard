@@ -1,34 +1,25 @@
 import express from 'express';
-import mongoose from 'mongoose';
 import swaggerUi from 'swagger-ui-express';
+
 import swaggerDocument from '../api-documentation/swagger.json';
+import categoryRoutes from './api/routes/categories.routes';
+import connectDb from './util/database';
+import searchRoute from './api/routes/search.routes';
+import energyRoutes from './api/routes/energy.routes';
+import buildingRoutes from './api/routes/buildings.routes';
 
-// Example mongodb connection
-if (process.env.DB_HOST && process.env.DB_DATABASE) { // TODO: Add username/password
-  mongoose.connect(
-    `mongodb://${process.env.DB_USERNAME}:${process.env.DB_PASSWORD}@${process.env.DB_HOST}/${process.env.DB_DATABASE}`,
-    {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-    },
-  );
+connectDb();
 
-  const db = mongoose.connection;
-  db.on('error', console.error.bind(console, 'Failed connecting database:'));
-  db.once('open', () => console.log('Connected to database'));
-} else {
-  console.log('Running without database connection.');
-}
-
-// Example express server
 const app = express();
 const port = 3000;
 
+app.use('/search', searchRoute);
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
-app.get('/', (req, res) => {
-  res.send(`DB_HOST${process.env.DB_HOST}`);
-});
+app.use('/categories', categoryRoutes);
+app.use('/energy', energyRoutes);
+app.use('/buildings', buildingRoutes);
 
 app.listen(port, () => {
-  console.log(`express is listening on port ${port}`);
+  // eslint-disable-next-line no-console
+  console.log(`Express is listening on port ${port}`);
 });

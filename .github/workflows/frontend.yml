@@ -8,7 +8,12 @@ name: Frontend CI
 on:
   pull_request:
     paths:
-    - './frontend**'
+      - "frontend/**"
+  push:
+    branches:
+      - main
+    paths:
+      - "frontend/**"
 
 defaults:
   run:
@@ -32,7 +37,7 @@ jobs:
       - name: Lint
         run: npm run lint
 
-  test: 
+  test:
     runs-on: ubuntu-latest
 
     needs: lint

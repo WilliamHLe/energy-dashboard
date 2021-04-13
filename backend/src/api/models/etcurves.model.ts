@@ -7,7 +7,7 @@ const etcurvesSchema = new Schema({
     ref: 'Building',
   },
   etcurves: [{
-    fromDate: String,
+    fromDate: Date,
     dx1: Number,
     dx2: Number,
     dx3: Number,
@@ -33,7 +33,7 @@ const etcurvesSchema = new Schema({
 });
 
 interface IEtcurveObjectTypes {
-  fromDate: string;
+  fromDate: Date;
   dx1: number;
   dx2: number;
   dx3: number;

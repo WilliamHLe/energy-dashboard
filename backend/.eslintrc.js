@@ -26,5 +26,6 @@ module.exports = {
     'jest/prefer-to-have-length': 'warn',
     'jest/valid-expect': 'error',
     'import/extensions': 'off',
+    'no-console': ['warn', { allow: ['warn', 'error'] }],
   },
 };

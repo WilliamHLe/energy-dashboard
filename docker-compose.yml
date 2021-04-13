@@ -41,7 +41,6 @@ services:
       - BRICK_HOST=hoddb # Same as the hoddb service name
       - BRICK_PORT=47808 # Same as the hoddb service port
       - DB_HOST=mongodb # Same as the mongodb service name
-      - DB_PORT=27017 # Same as the mongodb service port
       - DB_DATABASE=${DB_DATABASE}
       - DB_USERNAME=${DB_USERNAME}
       - DB_PASSWORD=${DB_PASSWORD}
@@ -61,7 +60,7 @@ services:
     depends_on: 
       - backend
     environment: 
-      - API_URI=backend # Same as the backend service name
+      - REACT_APP_API_URI=backend # Same as the backend service name
     ports:
       - "80:3000"
     expose:

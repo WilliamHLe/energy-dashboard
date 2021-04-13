@@ -22,7 +22,7 @@ const SensorSchema:Schema = new Schema({
     ref: 'Building',
   },
   measurements: [{
-    date: String,
+    date: Date,
     measurement: Number,
   }],
 }, {
@@ -30,7 +30,7 @@ const SensorSchema:Schema = new Schema({
 });
 
 interface IMeasurementsObjectTypes {
-    date: string;
+    date: Date;
     measurement:number;
 }
 

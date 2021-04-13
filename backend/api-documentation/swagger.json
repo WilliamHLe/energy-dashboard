@@ -95,7 +95,7 @@
         ],
         "parameters": [
           {
-            "name": "category_id",
+            "name": "category",
             "in": "query",
             "description": "ID of the category of buildings to return",
             "required": false,
@@ -674,7 +674,6 @@
               "type": "array",
               "items": {
                 "$ref": "#/definitions/Highscores"
-
               }
             }
           }
@@ -1105,7 +1104,6 @@
               "type": "array",
               "items": {
                 "$ref": "#/definitions/Highscores"
-
               }
             }
           }
@@ -1269,7 +1267,24 @@
           "example": "Solsiden Barnehage"
         },
         "category": {
-          "$ref": "#/definitions/Category"
+          "type": "string",
+          "example": "4edd40c86762e0fb12000003"
+        },
+        "year": {
+          "type": "number",
+          "example": 2018
+        },
+        "area": {
+          "type": "number",
+          "example": 123456
+        },
+        "tek": {
+          "type": "string",
+          "example": "TEK17"
+        },
+        "energyLabel": {
+          "type": "string",
+          "example": "A"
         }
       }
     },

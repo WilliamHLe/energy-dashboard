@@ -3,19 +3,19 @@
     max-height: calc(100vh - 200px);
     display: grid;
     grid-template-columns: repeat(13, 1fr);
-    grid-template-rows: repeat(9, 1fr);
+    grid-template-rows: repeat(9, 6.5vh);
     column-gap: 20px;
     row-gap: 20px;
     grid-template-areas: 
     "usage usage usage usage usage usage usage usage usage compare compare compare compare"
     "usage usage usage usage usage usage usage usage usage compare compare compare compare"
     "usage usage usage usage usage usage usage usage usage compare compare compare compare"
-    "usage usage usage usage usage usage usage usage usage previous previous previous previous"
-    "usage usage usage usage usage usage usage usage usage previous previous previous previous"
-    "average average average total total total percentage percentage percentage previous previous previous previous"
-    "average average average total total total percentage percentage percentage badges badges badges badges"
-    "average average average total total total percentage percentage percentage badges badges badges badges"
-    "average average average tips tips tips percentage percentage percentage badges badges badges badges"
+    "usage usage usage usage usage usage usage usage usage compare compare compare compare"
+    "usage usage usage usage usage usage usage usage usage compare compare compare compare"
+    "average average average percentage percentage percentage badges badges badges previous previous previous previous"
+    "average average average percentage percentage percentage badges badges badges previous previous previous previous"
+    "average average average percentage percentage percentage badges badges badges previous previous previous previous"
+    "average average average percentage percentage percentage badges badges badges previous previous previous previous"
 }
 .energyUsageGraph {
     grid-area: usage;
@@ -41,4 +41,9 @@
 }
 .badges {
     grid-area: badges;
+}
+.gauge {
+    text-align:center;
+    border-radius: 4px;
+    padding:5px;
 }
