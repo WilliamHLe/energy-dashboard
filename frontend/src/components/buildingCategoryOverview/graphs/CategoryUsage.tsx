@@ -2,9 +2,28 @@ import React, { useEffect, useState } from 'react';
 import Highcharts from 'highcharts';
 import HighchartsReact from 'highcharts-react-official';
 
+const axios = require('axios').default;
+
 function CategoryUsage() {
   const [data, setData] = useState<any>([]);
   useEffect(() => {
+    // eslint-disable-next-line no-unused-vars
+    const fetchData = async () => {
+      const response = await axios.get('/energy/usage');
+      const tempData:any[] = [];
+      try {
+        for (let i = 0; i < response.data.length; i += 1) {
+          tempData.push({ name: response.data[i].category.name, data: [] });
+          for (let j = 0; j < response.data[i].usage.length; j += 1) {
+            const date = new Date(response.data[i].usage[j].date.replace(/(\d{2}).(\d{2}).(\d{2})/, '$2/$1/$3')).getTime();
+            tempData[i].data.push({ x: date, y: response.data[i].usage[j].value });
+          }
+        }
+        setData(tempData);
+      } catch (e) {
+        console.log(e);
+      }
+    };
     const mockData = [
       {
         category: {
@@ -396,6 +415,7 @@ function CategoryUsage() {
     } catch (e) {
       console.log(e);
     }
+    // fetchData();
   }, []);
   const options = {
     chart: {
