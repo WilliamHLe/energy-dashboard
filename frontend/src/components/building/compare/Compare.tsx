@@ -3,8 +3,16 @@ import { useParams } from 'react-router';
 import Card from './ComapreWithListCard';
 import style from './compare.module.css';
 
+interface Ibuilding {
+  name: string,
+  tek: string,
+  areal: number,
+  year: number,
+  energimerke: string,
+}
+
 function Compare() {
-  const { id } = useParams<{ id: string}>();
+  const { id } = useParams<{ id: string }>();
   const [currentBuilding] = useState({
     name: id,
     tek: 'TEK18',
@@ -13,21 +21,8 @@ function Compare() {
     energimerke: 'C',
   });
 
-  const [initalBuildings, setInitialBuildings] = useState<{
-    name: string,
-    tek: string,
-    areal: number,
-    year: number,
-    energimerke: string,
-  }[]>();
-
-  const [buildings, setBuildings] = useState<{
-    name: string,
-    tek: string,
-    areal: number,
-    year: number,
-    energimerke: string,
-  }[]>();
+  const [initalBuildings, setInitialBuildings] = useState<Ibuilding[]>();
+  const [buildings, setBuildings] = useState<Ibuilding[]>();
 
   const [checkedItems, setCheckedItems] = useState([
     {
@@ -116,16 +111,16 @@ function Compare() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const filter = (index: any, list: any) => {
+  const filter = (index: number, list: Ibuilding[] | undefined) => {
     const item = checkedItems[index];
-    if (item.label === 'energimerke') {
+    if (item.label === 'energimerke' && list !== undefined) {
       return list.filter((i: { energimerke: string; }) => (
         i.energimerke === currentBuilding.energimerke));
     }
-    if (item.label === 'tek') {
+    if (item.label === 'tek' && list !== undefined) {
       return list.filter((i: { tek: string; }) => i.tek === currentBuilding.tek);
     }
-    return null;
+    return undefined;
   };
 
   const removeFilter = () => {
@@ -161,22 +156,20 @@ function Compare() {
     <div className={`container ${style.wrapper}`}>
       <h2 className={style.title}>Sammenlign deg med andre lignende bygg </h2>
       <div>
-        {
-                    checkedItems.map((item, index) => (
-                      <div className={style.checkboxes}>
-                        <label htmlFor={item.name}>
-                          <p className={style.checkboxes}>
-                            {item.name}
-                          </p>
-                          <input id={item.name} type="checkbox" checked={item.checked} onChange={setCheckboxes(index)} className={style.checkboxes} />
-                        </label>
-                      </div>
-                    ))
-                }
 
+        {checkedItems.map((item, index) => (
+          <div className={style.checkboxes}>
+            <label htmlFor={item.name}>
+              <p className={style.checkboxes}>
+                {item.name}
+              </p>
+              <input id={item.name} type="checkbox" checked={item.checked} onChange={setCheckboxes(index)} className={style.checkboxes} />
+            </label>
+          </div>
+        ))}
       </div>
       <div className={style.buildingList}>
-        {buildings?.map((building: any) => (
+        {buildings?.map((building: Ibuilding) => (
           <Card buildingName={building.name} />
         ))}
       </div>
