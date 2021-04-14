@@ -13,6 +13,16 @@ export interface CarrierCategory {
   carriers: Carrier[]
 }
 
+export interface Usage {
+  usage: number,
+  date: string
+}
+
+export interface EnergyUsageCategory {
+  category: ICategory,
+  total: Usage[]
+}
+
 /**
  * Adds a filter to the query. This will filter the query on the sensors mesurement date.
  * @param {object[]} query - The mongoose query to add the filter to
@@ -103,7 +113,87 @@ const carriers = async (fromDate?: string, toDate?: string): Promise<CarrierCate
   })));
 };
 
+// Calculate time series data energy usage
+const energyUsage = async (
+  buildingIds: string[], fromDate?: string, toDate?: string,
+): Promise<Usage[]> => {
+  const query = [
+    {
+      $match: {
+        building: { $in: buildingIds.map((id) => mongoose.Types.ObjectId(id)) },
+        type: 'Forbruksmåler',
+      },
+    },
+    {
+      $unwind: '$measurements',
+    },
+    {
+      $group: {
+        _id: {
+          $dateToString: {
+            format: '%Y-%m-%d',
+            date: '$measurements.date',
+          },
+        },
+        value: { $sum: '$measurements.measurement' },
+      },
+    },
+    {
+      $project: {
+        _id: 0,
+        date: '$_id',
+        value: 1,
+      },
+    },
+    {
+      $sort: {
+        date: 1,
+      },
+    },
+  ];
+
+  if (fromDate || toDate) {
+    const filter: any = {
+      $project: {
+        measurements: {
+          $filter: {
+            input: '$measurements',
+            as: 'measurement',
+            cond: {
+              $and: [
+                fromDate ? { $gte: ['$$measurement.date', new Date(fromDate as string)] } : {},
+                toDate ? { $lte: ['$$measurement.date', new Date(toDate as string)] } : {},
+              ],
+            },
+          },
+        },
+      },
+    };
+
+    query.splice(1, 0, filter);
+  }
+
+  return Sensor.aggregate(query);
+};
+
+const energyUsageByCategory = async (
+  // TODO: Hente forventet forbruk
+  // eslint-disable-next-line no-unused-vars
+  fromDate?: string, toDate?: string, expected?: string,
+): Promise<EnergyUsageCategory[]> => {
+  const buildingsGroupedByCategory = await buildingService.getBuildingsGroupedByCategory();
+
+  return Promise.all(
+    buildingsGroupedByCategory.map(async (buildingCategory) => ({
+      category: buildingCategory.category,
+      total: await energyUsage(buildingCategory.buildings, fromDate, toDate),
+    })),
+  );
+};
+
 export default {
   carriers,
   carriersByBuildings,
+  energyUsage,
+  energyUsageByCategory,
 };

@@ -75,7 +75,7 @@ const CategoryTopList = () => (
       <h1>Hvilken barnehage har spart mest energi sammenlignet med i fjor?</h1>
       <p>Klikk på en barnehage for å se mer info om denne. Kanskje kan du hente noen tips?</p>
     </div>
-    <SearchBar data={MockData} />
+    <SearchBar data={[{ id: 324, name: 'Skole', category: { name: 'Skole' } }]} />
     <div className={style.info}>
       <p>{`Barnehager (${MockData.length})`}</p>
       <p>Spart %</p>
