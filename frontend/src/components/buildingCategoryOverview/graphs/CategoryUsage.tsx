@@ -15,7 +15,7 @@ function CategoryUsage() {
         for (let i = 0; i < response.data.length; i += 1) {
           tempData.push({ name: response.data[i].category.name, data: [] });
           for (let j = 0; j < response.data[i].usage.length; j += 1) {
-            const date = new Date(response.data[i].usage[j].date.replace(/(\d{2}).(\d{2}).(\d{2})/, '$2/$1/$3')).getTime();
+            const date = new Date(response.data[i].usage[j].date).getTime();
             tempData[i].data.push({ x: date, y: response.data[i].usage[j].value });
           }
         }
