@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import './App.css';
 import Test from './components/buildingCategoryOverview/Test';
 import Navbar from './components/navbar/Navbar';
-import Main from './components/mainPage/Main';
+import Main from './components/mainpage/Main';
 import BuildingCategoryOverview from './components/buildingCategoryOverview/BuildingCategoryOverview';
 import Building from './components/building/Building';
 import InfoBar from './components/infobar/Infobar';

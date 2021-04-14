@@ -82,8 +82,28 @@ const carriers = async (req: Request, res: Response, next: NextFunction): Promis
   }
 };
 
+// Get time series energy usage of each building category
+const getEnergyUsage = async (
+  req: Request, res: Response, next: NextFunction,
+): Promise<void> => {
+  const fromDate = req.query.from_date as string;
+  const toDate = req.query.to_date as string;
+  const expected = req.query.expected as string;
+
+  try {
+    const energyUsage = await energyService.energyUsageByCategory(
+      fromDate, toDate, expected,
+    );
+
+    res.send(energyUsage);
+  } catch (e) {
+    next(e);
+  }
+};
+
 export default {
   carriers,
   carriersBySlug,
   carriersByBuildingId,
+  getEnergyUsage,
 };

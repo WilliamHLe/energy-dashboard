@@ -1,6 +1,6 @@
 import React from 'react';
 import style from './topList.module.css';
-import SearchBar from '../../../searchbar/Searchbar';
+import SearchBar from '../../navbar/SearchBar';
 import CategoryTopListCard from './CategoryTopListCard';
 
 interface ICategory {
@@ -75,7 +75,7 @@ const CategoryTopList = () => (
       <h1>Hvilken barnehage har spart mest energi sammenlignet med i fjor?</h1>
       <p>Klikk på en barnehage for å se mer info om denne. Kanskje kan du hente noen tips?</p>
     </div>
-    <SearchBar />
+    <SearchBar data={MockData} />
     <div className={style.info}>
       <p>{`Barnehager (${MockData.length})`}</p>
       <p>Spart %</p>
