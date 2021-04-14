@@ -121,7 +121,7 @@ const energyUsage = async (
     {
       $match: {
         building: { $in: buildingIds.map((id) => mongoose.Types.ObjectId(id)) },
-        type: 'ForbruksmÃ¥ler',
+        type: 'Forbruksmåler',
       },
     },
     {
@@ -129,15 +129,25 @@ const energyUsage = async (
     },
     {
       $group: {
-        _id: { date: '$measurements.date' },
+        _id: {
+          $dateToString: {
+            format: '%Y-%m-%d',
+            date: '$measurements.date',
+          },
+        },
         value: { $sum: '$measurements.measurement' },
       },
     },
     {
       $project: {
         _id: 0,
-        date: '$_id.date',
+        date: '$_id',
         value: 1,
+      },
+    },
+    {
+      $sort: {
+        date: 1,
       },
     },
   ];
