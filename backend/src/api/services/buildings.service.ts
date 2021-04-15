@@ -19,7 +19,7 @@ const sumEnergyUsage = async (
   const query = [
     {
       $match: {
-        type: 'ForbruksmÃ¥ler',
+        type: 'Forbruksmåler',
       },
     },
     {
@@ -64,7 +64,7 @@ const sumEnergyUsage = async (
     const match = {
       $match: {
         building: buildingId,
-        type: 'ForbruksmÃ¥ler',
+        type: 'Forbruksmåler',
       },
     };
 
@@ -82,7 +82,7 @@ const sumEnergyUsageBySlug = async (
     {
       $match: {
         building: { $in: buildingIds.map((id) => mongoose.Types.ObjectId(id)) },
-        type: 'ForbruksmÃ¥ler',
+        type: 'Forbruksmåler',
       },
     },
     {
