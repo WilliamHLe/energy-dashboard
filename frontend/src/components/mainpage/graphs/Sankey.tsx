@@ -1,10 +1,36 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Highcharts from 'highcharts';
 import HighchartsReact from 'highcharts-react-official';
+import axios from 'axios';
 
 require('highcharts/modules/sankey')(Highcharts);
 
 function Sankey() {
+  const [data, setData] = useState<any>([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const result = await axios.get('/energy/carriers');
+      const tempData:any[] = [{
+        keys: ['from', 'to', 'weight'],
+        data: [],
+        type: 'sankey',
+        name: 'Energibærer',
+      }];
+      for (let i = 0; i < result.data.length; i += 1) {
+        for (let j = 0; j < result.data[i].carriers.length; j += 1) {
+          tempData[0].data.push([
+            result.data[i].carriers[j].name,
+            result.data[i].category.name,
+            result.data[i].carriers[j].amount,
+          ]);
+        }
+      }
+      setData(tempData);
+    };
+    fetchData();
+  }, []);
+
   const options = {
     chart: {
       backgroundColor: null,
@@ -22,25 +48,7 @@ function Sankey() {
     credits: {
       enabled: false,
     },
-    series: [
-      {
-        keys: ['from', 'to', 'weight'],
-        data: [
-          ['Skole', 'Fjernvarme', 2],
-          ['Skole', 'Bioenergi', 2],
-          ['Barnehage', 'Fjernvarme', 1],
-          ['Barnehage', 'Bioenergi', 2],
-          ['Idrettshaller', 'Fjernvarme', 2],
-          ['Idretthaller', 'Fastkraft', 1],
-          ['Sykehjem', 'Bioenergi', 1],
-          ['Sykehjem', 'Olje', 2],
-          ['Andre bygg', 'Fastkraft', 1],
-          ['Andre bygg', 'Olje', 2],
-        ],
-        type: 'sankey',
-        name: 'Energibærer',
-      },
-    ],
+    series: data,
   };
 
   return (
