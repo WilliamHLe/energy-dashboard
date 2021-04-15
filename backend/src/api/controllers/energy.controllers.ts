@@ -178,6 +178,64 @@ const getEnergyUsage = async (
   }
 };
 
+// Get average energy by category or building name
+const getAverageEnergyBySlug = async (
+  req: Request, res: Response, next: NextFunction,
+): Promise<void> => {
+  const fromDate = req.query.from_date as string;
+  const toDate = req.query.to_date as string;
+  const slug = req.params.slug as string;
+
+  try {
+    const category: ICategory | null = await Category.findOne({ name: slug });
+
+    if (category) {
+      const buildings: string[] = await Building.find({ category: category.id }).distinct('_id');
+      const averageEnergy: number = await energyService.energyAverageBySlug(
+        buildings, fromDate, toDate,
+      );
+
+      res.send({
+        averageEnergy,
+      });
+    } else {
+      const regex: RegExp = new RegExp(slug, 'i');
+      const building: IBuilding | null = await Building.findOne({ name: { $regex: regex } });
+
+      if (building) {
+        const averageEnergy: number = await energyService.energyAverageBySlug(
+          [building.id], fromDate, toDate,
+        );
+
+        res.send({
+          averageEnergy,
+        });
+      }
+    }
+  } catch (e) {
+    next(e);
+  }
+};
+
+// Get time series energy average of each building category
+const getEnergyAverage = async (
+  req: Request, res: Response, next: NextFunction,
+): Promise<void> => {
+  const fromDate = req.query.from_date as string;
+  const toDate = req.query.to_date as string;
+  const expected = req.query.expected as string;
+
+  try {
+    const energyUsage = await energyService.energyAverageByCategory(
+      fromDate, toDate, expected,
+    );
+
+    res.send(energyUsage);
+  } catch (e) {
+    next(e);
+  }
+};
+
 export default {
   carriers,
   carriersBySlug,
@@ -186,4 +244,6 @@ export default {
   getTotalEnergyBySlug,
   getTotalEnergy,
   getEnergyUsage,
+  getAverageEnergyBySlug,
+  getEnergyAverage,
 };

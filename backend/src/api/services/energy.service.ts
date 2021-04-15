@@ -356,6 +356,79 @@ const energyUsageByCategory = async (
   );
 };
 
+const energyAverageBySlug = async (
+  buildingIds: string[], fromDate?: string, toDate?: string,
+): Promise<any> => {
+  const query = [
+    {
+      $match: {
+        building: { $in: buildingIds.map((id) => mongoose.Types.ObjectId(id)) },
+        type: 'Forbruksmåler',
+      },
+    },
+    {
+      $unwind: '$measurements',
+    },
+    {
+      $group: {
+        _id: {
+          $dateToString: {
+            format: '%Y',
+            date: '$measurements.date',
+          },
+        },
+        value: { $sum: '$measurements.measurement' },
+      },
+    },
+    {
+      $group: {
+        _id: null,
+        avg: {
+          $avg: '$value',
+        },
+      },
+    },
+  ];
+
+  if (fromDate || toDate) {
+    const filter: any = {
+      $project: {
+        measurements: {
+          $filter: {
+            input: '$measurements',
+            as: 'measurement',
+            cond: {
+              $and: [
+                fromDate ? { $gte: ['$$measurement.date', new Date(fromDate as string)] } : {},
+                toDate ? { $lte: ['$$measurement.date', new Date(toDate as string)] } : {},
+              ],
+            },
+          },
+        },
+      },
+    };
+
+    query.splice(1, 0, filter);
+  }
+
+  return Sensor.aggregate(query);
+};
+
+const energyAverageByCategory = async (
+  // TODO: Hente forventet forbruk
+  // eslint-disable-next-line no-unused-vars
+  fromDate?: string, toDate?: string, expected?: string,
+): Promise<any> => {
+  const buildingsGroupedByCategory = await buildingService.getBuildingsGroupedByCategory();
+
+  return Promise.all(
+    buildingsGroupedByCategory.map(async (buildingCategory) => ({
+      category: buildingCategory.category,
+      average: await energyAverageBySlug(buildingCategory.buildings, fromDate, toDate),
+    })),
+  );
+};
+
 export default {
   carriers,
   carriersByBuildings,
@@ -365,4 +438,6 @@ export default {
   sumEnergyUsageByCategory,
   energyUsage,
   energyUsageByCategory,
+  energyAverageBySlug,
+  energyAverageByCategory,
 };
