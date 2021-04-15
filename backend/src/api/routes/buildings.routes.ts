@@ -8,5 +8,6 @@ const router = express.Router();
 router.get('/', controllers.getAllBuildings);
 router.get('/:id', controllers.getBuildingById);
 router.get('/:id/energy/carriers', energyControllers.carriersByBuildingId);
+router.get('/:id/energy/total', energyControllers.getTotalEnergyByBuilding);
 
 export default router;
