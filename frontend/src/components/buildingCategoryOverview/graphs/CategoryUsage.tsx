@@ -13,29 +13,10 @@ function CategoryUsage() {
       const response = await axios.get('/energy/usage');
       const tempData:any[] = [];
       try {
-        const years: number[] = [];
         for (let i = 0; i < response.data.length; i += 1) {
-          tempData.push({ name: response.data[i].category.name, data: [] });
+          tempData.push({ cropThreshold: 9999, name: response.data[i].category.name, data: [] });
           for (let j = 0; j < response.data[i].total.length; j += 1) {
-            const date = new Date(response.data[i].total[j].date);
-            if (!years.includes(date.getFullYear())) {
-              years.push(date.getFullYear());
-              const year = date.getFullYear();
-              const button = {
-                year: {
-                  text: year,
-                  onclick: function () {
-                    // @ts-ignore
-                    // eslint-disable-next-line react/no-this-in-sfc
-                    this.xAxis[0].setExtremes(
-                      Date.UTC(date.getFullYear(), 0, 0),
-                      Date.UTC(date.getFullYear() + 1, 0, 0),
-                    );
-                  },
-                },
-              };
-              console.log(button);
-            }
+            const date = new Date(response.data[i].total[j].date).getTime();
             tempData[i].data.push({
               x: date,
               y: response.data[i].total[j].value,
@@ -43,7 +24,7 @@ function CategoryUsage() {
           }
         }
         setData(tempData);
-        console.log(years);
+        console.log(tempData);
       } catch (e) {
         console.log(e);
       }
@@ -54,11 +35,49 @@ function CategoryUsage() {
     chart: {
       type: 'line',
       backgroundColor: null,
+      zoomType: 'x',
+      panning: true,
+      panKey: 'shift',
     },
     loading: {
       labelStyle: {
         fontStyle: 'italic',
       },
+    },
+    rangeSelector: {
+      allButtonsEnabled: true,
+      buttons: [{
+        type: 'all',
+        text: 'Dager',
+        dataGrouping: {
+          approximation: undefined,
+          forced: true, // s
+          units: [['week', [1]]],
+        },
+      },
+      {
+        type: 'all',
+        text: 'Måneder',
+        dataGrouping: {
+          approximation: 'sum',
+          forced: true,
+          units: [['month', [1]]],
+        },
+      },
+      {
+        type: 'all',
+        text: 'År',
+        dataGrouping: {
+          approximation: 'sum',
+          forced: true, // s
+          units: [['year', [1]]],
+        },
+      },
+      ],
+      buttonTheme: {
+        width: 50,
+      },
+      selected: 1,
     },
     tooltip: {
       headerFormat: '<span style="font-size: 10px">{point.key:%Y-%m-%d}</span><br/>',
@@ -89,6 +108,7 @@ function CategoryUsage() {
           color: 'white',
         },
       },
+      tickAmount: 6,
     },
     plotOptions: {
       line: {
@@ -103,8 +123,6 @@ function CategoryUsage() {
           color: 'white',
         },
         turboThreshold: 0,
-        pointInterval: 86400000,
-        pointStart: 1282408923000,
       },
     },
     legend: {
