@@ -26,6 +26,12 @@ function Sankey() {
           ]);
         }
       }
+      // Sortering etter bærernavn
+      tempData[0].data.sort((a: string[], b: any[]) => a[0].localeCompare(b[0]));
+      // Sortering etter bærerverdi
+      // tempData[0].data.sort((a: number[], b: number[]) => b[2] - a[2]);
+      // Sortering etter byggnavn
+      tempData[0].data.sort((a: string[], b: any[]) => a[1].localeCompare(b[1]));
       setData(tempData);
     };
     fetchData();
@@ -42,8 +48,12 @@ function Sankey() {
         color: 'white',
       },
     },
-    dataLabels: {
-
+    plotOptions: {
+      sankey: {
+        dataLabels: {
+          color: 'white',
+        },
+      },
     },
     credits: {
       enabled: false,
