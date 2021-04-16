@@ -1,10 +1,6 @@
 import express from 'express';
 
 import energyController from '../controllers/energy.controllers';
-<<<<<<< HEAD
-=======
-import buildingController from '../controllers/buildings.controllers';
->>>>>>> #147 add strong typing, delete extra building files
 
 const router = express.Router();
 

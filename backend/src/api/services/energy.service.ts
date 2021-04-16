@@ -198,7 +198,7 @@ const sumEnergyUsage = async (
 const sumEnergyUsageBySlug = async (
   buildingIds: string[], fromDate?: string, toDate?: string,
 ): Promise<number> => {
-  const query = [
+  let query:object[] = [
     {
       $match: {
         building: { $in: buildingIds.map((id) => mongoose.Types.ObjectId(id)) },
@@ -220,27 +220,7 @@ const sumEnergyUsageBySlug = async (
       },
     },
   ];
-
-  if (fromDate || toDate) {
-    const filter: any = {
-      $project: {
-        measurements: {
-          $filter: {
-            input: '$measurements',
-            as: 'measurement',
-            cond: {
-              $and: [
-                fromDate ? { $gte: ['$$measurement.date', new Date(fromDate as string)] } : {},
-                toDate ? { $lte: ['$$measurement.date', new Date(toDate as string)] } : {},
-              ],
-            },
-          },
-        },
-      },
-    };
-
-    query.splice(1, 0, filter);
-  }
+  query = filterQueryBydate(query, 2, fromDate, toDate);
 
   const results = await Sensor.aggregate(query);
   return results[0].total;
