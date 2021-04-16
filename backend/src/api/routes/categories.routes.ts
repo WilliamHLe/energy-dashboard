@@ -1,7 +1,7 @@
 import express from 'express';
 
 import controllers from '../controllers/categories.controllers';
-import buildingController from '../controllers/building.controllers';
+import buildingController from '../controllers/buildings.controllers';
 
 const router = express.Router();
 

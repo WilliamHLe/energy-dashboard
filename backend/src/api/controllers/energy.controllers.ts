@@ -1,7 +1,9 @@
 import { Request, Response, NextFunction } from 'express';
 import Building, { IBuilding } from '../models/buildings.model';
 import Category, { ICategory } from '../models/categories.model';
-import energyService, { Carrier, CarrierCategory } from '../services/energy.service';
+import energyService, {
+  Carrier, CarrierCategory, EnergyAverage, EnergyAverageByCategory,
+} from '../services/energy.service';
 
 /**
  * Controller to handle fetching carriers for both categories and buildings by name. This is
@@ -101,7 +103,13 @@ const getEnergyUsage = async (
   }
 };
 
-// Get average energy by category or building name
+/**
+ * Controller to handle finding average energy for slug.
+ * Slug can be either a specific building or a specific category.
+ * @param {Request} req - Express request
+ * @param {Response} res - Express response
+ * @param {NextFunction} next - Express next function
+ */
 const getAverageEnergyBySlug = async (
   req: Request, res: Response, next: NextFunction,
 ): Promise<void> => {
@@ -114,7 +122,7 @@ const getAverageEnergyBySlug = async (
 
     if (category) {
       const buildings: string[] = await Building.find({ category: category.id }).distinct('_id');
-      const averageEnergy: number = await energyService.energyAverageBySlug(
+      const averageEnergy: EnergyAverage[] = await energyService.energyAverageBySlug(
         buildings, fromDate, toDate,
       );
 
@@ -126,7 +134,7 @@ const getAverageEnergyBySlug = async (
       const building: IBuilding | null = await Building.findOne({ name: { $regex: regex } });
 
       if (building) {
-        const averageEnergy: number = await energyService.energyAverageBySlug(
+        const averageEnergy: EnergyAverage[] = await energyService.energyAverageBySlug(
           [building.id], fromDate, toDate,
         );
 
@@ -140,20 +148,25 @@ const getAverageEnergyBySlug = async (
   }
 };
 
-// Get time series energy average of each building category
-const getEnergyAverage = async (
+/**
+ * Controller to handle finding average energy for all categories, grouped by category.
+ * @param {Request} req - Express request
+ * @param {Response} res - Express response
+ * @param {NextFunction} next - Express next function
+ */
+const getAllAverage = async (
   req: Request, res: Response, next: NextFunction,
 ): Promise<void> => {
   const fromDate = req.query.from_date as string;
   const toDate = req.query.to_date as string;
-  const expected = req.query.expected as string;
 
   try {
-    const energyUsage = await energyService.energyAverageByCategory(
-      fromDate, toDate, expected,
+    const energyAverage: EnergyAverageByCategory[] = await
+    energyService.energyAverageGroupedByCategory(
+      fromDate, toDate,
     );
 
-    res.send(energyUsage);
+    res.send(energyAverage);
   } catch (e) {
     next(e);
   }
@@ -165,5 +178,5 @@ export default {
   carriersByBuildingId,
   getEnergyUsage,
   getAverageEnergyBySlug,
-  getEnergyAverage,
+  getAllAverage,
 };

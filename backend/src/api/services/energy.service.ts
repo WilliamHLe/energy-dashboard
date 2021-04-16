@@ -22,6 +22,15 @@ export interface EnergyUsageCategory {
   category: ICategory,
   total: Usage[]
 }
+export interface EnergyAverage {
+  average: number,
+  date: string
+}
+
+export interface EnergyAverageByCategory {
+  category: ICategory,
+  average: EnergyAverage[]
+}
 
 /**
  * Adds a filter to the query. This will filter the query on the sensors mesurement date.
@@ -117,7 +126,7 @@ const carriers = async (fromDate?: string, toDate?: string): Promise<CarrierCate
 const energyUsage = async (
   buildingIds: string[], fromDate?: string, toDate?: string,
 ): Promise<Usage[]> => {
-  const query = [
+  let query:object[] = [
     {
       $match: {
         building: { $in: buildingIds.map((id) => mongoose.Types.ObjectId(id)) },
@@ -151,27 +160,7 @@ const energyUsage = async (
       },
     },
   ];
-
-  if (fromDate || toDate) {
-    const filter: any = {
-      $project: {
-        measurements: {
-          $filter: {
-            input: '$measurements',
-            as: 'measurement',
-            cond: {
-              $and: [
-                fromDate ? { $gte: ['$$measurement.date', new Date(fromDate as string)] } : {},
-                toDate ? { $lte: ['$$measurement.date', new Date(toDate as string)] } : {},
-              ],
-            },
-          },
-        },
-      },
-    };
-
-    query.splice(1, 0, filter);
-  }
+  query = filterQueryBydate(query, 2, fromDate, toDate);
 
   return Sensor.aggregate(query);
 };
@@ -191,10 +180,19 @@ const energyUsageByCategory = async (
   );
 };
 
+/**
+ * Calculates the average energy by slug.
+ * The average is calculated by year if no from or to dates are specified.
+ * Slug can either be a specific category or a specific builiding.
+ * @param {string[]} buildingIds - List of building ids
+ * @param {string} [fromDate] - The earliest date to include
+ * @param {string} [toDate] - The latest date to include
+ * @returns {Carrier[]} - Carriers with their summed energy usage for the given buildings
+ */
 const energyAverageBySlug = async (
   buildingIds: string[], fromDate?: string, toDate?: string,
-): Promise<any> => {
-  const query = [
+): Promise<EnergyAverage[]> => {
+  let query: object[] = [
     {
       $match: {
         building: { $in: buildingIds.map((id) => mongoose.Types.ObjectId(id)) },
@@ -224,36 +222,14 @@ const energyAverageBySlug = async (
       },
     },
   ];
-
-  if (fromDate || toDate) {
-    const filter: any = {
-      $project: {
-        measurements: {
-          $filter: {
-            input: '$measurements',
-            as: 'measurement',
-            cond: {
-              $and: [
-                fromDate ? { $gte: ['$$measurement.date', new Date(fromDate as string)] } : {},
-                toDate ? { $lte: ['$$measurement.date', new Date(toDate as string)] } : {},
-              ],
-            },
-          },
-        },
-      },
-    };
-
-    query.splice(1, 0, filter);
-  }
+  query = filterQueryBydate(query, 2, fromDate, toDate);
 
   return Sensor.aggregate(query);
 };
 
-const energyAverageByCategory = async (
-  // TODO: Hente forventet forbruk
-  // eslint-disable-next-line no-unused-vars
-  fromDate?: string, toDate?: string, expected?: string,
-): Promise<any> => {
+const energyAverageGroupedByCategory = async (
+  fromDate?: string, toDate?: string,
+): Promise<EnergyAverageByCategory[]> => {
   const buildingsGroupedByCategory = await buildingService.getBuildingsGroupedByCategory();
 
   return Promise.all(
@@ -270,5 +246,5 @@ export default {
   energyUsage,
   energyUsageByCategory,
   energyAverageBySlug,
-  energyAverageByCategory,
+  energyAverageGroupedByCategory,
 };
