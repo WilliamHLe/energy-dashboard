@@ -11,7 +11,7 @@ interface Ibuilding {
   energimerke: string,
 }
 
-function Compare() {
+function Compare(props: any) {
   const { id } = useParams<{ id: string }>();
   const [currentBuilding] = useState({
     name: id,
@@ -138,6 +138,10 @@ function Compare() {
     }
   };
 
+  const openModal = (building: string) => {
+    props.onChange(building);
+  };
+
   // set checked for specified checkbox to true/ false
   const setCheckboxes = (index: number) => () => {
     const bool = checkedItems[index].checked;
@@ -155,8 +159,7 @@ function Compare() {
   return (
     <div className={`container ${style.wrapper}`}>
       <h2 className={style.title}>Sammenlign deg med andre lignende bygg </h2>
-      <div>
-
+      <div className={style.checkboxWrapper}>
         {checkedItems.map((item, index) => (
           <div className={style.checkboxes}>
             <label htmlFor={item.name}>
@@ -170,7 +173,10 @@ function Compare() {
       </div>
       <div className={style.buildingList}>
         {buildings?.map((building: Ibuilding) => (
-          <Card buildingName={building.name} />
+          // eslint-disable-next-line
+          <a onClick={() => openModal(building.name)}>
+            <Card buildingName={building.name} />
+          </a>
         ))}
       </div>
     </div>
