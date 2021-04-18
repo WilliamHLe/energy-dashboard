@@ -24,6 +24,7 @@ function EnergyCarriers() {
       for (let i = 0; i < result.data.length; i += 1) {
         tempData.data.push({ name: result.data[i].name, y: result.data[i].amount });
       }
+      tempData.data.sort((a, b) => ((a.name > b.name) ? 1 : -1));
       setData(tempData);
     };
     setHeight(document.getElementsByClassName(style.energyCarriers)[0].clientHeight);
