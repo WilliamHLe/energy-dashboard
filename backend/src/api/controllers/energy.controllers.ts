@@ -135,7 +135,7 @@ const getTotalEnergyBySlug = async (
 
     if (category) {
       const buildings: string[] = await Building.find({ category: category.id }).distinct('_id');
-      const totalEnergy: number = await energyService.sumEnergyUsageBySlug(
+      const totalEnergy: number = await energyService.sumEnergyUsageByBuildingIds(
         buildings, fromDate, toDate,
       );
 
@@ -147,7 +147,7 @@ const getTotalEnergyBySlug = async (
       const building: IBuilding | null = await Building.findOne({ name: { $regex: regex } });
 
       if (building) {
-        const totalEnergy: number = await energyService.sumEnergyUsageBySlug(
+        const totalEnergy: number = await energyService.sumEnergyUsageByBuildingIds(
           [building.id], fromDate, toDate,
         );
 

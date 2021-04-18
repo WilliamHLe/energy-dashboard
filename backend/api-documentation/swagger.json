@@ -378,20 +378,6 @@
             "description": "ID of the building to return",
             "required": true,
             "type": "string"
-          },
-          {
-            "name": "from_date",
-            "in": "query",
-            "description": "The earliest date (including) to return data for. Defaults to earliest datapoint. Example: `12-03-21`",
-            "required": false,
-            "type": "string"
-          },
-          {
-            "name": "to_date",
-            "in": "query",
-            "description": "The latest date (including) to return data for. Defaults to latest datapoint. Example: `12-03-21`",
-            "required": false,
-            "type": "string"
           }
         ],
         "responses": {
@@ -696,20 +682,6 @@
             "in": "path",
             "description": "Name of the category",
             "required": true,
-            "type": "string"
-          },
-          {
-            "name": "from_date",
-            "in": "query",
-            "description": "The earliest date (including) to return data for. Defaults to earliest datapoint. Example: `12-03-21`",
-            "required": false,
-            "type": "string"
-          },
-          {
-            "name": "to_date",
-            "in": "query",
-            "description": "The latest date (including) to return data for. Defaults to latest datapoint. Example: `12-03-21`",
-            "required": false,
             "type": "string"
           }
         ],
@@ -1120,22 +1092,6 @@
         "produces": [
           "application/json"
         ],
-        "parameters": [
-          {
-            "name": "from_date",
-            "in": "query",
-            "description": "The earliest date (including) to return data for. Defaults to earliest datapoint. Example: `12-03-21`",
-            "required": false,
-            "type": "string"
-          },
-          {
-            "name": "to_date",
-            "in": "query",
-            "description": "The latest date (including) to return data for. Defaults to latest datapoint. Example: `12-03-21`",
-            "required": false,
-            "type": "string"
-          }
-        ],
         "responses": {
           "200": {
             "description": "Successful operation",
@@ -1162,20 +1118,6 @@
             "in": "path",
             "description": "Name of a building or category",
             "required": true,
-            "type": "string"
-          },
-          {
-            "name": "from_date",
-            "in": "query",
-            "description": "The earliest date (including) to return data for. Defaults to earliest datapoint. Example: `12-03-21`",
-            "required": false,
-            "type": "string"
-          },
-          {
-            "name": "to_date",
-            "in": "query",
-            "description": "The latest date (including) to return data for. Defaults to latest datapoint. Example: `12-03-21`",
-            "required": false,
             "type": "string"
           }
         ],

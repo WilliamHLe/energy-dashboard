@@ -34,6 +34,7 @@ export interface EnergyAverageByCategory {
 }
 
 /**
+ * OBS: POTENSIELT BROKEN
  * Adds a filter to the query. This will filter the query on the sensors mesurement date.
  * @param {object[]} query - The mongoose query to add the filter to
  * @param {string} [fromDate] - The earliest date to include
@@ -97,7 +98,7 @@ const carriersByBuildings = async (
       $project: {
         _id: 0,
         name: '$_id',
-        amount: '$amount',
+        amount: { $trunc: ['$amount'] },
       },
     },
   ];
@@ -153,7 +154,7 @@ const sumEnergyUsage = async (
     {
       $project: {
         _id: 0,
-        total: 1,
+        total: { $trunc: ['$total'] },
       },
     },
   ];
@@ -195,10 +196,10 @@ const sumEnergyUsage = async (
   return results[0];
 };
 
-const sumEnergyUsageBySlug = async (
+const sumEnergyUsageByBuildingIds = async (
   buildingIds: string[], fromDate?: string, toDate?: string,
 ): Promise<number> => {
-  let query:object[] = [
+  const query:object[] = [
     {
       $match: {
         building: { $in: buildingIds.map((id) => mongoose.Types.ObjectId(id)) },
@@ -216,14 +217,35 @@ const sumEnergyUsageBySlug = async (
     {
       $project: {
         _id: 0,
-        total: 1,
+        total: { $trunc: ['$total'] },
       },
     },
   ];
-  query = filterQueryBydate(query, 2, fromDate, toDate);
+
+  // Check if query parameter fromDate or toDate exists, if yes add filter query
+  if (fromDate || toDate) {
+    const filter: any = {
+      $project: {
+        measurements: {
+          $filter: {
+            input: '$measurements',
+            as: 'measurement',
+            cond: {
+              $and: [
+                fromDate ? { $gte: ['$$measurement.date', new Date(fromDate as string)] } : {},
+                toDate ? { $lte: ['$$measurement.date', new Date(toDate as string)] } : {},
+              ],
+            },
+          },
+        },
+      },
+    };
+
+    query.splice(1, 0, filter);
+  }
 
   const results = await Sensor.aggregate(query);
-  return results[0].total;
+  return results[0].total; // OBS: Can crash if not found
 };
 
 /**
@@ -262,7 +284,7 @@ const sumEnergyUsageByCategory = async (
   return Promise.all(
     buildingsGroupedByCategory.map(async (buildingCategory) => ({
       category: buildingCategory.category,
-      total: await sumEnergyUsageBySlug(buildingCategory.buildings, fromDate, toDate),
+      total: await sumEnergyUsageByBuildingIds(buildingCategory.buildings, fromDate, toDate),
     })),
   );
 };
@@ -366,6 +388,11 @@ const energyAverageBySlug = async (
         },
       },
     },
+    {
+      $project: {
+        avg: { $trunc: ['$value'] },
+      },
+    },
   ];
   query = filterQueryBydate(query, 2, fromDate, toDate);
 
@@ -389,7 +416,7 @@ export default {
   carriers,
   carriersByBuildings,
   sumEnergyUsage,
-  sumEnergyUsageBySlug,
+  sumEnergyUsageByBuildingIds,
   getBuildingsGroupedByCategory,
   sumEnergyUsageByCategory,
   energyUsage,
