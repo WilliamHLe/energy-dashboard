@@ -21,7 +21,7 @@ export interface Usage {
 
 export interface EnergyUsageCategory {
   category: ICategory,
-  total: Usage[]
+  usage: Usage[]
 }
 export interface EnergyAverage {
   average: number,
@@ -320,7 +320,7 @@ const energyUsageByCategory = async (
   return Promise.all(
     buildingsGroupedByCategory.map(async (buildingCategory) => ({
       category: buildingCategory.category,
-      total: await energyUsage(buildingCategory.buildings, fromDate, toDate),
+      usage: await energyUsage(buildingCategory.buildings, fromDate, toDate),
     })),
   );
 };
