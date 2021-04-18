@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import Highcharts from 'highcharts';
 import HighchartsReact from 'highcharts-react-official';
+import axios from 'axios';
+import { useParams } from 'react-router';
 import style from '../category.module.css';
 
-require('highcharts/modules/sankey')(Highcharts);
-
 function EnergyCarriers() {
+  const { category } = useParams<{category: string}>();
+
   const [data, setData] = useState<{
     name:string,
     colorByPoint:boolean,
@@ -20,10 +22,12 @@ function EnergyCarriers() {
       for (let i = 0; i < result.data.length; i += 1) {
         tempData.data.push({ name: result.data[i].name, y: result.data[i].amount });
       }
+      tempData.data.sort((a, b) => ((a.name > b.name) ? 1 : -1));
       setData(tempData);
     };
     setHeight(document.getElementsByClassName(style.energyCarriers)[0].clientHeight);
-  }, []);
+    fetchData();
+  }, [category]);
   //
   const options = {
     chart: {
@@ -46,6 +50,10 @@ function EnergyCarriers() {
       pie: {
         allowPointSelect: true,
         cursor: 'pointer',
+        dataLabels: {
+          enabled: false,
+        },
+        showInLegend: true,
       },
       series: {
         style: {
