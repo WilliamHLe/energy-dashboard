@@ -3,10 +3,10 @@
     z-index: 1;
     width: 80%;
     height: 85%;
-    margin-left: 3%;
+    margin-left: 4vw;
     background-color:#00284C;
     border-radius: 5px;
-    margin-top: -700px;
+    margin-top: -82vh;
 }
 
 .closeImage {
@@ -22,7 +22,8 @@ h1 {
 }
 
 #compareUsage {
-    margin-left: 15%;
+    display: flex;
+    justify-content: center;
 }
 
 .gridConatiner {
