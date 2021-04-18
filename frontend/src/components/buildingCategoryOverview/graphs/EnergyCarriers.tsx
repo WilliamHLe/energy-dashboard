@@ -14,25 +14,14 @@ function EnergyCarriers() {
   const [height, setHeight] = useState(0);
 
   useEffect(() => {
-    const mockData = [
-      {
-        name: 'Fjernvarme',
-        amount: 13213,
-      },
-      {
-        name: 'Fastkraft',
-        amount: 13231,
-      },
-      {
-        name: 'Bioenergi',
-        amount: 123123,
-      },
-    ];
-    const tempData: {name: string, colorByPoint:boolean, data: { name: string; y: number; }[]} = { name: 'Energibærer', colorByPoint: true, data: [] };
-    for (let i = 0; i < mockData.length; i += 1) {
-      tempData.data.push({ name: mockData[i].name, y: mockData[i].amount });
-    }
-    setData(tempData);
+    const fetchData = async () => {
+      const result = await axios.get(`/energy/carriers/${category}`);
+      const tempData: {name: string, colorByPoint:boolean, data: { name: string; y: number; }[]} = { name: 'Energibærer', colorByPoint: true, data: [] };
+      for (let i = 0; i < result.data.length; i += 1) {
+        tempData.data.push({ name: result.data[i].name, y: result.data[i].amount });
+      }
+      setData(tempData);
+    };
     setHeight(document.getElementsByClassName(style.energyCarriers)[0].clientHeight);
   }, []);
   //
