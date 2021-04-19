@@ -379,7 +379,7 @@ const energyAverageBySlug = async (
               },
             },
           },
-        value: { $sum: '$measurements.measurement' }
+        value: { $sum: '$measurements.measurement' },
       },
     },
     {
@@ -388,23 +388,23 @@ const energyAverageBySlug = async (
         usage: {
           $push: {
             value: { $sum: '$value' },
-            date: '$_id.date'
-          }
-        }
+            date: '$_id.date',
+          },
+        },
       },
     },
     {
       $group: {
         _id: '$_id',
         average: {
-          $sum: { $avg: '$usage.value' }
-        }
+          $sum: { $avg: '$usage.value' },
+        },
       },
     },
     {
       $group: {
         _id: null,
-        avg: {$avg: '$average'}
+        avg: { $avg: '$average' },
       },
     },
     {
