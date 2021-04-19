@@ -5,6 +5,12 @@ import Category, { ICategory } from '../models/categories.model';
 import energyService, {
   Carrier, CarrierCategory, EnergyAverage, EnergyAverageByCategory,
 } from '../services/energy.service';
+import metricsService from '../services/metrics.service';
+
+export interface IEnergySaved {
+  category: ICategory,
+  saved: number,
+}
 
 /**
  * Controller to handle fetching carriers for both categories and buildings by name. This is
@@ -249,6 +255,30 @@ const getAllAverage = async (
   }
 };
 
+const getAllSaved = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
+  try {
+    const categories = await Category.find();
+
+    const responses: IEnergySaved[] = await Promise.all(categories.map(
+      async (category: ICategory) => {
+        const enregySaved = await metricsService.energyUsageTwoLastYearsByBuildings(category._id);
+        const percentEnergySaved = metricsService.calculatePercentageSaved(
+          enregySaved.energyUsedCurrentYear, enregySaved.energyUsedLastYear,
+        );
+
+        return {
+          category,
+          saved: percentEnergySaved,
+        };
+      },
+    ));
+
+    res.send(responses);
+  } catch (err) {
+    next(err);
+  }
+};
+
 export default {
   carriers,
   carriersBySlug,
@@ -259,4 +289,5 @@ export default {
   getEnergyUsage,
   getAverageEnergyBySlug,
   getAllAverage,
+  getAllSaved,
 };

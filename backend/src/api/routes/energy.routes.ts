@@ -11,5 +11,6 @@ router.get('/total/', energyController.getTotalEnergy);
 router.get('/total/:slug', energyController.getTotalEnergyBySlug);
 router.get('/average/:slug', energyController.getAverageEnergyBySlug);
 router.get('/average', energyController.getAllAverage);
+router.get('/saved', energyController.getAllSaved);
 
 export default router;

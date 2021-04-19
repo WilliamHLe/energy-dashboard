@@ -9,6 +9,12 @@ export interface IMetrics {
   buildings: number,
 }
 
+export interface IEnergyUsed {
+  category: string,
+  energyUsedLastYear: number,
+  energyUsedCurrentYear: number,
+}
+
 /**
  * Fetches the number of buildings in the given category by id.
  * @param {string} categoryId - The category id
@@ -44,14 +50,7 @@ const areaByCategory = async (categoryId: string): Promise<number> => {
 const getBuildingsByCategoryId = async (categoryId: string): Promise<IBuilding[]> => (
   Building.find({ category: categoryId }).select('_id'));
 
-/**
- * Calculates all metrics (collection of miscellanious information) for a category based on its id.
- * This includes information about energy used so far this year, energy saved in % compared to last
- * year, total area (m^2) and number of buildings in this category.
- * @param {string} categoryId - The id of the category to get metrics for
- * @returns {IMetrics} - The metrics for the category
- */
-const categoryMetrics = async (categoryId: string): Promise<IMetrics> => {
+const energyUsedLastTwoYearsByCategory = async (categoryId: string): Promise<IEnergyUsed> => {
   const buildings: IBuilding[] = await getBuildingsByCategoryId(categoryId);
   const buildingIds: string[] = buildings.map((building) => building._id);
 
@@ -76,12 +75,29 @@ const categoryMetrics = async (categoryId: string): Promise<IMetrics> => {
     currentEnd.toISOString(),
   );
 
+  return {
+    category: categoryId,
+    energyUsedCurrentYear,
+    energyUsedLastYear,
+  };
+};
+
+/**
+ * Calculates all metrics (collection of miscellanious information) for a category based on its id.
+ * This includes information about energy used so far this year, energy saved in % compared to last
+ * year, total area (m^2) and number of buildings in this category.
+ * @param {ICategory} categoryId - The id of the category to get metrics for
+ * @returns {IMetrics} - The metrics for the category
+ */
+const categoryMetrics = async (categoryId: string): Promise<IMetrics> => {
+  const energyUsed = await energyUsedLastTwoYearsByCategory(categoryId);
+
   const area: number = await areaByCategory(categoryId);
   const numBuildings: number = await numberOfBuildingsByCategory(categoryId);
 
   return {
-    energyUsedCurrentYear,
-    energyUsedLastYear,
+    energyUsedCurrentYear: energyUsed.energyUsedCurrentYear,
+    energyUsedLastYear: energyUsed.energyUsedLastYear,
     area,
     buildings: numBuildings,
   };
@@ -95,4 +111,5 @@ const calculatePercentageSaved = (currentYear: number, lastYear: number): number
 export default {
   categoryMetrics,
   calculatePercentageSaved,
+  energyUsageTwoLastYearsByBuildings: energyUsedLastTwoYearsByCategory,
 };
