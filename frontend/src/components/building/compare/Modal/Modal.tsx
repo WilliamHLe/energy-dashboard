@@ -6,7 +6,7 @@ import closeImage from '../../../../assets/png/close.png';
 import ProgressBar from './graphs/ProgressBar';
 import check from '../../../../assets/png/bi_check.png';
 import cross from '../../../../assets/png/entypo_cross.png';
-
+// s
 interface Ibuilding {
   name: string,
   tek: string,
@@ -18,6 +18,7 @@ interface Ibuilding {
 function Modal(props: { onChange: any, compareBuilding: Ibuilding | undefined }) {
   const { id } = useParams<{ id: string }>();
   const { compareBuilding } = props;
+  const [isLoading, setLoading] = useState(true);
   const UpgradeItem = [
     'Varmepumpe',
     'Etterisolasjon',
@@ -75,85 +76,91 @@ function Modal(props: { onChange: any, compareBuilding: Ibuilding | undefined })
 
   useEffect(() => {
     randomUpgrade();
+    setLoading(false);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-
   return (
-    <div id={style.wrapper}>
-      <input type="image" onClick={closeModal} alt="close" src={closeImage} className={style.closeImage} />
-      <h1>
-        Sammenlign
-        {' '}
-        {id}
-        {' '}
-        og
-        {' '}
-        {compareBuilding}
-        {' '}
-      </h1>
-      <div id={style.compareUsage}>
-        <CategoryUsage sendBuilding={id} sendCompareBuilding={compareBuilding} />
-      </div>
-      <div className={style.gridConatiner}>
-        {' '}
-        <div className={style.colum2}>
-          <h2 className={style.row1}>
+    <div>
+      {isLoading ? (
+        <div />
+      ) : (
+        <div id={style.wrapper}>
+          <input type="image" onClick={closeModal} alt="close" src={closeImage} className={style.closeImage} />
+          <h1>
+            Sammenlign
             {' '}
             {id}
             {' '}
-          </h2>
-          <p className={style.row2}>
-            {' '}
-            Byggeår: 2012
-            {'   '}
-            km²: 1049
-          </p>
-          <div className={style.row3}>
-            <ProgressBar building={id} place="left" data="avg" />
-          </div>
-          <div className={style.row4}>
-            <ProgressBar building={id} place="left" data="spart" />
-          </div>
-          <div className={style.iconL}>
-            {allUpgrades.map((_upgrade, index) => getIcon(currentBuildingUpgrade, index))}
-          </div>
-        </div>
-        <div className={style.colum3}>
-          <p className={style.row3}> Gjennomsnittlig energiforbruk </p>
-          <p className={style.row4}> Spart Sammenlignet med i fjor </p>
-          <div className={style.row5}>
-            {allUpgrades.map((item) => (
-              <p>{item}</p>
-            ))}
-          </div>
-        </div>
-        <div className={style.colum4}>
-          <h2>
+            og
             {' '}
             {compareBuilding}
             {' '}
-          </h2>
-          <p className={style.row2}>
+          </h1>
+          <div id={style.compareUsage}>
+            <CategoryUsage sendBuilding={id} sendCompareBuilding={compareBuilding} />
+          </div>
+          <div className={style.gridConatiner}>
             {' '}
-            Byggeår:
+            <div className={style.colum2}>
+              <h2 className={style.row1}>
+                {' '}
+                {id}
+                {' '}
+              </h2>
+              <p className={style.row2}>
+                {' '}
+                Byggeår: 2012
+                {'   '}
+                km²: 1049
+              </p>
+              <div className={style.row3}>
+                <ProgressBar building={id} place="left" data="avg" />
+              </div>
+              <div className={style.row4}>
+                <ProgressBar building={id} place="left" data="spart" />
+              </div>
+              <div className={style.iconL}>
+                {allUpgrades.map((_upgrade, index) => getIcon(currentBuildingUpgrade, index))}
+              </div>
+            </div>
+            <div className={style.colum3}>
+              <p className={style.row3}> Gjennomsnittlig energiforbruk </p>
+              <p className={style.row4}> Spart Sammenlignet med i fjor </p>
+              <div className={style.row5}>
+                {allUpgrades.map((item) => (
+                  <p>{item}</p>
+                ))}
+              </div>
+            </div>
+            <div className={style.colum4}>
+              <h2>
+                {' '}
+                {compareBuilding}
+                {' '}
+              </h2>
+              <p className={style.row2}>
+                {' '}
+                Byggeår:
 
-            2012
-            {'   '}
-            km²:
+                2012
+                {'   '}
+                km²:
 
-            1049
-          </p>
-          <div className={style.row3}>
-            <ProgressBar building={compareBuilding} place="right" data="avg" />
-          </div>
-          <div className={style.row4}>
-            <ProgressBar building={compareBuilding} place="right" data="spart" />
-          </div>
-          <div className={style.iconR}>
-            {allUpgrades.map((_upgrade, index) => getIcon(otherBuildingUpgrade, index))}
+                1049
+              </p>
+              <div className={style.row3}>
+                <ProgressBar building={compareBuilding} place="right" data="avg" />
+              </div>
+              <div className={style.row4}>
+                <ProgressBar building={compareBuilding} place="right" data="spart" />
+              </div>
+              <div className={style.iconR}>
+                {allUpgrades.map((_upgrade, index) => getIcon(otherBuildingUpgrade, index))}
+              </div>
+            </div>
           </div>
         </div>
-      </div>
+      )}
     </div>
   );
 }

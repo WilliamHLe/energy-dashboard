@@ -16,7 +16,7 @@ function Building() {
     year: number,
     energimerke: string,
   }
-
+  // s
   const { category, id } = useParams<{ category: string, id: string }>();
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [compareWithBuilding, setcompareWithBuilding] = useState<Ibuilding>();
@@ -43,7 +43,9 @@ function Building() {
         </div>
         <div className={`container ${style.energyTotal}`} />
         <div className={`container ${style.getTips}`} />
-        <div className={`container ${style.energyPercentageSaved}`} />
+        <div className={`container ${style.energyPercentageSaved}`}>
+          <EnergySaved />
+        </div>
         <div className={`container ${style.badges}`}>
           Bygg type:
           {' '}
@@ -52,19 +54,6 @@ function Building() {
           {' '}
           {id}
         </div>
-      </div>
-      <div className={`container ${style.energyTotal}`} />
-      <div className={`container ${style.getTips}`} />
-      <div className={`container ${style.energyPercentageSaved}`}>
-        <EnergySaved />
-      </div>
-      <div className={`container ${style.badges}`}>
-        Bygg type:
-        {' '}
-        {category}
-        , ID:
-        {' '}
-        {id}
       </div>
       <div>
         {modalIsOpen === true ? (

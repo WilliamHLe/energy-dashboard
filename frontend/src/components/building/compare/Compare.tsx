@@ -7,12 +7,17 @@ import style from './compare.module.css';
 interface Ibuilding {
   name: string,
   tek: string,
-  areal: number,
+  area: number,
   year: number,
-  energimerke: string,
+  energyLabel: string,
+  category: {
+    id: string,
+    name: string,
+  }
 }
 
 function Compare(props: any) {
+  // eslint-disable-next-line no-unused-vars
   const { category, id } = useParams<{ category: string, id: string }>();
   const [currentBuilding, setCurrentBuilding] = useState<Ibuilding>();
   const [initalBuildings, setInitialBuildings] = useState<Ibuilding[]>();
@@ -32,32 +37,42 @@ function Compare(props: any) {
   ]);
 
   useEffect(() => {
-    const allBuildings: Ibuilding[] = [];
-    const fetchdata = async () => {
-      const response = await axios.get(`/building/${category}`);
-      allBuildings.push(response.data);
-    };
-    fetchdata();
+    const allBuildings: any[] = [];
     const fetchCurrentBuildingData = async () => {
-      const response = await axios.get(`/building/${id}`);
-      setCurrentBuilding(response.data);
+      const teksatandard = ['TEK17', 'TEK18', 'TEK16'];
+      const energimerke = ['A', 'B', 'C', 'D'];
+      const responseBuilding = await axios.get(`/search?name=${id}`);
+      const o = Math.floor(Math.random() * 2);
+      const u = Math.floor(Math.random() * 3);
+      responseBuilding.data[0].tek = teksatandard[o];
+      responseBuilding.data[0].energyLabel = energimerke[u];
+      setCurrentBuilding(responseBuilding.data[0]);
+      const responseBuildings = await axios.get(`/buildings?category=${responseBuilding.data[0].category}`);
+      allBuildings.push(responseBuildings.data);
+      if (allBuildings.length > 0) {
+        const initialFilterd = allBuildings[0].filter((i: {
+          name: String,
+          year: Number,
+          area: Number
+        }) => (
+          // eslint-disable-next-line max-len
+          (i.year <= responseBuilding.data[0].year + 50
+              && i.year >= responseBuilding.data[0].year - 50)
+            && (i.area <= responseBuilding.data[0].area + 500
+            && i.area >= responseBuilding.data[0].area - 500)
+        && (i.name !== responseBuilding.data[0].name)));
+        setBuildings(initialFilterd);
+        setInitialBuildings(initialFilterd);
+      }
     };
     fetchCurrentBuildingData();
-    if (currentBuilding !== undefined) {
-      const initialFilterd = allBuildings.filter((i: { year: Number, areal: Number }) => (
-        (i.year <= currentBuilding.year + 10 && i.year >= currentBuilding.year - 10)
-        && (i.areal <= currentBuilding.areal + 50 && i.areal >= currentBuilding.areal - 50)));
-      setBuildings(initialFilterd);
-      setInitialBuildings(initialFilterd);
-    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-
   const filter = (index: number, list: Ibuilding[] | undefined) => {
     const item = checkedItems[index];
     if (item.label === 'energimerke' && currentBuilding !== undefined && list !== undefined) {
-      return list.filter((i: { energimerke: string; }) => (
-        i.energimerke === currentBuilding.energimerke));
+      return list.filter((i: { energyLabel: string; }) => (
+        i.energyLabel === currentBuilding.energyLabel));
     }
     if (item.label === 'tek' && currentBuilding !== undefined && list !== undefined) {
       return list.filter((i: { tek: string; }) => i.tek === currentBuilding.tek);

@@ -4,6 +4,8 @@ import Building, { IBuilding } from '../models/buildings.model';
 import Category, { ICategory } from '../models/categories.model';
 import energyService from '../services/energy.service';
 
+const teksatandard = ['TEK17', 'TEK18', 'TEK16'];
+const energimerke = ['A', 'B', 'C', 'D'];
 const getAllBuildings = async (
   req: Request,
   res: Response,
@@ -22,8 +24,10 @@ const getAllBuildings = async (
     // Temporary fix for missing values in database
     buildings = buildings.map((building) => {
       const b = building;
-      b.tek = 'TEK17';
-      b.energyLabel = 'A';
+      const i = Math.floor(Math.random() * 2);
+      const u = Math.floor(Math.random() * 3);
+      b.tek = teksatandard[i];
+      b.energyLabel = energimerke[u];
       return b;
     });
 
