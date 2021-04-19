@@ -14,9 +14,9 @@ const getAllBuildings = async (
     let buildings;
 
     if (categoryId) {
-      buildings = await Building.find({ category: categoryId }).lean();
+      buildings = await Building.find({ category: categoryId }).populate('category').lean();
     } else {
-      buildings = await Building.find().lean();
+      buildings = await Building.find().populate('category').lean();
     }
 
     // Temporary fix for missing values in database
@@ -41,7 +41,7 @@ const getBuildingById = async (
   try {
     const building = await Building.findOne({
       _id: req.params.id,
-    }).lean();
+    }).populate('category').lean();
     res.send(building);
   } catch (err) {
     next(err);
