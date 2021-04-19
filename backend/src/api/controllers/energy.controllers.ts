@@ -167,7 +167,6 @@ const getEnergyUsage = async (
 ): Promise<void> => {
   const fromDate = req.query.from_date as string;
   const toDate = req.query.to_date as string;
-  const expected = req.query.expected as string;
 
   try {
     const energyUsage = await energyService.energyUsageByCategory(
@@ -186,7 +185,6 @@ const getEnergyUsageByBuilding = async (
   const fromDate = req.query.from_date as string;
   const toDate = req.query.to_date as string;
   const buildingId = req.params.id;
-  // const expected = req.query.expected as string;
 
   try {
     const energyUsage = await energyService.energyUsage([buildingId], fromDate, toDate);
