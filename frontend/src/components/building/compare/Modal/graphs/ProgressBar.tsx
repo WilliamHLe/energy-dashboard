@@ -1,4 +1,5 @@
-import React, { useEffect } from 'react';
+import axios from 'axios';
+import React, { useEffect, useState } from 'react';
 
 interface Ibuilding {
     name: string,
@@ -8,15 +9,24 @@ interface Ibuilding {
     energimerke: string,
   }
 
-const ProgressBar = (props: {building: string | Ibuilding | undefined, place: string}) => {
-  const completed = 40;
-  const { building, place } = props;
+const ProgressBar = (props: {building: string | Ibuilding | undefined,
+  place: string, data: string}) => {
+  const [completed, setCompleted] = useState();
+  const { building, place, data } = props;
 
   useEffect(() => {
-    console.log(building);
-    console.log(place);
-    // get data from api here
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+    const fetchdata = async () => {
+      if (data === 'saved') {
+        const response = await axios.get(`/energy/saved/total/${building}`);
+        setCompleted(response.data);
+      }
+      if (data === 'avg') {
+        const response = await axios.get(`/energy/average/${building}`);
+        setCompleted(response.data);
+      }
+    };
+    fetchdata();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (

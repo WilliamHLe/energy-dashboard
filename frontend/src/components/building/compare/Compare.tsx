@@ -1,3 +1,4 @@
+import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router';
 import Card from './ComapreWithListCard';
@@ -12,15 +13,8 @@ interface Ibuilding {
 }
 
 function Compare(props: any) {
-  const { id } = useParams<{ id: string }>();
-  const [currentBuilding] = useState({
-    name: id,
-    tek: 'TEK18',
-    areal: 1234,
-    year: 1990,
-    energimerke: 'C',
-  });
-
+  const { category, id } = useParams<{ category: string, id: string }>();
+  const [currentBuilding, setCurrentBuilding] = useState<Ibuilding>();
   const [initalBuildings, setInitialBuildings] = useState<Ibuilding[]>();
   const [buildings, setBuildings] = useState<Ibuilding[]>();
 
@@ -38,86 +32,34 @@ function Compare(props: any) {
   ]);
 
   useEffect(() => {
-    const initalfetch = ([
-      {
-        name: 'Tiller barnahage',
-        tek: 'TEK17',
-        areal: 1284,
-        year: 2000,
-        energimerke: 'C',
-      },
-      {
-        name: 'Solstien barnehage',
-        tek: 'TEK18',
-        areal: 1234,
-        year: 1995,
-        energimerke: 'C',
-      },
-      {
-        name: 'Eventyrstien barnehage',
-        tek: 'TEK18',
-        areal: 1234,
-        year: 1999,
-        energimerke: 'B',
-      },
-      {
-        name: 'Regnbuen barnehage',
-        tek: 'TEK18',
-        areal: 1204,
-        year: 1997,
-        energimerke: 'A',
-      },
-      {
-        name: 'Nygård barnehage',
-        tek: 'TEK17',
-        areal: 1260,
-        year: 1980,
-        energimerke: 'C',
-      },
-      {
-        name: 'Byåsen barnahage',
-        tek: 'TEK18',
-        areal: 1234,
-        year: 1990,
-        energimerke: 'A',
-      },
-      {
-        name: 'ABC barnehage',
-        tek: 'TEK18',
-        areal: 6000,
-        year: 2000,
-        energimerke: 'C',
-      },
-      {
-        name: 'Soltun barnehage',
-        tek: 'TEK12',
-        areal: 1234,
-        year: 2068,
-        energimerke: 'C',
-      },
-      {
-        name: 'jadamasa barnehage',
-        tek: 'TEK18',
-        areal: 5000,
-        year: 2058,
-        energimerke: 'C',
-      },
-    ]);
-    const initialFilterd = initalfetch.filter((i: { year: Number, areal: Number }) => (
-      (i.year <= currentBuilding.year + 10 && i.year >= currentBuilding.year - 10)
-      && (i.areal <= currentBuilding.areal + 50 && i.areal >= currentBuilding.areal - 50)));
-    setBuildings(initialFilterd);
-    setInitialBuildings(initialFilterd);
+    const allBuildings: Ibuilding[] = [];
+    const fetchdata = async () => {
+      const response = await axios.get(`/building/${category}`);
+      allBuildings.push(response.data);
+    };
+    fetchdata();
+    const fetchCurrentBuildingData = async () => {
+      const response = await axios.get(`/building/${id}`);
+      setCurrentBuilding(response.data);
+    };
+    fetchCurrentBuildingData();
+    if (currentBuilding !== undefined) {
+      const initialFilterd = allBuildings.filter((i: { year: Number, areal: Number }) => (
+        (i.year <= currentBuilding.year + 10 && i.year >= currentBuilding.year - 10)
+        && (i.areal <= currentBuilding.areal + 50 && i.areal >= currentBuilding.areal - 50)));
+      setBuildings(initialFilterd);
+      setInitialBuildings(initialFilterd);
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const filter = (index: number, list: Ibuilding[] | undefined) => {
     const item = checkedItems[index];
-    if (item.label === 'energimerke' && list !== undefined) {
+    if (item.label === 'energimerke' && currentBuilding !== undefined && list !== undefined) {
       return list.filter((i: { energimerke: string; }) => (
         i.energimerke === currentBuilding.energimerke));
     }
-    if (item.label === 'tek' && list !== undefined) {
+    if (item.label === 'tek' && currentBuilding !== undefined && list !== undefined) {
       return list.filter((i: { tek: string; }) => i.tek === currentBuilding.tek);
     }
     return undefined;

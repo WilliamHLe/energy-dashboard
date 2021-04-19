@@ -8,14 +8,14 @@ import check from '../../../../assets/png/bi_check.png';
 import cross from '../../../../assets/png/entypo_cross.png';
 
 interface Ibuilding {
-    name: string,
-    tek: string,
-    areal: number,
-    year: number,
-    energimerke: string,
-  }
+  name: string,
+  tek: string,
+  areal: number,
+  year: number,
+  energimerke: string,
+}
 
-function Modal(props: {onChange: any, compareBuilding: Ibuilding | undefined}) {
+function Modal(props: { onChange: any, compareBuilding: Ibuilding | undefined }) {
   const { id } = useParams<{ id: string }>();
   const { compareBuilding } = props;
   const UpgradeItem = [
@@ -28,7 +28,6 @@ function Modal(props: {onChange: any, compareBuilding: Ibuilding | undefined}) {
     'Solcelleanlegg',
     'LED-lys',
   ];
-
   const [allUpgrades, setUpgrades] = useState(['']);
   const [currentBuildingUpgrade, setCrurrentBuildingUpgrades] = useState([3]);
   const [otherBuildingUpgrade, setOtherBuildingUpgrades] = useState([3]);
@@ -110,10 +109,10 @@ function Modal(props: {onChange: any, compareBuilding: Ibuilding | undefined}) {
             km²: 1049
           </p>
           <div className={style.row3}>
-            <ProgressBar building={id} place="left" />
+            <ProgressBar building={id} place="left" data="avg" />
           </div>
           <div className={style.row4}>
-            <ProgressBar building={id} place="left" />
+            <ProgressBar building={id} place="left" data="spart" />
           </div>
           <div className={style.iconL}>
             {allUpgrades.map((_upgrade, index) => getIcon(currentBuildingUpgrade, index))}
@@ -123,7 +122,7 @@ function Modal(props: {onChange: any, compareBuilding: Ibuilding | undefined}) {
           <p className={style.row3}> Gjennomsnittlig energiforbruk </p>
           <p className={style.row4}> Spart Sammenlignet med i fjor </p>
           <div className={style.row5}>
-            { allUpgrades.map((item) => (
+            {allUpgrades.map((item) => (
               <p>{item}</p>
             ))}
           </div>
@@ -145,10 +144,10 @@ function Modal(props: {onChange: any, compareBuilding: Ibuilding | undefined}) {
             1049
           </p>
           <div className={style.row3}>
-            <ProgressBar building={compareBuilding} place="right" />
+            <ProgressBar building={compareBuilding} place="right" data="avg" />
           </div>
           <div className={style.row4}>
-            <ProgressBar building={compareBuilding} place="right" />
+            <ProgressBar building={compareBuilding} place="right" data="spart" />
           </div>
           <div className={style.iconR}>
             {allUpgrades.map((_upgrade, index) => getIcon(otherBuildingUpgrade, index))}
