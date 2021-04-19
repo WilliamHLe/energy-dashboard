@@ -171,7 +171,7 @@ const getEnergyUsage = async (
 
   try {
     const energyUsage = await energyService.energyUsageByCategory(
-      fromDate, toDate, expected,
+      fromDate, toDate,
     );
 
     res.send(energyUsage);
