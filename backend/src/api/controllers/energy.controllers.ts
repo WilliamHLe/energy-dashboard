@@ -173,16 +173,66 @@ const getEnergyUsage = async (
 ): Promise<void> => {
   const fromDate = req.query.from_date as string;
   const toDate = req.query.to_date as string;
-  const expected = req.query.expected as string;
 
   try {
     const energyUsage = await energyService.energyUsageByCategory(
-      fromDate, toDate, expected,
+      fromDate, toDate,
     );
 
     res.send(energyUsage);
   } catch (e) {
     next(e);
+  }
+};
+
+const getEnergyUsageByBuilding = async (
+  req: Request, res: Response, next: NextFunction,
+): Promise<void> => {
+  const fromDate = req.query.from_date as string;
+  const toDate = req.query.to_date as string;
+  const buildingId = req.params.id;
+
+  try {
+    const energyUsage = await energyService.energyUsage([buildingId], fromDate, toDate);
+
+    res.send(energyUsage);
+  } catch (err) {
+    next(err);
+  }
+};
+
+const getEnergyUsageBySlug = async (
+  req: Request, res: Response, next: NextFunction,
+): Promise<void> => {
+  const fromDate = req.query.from_date as string;
+  const toDate = req.query.to_date as string;
+
+  try {
+    const name: RegExp = new RegExp(req.params.slug, 'i');
+    const category: ICategory | null = await Category.findOne({ name: { $regex: name } });
+
+    if (category) {
+      const buildings = await Building.find({ category: category.id }).distinct('_id');
+      const energyUsage = await energyService.energyUsage(
+        buildings, fromDate, toDate,
+      );
+
+      res.send(energyUsage);
+    } else {
+      const building: IBuilding | null = await Building.findOne({ name: { $regex: name } });
+      if (building) {
+        const energyUsage = await energyService.energyUsage(
+          [building.id], req.query.from_date as string, req.query.to_date as string,
+        );
+
+        res.send(energyUsage);
+      } else {
+        // The slug did not contain a category or building name
+        next('Invalid slug');
+      }
+    }
+  } catch (err) {
+    next(err);
   }
 };
 
@@ -287,6 +337,8 @@ export default {
   getTotalEnergyBySlug,
   getTotalEnergy,
   getEnergyUsage,
+  getEnergyUsageByBuilding,
+  getEnergyUsageBySlug,
   getAverageEnergyBySlug,
   getAllAverage,
   getAllSaved,

@@ -21,7 +21,7 @@ export interface Usage {
 
 export interface EnergyUsageCategory {
   category: ICategory,
-  total: Usage[]
+  usage: Usage[]
 }
 export interface EnergyAverage {
   average: number,
@@ -318,7 +318,7 @@ const energyUsage = async (
       $project: {
         _id: 0,
         date: '$_id',
-        value: 1,
+        value: { $trunc: ['$value'] },
       },
     },
     {
@@ -333,16 +333,14 @@ const energyUsage = async (
 };
 
 const energyUsageByCategory = async (
-  // TODO: Hente forventet forbruk
-  // eslint-disable-next-line no-unused-vars
-  fromDate?: string, toDate?: string, expected?: string,
+  fromDate?: string, toDate?: string,
 ): Promise<EnergyUsageCategory[]> => {
   const buildingsGroupedByCategory = await buildingService.getBuildingsGroupedByCategory();
 
   return Promise.all(
     buildingsGroupedByCategory.map(async (buildingCategory) => ({
       category: buildingCategory.category,
-      total: await energyUsage(buildingCategory.buildings, fromDate, toDate),
+      usage: await energyUsage(buildingCategory.buildings, fromDate, toDate),
     })),
   );
 };
