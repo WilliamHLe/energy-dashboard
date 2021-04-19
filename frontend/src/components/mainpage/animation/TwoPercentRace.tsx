@@ -11,6 +11,9 @@ interface ITwoPercentRace{
 const TwoPercentRace = (props: ITwoPercentRace) => {
   const { loading } = props;
   const saved = 1.5;
+  const progress = saved * 25;
+  document.documentElement.style.setProperty('--progress-tronder', `${progress.toString()}%`);
+
   return (
     <div className={loading ? style.loading : ''}>
       <div className={style.goalText} style={{ margin: loading ? '0 auto' : '2% 0% 0% 5%' }}>
@@ -19,7 +22,7 @@ const TwoPercentRace = (props: ITwoPercentRace) => {
         <a id={style.button} style={{ visibility: loading ? 'hidden' : 'visible' }} href="/energitips" type="button">Les mer om 2% målet</a>
       </div>
       <div className={style.animation}>
-        <div className={style.goal}>
+        <div className={!loading ? style.goal : style.goalLoading}>
           <img id={style.girlImg} width="13%" src={Girl} alt="jente på sykkel" />
           <img id={style.bikeImg} width="13%" src={Bicycle} alt="sykkel" />
         </div>

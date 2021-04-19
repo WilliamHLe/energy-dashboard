@@ -1,3 +1,6 @@
+:root{
+    --progress-tronder: 37.5%;
+}
 /* Styling for loading screen */ 
 .loading {
     position: fixed;
@@ -77,6 +80,13 @@
     animation: moveGoal 3s linear forwards;
 
 }
+.goalLoading{
+    position: relative;
+    width: 100%;
+    height: 13vh;
+    margin-top: -2%;
+    animation: moveGoalLoading 3s linear forwards;
+}
   #progress {
     height: 100%;
     background-color: #90ED7D;
@@ -90,6 +100,13 @@
         margin-left: 0%;
     }to{
         margin-left: calc(50% - 6.5%);
+    }
+}
+@keyframes moveGoalLoading{
+    from{
+        margin-left: 0%;
+    }to{
+        margin-left: calc(46% - 6.5%);
     }
 }
 /* animating the progress fill-color */ 
@@ -127,7 +144,7 @@
     from{
         margin-left: 0%;
     }to{
-        margin-left: calc(37.5% - 6.5%);
+        margin-left: calc(var(--progress-tronder) - 6.5%);
     }
 }
 /* animating the progressbar fill-color */ 
@@ -135,7 +152,7 @@
     from{
         width: 0%;
     }to{
-        width: 37.5%;
+        width: var(--progress-tronder);
     }
 }
 
@@ -156,7 +173,7 @@
 }
 @media only screen and (min-width: 1300px) {
     #bikeImg {
-        top: 9%; 
+        top: 2%; 
     }
     @keyframes updown {
         0%{
