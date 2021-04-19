@@ -1,4 +1,6 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import { useParams } from 'react-router';
+import axios from 'axios';
 import style from './topList.module.css';
 import SearchBar from '../../navbar/SearchBar';
 import CategoryTopListCard from './CategoryTopListCard';
@@ -11,6 +13,7 @@ interface ITopListData {
   building: {id: string, name: string, category:ICategory },
   score: number
 }
+// eslint-disable-next-line no-unused-vars
 const MockData:ITopListData[] = [
   {
     building: {
@@ -69,27 +72,39 @@ const MockData:ITopListData[] = [
   },
 ];
 
-const CategoryTopList = () => (
-  <div className={`container ${style.wrapper}`}>
-    <div className={style.textbox}>
-      <h1>Hvilken barnehage har spart mest energi sammenlignet med i fjor?</h1>
-      <p>Klikk på en barnehage for å se mer info om denne. Kanskje kan du hente noen tips?</p>
+const CategoryTopList = () => {
+  const { category } = useParams<{category:string}>();
+  const [data, setData] = useState<ITopListData[]>([]);
+  useEffect(() => {
+    const fetchData = async () => {
+      const result = await axios.get(`/highscores/${category}`);
+      setData(result.data);
+    };
+    fetchData();
+  }, [category]);
+
+  return (
+    <div className={`container ${style.wrapper}`}>
+      <div className={style.textbox}>
+        <h1>Hvilken barnehage har spart mest energi sammenlignet med i fjor?</h1>
+        <p>Klikk på en barnehage for å se mer info om denne. Kanskje kan du hente noen tips?</p>
+      </div>
+      <SearchBar data={data.map((building:any) => building.building)} />
+      <div className={style.info}>
+        <p>{`Barnehager (${data.length})`}</p>
+        <p>Spart %</p>
+      </div>
+      <div className={style.buildingList}>
+        {data.map((building, index) => (
+          <CategoryTopListCard
+            buildingName={building.building.name}
+            index={index + 1}
+            score={building.score}
+          />
+        ))}
+      </div>
     </div>
-    <SearchBar data={[{ id: 324, name: 'Skole', category: { name: 'Skole' } }]} />
-    <div className={style.info}>
-      <p>{`Barnehager (${MockData.length})`}</p>
-      <p>Spart %</p>
-    </div>
-    <div className={style.buildingList}>
-      { MockData.map((building, index) => (
-        <CategoryTopListCard
-          buildingName={building.building.name}
-          index={index + 1}
-          score={building.score}
-        />
-      )) }
-    </div>
-  </div>
-);
+  );
+};
 
 export default CategoryTopList;
