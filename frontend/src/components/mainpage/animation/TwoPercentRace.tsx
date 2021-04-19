@@ -10,7 +10,7 @@ interface ITwoPercentRace{
 
 const TwoPercentRace = (props: ITwoPercentRace) => {
   const { loading } = props;
-  const saved = 1.5;
+  const saved = 3.59;
   const progress = saved * 25;
   document.documentElement.style.setProperty('--progress-tronder', `${progress.toString()}%`);
 
@@ -32,7 +32,7 @@ const TwoPercentRace = (props: ITwoPercentRace) => {
           </div>
         </div>
         <div>
-          <div className={style.tronder}>
+          <div className={!loading ? style.tronder : style.tronderLoading}>
             <img id={style.girlImg} width="13%" src={Tronder} alt="jente på sykkel" />
             <img id={style.bikeImg} width="13%" src={Bicycle} alt="sykkel" />
           </div>
