@@ -95,7 +95,12 @@ function CategoryUsage() {
       buttonTheme: {
         width: 50,
       },
-      selected: 1,
+      inputStyle: {
+        backgroundColor: '#020E26',
+        color: 'white',
+        fontWeight: 'bold',
+        borderRadius: '5px',
+      },
     },
     tooltip: {
       headerFormat: '<span style="font-size: 10px">{point.key:%Y-%m-%d}</span><br/>',
@@ -109,8 +114,8 @@ function CategoryUsage() {
     boost: {
       useGPUTranslations: true,
     },
-    colors: ['#4572A7', '#AA4643', '#89A54E', '#80699B', '#3D96AE',
-      '#DB843D', '#92A8CD', '#A47D7C', '#B5CA92'],
+    colors: ['#28d515', '#00FFFF', '#FEB064', '#CECE00', '#F7A4F7',
+      '#FEB064', '#92A8CD', '#A47D7C', '#B5CA92'],
     credits: {
       enabled: false,
     },

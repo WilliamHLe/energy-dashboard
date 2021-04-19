@@ -32,6 +32,8 @@ function EnergySaved() {
       type: 'column',
       backgroundColor: null,
     },
+    colors: ['#8AD515', '#00FFFF', '#FEB064', '#CECE00', '#F7A4F7',
+      '#FEB064', '#92A8CD', '#A47D7C', '#B5CA92'],
     plotOptions: {
       column: {
         colorByPoint: true,

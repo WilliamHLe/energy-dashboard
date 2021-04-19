@@ -42,6 +42,9 @@ function Sankey() {
       backgroundColor: null,
       color: 'white',
     },
+    colors: ['#CECE00', '#FEB064', '#00ffff', '#28d515',
+      '#B5CA92',
+      '#FEB064', '#92A8CD', '#A47D7C', '#F7A4F7'],
     title: {
       text: 'Energibærere',
       style: {

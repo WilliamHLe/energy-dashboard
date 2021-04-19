@@ -43,6 +43,8 @@ function EnergyCarriers() {
         color: 'white',
       },
     },
+    colors: ['#28d515', '#00FFFF', '#FEB064', '#F7A4F7', '#CECE00',
+      '#FEB064', '#92A8CD', '#A47D7C', '#B5CA92'],
     credits: {
       enabled: false,
     },
