@@ -1,36 +1,54 @@
 import React, { useEffect, useState } from 'react';
 import Highcharts from 'highcharts/highstock';
 import HighchartsReact from 'highcharts-react-official';
+import { useParams } from 'react-router';
 
 const axios = require('axios').default;
 require('highcharts/modules/boost')(Highcharts);
 
 function CategoryUsage() {
+  const { category, id } = useParams<{category:string, id:string}>();
   const [data, setData] = useState<any>([]);
   useEffect(() => {
     // eslint-disable-next-line no-unused-vars
     const fetchData = async () => {
-      const response = await axios.get('/energy/usage');
-      const tempData:any[] = [];
+      let query = '';
+      if (id !== undefined) {
+        query = `${id}`;
+      } else if (category !== undefined) {
+        query = `${category}`;
+      }
       try {
+        const response = await axios.get(`/energy/usage/${query}`);
+        const tempData:any[] = [];
+        if (query !== '') {
+          tempData.push({ cropThreshold: 9999, name: query, data: [] });
+        }
         for (let i = 0; i < response.data.length; i += 1) {
-          tempData.push({ cropThreshold: 9999, name: response.data[i].category.name, data: [] });
-          for (let j = 0; j < response.data[i].total.length; j += 1) {
-            const date = new Date(response.data[i].total[j].date).getTime();
-            tempData[i].data.push({
+          if (query === '') {
+            tempData.push({ cropThreshold: 9999, name: response.data[i].category.name, data: [] });
+            for (let j = 0; j < response.data[i].usage.length; j += 1) {
+              const date = new Date(response.data[i].usage[j].date).getTime();
+              tempData[i].data.push({
+                x: date,
+                y: response.data[i].usage[j].value,
+              });
+            }
+          } else {
+            const date = new Date(response.data[i].date).getTime();
+            tempData[0].data.push({
               x: date,
-              y: response.data[i].total[j].value,
+              y: response.data[i].value,
             });
           }
         }
         setData(tempData);
-        console.log(tempData);
       } catch (e) {
         console.log(e);
       }
     };
     fetchData();
-  }, []);
+  }, [category, id]);
   const options = {
     chart: {
       type: 'line',

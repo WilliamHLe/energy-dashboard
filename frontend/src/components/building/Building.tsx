@@ -5,6 +5,7 @@ import CategoryUsage from '../buildingCategoryOverview/graphs/CategoryUsage';
 import AverageUsage from './graphs/AverageUsage';
 import Compare from './compare/Compare';
 import HeatMapChart from './heatmap/HeatmapChart';
+import EnergySaved from './graphs/EnergySaved';
 
 function Building() {
   const { category, id } = useParams<{ category: string, id: string }>();
@@ -25,7 +26,9 @@ function Building() {
       </div>
       <div className={`container ${style.energyTotal}`} />
       <div className={`container ${style.getTips}`} />
-      <div className={`container ${style.energyPercentageSaved}`} />
+      <div className={`container ${style.energyPercentageSaved}`}>
+        <EnergySaved />
+      </div>
       <div className={`container ${style.badges}`}>
         Bygg type:
         {' '}

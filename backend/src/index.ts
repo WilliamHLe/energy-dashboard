@@ -8,6 +8,7 @@ import metricRoutes from './api/routes/metrics.routes';
 import energyRoutes from './api/routes/energy.routes';
 import buildingRoutes from './api/routes/buildings.routes';
 import connectDb from './util/database';
+import highscoresRoutes from './api/routes/highscores.routes';
 
 connectDb();
 
@@ -20,6 +21,7 @@ app.use('/categories', categoryRoutes);
 app.use('/metrics', metricRoutes);
 app.use('/energy', energyRoutes);
 app.use('/buildings', buildingRoutes);
+app.use('/highscores', highscoresRoutes);
 
 app.listen(port, () => {
   // eslint-disable-next-line no-console

@@ -922,6 +922,29 @@
         }
       }
     },
+    "/energy/saved": {
+      "get": {
+        "tags": [
+          "energy"
+        ],
+        "summary": "Get energy saved by for each category",
+        "description": "Returns a list of energy saved for each category",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/SavedCategory"
+              }
+            }
+          }
+        }
+      }
+    },
     "/energy/total": {
       "get": {
         "tags": [
@@ -1515,6 +1538,18 @@
         "saved": {
           "type": "integer",
           "example": 1234
+        }
+      }
+    },
+    "SavedCategory": {
+      "type": "object",
+      "properties": {
+        "category": {
+          "$ref": "#/definitions/Category"
+        },
+        "saved": {
+          "type": "integer",
+          "example": 1234567
         }
       }
     }

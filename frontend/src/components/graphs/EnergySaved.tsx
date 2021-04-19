@@ -1,110 +1,30 @@
 import React, { useEffect, useState } from 'react';
 import Highcharts from 'highcharts';
 import HighchartsReact from 'highcharts-react-official';
+import axios from 'axios';
 
 require('highcharts/modules/sankey')(Highcharts);
 
 function EnergySaved() {
   const [data, setData] = useState<{ name: string; y: number; }[]>();
-  const [currentYear, setCurrentYear] = useState(0);
-  const [lastYear, setLastYear] = useState(0);
 
   useEffect(() => {
-    const tempData = [];
-    const today = new Date();
-    const year = today.getFullYear();
-    const currentDate = `${(`0${today.getDate()}`).slice(-2)}-${(`0${today.getMonth() + 1}`).slice(-2)}-${year.toString().slice(-2)}`;
-    const lastDate = `${(`0${today.getDate()}`).slice(-2)}-${(`0${today.getMonth() + 1}`).slice(-2)}-${(year - 1).toString().slice(-2)}`;
-    // Fetches:
-    //  This year: /energy/total?from_date=01-01-year.toString().slice(-2)&to_date=currentDates
-    //  Last year: /energy/total?from_date=01-01-(year - 1).toString().slice(-2)&to_date=lastDate
-    console.log(currentDate, lastDate);
-    const mockThisYear = [
-      {
-        category: {
-          id: '213123',
-          name: 'Skole',
-        },
-        total: 31631,
-      },
-      {
-        category: {
-          id: '213123',
-          name: 'Barnehage',
-        },
-        total: 31931,
-      },
-      {
-        category: {
-          id: '213123',
-          name: 'Idrettsbygg',
-        },
-        total: 31031,
-      },
-      {
-        category: {
-          id: '213123',
-          name: 'Sykehjem',
-        },
-        total: 30731,
-      },
-      {
-        category: {
-          id: '213123',
-          name: 'Andre bygg',
-        },
-        total: 32231,
-      },
-    ];
-    const mockLastYear = [
-      {
-        category: {
-          id: '213123',
-          name: 'Skole',
-        },
-        total: 31231,
-      },
-      {
-        category: {
-          id: '213123',
-          name: 'Barnehage',
-        },
-        total: 31231,
-      },
-      {
-        category: {
-          id: '213123',
-          name: 'Idrettsbygg',
-        },
-        total: 31231,
-      },
-      {
-        category: {
-          id: '213123',
-          name: 'Sykehjem',
-        },
-        total: 31231,
-      },
-      {
-        category: {
-          id: '213123',
-          name: 'Andre bygg',
-        },
-        total: 31231,
-      },
-    ];
-    for (let i = 0; i < mockLastYear.length; i += 1) {
-      if (mockLastYear[i].category.name === mockThisYear[i].category.name) {
-        const saving = (
-          (mockLastYear[i].total - mockThisYear[i].total) / mockThisYear[i].total
-        ) * 100;
-        console.log(mockThisYear[i].total);
-        tempData.push({ name: mockThisYear[i].category.name, y: parseFloat(saving.toFixed(2)) });
+    const fetchData = async () => {
+      try {
+        const result = await axios.get('/energy/saved');
+        const tempData = [];
+        for (let i = 0; i < result.data.length; i += 1) {
+          tempData.push({
+            name: result.data[i].category.name,
+            y: parseFloat(result.data[i].saved.toFixed(2)),
+          });
+        }
+        setData(tempData);
+      } catch (e) {
+        console.log(e);
       }
-    }
-    setData(tempData);
-    setCurrentYear(year);
-    setLastYear(year - 1);
+    };
+    fetchData();
   }, []);
 
   const options = {
@@ -130,7 +50,7 @@ function EnergySaved() {
       },
     },
     title: {
-      text: `Energi spart fra ${lastYear} til ${currentYear}`,
+      text: 'Energi spart siden i fjor',
       style: {
         color: 'white',
       },

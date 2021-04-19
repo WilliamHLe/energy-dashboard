@@ -138,7 +138,7 @@ const metrics = async (req: Request, res: Response, next: NextFunction): Promise
     const categories = await Category.find();
 
     const responses: IMetrics[] = await Promise.all(categories.map(
-      async (category: ICategory) => metricsService.categoryMetrics(category.id),
+      async (category: ICategory) => metricsService.categoryMetrics(category._id),
     ));
 
     const totalMetrics: IMetrics = responses.reduce((prev, current) => ({
