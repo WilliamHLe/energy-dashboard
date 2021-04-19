@@ -1,0 +1,40 @@
+<svg width="271" height="171" viewBox="0 0 271 171" fill="none" xmlns="http://www.w3.org/2000/svg" 
+xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve">
+<g stroke="white">
+<animateTransform attributeType="xml" attributeName="transform" type="rotate" 
+from="0,46,124.659" to="360,46,124.659" begin="0s" dur="4s" repeatCount="indefinite"/>
+<circle cx="46" cy="124.659" r="44.5" stroke-width="3"/>
+<line x1="2.00575" y1="124.159" x2="91.0055" y2="125.182"/>
+<circle cx="44" cy="124.659" r="4" fill="white"/>
+<line x1="5.78547" y1="143.208" x2="85.7855" y2="105.208" />
+<line x1="19.5912" y1="159.371" x2="69.5912" y2="88.3713" />
+<line x1="38.5055" y1="167.585" x2="51.5055" y2="80.5853" />
+<line x1="56.5208" y1="167.802" x2="31.5208" y2="83.8018" />
+<line x1="72.6187" y1="158.983" x2="16.6187" y2="92.9827" />
+<line x1="84.7975" y1="143.116" x2="5.79747" y2="108.116" />
+</g>
+<g stroke="white">
+<animateTransform attributeType="xml" attributeName="transform" type="rotate" 
+from="0,225,124.659" to="360,225,124.659" begin="0s" dur="4s" repeatCount="indefinite"/>
+<circle cx="225" cy="124.659" r="44.5" stroke-width="3"/>
+<line x1="181.006" y1="124.159" x2="270.005" y2="125.182" />
+<circle cx="223" cy="124.659" r="4" fill="white"/>
+<line x1="184.785" y1="143.208" x2="264.785" y2="105.208" />
+<line x1="198.591" y1="159.371" x2="248.591" y2="88.3713" />
+<line x1="217.505" y1="167.585" x2="230.505" y2="80.5853" />
+<line x1="235.521" y1="167.802" x2="210.521" y2="83.8018" />
+<line x1="251.619" y1="158.983" x2="195.619" y2="92.9827" />
+<line x1="263.797" y1="143.116" x2="184.797" y2="108.116" />
+</g>
+<line x1="43.2426" y1="124.705" x2="87.2426" y2="43.7045" stroke="white" stroke-width="4"/>
+<path d="M76.7363 23.667L132 122.659" stroke="white" stroke-width="4"/>
+<line x1="45.0244" y1="121.659" x2="134.023" y2="122.745" stroke="white" stroke-width="4"/>
+<path d="M223.074 124.199C207.844 69.9166 210.23 74.9421 195 20.6592" stroke="white" stroke-width="4"/>
+<line x1="132.692" y1="123.146" x2="206.692" y2="59.1465" stroke="white" stroke-width="4"/>
+<path d="M89 44.6592C126.328 44.6592 151.355 44.6592 203 44.6592" stroke="white" stroke-width="4"/>
+<ellipse cx="68.5" cy="22.1592" rx="14.5" ry="6.5" fill="white"/>
+<path d="M98 20.1592C98 22.0922 91.5 23.6592 85.5 24.1592C70 30.6592 63.5 22.0922 63.5 20.1592C63.5 18.2262 68.5 16.6592 75 16.6592C80.5 16.6592 98 18.2262 98 20.1592Z" fill="white"/>
+<circle cx="132" cy="121.659" r="9.5" stroke="white"/>
+<path d="M199.67 38.8296C199.67 38.8296 192.932 -13.1705 169.22 16.6987" stroke="white" stroke-width="4"/>
+<path d="M201.642 46.3086C201.642 46.3086 194.45 -5.63072 171 24.4443" stroke="white" stroke-width="4"/>
+</svg>

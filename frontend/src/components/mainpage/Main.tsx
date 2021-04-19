@@ -6,20 +6,16 @@ import Sankey from './graphs/Sankey';
 import CategoryUsage from '../buildingCategoryOverview/graphs/CategoryUsage';
 import style from './main.module.css';
 import EnergySaved from '../graphs/EnergySaved';
+import TwoPercentRace from './animation/TwoPercentRace';
 
 function Main() {
-  const saved = 3.1;
+  // eslint-disable-next-line no-unused-vars
+  const saved = 2;
 
   return (
     <div className={style.main}>
-      <div className={`container ${style.ex}`} />
       <div className={`container ${style.energyPercentageSaved}`}>
-        <div>
-          <h2>{saved}</h2>
-          Er så mye vi har spart de første 3 månedene i år sammenlignet med i fjor.
-          <br />
-          <button type="button">Les mer om 2% målet her</button>
-        </div>
+        <TwoPercentRace loading={false} />
       </div>
       <div className={`container ${style.energySavedGraph}`}>
         <EnergySaved />
