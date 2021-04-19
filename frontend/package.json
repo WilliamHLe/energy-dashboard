@@ -15,6 +15,7 @@
     "highcharts-more": "^0.1.7",
     "highcharts-react-official": "^3.0.0",
     "http-proxy-middleware": "^0.19.1",
+    "localstorage-ttl": "^1.0.2",
     "react": "^17.0.1",
     "react-autocomplete": "^1.8.1",
     "react-dom": "^17.0.1",
