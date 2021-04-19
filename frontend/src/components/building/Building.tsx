@@ -6,6 +6,8 @@ import AverageUsage from './graphs/AverageUsage';
 import Compare from './compare/Compare';
 import HeatMapChart from './heatmap/HeatmapChart';
 import Modal from './compare/Modal/Modal';
+import EnergySaved from './graphs/EnergySaved';
+
 
 function Building() {
   interface Ibuilding {
@@ -52,10 +54,23 @@ function Building() {
           {id}
         </div>
       </div>
+      <div className={`container ${style.energyTotal}`} />
+      <div className={`container ${style.getTips}`} />
+      <div className={`container ${style.energyPercentageSaved}`}>
+        <EnergySaved />
+      </div>
+      <div className={`container ${style.badges}`}>
+        Bygg type:
+        {' '}
+        {category}
+        , ID:
+        {' '}
+        {id}
+      </div>
       <div>
-        {modalIsOpen === true ? (
-          <Modal compareBuilding={compareWithBuilding} onChange={openModal} />
-        ) : null}
+       {modalIsOpen === true ? (
+         <Modal compareBuilding={compareWithBuilding} onChange={openModal} />
+       ) : null}
       </div>
     </>
   );

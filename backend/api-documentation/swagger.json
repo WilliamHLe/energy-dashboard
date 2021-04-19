@@ -378,20 +378,6 @@
             "description": "ID of the building to return",
             "required": true,
             "type": "string"
-          },
-          {
-            "name": "from_date",
-            "in": "query",
-            "description": "The earliest date (including) to return data for. Defaults to earliest datapoint. Example: `12-03-21`",
-            "required": false,
-            "type": "string"
-          },
-          {
-            "name": "to_date",
-            "in": "query",
-            "description": "The latest date (including) to return data for. Defaults to latest datapoint. Example: `12-03-21`",
-            "required": false,
-            "type": "string"
           }
         ],
         "responses": {
@@ -697,20 +683,6 @@
             "description": "Name of the category",
             "required": true,
             "type": "string"
-          },
-          {
-            "name": "from_date",
-            "in": "query",
-            "description": "The earliest date (including) to return data for. Defaults to earliest datapoint. Example: `12-03-21`",
-            "required": false,
-            "type": "string"
-          },
-          {
-            "name": "to_date",
-            "in": "query",
-            "description": "The latest date (including) to return data for. Defaults to latest datapoint. Example: `12-03-21`",
-            "required": false,
-            "type": "string"
           }
         ],
         "responses": {
@@ -884,6 +856,29 @@
               "type": "array",
               "items": {
                 "$ref": "#/definitions/Carrier"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/energy/saved": {
+      "get": {
+        "tags": [
+          "energy"
+        ],
+        "summary": "Get energy saved by for each category",
+        "description": "Returns a list of energy saved for each category",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/SavedCategory"
               }
             }
           }
@@ -1120,22 +1115,6 @@
         "produces": [
           "application/json"
         ],
-        "parameters": [
-          {
-            "name": "from_date",
-            "in": "query",
-            "description": "The earliest date (including) to return data for. Defaults to earliest datapoint. Example: `12-03-21`",
-            "required": false,
-            "type": "string"
-          },
-          {
-            "name": "to_date",
-            "in": "query",
-            "description": "The latest date (including) to return data for. Defaults to latest datapoint. Example: `12-03-21`",
-            "required": false,
-            "type": "string"
-          }
-        ],
         "responses": {
           "200": {
             "description": "Successful operation",
@@ -1162,20 +1141,6 @@
             "in": "path",
             "description": "Name of a building or category",
             "required": true,
-            "type": "string"
-          },
-          {
-            "name": "from_date",
-            "in": "query",
-            "description": "The earliest date (including) to return data for. Defaults to earliest datapoint. Example: `12-03-21`",
-            "required": false,
-            "type": "string"
-          },
-          {
-            "name": "to_date",
-            "in": "query",
-            "description": "The latest date (including) to return data for. Defaults to latest datapoint. Example: `12-03-21`",
-            "required": false,
             "type": "string"
           }
         ],
@@ -1429,6 +1394,18 @@
           "$ref": "#/definitions/Category"
         },
         "total": {
+          "type": "integer",
+          "example": 1234567
+        }
+      }
+    },
+    "SavedCategory": {
+      "type": "object",
+      "properties": {
+        "category": {
+          "$ref": "#/definitions/Category"
+        },
+        "saved": {
           "type": "integer",
           "example": 1234567
         }
