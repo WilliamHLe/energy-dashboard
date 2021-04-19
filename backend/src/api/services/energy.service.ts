@@ -385,20 +385,9 @@ const energyAverageBySlug = async (
     {
       $group: {
         _id: '$_id.building',
-        usage: {
-          $push: {
-            value: { $sum: '$value' },
-            date: '$_id.date',
-          },
-        },
-      },
-    },
-    {
-      $group: {
-        _id: '$_id',
         average: {
-          $sum: { $avg: '$usage.value' },
-        },
+          $avg: '$value'
+        }
       },
     },
     {
