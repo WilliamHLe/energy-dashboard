@@ -11,5 +11,7 @@ router.get('/:id', controllers.getBuildingById);
 router.get('/:id/metrics', metricsControllers.metricsByBuildingId);
 router.get('/:id/energy/carriers', energyControllers.carriersByBuildingId);
 router.get('/:id/energy/total', energyControllers.getTotalEnergyByBuilding);
+router.get('/:id/energy/saved/weekly', energyControllers.getSavedWeeklyByBuildingId);
+router.get('/:id/energy/saved/total', energyControllers.getSavedByBuildingId);
 
 export default router;

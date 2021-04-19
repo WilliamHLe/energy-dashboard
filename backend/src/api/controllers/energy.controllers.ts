@@ -249,6 +249,87 @@ const getAllAverage = async (
   }
 };
 
+const getSavedWeeklyByBuildingName = async (
+  req: Request, res: Response, next: NextFunction,
+): Promise<void> => {
+  try {
+    const name: RegExp = new RegExp(req.params.slug, 'i');
+    const building: IBuilding | null = await Building.findOne({ name: { $regex: name } });
+
+    if (!building) {
+      next('Building not found');
+      return;
+    }
+
+    res.send(await energyService.getSavedWeeklyByBuilding(building));
+  } catch (e) {
+    next(e);
+  }
+};
+
+const getSavedWeeklyByBuildingId = async (
+  req: Request, res: Response, next: NextFunction,
+): Promise<void> => {
+  try {
+    const { id } = req.params;
+    const building: IBuilding | null = await Building.findById(id);
+
+    if (!building) {
+      next('Building not found');
+      return;
+    }
+
+    res.send(await energyService.getSavedWeeklyByBuilding(building));
+  } catch (e) {
+    next(e);
+  }
+};
+
+const getSavedByBuildingName = async (
+  req: Request, res: Response, next: NextFunction,
+): Promise<void> => {
+  try {
+    const name: RegExp = new RegExp(req.params.slug, 'i');
+    const building: IBuilding | null = await Building.findOne({ name: { $regex: name } });
+
+    if (!building) {
+      next('Building not found');
+      return;
+    }
+
+    const saved = await energyService.getSavedEnergyByBuilding(building);
+    console.log(saved);
+
+    res.send({
+      percentSaved: saved,
+    });
+  } catch (e) {
+    next(e);
+  }
+};
+
+const getSavedByBuildingId = async (
+  req: Request, res: Response, next: NextFunction,
+): Promise<void> => {
+  try {
+    const { id } = req.params;
+    const building: IBuilding | null = await Building.findById(id);
+
+    if (!building) {
+      next('Building not found');
+      return;
+    }
+
+    const saved = await energyService.getSavedEnergyByBuilding(building);
+
+    res.send({
+      percentSaved: saved,
+    });
+  } catch (e) {
+    next(e);
+  }
+};
+
 export default {
   carriers,
   carriersBySlug,
@@ -259,4 +340,8 @@ export default {
   getEnergyUsage,
   getAverageEnergyBySlug,
   getAllAverage,
+  getSavedWeeklyByBuildingName,
+  getSavedWeeklyByBuildingId,
+  getSavedByBuildingName,
+  getSavedByBuildingId,
 };

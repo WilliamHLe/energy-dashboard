@@ -1,12 +1,22 @@
 import mongoose from 'mongoose';
 import Sensor from '../models/sensors.model';
 import { ICategory } from '../models/categories.model';
-import Building from '../models/buildings.model';
+import Building, { IBuilding } from '../models/buildings.model';
 import buildingService from './buildings.service';
 
 export interface Carrier {
   name: string,
   amount: number
+}
+
+export interface IWeeklySaved {
+  week: string,
+  percentSaved: number,
+}
+
+export interface IWeeklyUsage {
+  week: string,
+  sum: number,
 }
 
 export interface CarrierCategory {
@@ -412,6 +422,113 @@ const energyAverageGroupedByCategory = async (
   );
 };
 
+const sumEnergyUsageWeekly = async (
+  buildingId: string, fromDate: Date, toDate: Date,
+): Promise<IWeeklyUsage[]> => {
+  const query: object[] = [
+    {
+      $unwind: '$measurements',
+    },
+    {
+      $match: {
+        building: buildingId,
+        type: 'Forbruksmåler',
+        'measurements.date': { $gte: fromDate, $lte: toDate },
+      },
+    },
+    {
+      $group: {
+        _id: {
+          $dateToString: {
+            format: '%V',
+            date: '$measurements.date',
+          },
+        },
+        sum: { $sum: '$measurements.measurement' },
+      },
+    },
+    {
+      $project: {
+        _id: 0,
+        week: '$_id',
+        sum: { $trunc: ['$sum'] },
+      },
+    },
+  ];
+
+  return Sensor.aggregate(query);
+};
+
+const calculatePercentageSaved = (currentYear: number, lastYear: number): number => {
+  const diff = lastYear - currentYear;
+  return Number(((diff / lastYear) * 100).toFixed(2));
+};
+
+const getSavedWeeklyByBuilding = async (building: IBuilding): Promise<IWeeklySaved[]> => {
+  const prevFromDate = new Date('2018-01-01');
+  const prevToDate = new Date('2019-01-01');
+  const currFromDate = new Date('2019-01-01');
+  const currToDate = new Date('2020-01-01');
+
+  const [curr, prev] = await Promise.all([
+    sumEnergyUsageWeekly(building._id, currFromDate, currToDate),
+    sumEnergyUsageWeekly(building._id, prevFromDate, prevToDate),
+  ]);
+
+  const diff = curr.map((current) => {
+    const lastYear: IWeeklyUsage | undefined = prev.find((p) => p.week === current.week);
+
+    if (!lastYear) {
+      return {
+        week: current.week,
+        sum: 0,
+      };
+    }
+
+    return {
+      week: current.week,
+      sum: calculatePercentageSaved(current.sum, lastYear.sum),
+    };
+  });
+
+  diff.sort((a: IWeeklyUsage, b: IWeeklyUsage) => {
+    if (a.week < b.week) {
+      return -1;
+    }
+    if (a.week > b.week) {
+      return 1;
+    }
+    return 0;
+  });
+
+  return diff.map((el) => ({
+    week: el.week,
+    percentSaved: el.sum,
+  }));
+};
+
+const getSavedEnergyByBuilding = async (building: IBuilding): Promise<number> => {
+  const latestYearInDataset = 2019;
+  const currentEnd = new Date();
+  currentEnd.setFullYear(latestYearInDataset);
+  const currentStart = new Date(latestYearInDataset, 0, 1);
+  const lastEnd = new Date(currentEnd);
+  lastEnd.setFullYear(currentEnd.getFullYear() - 1);
+  const lastStart = new Date(currentStart);
+  lastStart.setFullYear(currentStart.getFullYear() - 1);
+
+  const [curr, prev] = await Promise.all([
+    sumEnergyUsageByBuildingIds(
+      [building._id], currentStart.toISOString(), currentEnd.toISOString(),
+    ),
+    sumEnergyUsageByBuildingIds(
+      [building._id], lastStart.toISOString(), lastEnd.toISOString(),
+    ),
+  ]);
+
+  return calculatePercentageSaved(curr, prev);
+};
+
 export default {
   carriers,
   carriersByBuildings,
@@ -423,4 +540,7 @@ export default {
   energyUsageByCategory,
   energyAverageBySlug,
   energyAverageGroupedByCategory,
+  sumEnergyUsageWeekly,
+  getSavedWeeklyByBuilding,
+  getSavedEnergyByBuilding,
 };
