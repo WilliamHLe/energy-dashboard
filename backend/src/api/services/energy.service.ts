@@ -369,26 +369,48 @@ const energyAverageBySlug = async (
     },
     {
       $group: {
-        _id: {
-          $dateToString: {
-            format: '%Y',
-            date: '$measurements.date',
+        _id:
+          {
+            building: '$building',
+            date: {
+              $dateToString: {
+                format: '%Y',
+                date: '$measurements.date',
+              },
+            },
           },
-        },
-        value: { $sum: '$measurements.measurement' },
+        value: { $sum: '$measurements.measurement' }
+      },
+    },
+    {
+      $group: {
+        _id: '$_id.building',
+        usage: {
+          $push: {
+            value: { $sum: '$value' },
+            date: '$_id.date'
+          }
+        }
+      },
+    },
+    {
+      $group: {
+        _id: '$_id',
+        average: {
+          $sum: { $avg: '$usage.value' }
+        }
       },
     },
     {
       $group: {
         _id: null,
-        avg: {
-          $avg: '$value',
-        },
+        avg: {$avg: '$average'}
       },
     },
     {
       $project: {
-        avg: { $trunc: ['$value'] },
+        _id: 0,
+        average: { $trunc: ['$avg'] },
       },
     },
   ];
