@@ -8,7 +8,6 @@ import HeatMapChart from './heatmap/HeatmapChart';
 import Modal from './compare/Modal/Modal';
 import EnergySaved from './graphs/EnergySaved';
 
-
 function Building() {
   interface Ibuilding {
     name: string,
@@ -68,9 +67,9 @@ function Building() {
         {id}
       </div>
       <div>
-       {modalIsOpen === true ? (
-         <Modal compareBuilding={compareWithBuilding} onChange={openModal} />
-       ) : null}
+        {modalIsOpen === true ? (
+          <Modal compareBuilding={compareWithBuilding} onChange={openModal} />
+        ) : null}
       </div>
     </>
   );
