@@ -47,3 +47,66 @@
     border-radius: 4px;
     padding:5px;
 }
+.title {
+    padding: 20px;
+    float: left;
+}
+.image {
+    padding: 20px;
+    width: 25%;
+    object-fit: contain;
+}
+.saved {
+    padding: 20px;
+    float: left;
+}
+/* Code found here: https://stackoverflow.com/questions/31991092/progress-bar-with-reference-line-using-css-and-html/31992281#31992281 */
+.progress {
+    width: 80%;
+    margin: auto;
+    font-size: 0.5em;
+    padding: 20px;
+}
+.progress .bar {
+    position: relative;
+    background-image: linear-gradient(90deg, darkgreen,green);
+    border-radius: 20px;
+}
+.progress .bar .percent {
+    color: white;
+    width: 70%;
+    height: 30px;
+    border-radius: 20px;
+}
+.progress .bar .goal {
+    position: absolute;
+    top: -25%;
+    width: 2px;
+    height: 150%;
+    background-color: white;
+}
+.progress .bar .current {
+    position: absolute;
+    top: -25%;
+    width: 2px;
+    height: 150%;
+    background-color: white;
+}
+.progress .bar .goal:before {
+    content: attr(data-ref);
+    position: absolute;
+    width: 100px;
+    left: -50px;
+    bottom: 100%;
+    color: #888;
+    text-align: center;
+}
+.progress .bar .current:before {
+    content: attr(data-ref);
+    position: absolute;
+    width: 100px;
+    left: -50px;
+    top: 100%;
+    color: #888;
+    text-align: center;
+}
