@@ -20,7 +20,7 @@ function AverageUsage() {
     };
     const mockAverage = {
       average: 1234567,
-      averageCategory: 1204567,
+      averageCategory: 1584567,
     };
     const tempData = [{
       name: mockBuilding.name,
@@ -80,27 +80,15 @@ function AverageUsage() {
       },
       min: 0,
       max: 2000000,
-      plotBands: {
-        from: category.average + 150000,
-        to: category.average + 170000,
+      plotLines: [{
+        value: category.average,
+        width: 5,
         color: 'black',
-        thickness: '50%',
-        outerRadius: '105%',
-        useHTML: true,
-        zIndex: 5,
         label: {
-          text: `${category.name}: ${category.average} KWh`,
-          style: {
-            color: 'white',
-          },
-          textAlign: 'center',
-          y: -10, // s
+          useHTML: true,
+          text: `<span style="border:1px solid black;background-color: #020E26;border-radius: 5px;">${category.name}: ${category.average} KWh</span>`,
         },
-        styles: {
-          color: 'white',
-          margin: '50px',
-        },
-      },
+      }],
     },
     plotOptions: {
       column: {
