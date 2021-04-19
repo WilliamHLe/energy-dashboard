@@ -236,6 +236,22 @@ const getEnergyUsageBySlug = async (
   }
 };
 
+const getAverageUsageByBuilding = async (
+  req: Request, res: Response, next: NextFunction,
+): Promise<void> => {
+  const fromDate = req.query.from_date as string;
+  const toDate = req.query.to_date as string;
+  const buildingId = req.params.id;
+
+  try {
+    const energyUsage = await energyService.energyAverageBySlug([buildingId], fromDate, toDate);
+
+    res.send(energyUsage);
+  } catch (err) {
+    next(err);
+  }
+};
+
 /**
  * Controller to handle finding average energy for slug.
  * Slug can be either a specific building or a specific category.
@@ -420,6 +436,7 @@ export default {
   getEnergyUsage,
   getEnergyUsageByBuilding,
   getEnergyUsageBySlug,
+  getAverageUsageByBuilding,
   getAverageEnergyBySlug,
   getAllAverage,
   getSavedWeeklyByBuildingName,
