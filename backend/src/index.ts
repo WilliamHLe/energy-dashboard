@@ -3,11 +3,11 @@ import swaggerUi from 'swagger-ui-express';
 
 import swaggerDocument from '../api-documentation/swagger.json';
 import categoryRoutes from './api/routes/categories.routes';
-import connectDb from './util/database';
 import searchRoute from './api/routes/search.routes';
 import metricRoutes from './api/routes/metrics.routes';
 import energyRoutes from './api/routes/energy.routes';
 import buildingRoutes from './api/routes/buildings.routes';
+import connectDb from './util/database';
 import highscoresRoutes from './api/routes/highscores.routes';
 
 connectDb();
