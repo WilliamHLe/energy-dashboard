@@ -1,21 +1,18 @@
 .main {
-    margin:20px;
+    margin:10px;
     max-height: calc(100vh - 200px);
     display: grid;
     grid-template-columns: repeat(12, 1fr);
-    grid-template-rows: repeat(2, 1fr);
-    column-gap: 20px;
-    row-gap: 20px;
+    grid-template-rows: repeat(2, 41vh);
+    column-gap: 10px;
+    row-gap: 10px;
     grid-template-areas: 
-    "content content content content content2 content2 content2 content2 content3 content3 content3 content3"
+    "content content content content content content content content content3 content3 content3 content3"
     "usage usage usage usage usage usage source source source source source source";
 }
-.ex {
-    grid-area: content;
-}
 .energyPercentageSaved {
-    grid-area: content2;
-    text-align: center;
+    grid-area: content;
+    text-align: left;
 }
 .energySavedGraph {
     grid-area: content3;
