@@ -4,6 +4,7 @@ import HighchartsReact from 'highcharts-react-official';
 import { useParams } from 'react-router';
 
 const axios = require('axios').default;
+const ls = require('localstorage-ttl');
 require('highcharts/modules/boost')(Highcharts);
 
 function CategoryUsage() {
@@ -42,12 +43,27 @@ function CategoryUsage() {
             });
           }
         }
+        if (id !== undefined) {
+          ls.set(`${id}_usage`, tempData, [604800000]);
+        } else if (category !== undefined) {
+          ls.set(`${category}_usage`, tempData, [604800000]);
+        } else {
+          ls.set('usage', tempData, [604800000]);
+        }
         setData(tempData);
       } catch (e) {
         console.log(e);
       }
     };
-    fetchData();
+    if (id !== undefined && ls.get(`${id}_usage`)) {
+      setData(ls.get(`${id}_usage`));
+    } else if (category !== undefined && id === undefined && ls.get(`${category}_usage`)) {
+      setData(ls.get(`${category}_usage`));
+    } else if (id === undefined && category === undefined && ls.get('usage')) {
+      setData(ls.get('usage'));
+    } else {
+      fetchData();
+    }
   }, [category, id]);
   const options = {
     chart: {
