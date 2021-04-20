@@ -64,6 +64,7 @@ function AverageUsage() {
       startAngle: -90,
       endAngle: 90,
       background: {
+        backgroundColor: 'lightgrey',
         innerRadius: '60%',
         outerRadius: '100%',
         shape: 'arc',
@@ -91,10 +92,7 @@ function AverageUsage() {
         y: 16,
       },
       min: 0,
-      max: Math.random() * (
-        (categoryAvg.average * 2)
-          - (categoryAvg.average + (categoryAvg.average / 3)))
-          + (categoryAvg.average + (categoryAvg.average / 3)),
+      max: (categoryAvg.average * 2),
       plotBands: [{
         from: categoryAvg.average,
         to: categoryAvg.average + ((categoryAvg.average * 3) / 100),
@@ -104,8 +102,7 @@ function AverageUsage() {
         zIndex: 5,
         label: {
           useHTML: true,
-          text: `<span style="background-color: #0A374A;border-radius: 5px;border:1px solid black; padding:2px;">${categoryAvg.name}: ${categoryAvg.average} KWh</span>`,
-          textAlign: 'center', // s
+          text: `<span style="background-color: #030E22;border-radius: 5px;border:1px solid white; padding:2px;">${categoryAvg.name}: ${categoryAvg.average} KWh</span>`,
         },
       }],
     },
