@@ -236,6 +236,22 @@ const getEnergyUsageBySlug = async (
   }
 };
 
+const getAverageUsageByBuilding = async (
+  req: Request, res: Response, next: NextFunction,
+): Promise<void> => {
+  const fromDate = req.query.from_date as string;
+  const toDate = req.query.to_date as string;
+  const buildingId = req.params.id;
+
+  try {
+    const energyUsage = await energyService.energyAverageBySlug([buildingId], fromDate, toDate);
+
+    res.send(energyUsage);
+  } catch (err) {
+    next(err);
+  }
+};
+
 /**
  * Controller to handle finding average energy for slug.
  * Slug can be either a specific building or a specific category.
@@ -305,6 +321,87 @@ const getAllAverage = async (
   }
 };
 
+const getSavedWeeklyByBuildingName = async (
+  req: Request, res: Response, next: NextFunction,
+): Promise<void> => {
+  try {
+    const name: RegExp = new RegExp(req.params.slug, 'i');
+    const building: IBuilding | null = await Building.findOne({ name: { $regex: name } });
+
+    if (!building) {
+      next('Building not found');
+      return;
+    }
+
+    res.send(await energyService.getSavedWeeklyByBuilding(building));
+  } catch (e) {
+    next(e);
+  }
+};
+
+const getSavedWeeklyByBuildingId = async (
+  req: Request, res: Response, next: NextFunction,
+): Promise<void> => {
+  try {
+    const { id } = req.params;
+    const building: IBuilding | null = await Building.findById(id);
+
+    if (!building) {
+      next('Building not found');
+      return;
+    }
+
+    res.send(await energyService.getSavedWeeklyByBuilding(building));
+  } catch (e) {
+    next(e);
+  }
+};
+
+const getSavedByBuildingName = async (
+  req: Request, res: Response, next: NextFunction,
+): Promise<void> => {
+  try {
+    const name: RegExp = new RegExp(req.params.slug, 'i');
+    const building: IBuilding | null = await Building.findOne({ name: { $regex: name } });
+
+    if (!building) {
+      next('Building not found');
+      return;
+    }
+
+    const saved = await energyService.getSavedEnergyByBuilding(building);
+    console.log(saved);
+
+    res.send({
+      percentSaved: saved,
+    });
+  } catch (e) {
+    next(e);
+  }
+};
+
+const getSavedByBuildingId = async (
+  req: Request, res: Response, next: NextFunction,
+): Promise<void> => {
+  try {
+    const { id } = req.params;
+    const building: IBuilding | null = await Building.findById(id);
+
+    if (!building) {
+      next('Building not found');
+      return;
+    }
+
+    const saved = await energyService.getSavedEnergyByBuilding(building);
+
+    res.send({
+      percentSaved: saved,
+    });
+  } catch (e) {
+    next(e);
+  }
+};
+
 const getAllSaved = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
   try {
     const categories = await Category.find();
@@ -339,7 +436,12 @@ export default {
   getEnergyUsage,
   getEnergyUsageByBuilding,
   getEnergyUsageBySlug,
+  getAverageUsageByBuilding,
   getAverageEnergyBySlug,
   getAllAverage,
+  getSavedWeeklyByBuildingName,
+  getSavedWeeklyByBuildingId,
+  getSavedByBuildingName,
+  getSavedByBuildingId,
   getAllSaved,
 };

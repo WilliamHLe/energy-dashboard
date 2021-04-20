@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import './App.css';
-import Test from './components/buildingCategoryOverview/Test';
 import Navbar from './components/navbar/Navbar';
 import Main from './components/mainpage/Main';
 import BuildingCategoryOverview from './components/buildingCategoryOverview/BuildingCategoryOverview';
 import Building from './components/building/Building';
 import InfoBar from './components/infobar/Infobar';
 import TwoPercentRace from './components/mainpage/animation/TwoPercentRace';
+import EnergyTips from './components/energyTips/EnergyTips';
 
 function App() {
   const [loading, setLoading] = useState(true);
@@ -20,29 +20,28 @@ function App() {
     <>
       {!loading ? (
         <Router>
-          <Navbar />
-          <div className="content">
-            <Switch>
-              <Route exact path="/">
-                <InfoBar />
-                <Main />
-              </Route>
-              <Route exact path="/energitips">
-                <Test />
-              </Route>
-              <Route exact path="/:category">
-                <InfoBar />
-                <BuildingCategoryOverview />
-              </Route>
-              <Route path="/:category/:id">
-                <InfoBar />
-                <Building />
-              </Route>
-            </Switch>
-          </div>
-        </Router>
+        <Navbar />
+        <div className="content">
+          <Switch>
+            <Route exact path="/">
+              <InfoBar />
+              <Main />
+            </Route>
+            <Route exact path="/energitips">
+              <EnergyTips />
+            </Route>
+            <Route exact path="/:category">
+              <InfoBar />
+              <BuildingCategoryOverview />
+            </Route>
+            <Route path="/:category/:id">
+              <InfoBar />
+              <Building />
+            </Route>
+          </Switch>
+        </div>
+      </Router>
       ) : (<TwoPercentRace loading={loading} />)}
-
     </>
   );
 }

@@ -5,6 +5,8 @@ import axios from 'axios';
 import { useParams } from 'react-router';
 import style from '../category.module.css';
 
+const ls = require('localstorage-ttl');
+
 function EnergyCarriers() {
   const { category } = useParams<{category: string}>();
 
@@ -23,10 +25,15 @@ function EnergyCarriers() {
         tempData.data.push({ name: result.data[i].name, y: result.data[i].amount });
       }
       tempData.data.sort((a, b) => ((a.name > b.name) ? 1 : -1));
+      ls.set(`${category}_carries`, tempData, [604800000]);
       setData(tempData);
     };
     setHeight(document.getElementsByClassName(style.energyCarriers)[0].clientHeight);
-    fetchData();
+    if (ls.get(`${category}_carries`)) {
+      setData(ls.get(`${category}_carries`));
+    } else {
+      fetchData();
+    }
   }, [category]);
   //
   const options = {
@@ -43,6 +50,8 @@ function EnergyCarriers() {
         color: 'white',
       },
     },
+    colors: ['#28d515', '#00FFFF', '#FEB064', '#F7A4F7', '#CECE00',
+      '#FEB064', '#92A8CD', '#A47D7C', '#B5CA92'],
     credits: {
       enabled: false,
     },

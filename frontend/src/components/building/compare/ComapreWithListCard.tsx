@@ -8,9 +8,9 @@ type CardProps = {
 const CompareWithListCard = (props:CardProps) => {
   const { buildingName } = props;
   return (
-    <a href={`${buildingName}`} className={style.buildingCard}>
+    <div className={style.buildingCard}>
       <h2>{buildingName}</h2>
-    </a>
+    </div>
   );
 };
 

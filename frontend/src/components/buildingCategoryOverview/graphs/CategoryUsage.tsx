@@ -4,6 +4,7 @@ import HighchartsReact from 'highcharts-react-official';
 import { useParams } from 'react-router';
 
 const axios = require('axios').default;
+const ls = require('localstorage-ttl');
 require('highcharts/modules/boost')(Highcharts);
 
 function CategoryUsage() {
@@ -42,12 +43,27 @@ function CategoryUsage() {
             });
           }
         }
+        if (id !== undefined) {
+          ls.set(`${id}_usage`, tempData, [604800000]);
+        } else if (category !== undefined) {
+          ls.set(`${category}_usage`, tempData, [604800000]);
+        } else {
+          ls.set('usage', tempData, [604800000]);
+        }
         setData(tempData);
       } catch (e) {
         console.log(e);
       }
     };
-    fetchData();
+    if (id !== undefined && ls.get(`${id}_usage`)) {
+      setData(ls.get(`${id}_usage`));
+    } else if (category !== undefined && id === undefined && ls.get(`${category}_usage`)) {
+      setData(ls.get(`${category}_usage`));
+    } else if (id === undefined && category === undefined && ls.get('usage')) {
+      setData(ls.get('usage'));
+    } else {
+      fetchData();
+    }
   }, [category, id]);
   const options = {
     chart: {
@@ -95,7 +111,12 @@ function CategoryUsage() {
       buttonTheme: {
         width: 50,
       },
-      selected: 1,
+      inputStyle: {
+        backgroundColor: '#020E26',
+        color: 'white',
+        fontWeight: 'bold',
+        borderRadius: '5px',
+      },
     },
     tooltip: {
       headerFormat: '<span style="font-size: 10px">{point.key:%Y-%m-%d}</span><br/>',
@@ -109,8 +130,8 @@ function CategoryUsage() {
     boost: {
       useGPUTranslations: true,
     },
-    colors: ['#4572A7', '#AA4643', '#89A54E', '#80699B', '#3D96AE',
-      '#DB843D', '#92A8CD', '#A47D7C', '#B5CA92'],
+    colors: ['#28d515', '#00FFFF', '#FEB064', '#CECE00', '#F7A4F7',
+      '#FEB064', '#92A8CD', '#A47D7C', '#B5CA92'],
     credits: {
       enabled: false,
     },

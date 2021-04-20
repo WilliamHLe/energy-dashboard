@@ -4,6 +4,7 @@ import HighchartsReact from 'highcharts-react-official';
 import axios from 'axios';
 
 require('highcharts/modules/sankey')(Highcharts);
+const ls = require('localstorage-ttl');
 
 function EnergySaved() {
   const [data, setData] = useState<{ name: string; y: number; }[]>();
@@ -19,12 +20,17 @@ function EnergySaved() {
             y: parseFloat(result.data[i].saved.toFixed(2)),
           });
         }
+        ls.set('saved_column', tempData, [604800000]);
         setData(tempData);
       } catch (e) {
         console.log(e);
       }
     };
-    fetchData();
+    if (ls.get('saved_column')) {
+      setData(ls.get('saved_column'));
+    } else {
+      fetchData();
+    }
   }, []);
 
   const options = {
@@ -32,6 +38,8 @@ function EnergySaved() {
       type: 'column',
       backgroundColor: null,
     },
+    colors: ['#8AD515', '#00FFFF', '#FEB064', '#CECE00', '#F7A4F7',
+      '#FEB064', '#92A8CD', '#A47D7C', '#B5CA92'],
     plotOptions: {
       column: {
         colorByPoint: true,

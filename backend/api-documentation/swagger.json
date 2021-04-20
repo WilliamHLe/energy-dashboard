@@ -390,6 +390,66 @@
         }
       }
     },
+    "/buildings/{id}/energy/saved/weekly": {
+      "get": {
+        "tags": [
+          "building"
+        ],
+        "summary": "Get weekly energy saved by building id",
+        "description": "Returns an object with weekly energy saved for the building",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Id of a building",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "type": "array",
+            "items": {
+              "$ref": "#/definitions/WeeklySaved"
+            }
+          }
+        }
+      }
+    },
+    "/buildings/{id}/energy/saved/total": {
+      "get": {
+        "tags": [
+          "building"
+        ],
+        "summary": "Get total energy saved by building id",
+        "description": "Returns an object with total energy saved for the building",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Id of a building",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "type": "array",
+            "items": {
+              "$ref": "#/definitions/TotalSaved"
+            }
+          }
+        }
+      }
+    },
     "/categories": {
       "get": {
         "tags": [
@@ -924,6 +984,66 @@
         }
       }
     },
+    "/energy/saved/weekly/{slug}": {
+      "get": {
+        "tags": [
+          "energy"
+        ],
+        "summary": "Get total energy usage by building name",
+        "description": "Returns an object with weekly energy saved for the building",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "slug",
+            "in": "path",
+            "description": "Name of a building",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "type": "array",
+            "items": {
+              "$ref": "#/definitions/WeeklySaved"
+            }
+          }
+        }
+      }
+    },
+    "/energy/saved/total/{slug}": {
+      "get": {
+        "tags": [
+          "energy"
+        ],
+        "summary": "Get weekly energy saved by building name",
+        "description": "Returns an object with weekly energy saved for the building",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "slug",
+            "in": "path",
+            "description": "Name of a building",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "type": "array",
+            "items": {
+              "$ref": "#/definitions/WeeklySaved"
+            }
+          }
+        }
+      }
+    },
     "/energy/total/{slug}": {
       "get": {
         "tags": [
@@ -1396,6 +1516,28 @@
         "total": {
           "type": "integer",
           "example": 1234567
+        }
+      }
+    },
+    "WeeklySaved": {
+      "type": "object",
+      "properties": {
+        "week": {
+          "type": "string",
+          "example": "01"
+        },
+        "percentSaved": {
+          "type": "integer",
+          "example": 1234567
+        }
+      }
+    },
+    "TotalSaved": {
+      "type": "object",
+      "properties": {
+        "saved": {
+          "type": "integer",
+          "example": 1234
         }
       }
     },

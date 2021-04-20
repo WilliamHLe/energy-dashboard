@@ -5,6 +5,8 @@ import style from './topList.module.css';
 import SearchBar from '../../navbar/SearchBar';
 import CategoryTopListCard from './CategoryTopListCard';
 
+const ls = require('localstorage-ttl');
+
 interface ICategory {
   id: string,
   name: string
@@ -78,20 +80,40 @@ const CategoryTopList = () => {
   useEffect(() => {
     const fetchData = async () => {
       const result = await axios.get(`/highscores/${category}`);
+      ls.set(`${category}_highscores`, result.data, [604800000]);
       setData(result.data);
     };
-    fetchData();
+    if (ls.get(`${category}_highscores`)) {
+      setData(ls.get(`${category}_highscores`));
+    } else {
+      fetchData();
+    }
   }, [category]);
 
   return (
     <div className={`container ${style.wrapper}`}>
       <div className={style.textbox}>
-        <h1>Hvilken barnehage har spart mest energi sammenlignet med i fjor?</h1>
-        <p>Klikk på en barnehage for å se mer info om denne. Kanskje kan du hente noen tips?</p>
+        <h1>
+          {/* eslint-disable-next-line no-self-compare */}
+          { (category === 'helsebygg' || category === 'idrettsbygg' || category === 'annet') ? 'Hvilket' : 'Hvilken' }
+          {' '}
+          { (category === 'annet') ? 'annet bygg' : category }
+          {' '}
+          har spart mest energi sammenlignet med i fjor?
+        </h1>
+        <p>
+          Klikk på
+          {' '}
+          { (category === 'helsebygg' || category === 'idrettsbygg' || category === 'annet') ? 'et' : 'en' }
+          {' '}
+          { (category === 'annet') ? 'annet bygg' : category }
+          {' '}
+          for å se mer info om denne. Kanskje kan du hente noen tips?
+        </p>
       </div>
       <SearchBar data={data.map((building:any) => building.building)} />
       <div className={style.info}>
-        <p>{`Barnehager (${data.length})`}</p>
+        <p>{`${category[0].toUpperCase()}${category.slice(1)} (${data.length})`}</p>
         <p>Spart %</p>
       </div>
       <div className={style.buildingList}>
