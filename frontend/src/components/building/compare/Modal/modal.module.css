@@ -1,0 +1,90 @@
+#wrapper {
+    position: absolute;
+    z-index: 1;
+    width: 80%;
+    height: 85%;
+    margin-left: 4vw;
+    background-color:#00284C;
+    border-radius: 5px;
+    margin-top: -82vh;
+}
+
+.closeImage {
+    width: 40px; 
+    height: 36px;
+    float: right;
+    margin: 1%;
+}
+
+h1 {
+    margin: 2% 0% 2% 5%;
+    text-align: center;
+}
+
+#compareUsage {
+    display: flex;
+    justify-content: center;
+}
+
+.gridConatiner {
+    display: grid;
+    width: 90%;
+    grid-template-columns: 17% 26% 16% 26% 12%;
+    grid-gap: 2%;
+}
+
+.row2 {
+    height: 35px;
+}
+
+.row3 {
+    height: 60px;
+
+}
+
+.row4 {
+    height: 70px;
+}
+
+.row5 {
+    line-height: 30px;
+    margin-top: -15px;
+}
+
+.colum2 {
+    grid-column-start: 2;
+    grid-row-start: 1;
+    grid-row-end: 4;
+    text-align: right;
+    min-width: 250px;
+}
+
+.colum3 {
+    grid-column: 3;
+    text-align: center;
+    margin-top: 68px;
+    min-width: 100px;
+}
+
+.colum4 {
+    min-width: 250px;
+}
+
+h2 {
+    font-weight: 400;
+}
+p, h1 {
+    font-weight: 300;
+}
+
+.iconL {
+    width: 40px;
+    height: 40px;
+    float: right;
+}
+
+.iconR {
+    width: 40px;
+    height: 40px;
+    float: left;
+}
