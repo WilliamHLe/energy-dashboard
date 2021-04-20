@@ -10,6 +10,7 @@ interface ITwoPercentRace{
 
 const TwoPercentRace = (props: ITwoPercentRace) => {
   const { loading } = props;
+  /* percent saved is supposed to be fetched */
   const saved = 3.59;
   const progress = saved * 25;
   document.documentElement.style.setProperty('--progress-tronder', `${progress.toString()}%`);
@@ -23,8 +24,8 @@ const TwoPercentRace = (props: ITwoPercentRace) => {
       </div>
       <div className={style.animation}>
         <div className={!loading ? style.goal : style.goalLoading}>
-          <img id={style.girlImg} width="13%" src={Girl} alt="jente på sykkel" />
-          <img id={style.bikeImg} width="13%" src={Bicycle} alt="sykkel" />
+          <img id={loading ? style.girlImgLoading : style.girlImg} width={loading ? '140px' : '100px'} src={Girl} alt="jente på sykkel" />
+          <img id={style.bikeImg} width={loading ? '140px' : '100px'} src={Bicycle} alt="sykkel" />
         </div>
         <div className={!loading ? style.progressbar : style.progressbarLoading}>
           <div id={style.progress}>
@@ -33,8 +34,8 @@ const TwoPercentRace = (props: ITwoPercentRace) => {
         </div>
         <div>
           <div className={!loading ? style.tronder : style.tronderLoading}>
-            <img id={style.girlImg} width="13%" src={Tronder} alt="jente på sykkel" />
-            <img id={style.bikeImg} width="13%" src={Bicycle} alt="sykkel" />
+            <img id={loading ? style.girlImgLoading : style.girlImg} width={loading ? '140px' : '100px'} src={Tronder} alt="jente på sykkel" />
+            <img id={style.bikeImg} width={loading ? '140px' : '100px'} src={Bicycle} alt="sykkel" />
           </div>
           <div className={!loading ? style.progressbar : style.progressbarLoading}>
             <div id={style.progressTronder}>

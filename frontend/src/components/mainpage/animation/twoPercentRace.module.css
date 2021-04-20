@@ -56,6 +56,10 @@
     position: absolute;
     animation: updown 2s infinite linear; 
 }
+#girlImgLoading {
+    position: absolute;
+    animation: updownLoading 2s infinite linear; 
+}
 #bikeImg {
     position: absolute;
     top: 30%
@@ -74,7 +78,7 @@
 /* Girl representing 2% goal */ 
 .goal {
     position: relative;
-    width: 100%;
+    width: 25%;
     height: 13vh;
     margin-top: -2%;
     animation: moveGoal 3s linear forwards;
@@ -121,7 +125,7 @@
   /* Trønder representing Trondheim kommune */ 
   .tronder{
     position: relative;
-    width: 100%;
+    width: 25%;
     height: 13vh;
     margin-top: -2%;
     animation: moveTronder 3s linear forwards;
@@ -196,6 +200,15 @@
             top: -37%;  
         }100%{
             top: -40%; 
+        }
+    }
+    @keyframes updownLoading {
+        0%{
+            top: -60%;  
+        }50%{
+            top: -57%;  
+        }100%{
+            top: -60%; 
         }
     }
 }
