@@ -1,0 +1,130 @@
+@prefix brick: <https://brickschema.org/schema/Brick#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix : <https://example.com/tillerHelsehuse#> .
+
+# larger structures
+:BLDG a brick:Building ;
+    brick:hasAddress "Østre Rosten 51A, 7075 Tiller" ;
+    brick:isLocationOf :sykehjem, :rusavdelig, :hovedbygg .
+
+:sykehjem a brick:Wing . 
+
+:hovedbygg a brick:Wing .
+
+:rusavdelig a brick:Wing . 
+
+# floors
+:underEtasje a brick:Basement .
+
+:førsteEtasje a brick:Floor . 
+
+:andreEtasje a brick:Floor .
+
+:tredjeEtasje a brick:Floor . 
+
+# rooms
+
+:rom_A4018 a brick:Room ;
+brick:hasLocation :tredjeEtasje ;
+brick:hasLocation :hovedbygg .
+
+:rom_A1038 a brick:Control_Room ;
+brick:hasLocation :underEtasje ;
+brick:hasLocation :rusavdelig .
+
+:rom_A1006 a brick:Control_Room ;
+brick:hasLocation :underEtasje ;
+brick:hasLocation :sykehjem . 
+
+:rom_A1001 a brick:Control_Room ;
+brick:hasLocation :underEtasje ;
+brick:hasLocation :sykehjem .
+
+:rom_A3042 a brick:Control_Room ;
+brick:hasLocation :andreEtasje ;
+brick:hasLocation :sykehjem . 
+
+:rom_A3028 a brick:Control_Room ;
+brick:hasLocation :andreEtasje ;
+brick:hasLocation :sykehjem .
+
+# Zones 
+# :HVAC_øst a brick:HVAC_Zone ;
+#     brick:isPartOf :østFløy . 
+
+# systems
+:sys360 a brick:Heating_Ventilation_Air_conditioning_System ;
+    brick:hasPart :BB, :JB, :DD, :DA, :BA, :CA, :MB .
+    # brick:hasPoint :RR02, :TF21, :PF20, :SF20, :TF20, :TF00, :PF10, :RR01, :AA40, :TF40, :SF10, :TF10, :TV .
+
+# RR = Rotasjonsregulator
+# TF = Temperaturføler
+# PF = 
+# AA = Toveis ventil
+
+:sys36001 a :sys360 ;
+    brick:hasLocation :rom_A4018 ;
+    brick:feeds :BLDG .
+
+# devices
+:DA a brick:Outside_Damper ;
+    brick:isPartOf :sys360 .
+
+:DD a brick:Exhaust_Damper ;
+    brick:isPartOf :sys360 .
+
+:BA a brick:Supply_Fan ;
+    brick:isPartOf :sys360 .
+
+:BB a brick:Exhaust_Fan ;
+    brick:isPartOf :sys360 .
+
+:JD a brick:Heat_Exchanger ;
+    brick:isPartOf :sys360 .
+
+:CA a brick:Radiator ;
+    brick:isPartOf :sys360 .
+
+# :AB40 a brick:Preheat_Hot_Water_Valve ;
+#     brick:controls brick:Supply_Hot_Water .
+
+:MB a brick:Hot_Water_Pump ;
+    brick:isPartOf :sys360 .
+
+# sensors 
+:SV1 a brick:Supply_Air_Flow_Sensor ;
+    brick:regulates :BA ;
+    brick:isPartOf :sys360 .
+
+
+:SV2 a brick:Exhaust_Air_Flow_Sensor ;
+    brick:regulates :BB ;
+    brick:isPartOf :sys360 .
+
+
+:PV2 a brick:Air_Differential_Pressure_Sensor ;
+    brick:regulates :JD ;
+    brick:isPartOf :sys360 .
+
+
+:TF0 a brick:Outside_Air_Temperature_Sensor ;
+    brick:measures brick:Outside_Air ;
+    brick:isPartOf :sys360 .
+
+
+:TF1 a brick:Supply_Air_Temperature_Sensor ;
+    brick:measures brick:Supply_Air ;
+    brick:isPartOf :sys360 .
+
+
+:TF2 a brick:Exhaust_Air_Temperature_Sensor ;
+    brick:measures brick:Exhaust_Air ;
+    brick:isPartOf :sys360 .
+
+
+:TV a brick:Thermostat ;
+    brick:isPartOf :sys360 .

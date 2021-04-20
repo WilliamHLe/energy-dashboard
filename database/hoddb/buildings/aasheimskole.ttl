@@ -1,0 +1,184 @@
+@prefix brick: <https://brickschema.org/schema/Brick#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix bldg: <https://example.com/aasheimSkole#> .
+
+#       BUILDING
+#   _____hoved_____
+#  |              |
+# øst             vest
+#  |              |
+
+# larger structures
+bldg:BLDG a brick:Building ;
+    brick:hasAddress "Myrstadvegen 1, 7080 Heimdal" ;
+    brick:isLocationOf bldg:østFløy, bldg:vestFløy, bldg:hovedbygg .
+
+bldg:østFløy a brick:Wing ;
+    brick:hasLocation bldg:BLDG ;
+    brick:isLocationOf bldg:tekniskRom1, bldg:gymsal, bldg:tekniskRom2 , bldg:bibliotek ;
+    brick:hasPart bldg:HVAC_øst_klasserom, bldg:HVAC_øst, bldg:HVAC_gymsal .
+
+bldg:vestFløy a brick:Wing ;
+    brick:hasLocation bldg:BLDG ;
+    brick:isLocationOf bldg:kjeller ;
+    brick:hasPart bldg:HVAC_vest .
+
+bldg:hovedbygg a brick:Wing ;
+    brick:hasLocation bldg:BLDG ;
+    brick:isLocationOf bldg:tekniskRom1 ;
+    brick:hasPart bldg:HVAC_hovedbygg .
+
+
+# floors
+bldg:underEtasje a brick:Basement ;
+    brick:isLocationOf bldg:tekniskRom, bldg:kjeller .
+
+bldg:førsteEtasje a brick:Floor ;
+    brick:isLocationOf bldg:tekniskRom1 .
+
+bldg:andreEtasje a brick:Floor ;
+    brick:isLocationOf bldg:tekniskRom2 .
+
+# rooms
+bldg:tekniskRom1 a brick:Control_Room ;
+    brick:hasLocation bldg:østFløy ;
+    brick:hasLocation bldg:førsteEtasje .
+
+bldg:tekniskRom2 a brick:Control_Room ;
+    brick:hasLocation bldg:østFløy ;
+    brick:hasLocation bldg:andreEtasje .
+
+bldg:tekniskRom a brick:Control_Room ;
+    brick:hasLocation bldg:hovedbygg ;
+    brick:hasLocation bldg:underEtasje .
+
+bldg:gymsal a brick:Room ;
+    brick:hasLocation bldg:østFløy .
+
+bldg:kjeller a brick:Room ;
+    brick:hasLocation bldg:vestFløy ;
+    brick:hasLocation bldg:underEtasje .
+
+bldg:bibliotek a brick:Library ;
+    brick:hasLocation bldg:østFløy .
+
+# Zones 
+bldg:HVAC_øst a brick:HVAC_Zone ;
+    brick:hasLocation bldg:østFløy ;
+    brick:isFedBy bldg:sys36003 .
+
+bldg:HVAC_vest a brick:HVAC_Zone ;
+    brick:hasLocation bldg:vestFløy ;
+    brick:isFedBy bldg:sys36002 .
+
+bldg:HVAC_gymsal a brick:HVAC_Zone ;
+    brick:hasLocation bldg:østFløy ;
+    brick:isFedBy bldg:sys36005 .
+
+bldg:HVAC_hovedbygg a brick:HVAC_Zone ;
+    brick:hasLocation bldg:hovedbygg ;
+    brick:isFedBy bldg:sys36001 .
+
+bldg:HVAC_øst_klasserom a brick:HVAC_Zone ;
+    brick:hasLocation bldg:østFløy ;
+    brick:isFedBy bldg:sys36004 .
+
+
+# systems
+bldg:sys360 a brick:Heating_Ventilation_Air_Conditioning_System ;
+    brick:hasPart bldg:LA, bldg:DA, bldg:DD, bldg:BA, bldg:BB, bldg:JD, bldg:AB40, bldg:MB, bldg:PV1, bldg:TV ;
+    brick:hasPoint bldg:SV1, bldg:SV2, bldg:PV2, bldg:TF0, bldg:TF1, bldg:TF2 .
+
+bldg:sys36001 a bldg:sys360 ;
+    brick:hasLocation bldg:tekniskRom ;
+    rdfs:subClassOf bldg:sys360 ;
+    brick:feeds bldg:HVAC_hovedbygg .
+
+bldg:sys36002 a bldg:sys360  ;
+    brick:hasLocation bldg:kjeller ;
+    rdfs:subClassOf bldg:sys360 ;
+    brick:feeds bldg:HVAC_vest .
+
+bldg:sys36003 a bldg:sys360  ;
+    brick:hasLocation bldg:tekniskRom1 ;
+    rdfs:subClassOf bldg:sys360 ;
+    brick:feeds bldg:HVAC_øst .
+
+bldg:sys36004 a bldg:sys360  ;
+    brick:hasLocation bldg:bibkliotek ;
+    rdfs:subClassOf bldg:sys360 ;
+    brick:feeds bldg:HVAC_øst_klasserom .
+
+bldg:sys36005 a bldg:sys360  ;
+    brick:hasLocation bldg:tekniskRom2 ;
+    rdfs:subClassOf bldg:sys360 ;
+    brick:feeds bldg:HVAC_gymsal .
+
+bldg:sys36006 a bldg:sys360  ;
+    brick:hasLocation bldg:tekniskRom2 ;
+    rdfs:subClassOf bldg:sys360 ;
+    brick:feeds bldg:HVAC_øst_klasserom .
+
+# devices
+bldg:LA a brick:Boiler ;
+    brick:isPartOf bldg:sys360 .
+
+bldg:DA a brick:Outside_Damper ;
+    
+    brick:isPartOf bldg:sys360 .
+
+bldg:DD a brick:Exhaust_Damper ;
+    
+    brick:isPartOf bldg:sys360 .
+
+bldg:BA a brick:Supply_Fan ;
+    brick:isRegulatedBy bldg:SV1 ;
+    brick:isPartOf bldg:sys360 .
+
+bldg:BB a brick:Exhaust_Fan ;
+    brick:isRegulatedBy bldg:SV2 ;
+    brick:isPartOf bldg:sys360 .
+
+bldg:JD a brick:Heat_Exchanger ;
+    brick:isRegulatedBy bldg:PV2 ;
+    brick:isPartOf bldg:sys360 .
+
+bldg:AB40 a brick:Preheat_Hot_Water_Valve ;
+    brick:isPartOf bldg:sys360 ;
+    brick:controls brick:Supply_Hot_Water .
+
+bldg:MB a brick:Hot_Water_Pump ;
+    brick:isPartOf bldg:sys360 .
+
+bldg:PV1 a brick:Air_Differential_Pressure_Sensor ;
+    brick:isPartOf bldg:sys360 .
+
+bldg:TV a brick:Thermostat ;
+    brick:isPartOf bldg:sys360 .
+
+# sensors
+bldg:SV1 a brick:Supply_Air_Flow_Sensor ;
+    brick:regulates bldg:BA .
+
+bldg:SV2 a brick:Exhaust_Air_Flow_Sensor ;
+    brick:regulates bldg:BB .
+
+bldg:PV2 a brick:Air_Differential_Pressure_Sensor ;
+    brick:regulates bldg:JD .
+
+bldg:TF0 a brick:Outside_Air_Temperature_Sensor ;
+    #brick:hasLocation bldg:tekniskRom2 ;
+    brick:measures brick:Outside_Air .
+
+bldg:TF1 a brick:Supply_Air_Temperature_Sensor ;
+    #brick:hasLocation bldg:tekniskRom2 ;
+    brick:measures brick:Supply_Air .
+
+bldg:TF2 a brick:Exhaust_Air_Temperature_Sensor ;
+    #brick:hasLocation bldg:tekniskRom2 ;
+    brick:measures brick:Exhaust_Air .
+   

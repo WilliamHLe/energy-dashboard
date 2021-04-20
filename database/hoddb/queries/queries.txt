@@ -1,0 +1,12 @@
+# henter alle aggregatypene i system 360
+SELECT ?aggregatType WHERE {
+	?system a bldg:sys360 . 
+  	?system brick:aggregatType ?aggregatType
+};
+
+# utvider den over, finner luftmenge og aggregattype
+SELECT ?aggregatType ?luftMengde WHERE {
+	?system a bldg:sys360 . 
+  	?system brick:aggregatType ?aggregatType .
+    ?system brick:luftMengde ?luftMengde 
+};

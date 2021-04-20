@@ -6,18 +6,19 @@
 ####
 
 Buildings:
-  soda: /etc/hod/buildings/berkeley.ttl
-  ciee: /etc/hod/buildings/ciee.ttl
+  # aasheimskole: /etc/hod/buildings/aasheimskole.ttl
+  miniAasheim: /etc/hod/buildings/miniAasheim.ttl
+  miniTille: /etc/hod/buildings/miniTiller.ttl
+  # kitten: /etc/hod/buildings/kitten.ttl
+  # tillerhelse: /etc/hod/buildings/tillerhelse.ttl
+  # goodBuildings: /etc/hod/buildings/goodBuilding.ttl
 
 # the location of the database files
 DBPath: _hoddb
 
 # list of links to ontology files to load before each building
 Ontologies:
-  - "/etc/hod/BrickFrame.ttl"
   - "/etc/hod/Brick.ttl"
-  - "/etc/hod/BrickUse.ttl"
-  - "/etc/hod/BrickTag.ttl"
 
 EnableHTTP: true
 LogLevel: Debug
