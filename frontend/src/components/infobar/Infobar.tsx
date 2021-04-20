@@ -16,7 +16,7 @@ interface building {
 }
 
 const InfoBar = () => {
-  const { category } = useParams<{category:string | undefined}>();
+  const { category, id } = useParams<{category:string | undefined, id:string | undefined}>();
   const [data, setData] = useState<building>({
     energyUsed: 0,
     energySaved: 0,
@@ -39,7 +39,7 @@ const InfoBar = () => {
 
   return (
     <div className={style.infobar}>
-      <h1 className={style.categoryName}>{category?.toUpperCase() || 'TRONDHEIM KOMMUNE'}</h1>
+      <h1 className={style.categoryName}>{id?.toUpperCase() || category?.toUpperCase() || 'TRONDHEIM KOMMUNE'}</h1>
       <InfoItem heading={`${data.energyUsed} Kwh`} description="Brukt så langt i år" icon={Energy} />
       <InfoItem heading={`${data.energySaved} %`} description="Spart så langt sammenlignet med i fjor" icon={Energygoal} />
       <InfoItem heading={`${data.area} m2`} description="Energioppfølges Trondheim kommune" icon={Squaremeters} />
