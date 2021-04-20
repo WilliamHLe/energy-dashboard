@@ -4,6 +4,7 @@ import HighchartsReact from 'highcharts-react-official';
 import axios from 'axios';
 
 require('highcharts/modules/sankey')(Highcharts);
+const ls = require('localstorage-ttl');
 
 function Sankey() {
   const [data, setData] = useState<any>([]);
@@ -32,9 +33,14 @@ function Sankey() {
       // tempData[0].data.sort((a: number[], b: number[]) => b[2] - a[2]);
       // Sortering etter byggnavn
       tempData[0].data.sort((a: string[], b: any[]) => a[1].localeCompare(b[1]));
+      ls.set('sankey', tempData, [604800000]);
       setData(tempData);
     };
-    fetchData();
+    if (ls.get('sankey')) {
+      setData(ls.get('sankey'));
+    } else {
+      fetchData();
+    }
   }, []);
 
   const options = {

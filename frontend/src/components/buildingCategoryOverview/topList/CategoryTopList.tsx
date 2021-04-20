@@ -5,6 +5,8 @@ import style from './topList.module.css';
 import SearchBar from '../../navbar/SearchBar';
 import CategoryTopListCard from './CategoryTopListCard';
 
+const ls = require('localstorage-ttl');
+
 interface ICategory {
   id: string,
   name: string
@@ -78,9 +80,14 @@ const CategoryTopList = () => {
   useEffect(() => {
     const fetchData = async () => {
       const result = await axios.get(`/highscores/${category}`);
+      ls.set(`${category}_highscores`, result.data, [604800000]);
       setData(result.data);
     };
-    fetchData();
+    if (ls.get(`${category}_highscores`)) {
+      setData(ls.get(`${category}_highscores`));
+    } else {
+      fetchData();
+    }
   }, [category]);
 
   return (

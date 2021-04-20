@@ -8,6 +8,8 @@ import Squaremeters from './icons/Group 223.svg';
 import Energygoal from './icons/Group 222.svg';
 import style from './infoItem.module.css';
 
+const ls = require('localstorage-ttl');
+
 interface building {
   energyUsed: number,
   energySaved: number,
@@ -28,13 +30,21 @@ const InfoBar = () => {
     const fetchData = async () => {
       if (category) {
         const results = await axios.get(`/metrics/${category}`);
+        ls.set(`${category}_metrics`, results.data, [604800000]);
         setData(results.data);
       } else {
         const results = await axios.get('/metrics');
+        ls.set('metrics', results.data, [604800000]);
         setData(results.data);
       }
     };
-    fetchData();
+    if (category !== undefined && ls.get(`${category}_metrics`)) {
+      setData(ls.get(`${category}_metrics`));
+    } else if (category === undefined && ls.get('metrics')) {
+      setData(ls.get('metrics'));
+    } else {
+      fetchData();
+    }
   }, [category]);
 
   return (
