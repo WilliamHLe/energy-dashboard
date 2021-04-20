@@ -1,3 +1,9 @@
+li {
+  list-style: circle;
+  font-size: 0.65em;
+  color: rgba(255, 255, 255, 0.7);
+  font-weight: lighter;
+}
 #pageTitle {
   margin: 10px 0px 60px 20px;
 }
@@ -44,13 +50,13 @@
   justify-self: right;
 }
 .energyTipText{
-  margin: 30px auto 0px auto;
+  margin: 30px 20px 0px 20px;
   width: fit-content;
 }
 
 .twoPercent{
   grid-area: twoPercentGoal;
-  text-align: center;
+  text-align: left;
 }
 
 .niceFigure{

@@ -1,15 +1,40 @@
 [
     {
         "title": "Bytte vindu",
-        "description": "blablabla"
+        "description": "Selv om vinduene i et vanlig hus utgjør bare 5 til 10 prosent av den totale ytterflaten, kan vinduene stå for hele 40 prosent av varmetapet. Kvaliteten på glasset, størrelsen på vindusarealet, lufttettingen og isoleringen rundt vinduet avgjør hvor stort varmetapet er. Uten trekk fra vinduene kan du senke temperaturen i rommet, noe som bidrar til bedre inneklima og lavere energiutgifter.",
+        "who": [
+            "Har trekkfulle vinduer",
+            "Ønsker å redusere varmetapet fra vinduene",
+            "Bor i en bolig fra 80-tallet eller eldre",
+            "Skal pusse opp eller bytte kledning"           
+        ], 
+        "why": [
+            "Reduserer luftlekkasjene og varmetapet",
+            "Godt isolerte vinduer gir mindre kald trekk og mer behagelig og jevn innetemperatur",
+            "Redusert varmetap gir lavere energibruk"
+        ],
+        "source": "https://www.enova.no/privat/alle-energitiltak/oppgradere-huset/lavenergivindu/"
+
     },
     {
         "title": "Etterisolasjon",
-        "description": "blablabla"
+        "description": "Etterisolering av bygningen gir deg lavere energiutgifter og bedre komfort. I tillegg kan energitiltaket forbedre energimerket på boligen",
+        "who": [
+            "Har en bygning bygget på 80-tallet eller tidligere",
+            "Skal pusse opp. Når du først er i gang med oppussing eller oppgradering, er det både enklere og rimeligere å etterisolere samtidig", 
+            "Ønsker å reduserer varmetapet"
+        ], 
+        "why": [
+            "du reduserer husets varmetap og energibruk",
+            "Bedrer inneklima",
+            "Du kan kombinere etterisolering av yttervegger med modernisering av bygningen",
+            "Huset kan få bedre energimerke"
+        ],
+        "source": "https://www.enova.no/privat/alle-energitiltak/oppgradere-huset/etterisolering-/"
     },
     {
         "title": "Lysstyring",
-        "description": "blablabla"
+        "description": "Lys er viktig for trivsel, men det betyr ikke at vi trenger full belysning til enhver tid. Lys kan styres etter behov og reguleres etter hvor mye sollys som faller inn i rommet. Å styre lyset er smart, både for lommeboken og miljøet! Vi glemmer ofte å skru av lyset når vi går ut av et rom. Lar du automatikken styre, kan du redusere energiforbruket til belysning med opptil 70%."
     },
     {
         "title": "Nattsenking",
@@ -17,11 +42,35 @@
     },
     {
         "title": "Tetningslister",
-        "description": "blablabla"
+        "description": "Sprekker rundt dører og vinduer gjør at kald luft trekker inn i bygningen. Det kan være vanskelig å oppdage dette problemet, og mange sliter med stort varmetap uten at de kjenner noe til trekken. Du blir kvitt sprekkene ved å montere tettelister, noe som er det enkleste og rimeligste du kan gjøre for å redusere energibruken.",
+        "who": [
+            "Har trekkfulle vinduer og dører Ønsker å gjennomføre et enkelt og rimelig energitiltak", 
+            "Ønsker å redusere varmetapet fra vinduer og dører",  
+            "Har ansvaret for et bygg som ble bygget på 80-tallet eller tidligere",
+            "Skal pusse opp"
+        ], 
+        "why": [
+           "Er et enkelt og rimelig energitiltak, som vil forbedre varmetapet i boligen din og redusere energibruken",
+           "Kan kjøpes hos alle byggevarekjeder",
+           "Du kan montere dem på egen hånd"
+        ],
+        "source": "https://www.enova.no/privat/alle-energitiltak/oppgradere-huset/montere-tettelister-/"
     },
     {
         "title": "Varmegjenvinning",
-        "description": "blablabla"
+        "description": "Interessen for varmegjenvinning av gråvann øker stadig i Norge. Gråvann er vann som har vært brukt til dusjing, klesvask, oppvask og matlaging. Dette vannet er ofte varmt, og kan brukes til å forvarme nytt kaldtvann som kommer inn i huset. På denne måten sparer du energi på oppvarming av vann.",
+        "who": [
+            "Ønsker en fornybar og smart energiløsning", 
+            "Ønsker en energiløsning som er enkel og rimelig",
+            "Er interessert i å ta i bruk nye løsninger på markedet"
+        ], 
+        "why": [
+            "Rimelig energitiltak som reduserer energiutgiftene dine",
+            "Passer alle boligtyper",
+            "Påvirkes ikke av værforhold eller utetemperatur",
+            "Enkel installasjon sammenlignet med andre tiltak"           
+        ],
+        "source": "https://www.enova.no/privat/alle-energitiltak/varmegjenvinning/varmegjenvinning-av-gravann-/"
     },
     {
         "title": "Solcelleanlegg",
@@ -29,10 +78,37 @@
     },
     {
         "title": "Varmepumpe",
-        "description": "blablabla"
+        "description": "varmepumpe henter varme fra luften ute, og blåser den inn i boligen. Moderne varmepumper kan hente varme fra uteluften helt ned til -25 °C. Dette er en forholdsvis rimelig løsning, som gir god energibesparelse",
+        "who": [
+            "Bruker panelovner til oppvarming i dag",
+            "Har åpen planløsning slik at varmen fordeles fritt",
+            "Har alternative varmekilder for de kaldeste periodene",
+            "Har ansvaret for en bygning der det ikke er aktuelt å etterisolere eller bytte vinduer"
+
+        ], 
+        "why": [
+            "Er lett å installere, og kan benyttes i de fleste bygninger",
+            "Har termostatstyring som gir reduserte strømkostnader",
+            "Koster relativt lite med tanke på hvor mye energi du sparer",
+            "Kan kjøres i revers, og dermed fungere som aircondition",
+            "Sørger for jevn varme og filtrerer vekk støvpartikler"
+            
+        ], 
+        "source": "https://www.enova.no/privat/alle-energitiltak/varmepumper/luft-til-luft-varmepumpe/"
+
     },
     {
         "title": "LED-lys",
-        "description": "blablabla"
+        "description": "Valg av lyspærer og hvordan de brukes har større betydning for energibruken enn mange er klar over. Enten du bare vil bytte pærer, skal pusse opp eller bygge nytt, finnes det mange grep du kan ta for å spare energi og samtidig ha god belysning når du trenger det.",
+        "who": [
+            "Ønsker å redusere energibruken med enkle grep",
+            "Skal pusse opp eller bygge nytt og vil lage en belysningsplan"
+        ], 
+        "why": [
+            "Er et enkelt og rimelig energitiltak, som vil redusere energibruken",
+            "Gir mulighet til å lage en god belysningsplan",
+            "Gir mulighet til å styre belysningen i boligen via fjernkontroll, mobilen eller automatisk via ulike typer sensorer" 
+        ],
+        "source": "https://www.enova.no/privat/alle-energitiltak/redusere-eller-styre-stromforbruket/energieffektiv-belysning/" 
     }
 ]
