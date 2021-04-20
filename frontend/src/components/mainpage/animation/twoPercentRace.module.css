@@ -1,0 +1,214 @@
+:root{
+    --progress-tronder: 37.5%;
+}
+/* Styling for loading screen */ 
+.loading {
+    position: fixed;
+    z-index: 3;
+    top: 0;
+    left: 0; 
+    width: 100vw;
+    height: 100vh; 
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-image: linear-gradient(90deg, #020E26,#0A374A,#04122C);
+}
+/* Styling for both racers*/ 
+#button {
+    border-radius: 5px; 
+    background-color: #90ED7D;
+    color: black;
+    text-decoration: none; 
+    border: none; 
+    font-weight: bold;
+    padding: 5px 10px; 
+    font-size: 14px;
+}
+#button:hover {
+    background-color: #90ed7db6; 
+}
+.goalText {
+    margin-left: 5%;
+    margin-top: 2%; 
+}
+.animation{
+    margin-top: 4%;
+    width: 90%;
+}
+.progressbar {
+    margin-top: -5%;
+    height: 13px;
+    width: 100%;
+    background-color: #e0e0de;
+    border-radius: 50px;
+    margin-left: 5%;
+  }
+.progressbarLoading {
+    margin-top: -5%;
+    height: 16px;
+    width: 70%;
+    background-color: #e0e0de;
+    border-radius: 50px;
+    margin: 0 auto;
+}
+#girlImg {
+    position: absolute;
+    animation: updown 2s infinite linear; 
+}
+#girlImgLoading {
+    position: absolute;
+    animation: updownLoading 2s infinite linear; 
+}
+#bikeImg {
+    position: absolute;
+    top: 30%
+}
+/* Moving the riders up and down on the bike */ 
+@keyframes updown {
+    0%{
+        top: -7%;  
+    }50%{
+        top: -4%;  
+    }100%{
+        top: -7%; 
+    }
+}
+
+/* Girl representing 2% goal */ 
+.goal {
+    position: relative;
+    width: 25%;
+    height: 13vh;
+    margin-top: -2%;
+    animation: moveGoal 3s linear forwards;
+
+}
+.goalLoading{
+    position: relative;
+    width: 100%;
+    height: 13vh;
+    margin-top: -2%;
+    animation: moveGoalLoading 3s linear forwards;
+}
+  #progress {
+    height: 100%;
+    background-color: #90ED7D;
+    border-radius: inherit;
+    text-align: right;
+    animation: progressGoal 3s forwards linear;
+  }
+  /* moving the girl along the progress bar */ 
+  @keyframes moveGoal{
+    from{
+        margin-left: 0%;
+    }to{
+        margin-left: calc(50% - 6.5%);
+    }
+}
+@keyframes moveGoalLoading{
+    from{
+        margin-left: 0%;
+    }to{
+        margin-left: calc(46% - 6.5%);
+    }
+}
+/* animating the progress fill-color */ 
+@keyframes progressGoal{
+    from{
+        width: 0%;
+    }to{
+        width: 50%;
+    }
+}
+
+  /* Trønder representing Trondheim kommune */ 
+  .tronder{
+    position: relative;
+    width: 25%;
+    height: 13vh;
+    margin-top: -2%;
+    animation: moveTronder 3s linear forwards;
+  }
+  .tronderLoading{
+    position: relative;
+    width: 100%;
+    height: 13vh;
+    margin-top: -2%;
+    animation: moveTronderLoading 3s linear forwards;
+  }
+  #progressTronder {
+    height: 100%;
+    background-color: #7CB5EC;
+    border-radius: inherit;
+    text-align: right;
+    animation: progressTronder 3s forwards linear;
+  }
+
+  .label {
+    padding: 5px;
+    color: white;
+    font-size: 0.6em;
+  }
+/* moving the trønder along the progressbar */ 
+@keyframes moveTronder{
+    from{
+        margin-left: 0%;
+    }to{
+        margin-left: calc(var(--progress-tronder) - 6.5%);
+    }
+}
+@keyframes moveTronderLoading{
+    from{
+        margin-left: 0%;
+    }to{
+        margin-left: calc(var(--progress-tronder) - 23%);
+    }
+}
+/* animating the progressbar fill-color */ 
+@keyframes progressTronder{
+    from{
+        width: 0%;
+    }to{
+        width: var(--progress-tronder);
+    }
+}
+
+@media only screen and (min-width: 1240px) {
+    #bikeImg {
+        top: 20%; 
+    }
+
+    @keyframes updown {
+        0%{
+            top: -20%;  
+        }50%{
+            top: -17%;  
+        }100%{
+            top: -20%; 
+        }
+    }
+}
+@media only screen and (min-width: 1300px) {
+    #bikeImg {
+        top: 2%; 
+    }
+    @keyframes updown {
+        0%{
+            top: -40%;  
+        }50%{
+            top: -37%;  
+        }100%{
+            top: -40%; 
+        }
+    }
+    @keyframes updownLoading {
+        0%{
+            top: -60%;  
+        }50%{
+            top: -57%;  
+        }100%{
+            top: -60%; 
+        }
+    }
+}

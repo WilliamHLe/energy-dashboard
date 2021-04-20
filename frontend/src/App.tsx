@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import './App.css';
 import Navbar from './components/navbar/Navbar';
@@ -6,12 +6,20 @@ import Main from './components/mainpage/Main';
 import BuildingCategoryOverview from './components/buildingCategoryOverview/BuildingCategoryOverview';
 import Building from './components/building/Building';
 import InfoBar from './components/infobar/Infobar';
+import TwoPercentRace from './components/mainpage/animation/TwoPercentRace';
 import EnergyTips from './components/energyTips/EnergyTips';
 
 function App() {
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    setTimeout(() => setLoading(false), 8000);
+  }, []);
+
   return (
     <>
-      <Router>
+      {!loading ? (
+        <Router>
         <Navbar />
         <div className="content">
           <Switch>
@@ -33,6 +41,7 @@ function App() {
           </Switch>
         </div>
       </Router>
+      ) : (<TwoPercentRace loading={loading} />)}
     </>
   );
 }

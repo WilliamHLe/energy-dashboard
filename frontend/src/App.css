@@ -39,6 +39,7 @@ p {
   font-size: 0.65em;
   color: rgba(255, 255, 255, 0.7);
   font-weight: lighter;
+  margin: 0; 
 }
 
 #root {
