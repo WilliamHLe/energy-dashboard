@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { useParams } from 'react-router';
 import style from './building.module.css';
 import CategoryUsage from '../buildingCategoryOverview/graphs/CategoryUsage';
 import AverageUsage from './graphs/AverageUsage';
@@ -7,6 +6,9 @@ import Compare from './compare/Compare';
 import HeatMapChart from './heatmap/HeatmapChart';
 import Modal from './compare/Modal/Modal';
 import EnergySaved from './graphs/EnergySaved';
+import b1 from './icons/1.svg';
+import b2 from './icons/2.svg';
+import b3 from './icons/3.svg';
 
 function Building() {
   interface Ibuilding {
@@ -16,8 +18,7 @@ function Building() {
     year: number,
     energimerke: string,
   }
-  // s
-  const { category, id } = useParams<{ category: string, id: string }>();
+  // ss
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [compareWithBuilding, setcompareWithBuilding] = useState<Ibuilding>();
 
@@ -47,12 +48,20 @@ function Building() {
           <EnergySaved />
         </div>
         <div className={`container ${style.badges}`}>
-          Bygg type:
-          {' '}
-          {category}
-          , ID:
-          {' '}
-          {id}
+          <table style={{ margin: 'auto' }}>
+            <tr>
+              <td><img alt="Badge" src={b1} /></td>
+              <td><img alt="Badge" src={b1} /></td>
+              <td><img alt="Badge" src={b1} /></td>
+              <td><img alt="Badge" src={b3} /></td>
+            </tr>
+            <tr>
+              <td><img alt="Badge" src={b2} /></td>
+              <td><img alt="Badge" src={b2} /></td>
+              <td><img alt="Badge" src={b2} /></td>
+              <td><img alt="Badge" src={b2} /></td>
+            </tr>
+          </table>
         </div>
       </div>
       <div>

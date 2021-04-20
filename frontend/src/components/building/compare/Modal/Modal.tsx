@@ -142,11 +142,11 @@ function Modal(props: { onChange: any, compareBuilding: Ibuilding | undefined })
                 {' '}
                 Byggeår:
 
-                2012
+                2005
                 {'   '}
                 km²:
 
-                1049
+                1264
               </p>
               <div className={style.row3}>
                 <ProgressBar building={compareBuilding} place="right" data="avg" />

@@ -42,6 +42,8 @@ function CategoryUsage(props: {sendBuilding: any, sendCompareBuilding: any}) {
       height: 260,
       width: 1000,
     },
+    colors: ['#28d515', '#CE32E7', '#FEB064', '#CECE00', '#F7A4F7',
+      '#FEB064', '#92A8CD', '#A47D7C', '#B5CA92'],
     boost: {
       useGPUTranslations: true,
     },

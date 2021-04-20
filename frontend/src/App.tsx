@@ -8,7 +8,7 @@ import Building from './components/building/Building';
 import InfoBar from './components/infobar/Infobar';
 import TwoPercentRace from './components/mainpage/animation/TwoPercentRace';
 import EnergyTips from './components/energyTips/EnergyTips';
-
+// s
 function App() {
   const [loading, setLoading] = useState(true);
 
@@ -20,27 +20,27 @@ function App() {
     <>
       {!loading ? (
         <Router>
-        <Navbar />
-        <div className="content">
-          <Switch>
-            <Route exact path="/">
-              <InfoBar />
-              <Main />
-            </Route>
-            <Route exact path="/energitips">
-              <EnergyTips />
-            </Route>
-            <Route exact path="/:category">
-              <InfoBar />
-              <BuildingCategoryOverview />
-            </Route>
-            <Route path="/:category/:id">
-              <InfoBar />
-              <Building />
-            </Route>
-          </Switch>
-        </div>
-      </Router>
+          <Navbar />
+          <div className="content">
+            <Switch>
+              <Route exact path="/">
+                <InfoBar />
+                <Main />
+              </Route>
+              <Route exact path="/energitips">
+                <EnergyTips />
+              </Route>
+              <Route exact path="/:category">
+                <InfoBar />
+                <BuildingCategoryOverview />
+              </Route>
+              <Route path="/:category/:id">
+                <InfoBar />
+                <Building />
+              </Route>
+            </Switch>
+          </div>
+        </Router>
       ) : (<TwoPercentRace loading={loading} />)}
     </>
   );

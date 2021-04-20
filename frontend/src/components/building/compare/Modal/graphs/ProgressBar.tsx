@@ -39,7 +39,7 @@ const ProgressBar = (props: {building: string | Ibuilding | undefined,
         <div
           style={{
             width: `${completed}%`,
-            backgroundColor: place === 'left' ? '#4CEF79' : '#CE32E7',
+            backgroundColor: place === 'left' ? '#28d515' : '#CE32E7',
             float: place === 'left' ? 'right' : 'left',
             borderRadius: place === 'left' ? '13px 5px 5px 13px' : '5px 13px 13px 5px',
             textAlign: place === 'left' ? 'left' : 'right',
@@ -48,7 +48,10 @@ const ProgressBar = (props: {building: string | Ibuilding | undefined,
           }}
         >
           {/* @ts-ignore */}
-          <span>{`${completed.percentSaved ? completed.percentSaved : completed.averageEnergy[0].avg}%`}</span>
+          <span>
+            {/* @ts-ignore */}
+            {completed.percentSaved ? `${completed.percentSaved}%` : completed.averageEnergy[0].average}
+          </span>
         </div>
       )}
     </div>

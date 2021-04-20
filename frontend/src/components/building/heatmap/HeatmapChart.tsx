@@ -15,11 +15,9 @@ export default function HeatMapChart() {
       const result = await axios.get(`/energy/saved/weekly/${id}`);
       const tempData:number[][] = [[], [], [], [], []];
       for (let i = 0; i < result.data.length; i += 1) {
-        console.log(i);
         tempData[i % 4][Math.floor(i / 4)] = result.data[i].percentSaved;
       }
       tempData.reverse();
-      console.log(tempData);
       setData(tempData);
     };
     fetchData();
