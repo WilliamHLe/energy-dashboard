@@ -49,8 +49,6 @@ function AverageUsage() {
         },
         showInLegend: true,
       }];
-      console.log(tempData);
-      console.log({ name: category, average: resultCategory.data.averageEnergy[0].average });
       setData(tempData);
     };
     fetchData();
