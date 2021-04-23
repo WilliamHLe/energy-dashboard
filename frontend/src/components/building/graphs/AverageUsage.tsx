@@ -53,6 +53,7 @@ function AverageUsage() {
     };
     fetchData();
   }, [category, id]);
+
   const options = {
     chart: {
       type: 'solidgauge',
@@ -71,7 +72,7 @@ function AverageUsage() {
       },
     },
     title: {
-      text: 'Forbruk fordelt på ulike byggkategorier',
+      text: 'Gjennomsnittlig energiforbruk',
       style: {
         color: 'white',
       },
