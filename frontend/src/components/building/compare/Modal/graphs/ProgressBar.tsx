@@ -1,5 +1,6 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
+import { useParams } from 'react-router';
 
 interface Ibuilding {
     name: string,
@@ -11,7 +12,9 @@ interface Ibuilding {
 
 const ProgressBar = (props: {building: string | Ibuilding | undefined,
   place: string, data: string}) => {
-  const [completed, setCompleted] = useState();
+  const { category } = useParams<{ category:string }>();
+  const [completed, setCompleted] = useState<{value:number | string, type:string}>({ value: 0, type: 'spart' });
+  const [width, setWidth] = useState<number>();
   const { building, place, data } = props;
   const [isLoading, setLoading] = useState(true);
 
@@ -19,11 +22,18 @@ const ProgressBar = (props: {building: string | Ibuilding | undefined,
     const fetchdata = async () => {
       if (data === 'spart') {
         const response = await axios.get(`/energy/saved/total/${building}`);
-        setCompleted(response.data);
+        setWidth(response.data.percentSaved);
+        setCompleted({ value: `${response.data.percentSaved}%`, type: 'spart' });
       }
       if (data === 'avg') {
         const response = await axios.get(`/energy/average/${building}`);
-        setCompleted(response.data);
+        const responseCategory = await axios.get(`/energy/average/${category}`);
+        const tempWidth = (
+          response.data.averageEnergy[0].average
+            / responseCategory.data.averageEnergy[0].average
+        ) * 100;
+        setWidth(tempWidth);
+        setCompleted({ value: response.data.averageEnergy[0].average, type: 'avg' });
       }
       setLoading(false);
     };
@@ -38,20 +48,16 @@ const ProgressBar = (props: {building: string | Ibuilding | undefined,
       ) : (
         <div
           style={{
-            width: `${completed}%`,
+            width: `${width}%`,
             backgroundColor: place === 'left' ? '#28d515' : '#CE32E7',
             float: place === 'left' ? 'right' : 'left',
             borderRadius: place === 'left' ? '13px 5px 5px 13px' : '5px 13px 13px 5px',
-            textAlign: place === 'left' ? 'left' : 'right',
+            textAlign: place === 'left' ? 'right' : 'left',
             padding: '1% 2%',
             fontSize: '19px',
           }}
         >
-          {/* @ts-ignore */}
-          <span>
-            {/* @ts-ignore */}
-            {completed.percentSaved ? `${completed.percentSaved}%` : completed.averageEnergy[0].average}
-          </span>
+          {completed.value}
         </div>
       )}
     </div>
