@@ -8,26 +8,10 @@ import style from '../building.module.css';
 require('highcharts/highcharts-more')(Highcharts);
 require('highcharts/modules/solid-gauge')(Highcharts);
 
-interface label {
-  format: string
-}
-
-interface solidGauge {
-  name: string,
-  data: [number],
-  dial: {
-    radius: string,
-    baseWidth: number,
-    rearLength: string,
-  },
-  dataLabels: label,
-  showInLegend: boolean,
-}
-
 function AverageUsage() {
   const { category, id } = useParams<{category:string, id:string}>();
 
-  const [data, setData] = useState<solidGauge[]>();
+  const [data, setData] = useState<any>();
   const [categoryAvg, setCategoryAvg] = useState<{name: string, average: number}>({ name: 'initial', average: 10000 });
   useEffect(() => {
     const fetchData = async () => {
@@ -35,7 +19,7 @@ function AverageUsage() {
       const resultCategory = await axios.get(`/energy/average/${category}`);
       // setData(resultBuilding.data.averageEnergy[0].average);
       setCategoryAvg({ name: category, average: resultCategory.data.averageEnergy[0].average });
-      const tempData:solidGauge[] = [{
+      const tempData:any[] = [{
         name: id,
         data: [resultBuilding.data.averageEnergy[0].average],
         dial: {
@@ -44,9 +28,13 @@ function AverageUsage() {
           rearLength: '20%',
         },
         dataLabels: {
-          format: `<div class=${style.gauge}><span style="font-size:17px;color:${
-            (Highcharts.theme) || 'silver'}">{y}</span><span style="font-size:17px;color:silver"> KWh</span></div>`,
+          format: `<div class=${style.gauge}><span style="font-size:17px;color: #28d515">{y}</span><span style="font-size:17px;color:#28d515"> KWh</span></div>`,
         },
+        showInLegend: true,
+      },
+      {
+        name: category,
+        type: 'solidgauge',
         showInLegend: true,
       }];
       setData(tempData);
@@ -80,7 +68,7 @@ function AverageUsage() {
     credits: {
       enabled: false,
     },
-    colors: ['#FEB064',
+    colors: ['#28d515',
       '#FEB064', '#92A8CD', '#A47D7C', '#B5CA92'],
     yAxis: {
       lineWidth: 0,
@@ -99,11 +87,11 @@ function AverageUsage() {
         to: categoryAvg.average + ((categoryAvg.average * 3) / 100),
         thickness: '50%',
         outerRadius: '105%',
-        color: 'black',
+        color: '#FEB064',
         zIndex: 5,
         label: {
           useHTML: true,
-          text: `<span style="background-color: #030E22;border-radius: 5px;border:1px solid white; padding:2px;">${categoryAvg.name}: ${categoryAvg.average} KWh</span>`,
+          text: `<span style="background-color: #FEB064;border-radius: 5px;border:1px solid white; padding:2px;">${categoryAvg.name}: ${categoryAvg.average} KWh</span>`,
         },
       }],
     },
@@ -115,16 +103,18 @@ function AverageUsage() {
         style: {
           color: 'white',
         },
-        states: {
-          inactive: {
-            opacity: 1,
+        events: {
+          legendItemClick: function () {
+            return false;
           },
         },
+        allowPointSelect: false,
       },
       tooltip: {
         format: '{y} KWh',
       },
       solidgauge: {
+        colorByPoint: false,
         dataLabels: {
           y: -20,
           borderWidth: 0,
@@ -132,33 +122,27 @@ function AverageUsage() {
           color: 'white',
           format: '{y} KWh',
         },
-      },
-      gauge: {
-        dataLabels: {
-          y: -20,
-          borderWidth: 0,
-          useHTML: true,
-          color: 'white',
-          format: '{y} KWh',
+        states: {
+          inactive: {
+            opacity: 1,
+          },
+          hover: {
+            enabled: false,
+          },
         },
-      },
-      legend: {
+        allowPointSelect: false,
       },
     },
     legend: {
-      enableMouseTracking: false,
       verticalAlign: 'middle',
-      y: 100,
       layout: 'vertical',
+      y: 80,
       itemStyle: {
         color: 'white',
       },
-      states: {
-        hover: {
-          enabled: false,
-        },
+      itemHoverStyle: {
+        color: 'white',
       },
-
     },
     xAxis: {
       labels: {
