@@ -29,12 +29,12 @@ function Modal(props: { onChange: any, compareBuilding: Ibuilding | undefined })
 
   const getIcon = (building: number[], index: number) => {
     if (currentBuildingUpgrade[index] === 0 && otherBuildingUpgrade[index] === 0) {
-      return (<input type="image" alt="check" src={check} />);
+      return (<img alt="check" src={check} width={40} height={40} />);
     }
     if (building[index] === 1) {
-      return (<input type="image" alt="check" src={check} />);
+      return (<img alt="check" src={check} width={40} height={40} />);
     }
-    return (<input type="image" alt="check" src={cross} />);
+    return (<img alt="check" src={cross} width={40} height={40} />);
   };
 
   const setIcons = () => {
@@ -174,7 +174,7 @@ function Modal(props: { onChange: any, compareBuilding: Ibuilding | undefined })
                       </p>
                     </td>
                     <td>
-                      <div style={{ width: '40px' }}>
+                      <div>
                         {getIcon(otherBuildingUpgrade, index)}
                       </div>
                     </td>
