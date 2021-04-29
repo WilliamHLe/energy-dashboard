@@ -10,14 +10,17 @@ import cross from '../../../../assets/png/entypo_cross.png';
 interface Ibuilding {
   name: string,
   tek: string,
-  areal: number,
+  area: number,
   year: number,
-  energimerke: string,
+  energyLabel: string,
 }
-
-function Modal(props: { onChange: any, compareBuilding: Ibuilding | undefined }) {
+// s
+function Modal(props: {
+  onChange: any,
+  currentBuilding: Ibuilding | undefined,
+  compareBuilding: Ibuilding | undefined }) {
   const { id } = useParams<{ id: string }>();
-  const { compareBuilding } = props;
+  const { currentBuilding, compareBuilding } = props;
   const [isLoading, setLoading] = useState(true);
   const [allUpgrades, setUpgrades] = useState(['']);
   const [currentBuildingUpgrade, setCrurrentBuildingUpgrades] = useState([3]);
@@ -36,7 +39,7 @@ function Modal(props: { onChange: any, compareBuilding: Ibuilding | undefined })
     }
     return (<img alt="check" src={cross} width={40} height={40} />);
   };
-
+  console.log(compareBuilding);
   const setIcons = () => {
     const arr = [];
     let i = 0;
@@ -82,7 +85,10 @@ function Modal(props: { onChange: any, compareBuilding: Ibuilding | undefined })
         <div />
       ) : (
         <div id={style.wrapper}>
-          <input type="image" onClick={closeModal} alt="close" src={closeImage} className={style.closeImage} />
+          <p className={style.closeImage}>
+            <input type="image" onClick={closeModal} alt="close" src={closeImage} className={style.closeImage} />
+          </p>
+          <br />
           <h1>
             Sammenlign
             {' '}
@@ -90,14 +96,14 @@ function Modal(props: { onChange: any, compareBuilding: Ibuilding | undefined })
             {' '}
             og
             {' '}
-            {compareBuilding}
+            {compareBuilding?.name}
             {' '}
           </h1>
           <div id={style.compareUsage}>
-            <CategoryUsage sendBuilding={id} sendCompareBuilding={compareBuilding} />
+            <CategoryUsage sendBuilding={id} sendCompareBuilding={compareBuilding?.name} />
           </div>
           <div>
-            <table style={{ margin: 'auto' }}>
+            <table style={{ margin: 'auto', width: '80%' }}>
               <tbody>
                 <tr>
                   <td className={style.left}>
@@ -111,7 +117,7 @@ function Modal(props: { onChange: any, compareBuilding: Ibuilding | undefined })
                   <td className={style.right}>
                     <h2 className={style.row1}>
                       {' '}
-                      {compareBuilding}
+                      {compareBuilding?.name}
                       {' '}
                     </h2>
                   </td>
@@ -120,18 +126,26 @@ function Modal(props: { onChange: any, compareBuilding: Ibuilding | undefined })
                   <td className={style.left}>
                     <p>
                       {' '}
-                      Byggeår: 2012
+                      Byggeår:
+                      {' '}
+                      {currentBuilding?.year}
                       {'   '}
-                      km²: 1049
+                      km²:
+                      {' '}
+                      {currentBuilding?.area}
                     </p>
                   </td>
                   <td />
                   <td className={style.right}>
                     <p>
                       {' '}
-                      Byggeår: 2012
+                      Byggeår:
+                      {' '}
+                      {compareBuilding?.year}
                       {'   '}
-                      km²: 1049
+                      km²:
+                      {' '}
+                      {compareBuilding?.area}
                     </p>
                   </td>
                 </tr>
@@ -145,7 +159,7 @@ function Modal(props: { onChange: any, compareBuilding: Ibuilding | undefined })
                     </p>
                   </td>
                   <td className={style.right}>
-                    <ProgressBar building={compareBuilding} place="right" data="avg" />
+                    <ProgressBar building={compareBuilding?.name} place="right" data="avg" />
                   </td>
                 </tr>
                 <tr>
@@ -158,7 +172,7 @@ function Modal(props: { onChange: any, compareBuilding: Ibuilding | undefined })
                     </p>
                   </td>
                   <td className={style.right}>
-                    <ProgressBar building={compareBuilding} place="right" data="spart" />
+                    <ProgressBar building={compareBuilding?.name} place="right" data="spart" />
                   </td>
                 </tr>
                 {allUpgrades.map((_upgrade, index) => (

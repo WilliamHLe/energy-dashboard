@@ -10,10 +10,11 @@
 }
 
 .closeImage {
-    width: 40px; 
-    height: 36px;
-    float: right;
+    width: 30px;
+    height: 30px;
     margin: 1%;
+    float: right;
+    background: unset;
 }
 
 h1 {
@@ -99,9 +100,11 @@ p, h1 {
 
 .left {
     text-align: right;
+    width: 40%;
 }
 .right {
     text-align: left;
+    width: 40%;
 }
 .middle {
     text-align: center;
