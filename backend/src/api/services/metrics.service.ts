@@ -1,7 +1,7 @@
 import mongoose from 'mongoose';
 import { IEnergyUsed, IMetrics } from '../../types/interfaces';
 import Building, { IBuilding } from '../models/buildings.model';
-import energyService from './energy.service';
+import energyUsageService from './energyUsage.service';
 
 /**
  * Fetches the number of buildings in the given category by id.
@@ -52,12 +52,12 @@ const energyUsedLastTwoYearsByCategory = async (categoryId: string): Promise<IEn
   const lastStart = new Date(currentStart);
   lastStart.setFullYear(currentStart.getFullYear() - 1);
 
-  const energyUsedLastYear = await energyService.sumEnergyUsageByBuildingIds(
+  const energyUsedLastYear = await energyUsageService.sumEnergyUsageByBuildingIds(
     buildingIds,
     lastStart.toISOString(),
     lastEnd.toISOString(),
   );
-  const energyUsedCurrentYear = await energyService.sumEnergyUsageByBuildingIds(
+  const energyUsedCurrentYear = await energyUsageService.sumEnergyUsageByBuildingIds(
     buildingIds,
     currentStart.toISOString(),
     currentEnd.toISOString(),
@@ -99,5 +99,5 @@ const calculatePercentageSaved = (currentYear: number, lastYear: number): number
 export default {
   categoryMetrics,
   calculatePercentageSaved,
-  energyUsageTwoLastYearsByBuildings: energyUsedLastTwoYearsByCategory,
+  energyUsedLastTwoYearsByCategory,
 };

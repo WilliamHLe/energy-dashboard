@@ -2,7 +2,7 @@ import mongoose from 'mongoose';
 import { IBuilding } from '../api/models/buildings.model';
 import { ICategory } from '../api/models/categories.model';
 
-export interface BuildingCategory {
+export interface IBuildingCategory {
     category: ICategory,
     buildings: string[]
   }
@@ -18,12 +18,12 @@ export interface IBuildingScore {
     score: number,
   }
 
-export interface EnergyCategory {
+export interface IEnergyCategory {
     category: ICategory,
     total: number
   }
 
-export interface Carrier {
+export interface ICarrier {
     name: string,
     amount: number
   }
@@ -38,28 +38,28 @@ export interface IWeeklyUsage {
     sum: number,
   }
 
-export interface CarrierCategory {
+export interface ICarrierCategory {
     category: ICategory,
-    carriers: Carrier[]
+    carriers: ICarrier[]
   }
 
-export interface Usage {
+export interface IUsage {
     usage: number,
     date: string
   }
 
-export interface EnergyUsageCategory {
+export interface IEnergyUsageCategory {
     category: ICategory,
-    usage: Usage[]
+    usage: IUsage[]
   }
-export interface EnergyAverage {
+export interface IEnergyAverage {
     average: number,
     date: string
   }
 
-export interface EnergyAverageByCategory {
+export interface IEnergyAverageByCategory {
     category: ICategory,
-    average: EnergyAverage[]
+    average: IEnergyAverage[]
   }
 
 export interface IMetrics {

@@ -7,12 +7,12 @@ const router = express.Router();
 
 router.get('/', buildingControllers.getAllBuildings);
 router.get('/:id', buildingControllers.getBuildingById);
-router.get('/:id/metrics', metricsControllers.metricsByBuildingId);
-router.get('/:id/energy/carriers', buildingControllers.carriersByBuildingId);
-router.get('/:id/energy/total', buildingControllers.getTotalEnergyByBuilding);
-router.get('/:id/energy/saved/weekly', buildingControllers.getSavedWeeklyByBuildingId);
-router.get('/:id/energy/saved/total', buildingControllers.getSavedByBuildingId);
-router.get('/:id/energy/usage', buildingControllers.getEnergyUsageByBuilding);
-router.get('/:id/energy/average', buildingControllers.getAverageUsageByBuilding);
+router.get('/:id/metrics', metricsControllers.getMetricsByBuildingId);
+router.get('/:id/energy/carriers', buildingControllers.getCarriersById);
+router.get('/:id/energy/total', buildingControllers.getTotalEnergyById);
+router.get('/:id/energy/saved/weekly', buildingControllers.getSavedEnergyWeeklyById);
+router.get('/:id/energy/saved/total', buildingControllers.getSavedEnergyById);
+router.get('/:id/energy/usage', buildingControllers.getEnergyUsageById);
+router.get('/:id/energy/average', buildingControllers.getAverageUsageById);
 
 export default router;

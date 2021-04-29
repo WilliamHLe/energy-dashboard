@@ -13,7 +13,7 @@ import { IMetrics } from '../../types/interfaces';
  * @param {Response} res - Express response
  * @param {NextFunction} next - Express next function
  */
-const metricsBySlug = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
+const getMetricsBySlug = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
   try {
     const { slug } = req.params;
 
@@ -100,7 +100,7 @@ const metricsByCategoryName = async (
  * @param {Response} res - Express response
  * @param {NextFunction} next - Express next function
  */
-const metricsByBuildingId = async (
+const getMetricsByBuildingId = async (
   req: Request, res: Response, next: NextFunction,
 ): Promise<void> => {
   try {
@@ -134,7 +134,7 @@ const metricsByBuildingId = async (
  * @param {Response} res - Express response
  * @param {NextFunction} next - Express next function
  */
-const metrics = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
+const getMetrics = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
   try {
     const categories = await Category.find();
 
@@ -165,8 +165,8 @@ const metrics = async (req: Request, res: Response, next: NextFunction): Promise
 };
 
 export default {
-  metrics,
-  metricsBySlug,
+  getMetrics,
+  getMetricsBySlug,
   metricsByCategoryName,
-  metricsByBuildingId,
+  getMetricsByBuildingId,
 };

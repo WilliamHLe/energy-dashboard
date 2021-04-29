@@ -1,8 +1,11 @@
 import mongoose from 'mongoose';
 import { Request, Response, NextFunction } from 'express';
 import Building, { IBuilding } from '../models/buildings.model';
-import energyService from '../services/energy.service';
-import { Carrier } from '../../types/interfaces';
+import energyCarriersService from '../services/energyCarriers.service';
+import { ICarrier } from '../../types/interfaces';
+import energyUsageService from '../services/energyUsage.service';
+import energySavedService from '../services/energySaved.service';
+import energyAverageService from '../services/energyAverage.service';
 
 const getAllBuildings = async (
   req: Request,
@@ -41,7 +44,7 @@ const getBuildingById = async (
 };
 
 // Get total energy by building ID
-const getTotalEnergyByBuilding = async (
+const getTotalEnergyById = async (
   req: Request, res: Response, next: NextFunction,
 ): Promise<void> => {
   const fromDate = req.query.from_date as string;
@@ -49,7 +52,7 @@ const getTotalEnergyByBuilding = async (
   const buildingId = req.params.id ? mongoose.Types.ObjectId(req.params.id) : undefined;
 
   try {
-    const totalEnergy: number = await energyService.sumEnergyUsage(
+    const totalEnergy: number = await energyUsageService.sumEnergyUsage(
       buildingId, fromDate, toDate,
     );
     if (totalEnergy) {
@@ -60,7 +63,7 @@ const getTotalEnergyByBuilding = async (
   }
 };
 
-const getSavedWeeklyByBuildingName = async (
+const getSavedEnergyWeeklyByName = async (
   req: Request, res: Response, next: NextFunction,
 ): Promise<void> => {
   try {
@@ -72,13 +75,13 @@ const getSavedWeeklyByBuildingName = async (
       return;
     }
 
-    res.send(await energyService.getSavedWeeklyByBuilding(building));
+    res.send(await energySavedService.savedWeeklyByBuilding(building));
   } catch (e) {
     next(e);
   }
 };
 
-const getSavedWeeklyByBuildingId = async (
+const getSavedEnergyWeeklyById = async (
   req: Request, res: Response, next: NextFunction,
 ): Promise<void> => {
   try {
@@ -90,13 +93,13 @@ const getSavedWeeklyByBuildingId = async (
       return;
     }
 
-    res.send(await energyService.getSavedWeeklyByBuilding(building));
+    res.send(await energySavedService.savedWeeklyByBuilding(building));
   } catch (e) {
     next(e);
   }
 };
 
-const getSavedByBuildingName = async (
+const getSavedEnergyByName = async (
   req: Request, res: Response, next: NextFunction,
 ): Promise<void> => {
   try {
@@ -108,7 +111,7 @@ const getSavedByBuildingName = async (
       return;
     }
 
-    const saved = await energyService.getSavedEnergyByBuilding(building);
+    const saved = await energySavedService.savedEnergyByBuilding(building);
 
     res.send({
       percentSaved: saved,
@@ -118,7 +121,7 @@ const getSavedByBuildingName = async (
   }
 };
 
-const getSavedByBuildingId = async (
+const getSavedEnergyById = async (
   req: Request, res: Response, next: NextFunction,
 ): Promise<void> => {
   try {
@@ -130,7 +133,7 @@ const getSavedByBuildingId = async (
       return;
     }
 
-    const saved = await energyService.getSavedEnergyByBuilding(building);
+    const saved = await energySavedService.savedEnergyByBuilding(building);
 
     res.send({
       percentSaved: saved,
@@ -146,11 +149,11 @@ const getSavedByBuildingId = async (
  * @param {Response} res - Express response
  * @param {NextFunction} next - Express next function
  */
-const carriersByBuildingId = async (
+const getCarriersById = async (
   req: Request, res: Response, next: NextFunction,
 ): Promise<void> => {
   try {
-    const carriers: Carrier[] = await energyService.carriersByBuildings(
+    const carriers: ICarrier[] = await energyCarriersService.carriersByBuildings(
       [req.params.id], req.query.from_date as string, req.query.to_date as string,
     );
 
@@ -160,7 +163,7 @@ const carriersByBuildingId = async (
   }
 };
 
-const getEnergyUsageByBuilding = async (
+const getEnergyUsageById = async (
   req: Request, res: Response, next: NextFunction,
 ): Promise<void> => {
   const fromDate = req.query.from_date as string;
@@ -168,14 +171,14 @@ const getEnergyUsageByBuilding = async (
   const buildingId = req.params.id;
 
   try {
-    const energyUsage = await energyService.energyUsage([buildingId], fromDate, toDate);
+    const energyUsage = await energyUsageService.energyUsage([buildingId], fromDate, toDate);
 
     res.send(energyUsage);
   } catch (err) {
     next(err);
   }
 };
-const getAverageUsageByBuilding = async (
+const getAverageUsageById = async (
   req: Request, res: Response, next: NextFunction,
 ): Promise<void> => {
   const fromDate = req.query.from_date as string;
@@ -183,7 +186,9 @@ const getAverageUsageByBuilding = async (
   const buildingId = req.params.id;
 
   try {
-    const energyUsage = await energyService.energyAverageBySlug([buildingId], fromDate, toDate);
+    const energyUsage = await energyAverageService.energyAverageBySlug(
+      [buildingId], fromDate, toDate,
+    );
 
     res.send(energyUsage);
   } catch (err) {
@@ -194,12 +199,12 @@ const getAverageUsageByBuilding = async (
 export default {
   getAllBuildings,
   getBuildingById,
-  getTotalEnergyByBuilding,
-  getSavedByBuildingId,
-  getSavedByBuildingName,
-  getSavedWeeklyByBuildingName,
-  getSavedWeeklyByBuildingId,
-  carriersByBuildingId,
-  getEnergyUsageByBuilding,
-  getAverageUsageByBuilding,
+  getTotalEnergyById,
+  getSavedEnergyById,
+  getSavedEnergyByName,
+  getSavedEnergyWeeklyByName,
+  getSavedEnergyWeeklyById,
+  getCarriersById,
+  getEnergyUsageById,
+  getAverageUsageById,
 };

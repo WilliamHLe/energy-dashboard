@@ -1,7 +1,7 @@
 import { Request, Response, NextFunction } from 'express';
 import { IBuildingScore } from '../../types/interfaces';
 import Category, { ICategory } from '../models/categories.model';
-import buildingsService from '../services/buildings.service';
+import highscoreService from '../services/highscore.service';
 
 const getHighscoresForCategory = async (
   req: Request,
@@ -17,7 +17,7 @@ const getHighscoresForCategory = async (
       return;
     }
 
-    const scores: IBuildingScore[] = await buildingsService.getHighscoresByCategory(category._id);
+    const scores: IBuildingScore[] = await highscoreService.highscoresByCategory(category._id);
     res.send(scores);
   } catch (err) {
     next(err);
