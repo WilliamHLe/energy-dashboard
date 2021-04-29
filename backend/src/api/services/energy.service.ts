@@ -1,47 +1,12 @@
 import mongoose from 'mongoose';
 import Sensor from '../models/sensors.model';
-import { ICategory } from '../models/categories.model';
 import Building, { IBuilding } from '../models/buildings.model';
 import buildingService from './buildings.service';
-
-export interface Carrier {
-  name: string,
-  amount: number
-}
-
-export interface IWeeklySaved {
-  week: string,
-  percentSaved: number,
-}
-
-export interface IWeeklyUsage {
-  week: string,
-  sum: number,
-}
-
-export interface CarrierCategory {
-  category: ICategory,
-  carriers: Carrier[]
-}
-
-export interface Usage {
-  usage: number,
-  date: string
-}
-
-export interface EnergyUsageCategory {
-  category: ICategory,
-  usage: Usage[]
-}
-export interface EnergyAverage {
-  average: number,
-  date: string
-}
-
-export interface EnergyAverageByCategory {
-  category: ICategory,
-  average: EnergyAverage[]
-}
+import {
+  Carrier, CarrierCategory, BuildingCategory,
+  EnergyCategory, Usage, EnergyUsageCategory, EnergyAverage,
+  EnergyAverageByCategory, IWeeklyUsage, IWeeklySaved,
+} from '../../types/interfaces';
 
 /**
  * OBS: POTENSIELT BROKEN
@@ -133,16 +98,6 @@ const carriers = async (fromDate?: string, toDate?: string): Promise<CarrierCate
     carriers: await carriersByBuildings(buildingCategory.buildings, fromDate, toDate),
   })));
 };
-
-export interface BuildingCategory {
-  category: ICategory,
-  buildings: string[]
-}
-
-export interface EnergyCategory {
-  category: ICategory,
-  total: number
-}
 
 const sumEnergyUsage = async (
   buildingId?: mongoose.Types.ObjectId, fromDate?: string, toDate?: string,

@@ -1,28 +1,7 @@
 import mongoose from 'mongoose';
 import Sensor from '../models/sensors.model';
-import { ICategory } from '../models/categories.model';
 import Building, { IBuilding } from '../models/buildings.model';
-
-export interface BuildingCategory {
-  category: ICategory,
-  buildings: string[]
-}
-
-export interface EnergyCategory {
-  category: ICategory,
-  total: number
-}
-
-export interface IBuildingEnergyTotal {
-  _id: mongoose.Types.ObjectId,
-  building: IBuilding,
-  total: number,
-}
-
-export interface IBuildingScore {
-  building: IBuilding,
-  score: number,
-}
+import { BuildingCategory, IBuildingEnergyTotal, IBuildingScore } from '../../types/interfaces';
 
 /**
  * Groups buildings by id into categories

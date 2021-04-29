@@ -1,7 +1,8 @@
 import { Request, Response, NextFunction } from 'express';
 import Category, { ICategory } from '../models/categories.model';
 import Building, { IBuilding } from '../models/buildings.model';
-import metricsService, { IMetrics } from '../services/metrics.service';
+import metricsService from '../services/metrics.service';
+import { IMetrics } from '../../types/interfaces';
 
 /**
  * Controller to handle fetching the metrics (collection of miscellanious information) for a

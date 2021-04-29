@@ -1,19 +1,7 @@
 import mongoose from 'mongoose';
+import { IEnergyUsed, IMetrics } from '../../types/interfaces';
 import Building, { IBuilding } from '../models/buildings.model';
 import energyService from './energy.service';
-
-export interface IMetrics {
-  energyUsedCurrentYear: number,
-  energyUsedLastYear: number,
-  area: number,
-  buildings: number,
-}
-
-export interface IEnergyUsed {
-  category: string,
-  energyUsedLastYear: number,
-  energyUsedCurrentYear: number,
-}
 
 /**
  * Fetches the number of buildings in the given category by id.

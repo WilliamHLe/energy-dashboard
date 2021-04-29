@@ -1,6 +1,7 @@
 import { Request, Response, NextFunction } from 'express';
+import { IBuildingScore } from '../../types/interfaces';
 import Category, { ICategory } from '../models/categories.model';
-import buildingsService, { IBuildingScore } from '../services/buildings.service';
+import buildingsService from '../services/buildings.service';
 
 const getHighscoresForCategory = async (
   req: Request,

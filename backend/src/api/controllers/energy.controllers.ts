@@ -1,16 +1,11 @@
 import { Request, Response, NextFunction } from 'express';
-import mongoose from 'mongoose';
+import {
+  Carrier, CarrierCategory, EnergyAverage, EnergyAverageByCategory, IEnergySaved,
+} from '../../types/interfaces';
 import Building, { IBuilding } from '../models/buildings.model';
 import Category, { ICategory } from '../models/categories.model';
-import energyService, {
-  Carrier, CarrierCategory, EnergyAverage, EnergyAverageByCategory,
-} from '../services/energy.service';
+import energyService from '../services/energy.service';
 import metricsService from '../services/metrics.service';
-
-export interface IEnergySaved {
-  category: ICategory,
-  saved: number,
-}
 
 /**
  * Controller to handle fetching carriers for both categories and buildings by name. This is
@@ -54,26 +49,6 @@ const carriersBySlug = async (
 };
 
 /**
- * Controller to handle finding carriers for a single building based on the building id.
- * @param {Request} req - Express request. Should contain an id.
- * @param {Response} res - Express response
- * @param {NextFunction} next - Express next function
- */
-const carriersByBuildingId = async (
-  req: Request, res: Response, next: NextFunction,
-): Promise<void> => {
-  try {
-    const carriers: Carrier[] = await energyService.carriersByBuildings(
-      [req.params.id], req.query.from_date as string, req.query.to_date as string,
-    );
-
-    res.send(carriers);
-  } catch (err) {
-    next(err);
-  }
-};
-
-/**
  * Controller to handle finding carriers for all categories, grouped by category.
  * @param {Request} req - Express request
  * @param {Response} res - Express response
@@ -103,26 +78,6 @@ const getTotalEnergy = async (
     );
 
     res.send(totalEnergy);
-  } catch (e) {
-    next(e);
-  }
-};
-
-// Get total energy by building ID
-const getTotalEnergyByBuilding = async (
-  req: Request, res: Response, next: NextFunction,
-): Promise<void> => {
-  const fromDate = req.query.from_date as string;
-  const toDate = req.query.to_date as string;
-  const buildingId = req.params.id ? mongoose.Types.ObjectId(req.params.id) : undefined;
-
-  try {
-    const totalEnergy: number = await energyService.sumEnergyUsage(
-      buildingId, fromDate, toDate,
-    );
-    if (totalEnergy) {
-      res.send(totalEnergy);
-    }
   } catch (e) {
     next(e);
   }
@@ -185,20 +140,22 @@ const getEnergyUsage = async (
   }
 };
 
-const getEnergyUsageByBuilding = async (
-  req: Request, res: Response, next: NextFunction,
-): Promise<void> => {
-  const fromDate = req.query.from_date as string;
-  const toDate = req.query.to_date as string;
-  const buildingId = req.params.id;
+const bySlug = async (slug:string, func:Function, fromDate:string, toDate:string) => {
+  const name: RegExp = new RegExp(slug, 'i');
+  const category: ICategory | null = await Category.findOne({ name: { $regex: name } });
+  let buildings = [];
 
-  try {
-    const energyUsage = await energyService.energyUsage([buildingId], fromDate, toDate);
-
-    res.send(energyUsage);
-  } catch (err) {
-    next(err);
+  if (category) {
+    buildings = await Building.find({ category: category.id }).distinct('_id');
+  } else {
+    const building: IBuilding | null = await Building.findOne({ name: { $regex: name } });
+    if (!building) {
+      throw Error('Slug is invalid');
+    }
+    buildings = [building.id];
   }
+
+  return func(buildings, fromDate, toDate);
 };
 
 const getEnergyUsageBySlug = async (
@@ -208,45 +165,8 @@ const getEnergyUsageBySlug = async (
   const toDate = req.query.to_date as string;
 
   try {
-    const name: RegExp = new RegExp(req.params.slug, 'i');
-    const category: ICategory | null = await Category.findOne({ name: { $regex: name } });
-
-    if (category) {
-      const buildings = await Building.find({ category: category.id }).distinct('_id');
-      const energyUsage = await energyService.energyUsage(
-        buildings, fromDate, toDate,
-      );
-
-      res.send(energyUsage);
-    } else {
-      const building: IBuilding | null = await Building.findOne({ name: { $regex: name } });
-      if (building) {
-        const energyUsage = await energyService.energyUsage(
-          [building.id], req.query.from_date as string, req.query.to_date as string,
-        );
-
-        res.send(energyUsage);
-      } else {
-        // The slug did not contain a category or building name
-        next('Invalid slug');
-      }
-    }
-  } catch (err) {
-    next(err);
-  }
-};
-
-const getAverageUsageByBuilding = async (
-  req: Request, res: Response, next: NextFunction,
-): Promise<void> => {
-  const fromDate = req.query.from_date as string;
-  const toDate = req.query.to_date as string;
-  const buildingId = req.params.id;
-
-  try {
-    const energyUsage = await energyService.energyAverageBySlug([buildingId], fromDate, toDate);
-
-    res.send(energyUsage);
+    const result = await bySlug(req.params.slug, energyService.energyUsage, fromDate, toDate);
+    res.send(result);
   } catch (err) {
     next(err);
   }
@@ -321,87 +241,6 @@ const getAllAverage = async (
   }
 };
 
-const getSavedWeeklyByBuildingName = async (
-  req: Request, res: Response, next: NextFunction,
-): Promise<void> => {
-  try {
-    const name: RegExp = new RegExp(req.params.slug, 'i');
-    const building: IBuilding | null = await Building.findOne({ name: { $regex: name } });
-
-    if (!building) {
-      next('Building not found');
-      return;
-    }
-
-    res.send(await energyService.getSavedWeeklyByBuilding(building));
-  } catch (e) {
-    next(e);
-  }
-};
-
-const getSavedWeeklyByBuildingId = async (
-  req: Request, res: Response, next: NextFunction,
-): Promise<void> => {
-  try {
-    const { id } = req.params;
-    const building: IBuilding | null = await Building.findById(id);
-
-    if (!building) {
-      next('Building not found');
-      return;
-    }
-
-    res.send(await energyService.getSavedWeeklyByBuilding(building));
-  } catch (e) {
-    next(e);
-  }
-};
-
-const getSavedByBuildingName = async (
-  req: Request, res: Response, next: NextFunction,
-): Promise<void> => {
-  try {
-    const name: RegExp = new RegExp(req.params.slug, 'i');
-    const building: IBuilding | null = await Building.findOne({ name: { $regex: name } });
-
-    if (!building) {
-      next('Building not found');
-      return;
-    }
-
-    const saved = await energyService.getSavedEnergyByBuilding(building);
-    console.log(saved);
-
-    res.send({
-      percentSaved: saved,
-    });
-  } catch (e) {
-    next(e);
-  }
-};
-
-const getSavedByBuildingId = async (
-  req: Request, res: Response, next: NextFunction,
-): Promise<void> => {
-  try {
-    const { id } = req.params;
-    const building: IBuilding | null = await Building.findById(id);
-
-    if (!building) {
-      next('Building not found');
-      return;
-    }
-
-    const saved = await energyService.getSavedEnergyByBuilding(building);
-
-    res.send({
-      percentSaved: saved,
-    });
-  } catch (e) {
-    next(e);
-  }
-};
-
 const getAllSaved = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
   try {
     const categories = await Category.find();
@@ -429,19 +268,11 @@ const getAllSaved = async (req: Request, res: Response, next: NextFunction): Pro
 export default {
   carriers,
   carriersBySlug,
-  carriersByBuildingId,
-  getTotalEnergyByBuilding,
   getTotalEnergyBySlug,
   getTotalEnergy,
   getEnergyUsage,
-  getEnergyUsageByBuilding,
   getEnergyUsageBySlug,
-  getAverageUsageByBuilding,
   getAverageEnergyBySlug,
   getAllAverage,
-  getSavedWeeklyByBuildingName,
-  getSavedWeeklyByBuildingId,
-  getSavedByBuildingName,
-  getSavedByBuildingId,
   getAllSaved,
 };
