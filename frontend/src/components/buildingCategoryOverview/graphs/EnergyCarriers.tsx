@@ -59,16 +59,13 @@ function EnergyCarriers() {
       pie: {
         allowPointSelect: true,
         cursor: 'pointer',
+        showInLegend: true,
         dataLabels: {
           enabled: false,
         },
-        showInLegend: true,
       },
       series: {
         style: {
-          color: 'white',
-        },
-        dataLabels: {
           color: 'white',
         },
       },
@@ -77,6 +74,7 @@ function EnergyCarriers() {
       itemStyle: {
         color: 'white',
       },
+      labelFormat: '{name} ({percentage:.1f}%)',
     },
     series: data,
   };
