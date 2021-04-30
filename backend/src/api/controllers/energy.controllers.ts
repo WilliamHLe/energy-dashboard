@@ -96,7 +96,7 @@ const getTotalEnergyBySlug = async (
   const toDate = req.query.to_date as string;
   try {
     const result = await bySlug(
-      req.params.slug, energyUsageService.sumEnergyUsageByBuildingIds, fromDate, toDate,
+      req.params.slug, energyUsageService.sumEnergyUsageByIds, fromDate, toDate,
     );
     res.send({ total: result });
   } catch (err) {
@@ -130,7 +130,7 @@ const getEnergyUsageBySlug = async (
 
   try {
     const result:IUsage[] = await bySlug(
-      req.params.slug, energyUsageService.energyUsage, fromDate, toDate,
+      req.params.slug, energyUsageService.energyUsageByIds, fromDate, toDate,
     );
     res.send(result);
   } catch (err) {

@@ -69,10 +69,10 @@ const savedEnergyByBuilding = async (building: IBuilding): Promise<number> => {
   lastStart.setFullYear(currentStart.getFullYear() - 1);
 
   const [curr, prev] = await Promise.all([
-    energyUsageService.sumEnergyUsageByBuildingIds(
+    energyUsageService.sumEnergyUsageByIds(
       [building._id], currentStart.toISOString(), currentEnd.toISOString(),
     ),
-    energyUsageService.sumEnergyUsageByBuildingIds(
+    energyUsageService.sumEnergyUsageByIds(
       [building._id], lastStart.toISOString(), lastEnd.toISOString(),
     ),
   ]);

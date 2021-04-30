@@ -1,103 +1,22 @@
 import mongoose from 'mongoose';
 import {
-  IEnergyCategory, IEnergyUsageCategory,
-  IBuildingEnergyTotal, IWeeklyUsage, IUsage,
+  IEnergyCategory, IEnergyUsageCategory, IWeeklyUsage, IUsage,
 } from '../../types/interfaces';
 import Sensor from '../models/sensors.model';
 import buildingService from './buildings.service';
 import energyService from './energyCarriers.service';
 
 /**
- * Calculates the total energy usage for each building
- * @param {string[]} buildingIds - List of building ids
- * @param {string} [fromDate] - The earliest date to include
- * @param {string} [toDate] - The latest date to include
- * @returns {IBuildingEnergyTotal[]} - List where each entry has an id, building and total energy
- */
-const totalEnergyUsageForEachBuilding = async (
-  buildingIds: string[], fromDate: Date, toDate: Date,
-): Promise<IBuildingEnergyTotal[]> => {
-  const query: object[] = [
-    {
-      $unwind: '$measurements',
-    },
-    {
-      $match: {
-        building: { $in: buildingIds.map((id) => mongoose.Types.ObjectId(id)) },
-        type: 'Forbruksmåler',
-        'measurements.date': { $gte: fromDate, $lte: toDate },
-      },
-    },
-    {
-      $group: {
-        _id: '$building',
-        total: {
-          $sum: { $sum: '$measurements.measurement' },
-        },
-      },
-    },
-    {
-      $lookup: {
-        from: 'buildings',
-        localField: '_id',
-        foreignField: '_id',
-        as: 'building',
-      },
-    },
-    {
-      $unwind: '$building',
-    },
-    {
-      $project: {
-        building: 1,
-        total: { $trunc: ['$total'] },
-      },
-    },
-  ];
-
-  return Sensor.aggregate(query);
-};
-
-/**
- * Calculates the sum of the energy usage for a building.
- * checks if buildingId exists in $match
- * @param {mongoose.Types.ObjectId} buildingId - BuildingId for a specific building
+ * calculates the total energy used for a building or a category.
+ * Used by energy.controller to get total energy by slug
+ * and buildings.controller to get total energy bu building id.
+ * @param {stirng[]} buildingIds - BuildingIds,
+ * either on id of a building or several for all buildigs in a category.
  * @param {string} [fromDate] - The earliest date to include
  * @param {string} [toDate] - The latest date to include
  * @returns {number} - summarized energy usage
  */
-const sumEnergyUsage = async (
-  buildingId?: mongoose.Types.ObjectId, fromDate?: string, toDate?: string,
-): Promise<number> => {
-  let query:object[] = [
-    {
-      $match: {
-        type: 'Forbruksmåler',
-        ...(buildingId && { buildingId }),
-      },
-    },
-    {
-      $group: {
-        _id: null,
-        total: {
-          $sum: { $sum: '$measurements.measurement' },
-        },
-      },
-    },
-    {
-      $project: {
-        _id: 0,
-        total: { $trunc: ['$total'] },
-      },
-    },
-  ];
-
-  query = energyService.filterQueryBydate(query, 1, fromDate, toDate);
-  const results = await Sensor.aggregate(query);
-  return results[0];
-};
-
-const sumEnergyUsageByBuildingIds = async (
+const sumEnergyUsageByIds = async (
   buildingIds: string[], fromDate?: string, toDate?: string,
 ): Promise<number> => {
   let query:object[] = [
@@ -131,6 +50,12 @@ const sumEnergyUsageByBuildingIds = async (
   return results[0].total;
 };
 
+/**
+ * calculates the total energy usage for each category
+ * @param {string} [fromDate] - The earliest date to include
+ * @param {string} [toDate] - The latest date to include
+ * @returns {IEnergyCategory[]} - List of categories and their total energy usage
+ */
 const sumEnergyUsageByCategory = async (
   fromDate?: string, toDate?: string,
 ): Promise<IEnergyCategory[]> => {
@@ -139,15 +64,21 @@ const sumEnergyUsageByCategory = async (
   return Promise.all(
     buildingsGroupedByCategory.map(async (buildingCategory) => ({
       category: buildingCategory.category,
-      total: await sumEnergyUsageByBuildingIds(
+      total: await sumEnergyUsageByIds(
         buildingCategory.buildings, fromDate, toDate,
       ),
     })),
   );
 };
 
-// Calculate time series data energy usage
-const energyUsage = async (
+/**
+ * calculates the energy usage per day for either a specific building or a category og buildings
+ * @param {string[]} buildingIds - BuildingIds for one building or a category
+ * @param {string} [fromDate] - The earliest date to include
+ * @param {string} [toDate] - The latest date to include
+ * @returns {IUsage[]} - List of usage and dates
+ */
+const energyUsageByIds = async (
   buildingIds: string[], fromDate?: string, toDate?: string,
 ): Promise<IUsage[]> => {
   let query:object[] = [
@@ -189,6 +120,12 @@ const energyUsage = async (
   return Sensor.aggregate(query);
 };
 
+/**
+ * calculates the energy usage for each category
+ * @param {string} [fromDate] - The earliest date to include
+ * @param {string} [toDate] - The latest date to include
+ * @returns {IEnergyUsageCategory[]} - List of categories and their energy usage
+ */
 const energyUsageByCategory = async (
   fromDate?: string, toDate?: string,
 ): Promise<IEnergyUsageCategory[]> => {
@@ -197,11 +134,18 @@ const energyUsageByCategory = async (
   return Promise.all(
     buildingsGroupedByCategory.map(async (buildingCategory) => ({
       category: buildingCategory.category,
-      usage: await energyUsage(buildingCategory.buildings, fromDate, toDate),
+      usage: await energyUsageByIds(buildingCategory.buildings, fromDate, toDate),
     })),
   );
 };
 
+/**
+ * calculates the weekly usage for a specific building
+ * @param {string} buildingId - BuildingId for a specific building
+ * @param {Date} [fromDate] - The earliest date to include
+ * @param {Date} [toDate] - The latest date to include
+ * @returns {IWeeklyUsage[]} - List of weeks and usage for that week
+ */
 const sumEnergyUsageWeekly = async (
   buildingId: string, fromDate: Date, toDate: Date,
 ): Promise<IWeeklyUsage[]> => {
@@ -240,10 +184,8 @@ const sumEnergyUsageWeekly = async (
 };
 
 export default {
-  totalEnergyUsageForEachBuilding,
-  sumEnergyUsage,
-  sumEnergyUsageByBuildingIds,
-  energyUsage,
+  sumEnergyUsageByIds,
+  energyUsageByIds,
   energyUsageByCategory,
   sumEnergyUsageByCategory,
   sumEnergyUsageWeekly,

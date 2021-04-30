@@ -1,4 +1,3 @@
-import mongoose from 'mongoose';
 import { Request, Response, NextFunction } from 'express';
 import Building, { IBuilding } from '../models/buildings.model';
 import energyCarriersService from '../services/energyCarriers.service';
@@ -40,26 +39,6 @@ const getBuildingById = async (
     res.send(building);
   } catch (err) {
     next(err);
-  }
-};
-
-// Get total energy by building ID
-const getTotalEnergyById = async (
-  req: Request, res: Response, next: NextFunction,
-): Promise<void> => {
-  const fromDate = req.query.from_date as string;
-  const toDate = req.query.to_date as string;
-  const buildingId = req.params.id ? mongoose.Types.ObjectId(req.params.id) : undefined;
-
-  try {
-    const totalEnergy: number = await energyUsageService.sumEnergyUsage(
-      buildingId, fromDate, toDate,
-    );
-    if (totalEnergy) {
-      res.send(totalEnergy);
-    }
-  } catch (e) {
-    next(e);
   }
 };
 
@@ -171,13 +150,34 @@ const getEnergyUsageById = async (
   const buildingId = req.params.id;
 
   try {
-    const energyUsage = await energyUsageService.energyUsage([buildingId], fromDate, toDate);
+    const energyUsage = await energyUsageService.energyUsageByIds([buildingId], fromDate, toDate);
 
     res.send(energyUsage);
   } catch (err) {
     next(err);
   }
 };
+
+// Get total energy by building ID
+const getTotalEnergyById = async (
+  req: Request, res: Response, next: NextFunction,
+): Promise<void> => {
+  const fromDate = req.query.from_date as string;
+  const toDate = req.query.to_date as string;
+  const buildingId = req.params.id as string;
+
+  try {
+    const totalEnergy: number = await energyUsageService.sumEnergyUsageByIds(
+      [buildingId], fromDate, toDate,
+    );
+    if (totalEnergy) {
+      res.send({ total: totalEnergy });
+    }
+  } catch (e) {
+    next(e);
+  }
+};
+
 const getAverageUsageById = async (
   req: Request, res: Response, next: NextFunction,
 ): Promise<void> => {

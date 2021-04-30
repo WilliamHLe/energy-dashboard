@@ -35,9 +35,19 @@ const areaByCategory = async (categoryId: string): Promise<number> => {
   return results[0].totalArea;
 };
 
+/**
+ * Finds all buildings in category by the category id
+ * @param {string} categoryId - The category id
+ * @returns {IBuilding[]} - List of buildings
+ */
 const getBuildingsByCategoryId = async (categoryId: string): Promise<IBuilding[]> => (
   Building.find({ category: categoryId }).select('_id'));
 
+/**
+ * calculates the energy used the last two years by category
+ * @param {string} categoryId - The category id
+ * @returns {IEnergyUsed} - The energy used last year and current year for the category
+ */
 const energyUsedLastTwoYearsByCategory = async (categoryId: string): Promise<IEnergyUsed> => {
   const buildings: IBuilding[] = await getBuildingsByCategoryId(categoryId);
   const buildingIds: string[] = buildings.map((building) => building._id);
@@ -52,12 +62,12 @@ const energyUsedLastTwoYearsByCategory = async (categoryId: string): Promise<IEn
   const lastStart = new Date(currentStart);
   lastStart.setFullYear(currentStart.getFullYear() - 1);
 
-  const energyUsedLastYear = await energyUsageService.sumEnergyUsageByBuildingIds(
+  const energyUsedLastYear = await energyUsageService.sumEnergyUsageByIds(
     buildingIds,
     lastStart.toISOString(),
     lastEnd.toISOString(),
   );
-  const energyUsedCurrentYear = await energyUsageService.sumEnergyUsageByBuildingIds(
+  const energyUsedCurrentYear = await energyUsageService.sumEnergyUsageByIds(
     buildingIds,
     currentStart.toISOString(),
     currentEnd.toISOString(),
@@ -91,6 +101,8 @@ const categoryMetrics = async (categoryId: string): Promise<IMetrics> => {
   };
 };
 
+// calculates the percentage of energy saved.
+// used in highscore.service.ts and energySaved.service.ts
 const calculatePercentageSaved = (currentYear: number, lastYear: number): number => {
   const diff = lastYear - currentYear;
   return Number(((diff / lastYear) * 100).toFixed(2));
