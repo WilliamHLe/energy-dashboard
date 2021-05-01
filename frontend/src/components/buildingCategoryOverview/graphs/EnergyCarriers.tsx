@@ -74,6 +74,9 @@ function EnergyCarriers() {
       itemStyle: {
         color: 'white',
       },
+      itemHoverStyle: {
+        color: 'grey',
+      },
       labelFormat: '{name} ({percentage:.1f}%)',
     },
     series: data,
