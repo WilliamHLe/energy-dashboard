@@ -78,3 +78,7 @@ export interface IEnergySaved {
     category: ICategory,
     saved: number,
   }
+export interface IParsedDates {
+    fromDate: Date | undefined
+    toDate: Date | undefined
+}

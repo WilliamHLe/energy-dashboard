@@ -5,6 +5,8 @@ import { ICarrier } from '../../types/interfaces';
 import energyUsageService from '../services/energyUsage.service';
 import energySavedService from '../services/energySaved.service';
 import energyAverageService from '../services/energyAverage.service';
+import buildingsService from '../services/buildings.service';
+import dateUtil from '../../util/date';
 
 const getAllBuildings = async (
   req: Request,
@@ -33,7 +35,7 @@ const getBuildingById = async (
   next: NextFunction,
 ): Promise<void> => {
   try {
-    const building = await Building.findOne({
+    const building = await Building.findById({
       _id: req.params.id,
     }).populate('category').lean();
     res.send(building);
@@ -43,25 +45,30 @@ const getBuildingById = async (
 };
 
 const getSavedEnergyWeeklyByName = async (
-  req: Request, res: Response, next: NextFunction,
+  req: Request,
+  res: Response,
+  next: NextFunction,
 ): Promise<void> => {
   try {
-    const name: RegExp = new RegExp(req.params.slug, 'i');
-    const building: IBuilding | null = await Building.findOne({ name: { $regex: name } });
-
+    const building: IBuilding | null = await buildingsService.findBuildingByName(req.params.slug);
     if (!building) {
       next('Building not found');
       return;
     }
 
-    res.send(await energySavedService.savedWeeklyByBuilding(building));
+    res.send(await energySavedService.savedWeeklyByBuilding(
+      building,
+      dateUtil.latestDateInDataset(),
+    ));
   } catch (e) {
     next(e);
   }
 };
 
 const getSavedEnergyWeeklyById = async (
-  req: Request, res: Response, next: NextFunction,
+  req: Request,
+  res: Response,
+  next: NextFunction,
 ): Promise<void> => {
   try {
     const { id } = req.params;
@@ -72,25 +79,33 @@ const getSavedEnergyWeeklyById = async (
       return;
     }
 
-    res.send(await energySavedService.savedWeeklyByBuilding(building));
+    res.send(await energySavedService.savedWeeklyByBuilding(
+      building,
+      dateUtil.latestDateInDataset(),
+    ));
   } catch (e) {
     next(e);
   }
 };
 
 const getSavedEnergyByName = async (
-  req: Request, res: Response, next: NextFunction,
+  req: Request,
+  res: Response,
+  next: NextFunction,
 ): Promise<void> => {
   try {
-    const name: RegExp = new RegExp(req.params.slug, 'i');
-    const building: IBuilding | null = await Building.findOne({ name: { $regex: name } });
+    const building: IBuilding | null = await buildingsService.findBuildingByName(
+      req.params.slug,
+    );
 
     if (!building) {
       next('Building not found');
       return;
     }
-
-    const saved = await energySavedService.savedEnergyByBuilding(building);
+    const saved = await energySavedService.savedEnergyByBuilding(
+      building,
+      dateUtil.latestDateInDataset(),
+    );
 
     res.send({
       percentSaved: saved,
@@ -101,7 +116,9 @@ const getSavedEnergyByName = async (
 };
 
 const getSavedEnergyById = async (
-  req: Request, res: Response, next: NextFunction,
+  req: Request,
+  res: Response,
+  next: NextFunction,
 ): Promise<void> => {
   try {
     const { id } = req.params;
@@ -112,7 +129,9 @@ const getSavedEnergyById = async (
       return;
     }
 
-    const saved = await energySavedService.savedEnergyByBuilding(building);
+    const saved = await energySavedService.savedEnergyByBuilding(
+      building, dateUtil.latestDateInDataset(),
+    );
 
     res.send({
       percentSaved: saved,
@@ -129,11 +148,16 @@ const getSavedEnergyById = async (
  * @param {NextFunction} next - Express next function
  */
 const getCarriersById = async (
-  req: Request, res: Response, next: NextFunction,
+  req: Request<any, any, any, ReqQuery>,
+  res: Response,
+  next: NextFunction,
 ): Promise<void> => {
   try {
+    const { fromDate, toDate } = dateUtil.parseDates(
+      req.query.from_date, req.query.to_date,
+    );
     const carriers: ICarrier[] = await energyCarriersService.carriersByBuildings(
-      [req.params.id], req.query.from_date as string, req.query.to_date as string,
+      [req.params.id], fromDate, toDate,
     );
 
     res.send(carriers);
@@ -142,15 +166,26 @@ const getCarriersById = async (
   }
 };
 
-const getEnergyUsageById = async (
-  req: Request, res: Response, next: NextFunction,
-): Promise<void> => {
-  const fromDate = req.query.from_date as string;
-  const toDate = req.query.to_date as string;
-  const buildingId = req.params.id;
+type ReqQuery = {
+  from_date?: string,
+  to_date?: string,
+}
 
+type Req
+
+const getEnergyUsageById = async (
+  req: Request<any, any, any, ReqQuery>,
+  res: Response,
+  next: NextFunction,
+): Promise<void> => {
   try {
-    const energyUsage = await energyUsageService.energyUsageByIds([buildingId], fromDate, toDate);
+    const { fromDate, toDate } = dateUtil.parseDates(
+      req.query.from_date, req.query.to_date,
+    );
+
+    const energyUsage = await energyUsageService.energyUsageByIds(
+      [req.params.id], fromDate, toDate,
+    );
 
     res.send(energyUsage);
   } catch (err) {
@@ -160,15 +195,16 @@ const getEnergyUsageById = async (
 
 // Get total energy by building ID
 const getTotalEnergyById = async (
-  req: Request, res: Response, next: NextFunction,
+  req: Request<any, any, any, ReqQuery>,
+  res: Response,
+  next: NextFunction,
 ): Promise<void> => {
-  const fromDate = req.query.from_date as string;
-  const toDate = req.query.to_date as string;
-  const buildingId = req.params.id as string;
-
   try {
+    const { fromDate, toDate } = dateUtil.parseDates(
+      req.query.from_date, req.query.to_date,
+    );
     const totalEnergy: number = await energyUsageService.sumEnergyUsageByIds(
-      [buildingId], fromDate, toDate,
+      [req.params.id], fromDate, toDate,
     );
     if (totalEnergy) {
       res.send({ total: totalEnergy });
@@ -179,15 +215,16 @@ const getTotalEnergyById = async (
 };
 
 const getAverageUsageById = async (
-  req: Request, res: Response, next: NextFunction,
+  req: Request<any, any, any, ReqQuery>,
+  res: Response,
+  next: NextFunction,
 ): Promise<void> => {
-  const fromDate = req.query.from_date as string;
-  const toDate = req.query.to_date as string;
-  const buildingId = req.params.id;
-
   try {
+    const { fromDate, toDate } = dateUtil.parseDates(
+      req.query.from_date, req.query.to_date,
+    );
     const energyUsage = await energyAverageService.energyAverageBySlug(
-      [buildingId], fromDate, toDate,
+      [req.params.id], fromDate, toDate,
     );
 
     res.send(energyUsage);

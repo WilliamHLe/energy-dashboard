@@ -3,6 +3,7 @@ import { IBuildingScore, IBuildingEnergyTotal } from '../../types/interfaces';
 import Building, { IBuilding } from '../models/buildings.model';
 import metricsService from './metrics.service';
 import Sensor from '../models/sensors.model';
+import dateUtil from '../../util/date';
 
 const getBuildingsByCategory = async (categoryId: string): Promise<IBuilding[]> => (
   Building.find({ category: categoryId }).select('_id')
@@ -64,22 +65,21 @@ const totalEnergyUsageForEachBuilding = async (
  * calculates the score for each building in a category.
  * The score is based on how much energy is saved from last year in percentages.
  * @param {string} categoryId - The category id
+ * @param {Date} currToDate - The current date
  * @returns {IBuildingScore[]} - List with all buildings in the category and their score
  */
-const highscoresByCategory = async (categoryId: string): Promise<IBuildingScore[]> => {
+const highscoresByCategory = async (
+  categoryId: string, currToDate: Date,
+): Promise<IBuildingScore[]> => {
   const buildings = await getBuildingsByCategory(categoryId);
   const buildingIds = buildings.map((building) => building._id);
 
-  // hardcoded years to match the last two years in the dataset
-  const currentFromDate = new Date('2019-01-01');
-  const currentToDate = new Date();
-  currentToDate.setFullYear(2019);
-  const prevFromDate = new Date('2018-01-01');
-  const prevToDate = new Date();
-  prevToDate.setFullYear(2018);
+  const currFromDate = dateUtil.getFirstDateInYear(currToDate);
+  const prevToDate = dateUtil.previousYear(currToDate);
+  const prevFromDate = dateUtil.getFirstDateInYear(prevToDate);
 
   const [current, prev] = await Promise.all([
-    totalEnergyUsageForEachBuilding(buildingIds, currentFromDate, currentToDate),
+    totalEnergyUsageForEachBuilding(buildingIds, currFromDate, currToDate),
     totalEnergyUsageForEachBuilding(buildingIds, prevFromDate, prevToDate),
   ]);
 

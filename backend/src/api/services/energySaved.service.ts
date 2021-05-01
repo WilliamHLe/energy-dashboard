@@ -2,18 +2,32 @@ import { IWeeklySaved, IWeeklyUsage } from '../../types/interfaces';
 import { IBuilding } from '../models/buildings.model';
 import energyUsageService from './energyUsage.service';
 import metricsService from './metrics.service';
+import dateUtil from '../../util/date';
 
+const sortWeek = (diff: {week:string; sum: number;}[]) => {
+  diff.sort((a: IWeeklyUsage, b: IWeeklyUsage) => {
+    if (a.week < b.week) {
+      return -1;
+    }
+    if (a.week > b.week) {
+      return 1;
+    }
+    return 0;
+  });
+};
 /**
  * Calculates the weekly saved energy for a specific building.
  *
  * @param {IBuilding} building - specific building
  * @returns {IWeeklySaved[]} - list of weeks and percentage saved that week
  */
-const savedWeeklyByBuilding = async (building: IBuilding): Promise<IWeeklySaved[]> => {
-  const prevFromDate = new Date('2018-01-01');
-  const prevToDate = new Date('2019-01-01');
-  const currFromDate = new Date('2019-01-01');
-  const currToDate = new Date('2020-01-01');
+const savedWeeklyByBuilding = async (
+  building: IBuilding,
+  currToDate: Date,
+): Promise<IWeeklySaved[]> => {
+  const currFromDate = dateUtil.getFirstDateInYear(currToDate);
+  const prevToDate = dateUtil.previousYear(currToDate);
+  const prevFromDate = dateUtil.getFirstDateInYear(prevToDate);
 
   const [curr, prev] = await Promise.all([
     energyUsageService.sumEnergyUsageWeekly(building._id, currFromDate, currToDate),
@@ -36,15 +50,7 @@ const savedWeeklyByBuilding = async (building: IBuilding): Promise<IWeeklySaved[
     };
   });
 
-  diff.sort((a: IWeeklyUsage, b: IWeeklyUsage) => {
-    if (a.week < b.week) {
-      return -1;
-    }
-    if (a.week > b.week) {
-      return 1;
-    }
-    return 0;
-  });
+  sortWeek(diff);
 
   return diff.map((el) => ({
     week: el.week,
@@ -56,24 +62,20 @@ const savedWeeklyByBuilding = async (building: IBuilding): Promise<IWeeklySaved[
  * Calculates the percentage of enegy saved for a building
  *
  * @param {IBuilding} buildingId - Specific building
+ * @param {Date} currtoDate - The current date
  * @returns {number} - Carriers with their summed energy usage for the given buildings
  */
-const savedEnergyByBuilding = async (building: IBuilding): Promise<number> => {
-  const latestYearInDataset = 2019;
-  const currentEnd = new Date();
-  currentEnd.setFullYear(latestYearInDataset);
-  const currentStart = new Date(latestYearInDataset, 0, 1);
-  const lastEnd = new Date(currentEnd);
-  lastEnd.setFullYear(currentEnd.getFullYear() - 1);
-  const lastStart = new Date(currentStart);
-  lastStart.setFullYear(currentStart.getFullYear() - 1);
+const savedEnergyByBuilding = async (building: IBuilding, currToDate: Date): Promise<number> => {
+  const currFromDate = dateUtil.getFirstDateInYear(currToDate);
+  const prevToDate = dateUtil.previousYear(currToDate);
+  const prevFromDate = dateUtil.getFirstDateInYear(prevToDate);
 
   const [curr, prev] = await Promise.all([
     energyUsageService.sumEnergyUsageByIds(
-      [building._id], currentStart.toISOString(), currentEnd.toISOString(),
+      [building._id], currFromDate, currToDate,
     ),
     energyUsageService.sumEnergyUsageByIds(
-      [building._id], lastStart.toISOString(), lastEnd.toISOString(),
+      [building._id], prevFromDate, prevToDate,
     ),
   ]);
 

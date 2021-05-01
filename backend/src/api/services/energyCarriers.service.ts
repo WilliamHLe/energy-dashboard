@@ -4,46 +4,19 @@ import buildingService from './buildings.service';
 import {
   ICarrier, ICarrierCategory,
 } from '../../types/interfaces';
-
-/**
- * Adds a filter to the query. This will filter the query on the sensors mesurement date.
- * @param {object[]} query - The mongoose query to add the filter to
- * @param {string} [fromDate] - The earliest date to include
- * @param {string} [toDate] - The latest date to include
- * @returns {object[]} - The query with the added filter
- */
-const filterQueryBydate = (
-  query: object[], index: number, fromDate?: string, toDate?: string,
-): object[] => {
-  if (fromDate || toDate) {
-    const filter: any = {
-      ...((fromDate || toDate) && {
-        $match: {
-          'measurements.date': {
-            ...(fromDate && { $gte: new Date(fromDate) }),
-            ...(toDate && { $lte: new Date(toDate) }),
-          },
-        },
-      }),
-    };
-
-    query.splice(index, 0, filter);
-  }
-
-  return query;
-};
+import common from '../../util/common';
 
 /**
  * Calculates the amount of energy used of each energycarrier type based on a list of buildings.
  * A regular use-case for this function would be to find the carrier usage for a category
  * (a list of buildings in the same category) or a list of length 1 with a single building.
  * @param {string[]} buildingIds - List of building ids
- * @param {string} [fromDate] - The earliest date to include
- * @param {string} [toDate] - The latest date to include
+ * @param {Date} [fromDate] - The earliest date to include
+ * @param {Date} [toDate] - The latest date to include
  * @returns {ICarrier[]} - Carriers with their summed energy usage for the given buildings
  */
 const carriersByBuildings = async (
-  buildingIds: string[], fromDate?: string, toDate?: string,
+  buildingIds: string[], fromDate?: Date, toDate?: Date,
 ): Promise<ICarrier[]> => {
   let query: object[] = [
     {
@@ -75,18 +48,18 @@ const carriersByBuildings = async (
   ];
 
   // want to insert the filter after the unwind operation (index 2)
-  query = filterQueryBydate(query, 2, fromDate, toDate);
+  query = common.filterQueryBydate(query, 2, fromDate, toDate);
 
   return Sensor.aggregate(query);
 };
 
 /**
  * Calculates the energy usage by carrier for all categories
- * @param {string} [fromDate] - The earliest date to include
- * @param {string} [toDate] - The latest date to include
+ * @param {Date} [fromDate] - The earliest date to include
+ * @param {Date} [toDate] - The latest date to include
  * @returns {ICarrierCategory[]} - A list of categories and their carriers
  */
-const energyCarriers = async (fromDate?: string, toDate?: string): Promise<ICarrierCategory[]> => {
+const energyCarriers = async (fromDate?: Date, toDate?: Date): Promise<ICarrierCategory[]> => {
   const buildingsGroupedByCategory = await buildingService.buildingsGroupedByCategory();
 
   return Promise.all(buildingsGroupedByCategory.map(async (buildingCategory) => ({
@@ -98,5 +71,4 @@ const energyCarriers = async (fromDate?: string, toDate?: string): Promise<ICarr
 export default {
   energyCarriers,
   carriersByBuildings,
-  filterQueryBydate,
 };

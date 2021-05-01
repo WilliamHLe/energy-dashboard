@@ -2,6 +2,7 @@ import mongoose from 'mongoose';
 import { IEnergyUsed, IMetrics } from '../../types/interfaces';
 import Building, { IBuilding } from '../models/buildings.model';
 import energyUsageService from './energyUsage.service';
+import dateUtil from '../../util/date';
 
 /**
  * Fetches the number of buildings in the given category by id.
@@ -48,29 +49,26 @@ const getBuildingsByCategoryId = async (categoryId: string): Promise<IBuilding[]
  * @param {string} categoryId - The category id
  * @returns {IEnergyUsed} - The energy used last year and current year for the category
  */
-const energyUsedLastTwoYearsByCategory = async (categoryId: string): Promise<IEnergyUsed> => {
+const energyUsedLastTwoYearsByCategory = async (
+  categoryId: string, currToDate: Date,
+): Promise<IEnergyUsed> => {
   const buildings: IBuilding[] = await getBuildingsByCategoryId(categoryId);
   const buildingIds: string[] = buildings.map((building) => building._id);
 
-  // HARDCODING CURRENT YEAR TO LATEST YEAR IN DATASET TO DEMONSTRATE THE APPLICATION
-  const latestYearInDataset = 2019;
-  const currentEnd = new Date();
-  currentEnd.setFullYear(latestYearInDataset);
-  const currentStart = new Date(latestYearInDataset, 0, 1);
-  const lastEnd = new Date(currentEnd);
-  lastEnd.setFullYear(currentEnd.getFullYear() - 1);
-  const lastStart = new Date(currentStart);
-  lastStart.setFullYear(currentStart.getFullYear() - 1);
+  const currFromDate = dateUtil.getFirstDateInYear(currToDate);
+  const prevToDate = dateUtil.previousYear(currToDate);
+  const prevFromDate = dateUtil.getFirstDateInYear(prevToDate);
 
   const energyUsedLastYear = await energyUsageService.sumEnergyUsageByIds(
     buildingIds,
-    lastStart.toISOString(),
-    lastEnd.toISOString(),
+    prevFromDate,
+    prevToDate,
   );
+
   const energyUsedCurrentYear = await energyUsageService.sumEnergyUsageByIds(
     buildingIds,
-    currentStart.toISOString(),
-    currentEnd.toISOString(),
+    currFromDate,
+    currToDate,
   );
 
   return {

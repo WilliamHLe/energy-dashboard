@@ -4,7 +4,7 @@ import {
 } from '../../types/interfaces';
 import Sensor from '../models/sensors.model';
 import buildingService from './buildings.service';
-import energyService from './energyCarriers.service';
+import common from '../../util/common';
 
 /**
  * calculates the total energy used for a building or a category.
@@ -12,12 +12,12 @@ import energyService from './energyCarriers.service';
  * and buildings.controller to get total energy bu building id.
  * @param {stirng[]} buildingIds - BuildingIds,
  * either on id of a building or several for all buildigs in a category.
- * @param {string} [fromDate] - The earliest date to include
- * @param {string} [toDate] - The latest date to include
+ * @param {Date} [fromDate] - The earliest date to include
+ * @param {Date} [toDate] - The latest date to include
  * @returns {number} - summarized energy usage
  */
 const sumEnergyUsageByIds = async (
-  buildingIds: string[], fromDate?: string, toDate?: string,
+  buildingIds: string[], fromDate?: Date, toDate?: Date,
 ): Promise<number> => {
   let query:object[] = [
     {
@@ -42,7 +42,7 @@ const sumEnergyUsageByIds = async (
     },
   ];
 
-  query = energyService.filterQueryBydate(query, 1, fromDate, toDate);
+  query = common.filterQueryBydate(query, 1, fromDate, toDate);
   const results = await Sensor.aggregate(query);
   if (results.length === 0) {
     return -1;
@@ -52,12 +52,12 @@ const sumEnergyUsageByIds = async (
 
 /**
  * calculates the total energy usage for each category
- * @param {string} [fromDate] - The earliest date to include
- * @param {string} [toDate] - The latest date to include
+ * @param {Date} [fromDate] - The earliest date to include
+ * @param {Date} [toDate] - The latest date to include
  * @returns {IEnergyCategory[]} - List of categories and their total energy usage
  */
 const sumEnergyUsageByCategory = async (
-  fromDate?: string, toDate?: string,
+  fromDate?: Date, toDate?: Date,
 ): Promise<IEnergyCategory[]> => {
   const buildingsGroupedByCategory = await buildingService.buildingsGroupedByCategory();
 
@@ -74,12 +74,12 @@ const sumEnergyUsageByCategory = async (
 /**
  * calculates the energy usage per day for either a specific building or a category og buildings
  * @param {string[]} buildingIds - BuildingIds for one building or a category
- * @param {string} [fromDate] - The earliest date to include
- * @param {string} [toDate] - The latest date to include
+ * @param {Date} [fromDate] - The earliest date to include
+ * @param {Date} [toDate] - The latest date to include
  * @returns {IUsage[]} - List of usage and dates
  */
 const energyUsageByIds = async (
-  buildingIds: string[], fromDate?: string, toDate?: string,
+  buildingIds: string[], fromDate?: Date, toDate?: Date,
 ): Promise<IUsage[]> => {
   let query:object[] = [
     {
@@ -115,19 +115,19 @@ const energyUsageByIds = async (
       },
     },
   ];
-  query = energyService.filterQueryBydate(query, 2, fromDate, toDate);
+  query = common.filterQueryBydate(query, 2, fromDate, toDate);
 
   return Sensor.aggregate(query);
 };
 
 /**
  * calculates the energy usage for each category
- * @param {string} [fromDate] - The earliest date to include
- * @param {string} [toDate] - The latest date to include
+ * @param {Date} [fromDate] - The earliest date to include
+ * @param {Date} [toDate] - The latest date to include
  * @returns {IEnergyUsageCategory[]} - List of categories and their energy usage
  */
 const energyUsageByCategory = async (
-  fromDate?: string, toDate?: string,
+  fromDate?: Date, toDate?: Date,
 ): Promise<IEnergyUsageCategory[]> => {
   const buildingsGroupedByCategory = await buildingService.buildingsGroupedByCategory();
 

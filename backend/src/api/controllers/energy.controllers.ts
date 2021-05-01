@@ -8,16 +8,17 @@ import energyCarriersService from '../services/energyCarriers.service';
 import metricsService from '../services/metrics.service';
 import energyUsageService from '../services/energyUsage.service';
 import energyAverageService from '../services/energyAverage.service';
+import categoryService from '../services/category.service';
+import buildingsService from '../services/buildings.service';
 
 const bySlug = async (slug:string, func:Function, fromDate:string, toDate:string) => {
-  const name: RegExp = new RegExp(slug, 'i');
-  const category: ICategory | null = await Category.findOne({ name: { $regex: name } });
+  const category: ICategory | null = await categoryService.findCategoryByName(slug);
   let buildings = [];
 
   if (category) {
     buildings = await Building.find({ category: category.id }).distinct('_id');
   } else {
-    const building: IBuilding | null = await Building.findOne({ name: { $regex: name } });
+    const building: IBuilding | null = await buildingsService.findBuildingByName(slug);
     if (!building) {
       throw Error('Slug is invalid');
     }

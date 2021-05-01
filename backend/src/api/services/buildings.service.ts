@@ -1,4 +1,4 @@
-import Building from '../models/buildings.model';
+import Building, { IBuilding } from '../models/buildings.model';
 import { IBuildingCategory } from '../../types/interfaces';
 
 /**
@@ -29,6 +29,12 @@ const buildingsGroupedByCategory = async (): Promise<IBuildingCategory[]> => {
   return Building.aggregate(query);
 };
 
+const findBuildingByName = async (name:string): Promise<IBuilding | null> => {
+  const regEx : RegExp = new RegExp(name, 'i');
+  return Building.findOne({ name: { $regex: regEx } });
+};
+
 export default {
   buildingsGroupedByCategory,
+  findBuildingByName,
 };
