@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router';
+import style from '../modal.module.css';
 
 interface Ibuilding {
     name: string,
@@ -24,7 +25,9 @@ const ProgressBar = (props: {building: string | Ibuilding | undefined,
       if (data === 'spart') {
         try {
           const response = await axios.get(`/energy/saved/total/${building}`);
-          setWidth(response.data.percentSaved > 0 ? response.data.percentSaved : 0);
+          setWidth(response.data.percentSaved > 0
+            ? Math.min(response.data.percentSaved * 5, 100)
+            : 0);
           setCompleted({ value: `${response.data.percentSaved}%`, type: 'spart' });
         } catch (e) {
           setWidth(null);
@@ -42,7 +45,6 @@ const ProgressBar = (props: {building: string | Ibuilding | undefined,
           setWidth(tempWidth);
           setCompleted({ value: response.data.averageEnergy[0].average, type: 'avg' });
         } catch (e) {
-          console.log(e);
           setWidth(null);
           setCompleted({ value: 'Ingen data', type: 'avg' });
         }
@@ -58,15 +60,9 @@ const ProgressBar = (props: {building: string | Ibuilding | undefined,
         <div />
       ) : (
         <div
+          className={place === 'left' ? style.barLeft : style.barRight}
           style={{
             width: `${width}%`,
-            height: '25px',
-            backgroundColor: place === 'left' ? '#28d515' : '#CE32E7',
-            borderRadius: place === 'left' ? '13px 5px 5px 13px' : '5px 13px 13px 5px',
-            float: place === 'left' ? 'right' : 'left',
-            padding: '1% 2%',
-            fontSize: '19px',
-            direction: place === 'left' ? 'rtl' : 'initial',
           }}
         >
           {completed.value}

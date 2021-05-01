@@ -6,7 +6,7 @@ import closeImage from '../../../../assets/png/close.png';
 import ProgressBar from './graphs/ProgressBar';
 import check from '../../../../assets/png/bi_check.png';
 import cross from '../../../../assets/png/entypo_cross.png';
-// s
+
 interface Ibuilding {
   name: string,
   tek: string,
@@ -14,7 +14,6 @@ interface Ibuilding {
   year: number,
   energyLabel: string,
 }
-// s
 function Modal(props: {
   onChange: any,
   currentBuilding: Ibuilding | undefined,
@@ -39,7 +38,6 @@ function Modal(props: {
     }
     return (<img alt="check" src={cross} width={40} height={40} />);
   };
-  console.log(compareBuilding);
   const setIcons = () => {
     const arr = [];
     let i = 0;

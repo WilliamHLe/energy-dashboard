@@ -22,7 +22,6 @@ function Compare(props: any) {
   const { currentBuilding } = props;
   const [initalBuildings, setInitialBuildings] = useState<Ibuilding[]>();
   const [buildings, setBuildings] = useState<Ibuilding[]>();
-
   const [checkedItems, setCheckedItems] = useState([
     {
       name: 'Energimerke',
@@ -53,10 +52,10 @@ function Compare(props: any) {
           area: Number
         }) => (
           // eslint-disable-next-line max-len
-          (i.year <= currentBuilding.year + 20
-              && i.year >= currentBuilding.year - 20)
-            && (i.area <= currentBuilding.area + 200
-            && i.area >= currentBuilding.area - 200)
+          (i.year <= currentBuilding.year + 50
+              && i.year >= currentBuilding.year - 50)
+            && (i.area <= currentBuilding.area + 500
+            && i.area >= currentBuilding.area - 500)
         && (i.name !== currentBuilding.name)));
         setBuildings(initialFilterd);
         setInitialBuildings(initialFilterd);

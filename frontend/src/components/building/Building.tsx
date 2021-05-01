@@ -30,25 +30,19 @@ function Building() {
   const [compareWithBuilding, setcompareWithBuilding] = useState<Ibuilding>();
   const [currentBuilding, setCurrentBuilding] = useState<Ibuilding>();
   useEffect(() => {
-    let isCancelled = false;
     const fetchCurrentBuildingData = async () => {
       const responseBuilding = await axios.get(`/search?name=${id}`);
       console.log(responseBuilding.data[0]);
-      if (!isCancelled) {
-        setCurrentBuilding(responseBuilding.data[0]);
-      }
+      setCurrentBuilding(responseBuilding.data[0]);
     };
     fetchCurrentBuildingData();
-    return () => {
-      isCancelled = true;
-    };
   }, [id]);
 
   const openModal = (building: Ibuilding) => {
     setModalIsOpen(!modalIsOpen);
     setcompareWithBuilding(building);
   };
-
+  console.log(currentBuilding);
   return (
     <div>
       <div>

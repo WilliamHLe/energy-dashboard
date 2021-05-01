@@ -27,55 +27,6 @@ h1 {
     justify-content: center;
 }
 
-.gridConatiner {
-    display: grid;
-    width: 90%;
-    grid-template-columns: 17% 26% 16% 26% 12%;
-    grid-gap: 2%;
-    grid-template-areas:
-    "building_name1 building_name2"
-    "building_info1 building_info2"
-    "building_avg1 building_avg2"
-    "building_saved1 building_saved2"
-    "building_name1 building_name2"
-}
-
-.row2 {
-    height: 35px;
-}
-
-.row3 {
-    height: 60px;
-
-}
-
-.row4 {
-    height: 70px;
-}
-
-.row5 {
-    line-height: 30px;
-    margin-top: -15px;
-}
-
-.colum2 {
-    grid-column-start: 2;
-    grid-row-start: 1;
-    grid-row-end: 4;
-    text-align: right;
-    min-width: 250px;
-}
-
-.colum3 {
-    grid-column: 3;
-    text-align: center;
-    margin-top: 68px;
-    min-width: 100px;
-}
-
-.colum4 {
-    min-width: 250px;
-}
 td {
     padding: 5px;
 }
@@ -108,4 +59,24 @@ p, h1 {
 }
 .middle {
     text-align: center;
+}
+
+.barLeft {
+    height: 25px;
+    background-color: #28d515;
+    border-radius: 13px 5px 5px 13px;
+    float: right;
+    padding: 1% 2%;
+    font-size: 19px;
+    direction: rtl;
+}
+
+.barRight {
+    height: 25px;
+    background-color: #CE32E7;
+    border-radius: 5px 13px 13px 5px;
+    float: left;
+    padding: 1% 2%;
+    font-size: 19px;
+    direction: initial;
 }
