@@ -59,6 +59,10 @@ function Modal(props: {
       'Solcelleanlegg',
       'LED-lys',
     ];
+    /**
+     * Creates random upgrades for the buildings
+     * This is for demonstration purposes as we do not have data about upgrades
+     */
     const randomUpgrade = () => {
       let i = 0;
       const arr: string[] = [];
