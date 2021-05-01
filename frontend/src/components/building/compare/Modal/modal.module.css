@@ -10,10 +10,11 @@
 }
 
 .closeImage {
-    width: 40px; 
-    height: 36px;
-    float: right;
+    width: 30px;
+    height: 30px;
     margin: 1%;
+    float: right;
+    background: unset;
 }
 
 h1 {
@@ -26,50 +27,9 @@ h1 {
     justify-content: center;
 }
 
-.gridConatiner {
-    display: grid;
-    width: 90%;
-    grid-template-columns: 17% 26% 16% 26% 12%;
-    grid-gap: 2%;
+td {
+    padding: 5px;
 }
-
-.row2 {
-    height: 35px;
-}
-
-.row3 {
-    height: 60px;
-
-}
-
-.row4 {
-    height: 70px;
-}
-
-.row5 {
-    line-height: 30px;
-    margin-top: -15px;
-}
-
-.colum2 {
-    grid-column-start: 2;
-    grid-row-start: 1;
-    grid-row-end: 4;
-    text-align: right;
-    min-width: 250px;
-}
-
-.colum3 {
-    grid-column: 3;
-    text-align: center;
-    margin-top: 68px;
-    min-width: 100px;
-}
-
-.colum4 {
-    min-width: 250px;
-}
-
 h2 {
     font-weight: 400;
 }
@@ -87,4 +47,36 @@ p, h1 {
     width: 40px;
     height: 40px;
     float: left;
+}
+
+.left {
+    text-align: right;
+    width: 40%;
+}
+.right {
+    text-align: left;
+    width: 40%;
+}
+.middle {
+    text-align: center;
+}
+
+.barLeft {
+    height: 25px;
+    background-color: #28d515;
+    border-radius: 13px 5px 5px 13px;
+    float: right;
+    padding: 1% 2%;
+    font-size: 19px;
+    direction: rtl;
+}
+
+.barRight {
+    height: 25px;
+    background-color: #CE32E7;
+    border-radius: 5px 13px 13px 5px;
+    float: left;
+    padding: 1% 2%;
+    font-size: 19px;
+    direction: initial;
 }

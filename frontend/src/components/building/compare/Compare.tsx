@@ -19,10 +19,9 @@ interface Ibuilding {
 function Compare(props: any) {
   // eslint-disable-next-line no-unused-vars
   const { category, id } = useParams<{ category: string, id: string }>();
-  const [currentBuilding, setCurrentBuilding] = useState<Ibuilding>();
+  const { currentBuilding } = props;
   const [initalBuildings, setInitialBuildings] = useState<Ibuilding[]>();
   const [buildings, setBuildings] = useState<Ibuilding[]>();
-
   const [checkedItems, setCheckedItems] = useState([
     {
       name: 'Energimerke',
@@ -35,20 +34,17 @@ function Compare(props: any) {
       checked: false,
     },
   ]);
-
   useEffect(() => {
     const allBuildings: any[] = [];
     const fetchCurrentBuildingData = async () => {
       const teksatandard = ['TEK17', 'TEK18', 'TEK16'];
       const energimerke = ['A', 'B', 'C', 'D'];
-      const responseBuilding = await axios.get(`/search?name=${id}`);
       const o = Math.floor(Math.random() * 2);
       const u = Math.floor(Math.random() * 3);
-      responseBuilding.data[0].tek = teksatandard[o];
-      responseBuilding.data[0].energyLabel = energimerke[u];
-      setCurrentBuilding(responseBuilding.data[0]);
-      const responseBuildings = await axios.get(`/buildings?category=${responseBuilding.data[0].category}`);
-      allBuildings.push(responseBuildings.data);
+      currentBuilding.tek = teksatandard[o];
+      currentBuilding.energyLabel = energimerke[u];
+      const response = await axios.get(`/buildings?category=${currentBuilding.category}`);
+      allBuildings.push(response.data);
       if (allBuildings.length > 0) {
         const initialFilterd = allBuildings[0].filter((i: {
           name: String,
@@ -56,11 +52,11 @@ function Compare(props: any) {
           area: Number
         }) => (
           // eslint-disable-next-line max-len
-          (i.year <= responseBuilding.data[0].year + 50
-              && i.year >= responseBuilding.data[0].year - 50)
-            && (i.area <= responseBuilding.data[0].area + 500
-            && i.area >= responseBuilding.data[0].area - 500)
-        && (i.name !== responseBuilding.data[0].name)));
+          (i.year <= currentBuilding.year + 50
+              && i.year >= currentBuilding.year - 50)
+            && (i.area <= currentBuilding.area + 500
+            && i.area >= currentBuilding.area - 500)
+        && (i.name !== currentBuilding.name)));
         setBuildings(initialFilterd);
         setInitialBuildings(initialFilterd);
       }
@@ -95,8 +91,8 @@ function Compare(props: any) {
     }
   };
 
-  const openModal = (building: string) => {
-    props.onChange(building);
+  const openModal = (compareBuilding: Ibuilding) => {
+    props.onChange(compareBuilding);
   };
 
   // set checked for specified checkbox to true/ false
@@ -131,7 +127,7 @@ function Compare(props: any) {
       <div className={style.buildingList}>
         {buildings?.map((building: Ibuilding) => (
           // eslint-disable-next-line
-          <a onClick={() => openModal(building.name)}>
+          <a onClick={() => openModal(building)}>
             <Card buildingName={building.name} />
           </a>
         ))}

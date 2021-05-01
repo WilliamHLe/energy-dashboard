@@ -1,5 +1,7 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
+import { useParams } from 'react-router';
+import style from '../modal.module.css';
 
 interface Ibuilding {
     name: string,
@@ -11,25 +13,46 @@ interface Ibuilding {
 
 const ProgressBar = (props: {building: string | Ibuilding | undefined,
   place: string, data: string}) => {
-  const [completed, setCompleted] = useState();
+  const { category } = useParams<{ category:string }>();
+  const [completed, setCompleted] = useState<{value:number | string, type:string}>({ value: 0, type: 'spart' });
+  // eslint-disable-next-line no-unused-vars
+  const [width, setWidth] = useState<number | null>();
   const { building, place, data } = props;
   const [isLoading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchdata = async () => {
       if (data === 'spart') {
-        const response = await axios.get(`/energy/saved/total/${building}`);
-        setCompleted(response.data);
+        try {
+          const response = await axios.get(`/energy/saved/total/${building}`);
+          setWidth(response.data.percentSaved > 0
+            ? Math.min(response.data.percentSaved * 5, 100)
+            : 0);
+          setCompleted({ value: `${response.data.percentSaved}%`, type: 'spart' });
+        } catch (e) {
+          setWidth(null);
+          setCompleted({ value: 'Ingen data', type: 'spart' });
+        }
       }
       if (data === 'avg') {
-        const response = await axios.get(`/energy/average/${building}`);
-        setCompleted(response.data);
+        try {
+          const response = await axios.get(`/energy/average/${building}`);
+          const responseCategory = await axios.get(`/energy/average/${category}`);
+          const tempWidth = (
+            response.data.averageEnergy[0].average
+              / responseCategory.data.averageEnergy[0].average
+          ) * 100;
+          setWidth(tempWidth);
+          setCompleted({ value: response.data.averageEnergy[0].average, type: 'avg' });
+        } catch (e) {
+          setWidth(null);
+          setCompleted({ value: 'Ingen data', type: 'avg' });
+        }
       }
       setLoading(false);
     };
     fetchdata();
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [building, category, data]);
 
   return (
     <div>
@@ -37,25 +60,16 @@ const ProgressBar = (props: {building: string | Ibuilding | undefined,
         <div />
       ) : (
         <div
+          className={place === 'left' ? style.barLeft : style.barRight}
           style={{
-            width: `${completed}%`,
-            backgroundColor: place === 'left' ? '#28d515' : '#CE32E7',
-            float: place === 'left' ? 'right' : 'left',
-            borderRadius: place === 'left' ? '13px 5px 5px 13px' : '5px 13px 13px 5px',
-            textAlign: place === 'left' ? 'left' : 'right',
-            padding: '1% 2%',
-            fontSize: '19px',
+            width: `${width}%`,
           }}
         >
-          {/* @ts-ignore */}
-          <span>
-            {/* @ts-ignore */}
-            {completed.percentSaved ? `${completed.percentSaved}%` : completed.averageEnergy[0].average}
-          </span>
+          {completed.value}
         </div>
       )}
     </div>
   );
 };
-
+// s
 export default ProgressBar;

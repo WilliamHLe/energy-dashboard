@@ -15,7 +15,6 @@ function CategoryUsage(props: {sendBuilding: any, sendCompareBuilding: any}) {
       mockData.push({ name: sendBuilding, data: responseBuilding.data });
       mockData.push({ name: sendCompareBuilding, data: responseCompareBuildin.data });
       try {
-        console.log(mockData);
         const tempData:any[] = [];
         for (let i = 0; i < mockData.length; i += 1) {
           tempData.push({ cropThreshold: 9999, name: mockData[i].name, data: [] });
@@ -24,7 +23,6 @@ function CategoryUsage(props: {sendBuilding: any, sendCompareBuilding: any}) {
             tempData[i].data.push({ x: date, y: mockData[i].data[j].value });
           }
         }
-        console.log(tempData);
         setData(tempData);
       } catch (e) {
         console.log(e);
