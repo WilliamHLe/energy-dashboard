@@ -4,7 +4,7 @@ import metricsControllers from '../controllers/metrics.controllers';
 
 const router = express.Router();
 
-router.get('/', metricsControllers.metrics);
-router.get('/:slug', metricsControllers.metricsBySlug);
+router.get('/', metricsControllers.getMetrics);
+router.get('/:slug', metricsControllers.getMetricsBySlug);
 
 export default router;

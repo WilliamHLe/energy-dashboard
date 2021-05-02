@@ -1,5 +1,6 @@
 import { Request, Response, NextFunction } from 'express';
 import Category from '../models/categories.model';
+import categoryServce from '../services/category.service';
 
 const getAllCategories = async (
   req: Request,
@@ -20,10 +21,8 @@ const getCategoryByName = async (
   next: NextFunction,
 ): Promise<void> => {
   try {
-    const building = await Category.findOne({
-      name: req.params.name.toLowerCase(),
-    });
-    res.send(building);
+    const category = await categoryServce.findCategoryByName(req.params.name);
+    res.send(category);
   } catch (err) {
     next(err);
   }

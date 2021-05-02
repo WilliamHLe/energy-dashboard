@@ -1,19 +1,8 @@
 import mongoose from 'mongoose';
+import { IEnergyUsed, IMetrics } from '../../types/interfaces';
 import Building, { IBuilding } from '../models/buildings.model';
-import energyService from './energy.service';
-
-export interface IMetrics {
-  energyUsedCurrentYear: number,
-  energyUsedLastYear: number,
-  area: number,
-  buildings: number,
-}
-
-export interface IEnergyUsed {
-  category: string,
-  energyUsedLastYear: number,
-  energyUsedCurrentYear: number,
-}
+import energyUsageService from './energyUsage.service';
+import dateUtil from '../../util/date';
 
 /**
  * Fetches the number of buildings in the given category by id.
@@ -47,32 +36,39 @@ const areaByCategory = async (categoryId: string): Promise<number> => {
   return results[0].totalArea;
 };
 
+/**
+ * Finds all buildings in category by the category id
+ * @param {string} categoryId - The category id
+ * @returns {IBuilding[]} - List of buildings
+ */
 const getBuildingsByCategoryId = async (categoryId: string): Promise<IBuilding[]> => (
   Building.find({ category: categoryId }).select('_id'));
 
-const energyUsedLastTwoYearsByCategory = async (categoryId: string): Promise<IEnergyUsed> => {
+/**
+ * calculates the energy used the last two years by category
+ * @param {string} categoryId - The category id
+ * @returns {IEnergyUsed} - The energy used last year and current year for the category
+ */
+const energyUsedLastTwoYearsByCategory = async (
+  categoryId: string, currToDate: Date,
+): Promise<IEnergyUsed> => {
   const buildings: IBuilding[] = await getBuildingsByCategoryId(categoryId);
   const buildingIds: string[] = buildings.map((building) => building._id);
 
-  // HARDCODING CURRENT YEAR TO LATEST YEAR IN DATASET TO DEMONSTRATE THE APPLICATION
-  const latestYearInDataset = 2019;
-  const currentEnd = new Date();
-  currentEnd.setFullYear(latestYearInDataset);
-  const currentStart = new Date(latestYearInDataset, 0, 1);
-  const lastEnd = new Date(currentEnd);
-  lastEnd.setFullYear(currentEnd.getFullYear() - 1);
-  const lastStart = new Date(currentStart);
-  lastStart.setFullYear(currentStart.getFullYear() - 1);
+  const currFromDate = dateUtil.getFirstDateInYear(currToDate);
+  const prevToDate = dateUtil.previousYear(currToDate);
+  const prevFromDate = dateUtil.getFirstDateInYear(prevToDate);
 
-  const energyUsedLastYear = await energyService.sumEnergyUsageByBuildingIds(
+  const energyUsedLastYear = await energyUsageService.sumEnergyUsageByIds(
     buildingIds,
-    lastStart.toISOString(),
-    lastEnd.toISOString(),
+    prevFromDate,
+    prevToDate,
   );
-  const energyUsedCurrentYear = await energyService.sumEnergyUsageByBuildingIds(
+
+  const energyUsedCurrentYear = await energyUsageService.sumEnergyUsageByIds(
     buildingIds,
-    currentStart.toISOString(),
-    currentEnd.toISOString(),
+    currFromDate,
+    currToDate,
   );
 
   return {
@@ -89,8 +85,8 @@ const energyUsedLastTwoYearsByCategory = async (categoryId: string): Promise<IEn
  * @param {ICategory} categoryId - The id of the category to get metrics for
  * @returns {IMetrics} - The metrics for the category
  */
-const categoryMetrics = async (categoryId: string): Promise<IMetrics> => {
-  const energyUsed = await energyUsedLastTwoYearsByCategory(categoryId);
+const categoryMetrics = async (categoryId: string, currToDate: Date): Promise<IMetrics> => {
+  const energyUsed = await energyUsedLastTwoYearsByCategory(categoryId, currToDate);
 
   const area: number = await areaByCategory(categoryId);
   const numBuildings: number = await numberOfBuildingsByCategory(categoryId);
@@ -103,6 +99,8 @@ const categoryMetrics = async (categoryId: string): Promise<IMetrics> => {
   };
 };
 
+// calculates the percentage of energy saved.
+// used in highscore.service.ts and energySaved.service.ts
 const calculatePercentageSaved = (currentYear: number, lastYear: number): number => {
   const diff = lastYear - currentYear;
   return Number(((diff / lastYear) * 100).toFixed(2));
@@ -111,5 +109,5 @@ const calculatePercentageSaved = (currentYear: number, lastYear: number): number
 export default {
   categoryMetrics,
   calculatePercentageSaved,
-  energyUsageTwoLastYearsByBuildings: energyUsedLastTwoYearsByCategory,
+  energyUsedLastTwoYearsByCategory,
 };

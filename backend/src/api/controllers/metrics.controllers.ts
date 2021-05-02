@@ -1,7 +1,23 @@
 import { Request, Response, NextFunction } from 'express';
 import Category, { ICategory } from '../models/categories.model';
 import Building, { IBuilding } from '../models/buildings.model';
-import metricsService, { IMetrics } from '../services/metrics.service';
+import metricsService from '../services/metrics.service';
+import { IMetrics, IMetricsOut } from '../../types/interfaces';
+import categoryService from '../services/category.service';
+import dateUtil from '../../util/date';
+
+const formatOutput = (metrics: IMetrics): IMetricsOut => {
+  const percentEnergySaved = metricsService.calculatePercentageSaved(
+    metrics.energyUsedCurrentYear, metrics.energyUsedLastYear,
+  );
+
+  return {
+    energyUsed: metrics.energyUsedCurrentYear,
+    energySaved: percentEnergySaved,
+    area: metrics.area,
+    buildings: metrics.buildings,
+  };
+};
 
 /**
  * Controller to handle fetching the metrics (collection of miscellanious information) for a
@@ -12,46 +28,27 @@ import metricsService, { IMetrics } from '../services/metrics.service';
  * @param {Response} res - Express response
  * @param {NextFunction} next - Express next function
  */
-const metricsBySlug = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
+const getMetricsBySlug = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
   try {
-    const { slug } = req.params;
+    let metrics: IMetrics | null = null;
 
-    const category: ICategory | null = await Category.findOne({ name: slug });
+    const category: ICategory | null = await categoryService.findCategoryByName(req.params.slug);
     if (category) {
-      const metrics: IMetrics = await metricsService.categoryMetrics(category.id);
+      metrics = await metricsService.categoryMetrics(category.id, dateUtil.latestDateInDataset());
+    } else {
+      const building: IBuilding | null = await Building.findOne({ name: req.params.slug });
 
-      const percentEnergySaved = metricsService.calculatePercentageSaved(
-        metrics.energyUsedCurrentYear, metrics.energyUsedLastYear,
+      if (!building) {
+        throw new Error('Invalid slug');
+      }
+
+      metrics = await metricsService.categoryMetrics(
+        building.category,
+        dateUtil.latestDateInDataset(),
       );
-
-      res.send({
-        energyUsed: metrics.energyUsedCurrentYear,
-        energySaved: percentEnergySaved,
-        area: metrics.area,
-        buildings: metrics.buildings,
-      });
-
-      return;
     }
 
-    const building: IBuilding | null = await Building.findOne({ name: slug });
-    if (building) {
-      const metrics: IMetrics = await metricsService.categoryMetrics(building.category);
-
-      const percentEnergySaved = metricsService.calculatePercentageSaved(
-        metrics.energyUsedCurrentYear, metrics.energyUsedLastYear,
-      );
-
-      res.send({
-        energyUsed: metrics.energyUsedCurrentYear,
-        energySaved: percentEnergySaved,
-        area: metrics.area,
-        buildings: metrics.buildings,
-      });
-      return;
-    }
-
-    next('Invalid slug');
+    res.send(formatOutput(metrics));
   } catch (err) {
     next(err);
   }
@@ -71,18 +68,12 @@ const metricsByCategoryName = async (
   try {
     const category: ICategory | null = await Category.findOne({ name: req.params.name });
     if (category) {
-      const metrics = await metricsService.categoryMetrics(category.id);
-
-      const percentEnergySaved = metricsService.calculatePercentageSaved(
-        metrics.energyUsedCurrentYear, metrics.energyUsedLastYear,
+      const metrics = await metricsService.categoryMetrics(
+        category.id,
+        dateUtil.latestDateInDataset(),
       );
 
-      res.send({
-        energyUsed: metrics.energyUsedCurrentYear,
-        energySaved: percentEnergySaved,
-        area: metrics.area,
-        buildings: metrics.buildings,
-      });
+      res.send(formatOutput(metrics));
     }
 
     next('Category not found');
@@ -99,24 +90,18 @@ const metricsByCategoryName = async (
  * @param {Response} res - Express response
  * @param {NextFunction} next - Express next function
  */
-const metricsByBuildingId = async (
+const getMetricsByBuildingId = async (
   req: Request, res: Response, next: NextFunction,
 ): Promise<void> => {
   try {
     const building: IBuilding | null = await Building.findById(req.params.id);
     if (building) {
-      const metrics: IMetrics = await metricsService.categoryMetrics(building.category);
-
-      const percentEnergySaved = metricsService.calculatePercentageSaved(
-        metrics.energyUsedCurrentYear, metrics.energyUsedLastYear,
+      const metrics: IMetrics = await metricsService.categoryMetrics(
+        building.category,
+        dateUtil.latestDateInDataset(),
       );
 
-      res.send({
-        energyUsed: metrics.energyUsedCurrentYear,
-        energySaved: percentEnergySaved,
-        area: metrics.area,
-        buildings: metrics.buildings,
-      });
+      res.send(formatOutput(metrics));
     }
 
     next('Building not found');
@@ -133,12 +118,15 @@ const metricsByBuildingId = async (
  * @param {Response} res - Express response
  * @param {NextFunction} next - Express next function
  */
-const metrics = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
+const getMetrics = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
   try {
     const categories = await Category.find();
 
     const responses: IMetrics[] = await Promise.all(categories.map(
-      async (category: ICategory) => metricsService.categoryMetrics(category._id),
+      async (category: ICategory) => metricsService.categoryMetrics(
+        category._id,
+        dateUtil.latestDateInDataset(),
+      ),
     ));
 
     const totalMetrics: IMetrics = responses.reduce((prev, current) => ({
@@ -148,24 +136,15 @@ const metrics = async (req: Request, res: Response, next: NextFunction): Promise
       buildings: prev.buildings + current.buildings,
     }));
 
-    const percentEnergySaved = metricsService.calculatePercentageSaved(
-      totalMetrics.energyUsedCurrentYear, totalMetrics.energyUsedLastYear,
-    );
-
-    res.send({
-      energyUsed: totalMetrics.energyUsedCurrentYear,
-      energySaved: percentEnergySaved,
-      area: totalMetrics.area,
-      buildings: totalMetrics.buildings,
-    });
+    res.send(formatOutput(totalMetrics));
   } catch (err) {
     next(err);
   }
 };
 
 export default {
-  metrics,
-  metricsBySlug,
+  getMetrics,
+  getMetricsBySlug,
   metricsByCategoryName,
-  metricsByBuildingId,
+  getMetricsByBuildingId,
 };
