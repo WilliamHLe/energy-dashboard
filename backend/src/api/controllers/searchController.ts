@@ -1,14 +1,16 @@
 import { Request, Response, NextFunction } from 'express';
-import Building from '../models/buildings.model';
+import buildingsService from '../services/buildings.service';
+import { ReqQuerySearch } from '../../types/types';
 
-const searchBuilding = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
-  const buildingName: string = req.query.name as string;
-  const regex: RegExp = new RegExp(buildingName, 'i');
-  const buildings = await Building.find({
-    name: {
-      $regex: regex,
-    },
-  });
+/**
+ * /search?name=
+ */
+const searchBuilding = async (
+  req: Request<any, any, any, ReqQuerySearch>,
+  res: Response,
+  next: NextFunction,
+): Promise<void> => {
+  const buildings = await buildingsService.findBuildingByName(req.query.name);
   if (buildings) {
     res.send(buildings);
   } else {

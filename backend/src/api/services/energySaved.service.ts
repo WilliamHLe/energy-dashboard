@@ -79,6 +79,12 @@ const savedEnergyByBuilding = async (building: IBuilding, currToDate: Date): Pro
     ),
   ]);
 
+  console.log('energy usage current:', curr);
+  console.log('energy usage prev:', prev);
+  console.log(curr === prev);
+  console.log(`currToDate: ${currToDate}, currFromDate: ${currFromDate}`);
+  console.log(`prevToDate: ${prevToDate}, prevFromDate: ${prevFromDate}`);
+
   return metricsService.calculatePercentageSaved(curr, prev);
 };
 

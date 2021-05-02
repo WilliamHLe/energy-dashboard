@@ -9,8 +9,27 @@ const getFirstDateInYear = (date: Date): Date => {
   return new Date(year, 0, 1);
 };
 
-// yyyy-mm-dd
-const stringToDate = (datestring: string): Date => new Date(datestring);
+/**
+ * Takes a possible datestring and parses it into a Date. Undefined string
+ * is valid is simply returns undefined. If a string is passed it has to be
+ * a valid datestring otherwise an error is thrown.
+ * @param {string?} datestring - The datestring on expected format of yyyy-mm-dd
+ * @returns {Date | undefined} - Date if datestring is valid, else undefined
+ * @throws {Error} - Throws an error if the given datestring is invalid
+ */
+const stringToDate = (datestring?: string): Date | undefined => {
+  if (!datestring) {
+    return undefined;
+  }
+
+  const timestamp = Date.parse(datestring);
+
+  if (timestamp) {
+    return new Date(timestamp);
+  }
+
+  throw new Error('Invalid datestring');
+};
 
 const previousYear = (date: Date): Date => {
   const prevDate = new Date(date);

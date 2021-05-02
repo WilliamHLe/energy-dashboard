@@ -85,8 +85,8 @@ const energyUsedLastTwoYearsByCategory = async (
  * @param {ICategory} categoryId - The id of the category to get metrics for
  * @returns {IMetrics} - The metrics for the category
  */
-const categoryMetrics = async (categoryId: string): Promise<IMetrics> => {
-  const energyUsed = await energyUsedLastTwoYearsByCategory(categoryId);
+const categoryMetrics = async (categoryId: string, currToDate: Date): Promise<IMetrics> => {
+  const energyUsed = await energyUsedLastTwoYearsByCategory(categoryId, currToDate);
 
   const area: number = await areaByCategory(categoryId);
   const numBuildings: number = await numberOfBuildingsByCategory(categoryId);

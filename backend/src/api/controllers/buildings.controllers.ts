@@ -7,6 +7,7 @@ import energySavedService from '../services/energySaved.service';
 import energyAverageService from '../services/energyAverage.service';
 import buildingsService from '../services/buildings.service';
 import dateUtil from '../../util/date';
+import { ReqQueryDate } from '../../types/types';
 
 const getAllBuildings = async (
   req: Request,
@@ -148,7 +149,7 @@ const getSavedEnergyById = async (
  * @param {NextFunction} next - Express next function
  */
 const getCarriersById = async (
-  req: Request<any, any, any, ReqQuery>,
+  req: Request<any, any, any, ReqQueryDate>,
   res: Response,
   next: NextFunction,
 ): Promise<void> => {
@@ -166,15 +167,8 @@ const getCarriersById = async (
   }
 };
 
-type ReqQuery = {
-  from_date?: string,
-  to_date?: string,
-}
-
-type Req
-
 const getEnergyUsageById = async (
-  req: Request<any, any, any, ReqQuery>,
+  req: Request<any, any, any, ReqQueryDate>,
   res: Response,
   next: NextFunction,
 ): Promise<void> => {
@@ -195,7 +189,7 @@ const getEnergyUsageById = async (
 
 // Get total energy by building ID
 const getTotalEnergyById = async (
-  req: Request<any, any, any, ReqQuery>,
+  req: Request<any, any, any, ReqQueryDate>,
   res: Response,
   next: NextFunction,
 ): Promise<void> => {
@@ -206,16 +200,14 @@ const getTotalEnergyById = async (
     const totalEnergy: number = await energyUsageService.sumEnergyUsageByIds(
       [req.params.id], fromDate, toDate,
     );
-    if (totalEnergy) {
-      res.send({ total: totalEnergy });
-    }
+    res.send({ total: totalEnergy });
   } catch (e) {
     next(e);
   }
 };
 
 const getAverageUsageById = async (
-  req: Request<any, any, any, ReqQuery>,
+  req: Request<any, any, any, ReqQueryDate>,
   res: Response,
   next: NextFunction,
 ): Promise<void> => {

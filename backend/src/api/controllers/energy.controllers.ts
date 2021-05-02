@@ -10,8 +10,10 @@ import energyUsageService from '../services/energyUsage.service';
 import energyAverageService from '../services/energyAverage.service';
 import categoryService from '../services/category.service';
 import buildingsService from '../services/buildings.service';
+import { ReqQueryDate } from '../../types/types';
+import dateUtil from '../../util/date';
 
-const bySlug = async (slug:string, func:Function, fromDate:string, toDate:string) => {
+const bySlug = async (slug: string, func: Function, fromDate?: string, toDate?: string) => {
   const category: ICategory | null = await categoryService.findCategoryByName(slug);
   let buildings = [];
 
@@ -25,7 +27,7 @@ const bySlug = async (slug:string, func:Function, fromDate:string, toDate:string
     buildings = [building.id];
   }
 
-  return func(buildings, fromDate, toDate);
+  return func(buildings, dateUtil.stringToDate(fromDate), dateUtil.stringToDate(toDate));
 };
 
 /**
@@ -38,13 +40,16 @@ const bySlug = async (slug:string, func:Function, fromDate:string, toDate:string
  * @param {NextFunction} next - Express next function
  */
 const getCarriersBySlug = async (
-  req: Request, res: Response, next: NextFunction,
+  req: Request<any, any, any, ReqQueryDate>,
+  res: Response,
+  next: NextFunction,
 ): Promise<void> => {
-  const fromDate = req.query.from_date as string;
-  const toDate = req.query.to_date as string;
   try {
     const result:ICarrier[] = await bySlug(
-      req.params.slug, energyCarriersService.carriersByBuildings, fromDate, toDate,
+      req.params.slug,
+      energyCarriersService.carriersByBuildings,
+      req.query.from_date,
+      req.query.to_date,
     );
     res.send(result);
   } catch (err) {
@@ -59,11 +64,14 @@ const getCarriersBySlug = async (
  * @param {NextFunction} next - Express next function
  */
 const getEnergyCarriers = async (
-  req: Request, res: Response, next: NextFunction,
+  req: Request<any, any, any, ReqQueryDate>,
+  res: Response,
+  next: NextFunction,
 ): Promise<void> => {
   try {
     const results: ICarrierCategory[] = await energyCarriersService.energyCarriers(
-      req.query.from_date as string, req.query.to_date as string,
+      dateUtil.stringToDate(req.query.from_date),
+      dateUtil.stringToDate(req.query.to_date),
     );
 
     res.send(results);
@@ -74,13 +82,14 @@ const getEnergyCarriers = async (
 
 // Get total energy of each building category
 const getTotalEnergy = async (
-  req: Request, res: Response, next: NextFunction,
+  req: Request<any, any, any, ReqQueryDate>,
+  res: Response,
+  next: NextFunction,
 ): Promise<void> => {
-  const fromDate = req.query.from_date as string;
-  const toDate = req.query.to_date as string;
   try {
     const totalEnergy = await energyUsageService.sumEnergyUsageByCategory(
-      fromDate, toDate,
+      dateUtil.stringToDate(req.query.from_date),
+      dateUtil.stringToDate(req.query.to_date),
     );
 
     res.send(totalEnergy);
@@ -91,13 +100,16 @@ const getTotalEnergy = async (
 
 // Get total energy by category or building name
 const getTotalEnergyBySlug = async (
-  req: Request, res: Response, next: NextFunction,
+  req: Request<any, any, any, ReqQueryDate>,
+  res: Response,
+  next: NextFunction,
 ): Promise<void> => {
-  const fromDate = req.query.from_date as string;
-  const toDate = req.query.to_date as string;
   try {
     const result = await bySlug(
-      req.params.slug, energyUsageService.sumEnergyUsageByIds, fromDate, toDate,
+      req.params.slug,
+      energyUsageService.sumEnergyUsageByIds,
+      req.query.from_date,
+      req.query.to_date,
     );
     res.send({ total: result });
   } catch (err) {
@@ -107,14 +119,14 @@ const getTotalEnergyBySlug = async (
 
 // Get time series energy usage of each building category
 const getEnergyUsage = async (
-  req: Request, res: Response, next: NextFunction,
+  req: Request<any, any, any, ReqQueryDate>,
+  res: Response,
+  next: NextFunction,
 ): Promise<void> => {
-  const fromDate = req.query.from_date as string;
-  const toDate = req.query.to_date as string;
-
   try {
     const energyUsage = await energyUsageService.energyUsageByCategory(
-      fromDate, toDate,
+      dateUtil.stringToDate(req.query.from_date),
+      dateUtil.stringToDate(req.query.to_date),
     );
 
     res.send(energyUsage);
@@ -124,14 +136,16 @@ const getEnergyUsage = async (
 };
 
 const getEnergyUsageBySlug = async (
-  req: Request, res: Response, next: NextFunction,
+  req: Request<any, any, any, ReqQueryDate>,
+  res: Response,
+  next: NextFunction,
 ): Promise<void> => {
-  const fromDate = req.query.from_date as string;
-  const toDate = req.query.to_date as string;
-
   try {
     const result:IUsage[] = await bySlug(
-      req.params.slug, energyUsageService.energyUsageByIds, fromDate, toDate,
+      req.params.slug,
+      energyUsageService.energyUsageByIds,
+      req.query.from_date,
+      req.query.to_date,
     );
     res.send(result);
   } catch (err) {
@@ -147,14 +161,16 @@ const getEnergyUsageBySlug = async (
  * @param {NextFunction} next - Express next function
  */
 const getAverageEnergyBySlug = async (
-  req: Request, res: Response, next: NextFunction,
+  req: Request<any, any, any, ReqQueryDate>,
+  res: Response,
+  next: NextFunction,
 ): Promise<void> => {
-  const fromDate = req.query.from_date as string;
-  const toDate = req.query.to_date as string;
-
   try {
     const result:IEnergyAverage[] = await bySlug(
-      req.params.slug, energyAverageService.energyAverageBySlug, fromDate, toDate,
+      req.params.slug,
+      energyAverageService.energyAverageBySlug,
+      req.query.from_date,
+      req.query.to_date,
     );
     res.send({ averageEnergy: result });
   } catch (err) {
@@ -169,15 +185,15 @@ const getAverageEnergyBySlug = async (
  * @param {NextFunction} next - Express next function
  */
 const getAverageEnergy = async (
-  req: Request, res: Response, next: NextFunction,
+  req: Request<any, any, any, ReqQueryDate>,
+  res: Response,
+  next: NextFunction,
 ): Promise<void> => {
-  const fromDate = req.query.from_date as string;
-  const toDate = req.query.to_date as string;
-
   try {
     const energyAverage: IEnergyAverageByCategory[] = await
     energyAverageService.energyAverageGroupedByCategory(
-      fromDate, toDate,
+      dateUtil.stringToDate(req.query.from_date),
+      dateUtil.stringToDate(req.query.to_date),
     );
 
     res.send(energyAverage);
@@ -186,13 +202,21 @@ const getAverageEnergy = async (
   }
 };
 
-const getSavedEnergy = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
+const getSavedEnergy = async (
+  req: Request,
+  res: Response,
+  next: NextFunction,
+): Promise<void> => {
   try {
     const categories = await Category.find();
 
     const responses: IEnergySaved[] = await Promise.all(categories.map(
       async (category: ICategory) => {
-        const enregySaved = await metricsService.energyUsedLastTwoYearsByCategory(category._id);
+        const enregySaved = await metricsService.energyUsedLastTwoYearsByCategory(
+          category._id,
+          dateUtil.latestDateInDataset(), // This is for prototyping only to match data in dataset
+        );
+
         const percentEnergySaved = metricsService.calculatePercentageSaved(
           enregySaved.energyUsedCurrentYear, enregySaved.energyUsedLastYear,
         );
