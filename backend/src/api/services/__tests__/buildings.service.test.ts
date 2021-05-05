@@ -62,13 +62,13 @@ describe('findBuildingByName', () => {
   it('Finds the building by uppercase name', async () => {
     const building: IBuilding | null = await buildingService.findBuildingByName('HELLO WORLD');
     expect(building).not.toBeNull();
-    expect(building?.toObject).toEqual(data.building0?.toObject);
+    expect(building?.toObject()).toEqual(data.building0?.toObject());
   });
 
   it('Finds the building by lowercase name', async () => {
     const building: IBuilding | null = await buildingService.findBuildingByName('hello world');
     expect(building).not.toBeNull();
-    expect(building?.toObject).toEqual(data.building0?.toObject);
+    expect(building?.toObject()).toEqual(data.building0?.toObject());
   });
 
   it('Finds the building by exact name', async () => {
