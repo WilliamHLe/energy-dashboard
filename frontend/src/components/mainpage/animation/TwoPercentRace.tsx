@@ -10,9 +10,10 @@ interface ITwoPercentRace{
 
 const TwoPercentRace = (props: ITwoPercentRace) => {
   const { loading } = props;
-  /* percent saved is supposed to be fetched */
+  /* Percent saved is supposed to be fetched */
   const saved = 3.59;
   const progress = saved * 25;
+  /* Sets the width of the tronder-bicycle */
   document.documentElement.style.setProperty('--progress-tronder', `${progress.toString()}%`);
 
   return (
@@ -42,6 +43,16 @@ const TwoPercentRace = (props: ITwoPercentRace) => {
               <span className={style.label}>{`${saved}%`}</span>
             </div>
           </div>
+        </div>
+      </div>
+      <div className={style.bottomLabel}>
+        <div className={!loading ? style.labelWrapper : style.labelWrapperLoading}>
+          <span className={style.circle} />
+          <p className={style.bottomLabelText}>Energisparemålet</p>
+        </div>
+        <div className={!loading ? style.labelWrapper : style.labelWrapperLoading}>
+          <span className={style.circle} id={style.blue} />
+          <p className={style.bottomLabelText}>Trondheim kommune</p>
         </div>
       </div>
     </div>

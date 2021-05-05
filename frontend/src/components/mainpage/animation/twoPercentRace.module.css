@@ -64,7 +64,7 @@
     position: absolute;
     top: 30%
 }
-/* Moving the riders up and down on the bike */ 
+/* Moving the riders up and down above the bike */ 
 @keyframes updown {
     0%{
         top: -7%;  
@@ -98,7 +98,7 @@
     text-align: right;
     animation: progressGoal 3s forwards linear;
   }
-  /* moving the girl along the progress bar */ 
+  /* animations for moving the girl along the progress bar */ 
   @keyframes moveGoal{
     from{
         margin-left: 0%;
@@ -113,6 +113,7 @@
         margin-left: calc(46% - 6.5%);
     }
 }
+
 /* animating the progress fill-color */ 
 @keyframes progressGoal{
     from{
@@ -150,7 +151,7 @@
     color: white;
     font-size: 0.6em;
   }
-/* moving the trønder along the progressbar */ 
+/* animation for moving the trønder along the progressbar */ 
 @keyframes moveTronder{
     from{
         margin-left: 0%;
@@ -211,4 +212,35 @@
             top: -60%; 
         }
     }
+}
+/* labels on the bottom */ 
+.circle {
+    background-color: #90ED7D;
+    height: 15px;
+    width: 15px;
+    border-radius: 50%;
+    display: inline-block;
+    align-self: center;
+}
+#blue {
+    background-color: #7CB5EC;
+}
+.bottomLabelText {
+    margin-left: 10px;
+}
+.bottomLabel {
+    margin-top: 2%;
+    width: 100%;
+    display: flex;
+}
+.labelWrapper {
+    display: flex; 
+    margin-left: 5%;
+}
+.labelWrapperLoading {
+    display: flex; 
+    margin-left: 5%;
+}
+.labelWrapperLoading:first-child {
+    margin-left: 13.5%;
 }

@@ -13,6 +13,7 @@
 .energyPercentageSaved {
     grid-area: content;
     text-align: left;
+    height: 100%;
 }
 .energySavedGraph {
     grid-area: content3;
