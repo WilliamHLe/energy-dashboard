@@ -1,14 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router';
-import axios from 'axios';
 import InfoItem from './InfoItem';
 import Buildings from './icons/noto_house.png';
 import Energy from './icons/energy.svg';
 import Squaremeters from './icons/Group 223.svg';
 import Energygoal from './icons/Group 222.svg';
 import style from './infoItem.module.css';
-
-const ls = require('localstorage-ttl');
+import { getMetrics } from '../../services/metricsService';
 
 interface building {
   energyUsed: number,
@@ -28,23 +26,9 @@ const InfoBar = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      if (category) {
-        const results = await axios.get(`/metrics/${category}`);
-        ls.set(`${category}_metrics`, results.data, [604800000]);
-        setData(results.data);
-      } else {
-        const results = await axios.get('/metrics');
-        ls.set('metrics', results.data, [604800000]);
-        setData(results.data);
-      }
+      setData(await getMetrics(category));
     };
-    if (category !== undefined && ls.get(`${category}_metrics`)) {
-      setData(ls.get(`${category}_metrics`));
-    } else if (category === undefined && ls.get('metrics')) {
-      setData(ls.get('metrics'));
-    } else {
-      fetchData();
-    }
+    fetchData();
   }, [category]);
 
   return (

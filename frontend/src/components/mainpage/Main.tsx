@@ -1,16 +1,22 @@
-import React from 'react';
-// import Highcharts from 'highcharts';
-// import HighchartsReact from 'highcharts-react-official';
+import React, { useEffect, useState } from 'react';
 
+import { useParams } from 'react-router';
 import Sankey from './graphs/Sankey';
-import CategoryUsage from '../buildingCategoryOverview/graphs/CategoryUsage';
+import EnergyUsage from '../buildingCategoryOverview/graphs/EnergyUsage';
 import style from './main.module.css';
-import EnergySaved from '../graphs/EnergySaved';
+import EnergySaved from './graphs/EnergySaved';
 import TwoPercentRace from './animation/TwoPercentRace';
+import { getEnergyUsage } from '../../services/energyService';
 
 function Main() {
-  // eslint-disable-next-line no-unused-vars
-  const saved = 2;
+  const { category, id } = useParams<{category:string, id:string}>();
+  const [data, setData] = useState<{ name: string, data: { x: number, y: number }[] }[]>([]);
+  useEffect(() => {
+    async function fetchData() {
+      setData(await getEnergyUsage(category, id));
+    }
+    fetchData();
+  }, [category, id]);
 
   return (
     <div className={style.main}>
@@ -21,7 +27,7 @@ function Main() {
         <EnergySaved />
       </div>
       <div className={`container ${style.energyUsageGraph}`}>
-        <CategoryUsage />
+        <EnergyUsage data={data} height={null} />
       </div>
       <div className={`container ${style.energySourceGraph}`}>
         <Sankey />

@@ -1,7 +1,7 @@
-import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router';
 import style from '../modal.module.css';
+import { getEnergySavedTotal, getEnergyAverage } from '../../../../../services/energyService';
 
 interface Ibuilding {
     name: string,
@@ -24,11 +24,11 @@ const ProgressBar = (props: {building: string | Ibuilding | undefined,
     const fetchdata = async () => {
       if (data === 'spart') {
         try {
-          const response = await axios.get(`/energy/saved/total/${building}`);
-          setWidth(response.data.percentSaved > 0
-            ? Math.min(response.data.percentSaved * 5, 100)
+          const response = await getEnergySavedTotal(`${building}`);
+          setWidth(response.percentSaved > 0
+            ? Math.min(response.percentSaved * 5, 100)
             : 0);
-          setCompleted({ value: `${response.data.percentSaved}%`, type: 'spart' });
+          setCompleted({ value: `${response.percentSaved}%`, type: 'spart' });
         } catch (e) {
           setWidth(null);
           setCompleted({ value: 'Ingen data', type: 'spart' });
@@ -36,14 +36,14 @@ const ProgressBar = (props: {building: string | Ibuilding | undefined,
       }
       if (data === 'avg') {
         try {
-          const response = await axios.get(`/energy/average/${building}`);
-          const responseCategory = await axios.get(`/energy/average/${category}`);
+          const response = await getEnergyAverage(`${building}`);
+          const responseCategory = await getEnergyAverage(`${category}`);
           const tempWidth = (
-            response.data.averageEnergy[0].average
-              / responseCategory.data.averageEnergy[0].average
+            response.averageEnergy[0].average
+              / responseCategory.averageEnergy[0].average
           ) * 100;
           setWidth(tempWidth);
-          setCompleted({ value: response.data.averageEnergy[0].average, type: 'avg' });
+          setCompleted({ value: response.averageEnergy[0].average, type: 'avg' });
         } catch (e) {
           setWidth(null);
           setCompleted({ value: 'Ingen data', type: 'avg' });

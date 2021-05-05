@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router';
 import style from './modal.module.css';
-import CategoryUsage from './graphs/CategoryUsage';
+import EnergyUsage from '../../../buildingCategoryOverview/graphs/EnergyUsage';
 import closeImage from '../../../../assets/png/close.png';
 import ProgressBar from './graphs/ProgressBar';
 import check from '../../../../assets/png/bi_check.png';
 import cross from '../../../../assets/png/entypo_cross.png';
+import { getEnergyUsage } from '../../../../services/energyService';
 
 interface Ibuilding {
   name: string,
@@ -24,6 +25,7 @@ function Modal(props: {
   const [allUpgrades, setUpgrades] = useState(['']);
   const [currentBuildingUpgrade, setCrurrentBuildingUpgrades] = useState([3]);
   const [otherBuildingUpgrade, setOtherBuildingUpgrades] = useState([3]);
+  const [data, setData] = useState<any>([]);
 
   const closeModal = () => {
     props.onChange();
@@ -79,8 +81,14 @@ function Modal(props: {
       setOtherBuildingUpgrades(setIcons());
     };
     randomUpgrade();
+    const fetchdata = async () => {
+      const responseBuilding = await getEnergyUsage(undefined, id);
+      const responseCompareBuilding = await getEnergyUsage(undefined, compareBuilding?.name);
+      setData([responseBuilding[0], responseCompareBuilding[0]]);
+    };
+    fetchdata();
     setLoading(false);
-  }, []);
+  }, [compareBuilding?.name, id]);
   return (
     <div>
       {isLoading ? (
@@ -102,7 +110,7 @@ function Modal(props: {
             {' '}
           </h1>
           <div id={style.compareUsage}>
-            <CategoryUsage sendBuilding={id} sendCompareBuilding={compareBuilding?.name} />
+            <EnergyUsage data={data} height="50%" />
           </div>
           <div>
             <table style={{ margin: 'auto', width: '80%' }}>

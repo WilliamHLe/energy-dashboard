@@ -9,7 +9,6 @@ require('highcharts/modules/solid-gauge')(Highcharts);
 function EnergySaved() {
   const { id } = useParams<{id: string}>();
 
-  // const [data, setData] = useState<any>([]);
   const [building, setBuilding] = useState<any>();
   const [saved, setSaved] = useState<any>();
   const [savedKr, setSavedKr] = useState<any>();

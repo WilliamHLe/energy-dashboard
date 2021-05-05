@@ -2,17 +2,27 @@ import React, { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import style from './navbar.module.css';
 import SearchBar from './SearchBar';
-
-const axios = require('axios').default;
+import { getBuildings } from '../../services/buildingsService';
 
 export default function Navbar() {
-  const [search, setSearch] = useState<any>([]);
+  const [search, setSearch] = useState <{
+    _id: string,
+    name: string,
+    year?: number | null,
+    area?: number,
+    categoryIdEsave?: number,
+    categoryDescription?: number,
+    category: {
+        _id: string,
+        name: string
+    },
+    tek: string,
+    energyLabel: string
+  }[]>([]);
   useEffect(() => {
-    // TODO: hent data fra api og legg det til state her
-    // foreløpig til testing:
     const fetchdata = async () => {
-      const response = await axios.get('/buildings');
-      setSearch(response.data);
+      const response = await getBuildings('');
+      setSearch(response);
     };
     fetchdata();
   }, []);

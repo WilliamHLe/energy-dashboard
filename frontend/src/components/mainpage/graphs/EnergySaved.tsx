@@ -1,38 +1,23 @@
 import React, { useEffect, useState } from 'react';
 import Highcharts from 'highcharts';
 import HighchartsReact from 'highcharts-react-official';
-import axios from 'axios';
+import { getEnergySavedAll } from '../../../services/energyService';
 
 require('highcharts/modules/sankey')(Highcharts);
-const ls = require('localstorage-ttl');
 
+/**
+ * Creates a column chart for how much energy each building category has saved
+ */
 function EnergySaved() {
   const [data, setData] = useState<{ name: string; y: number; }[]>();
 
   useEffect(() => {
     const fetchData = async () => {
-      try {
-        const result = await axios.get('/energy/saved');
-        const tempData = [];
-        for (let i = 0; i < result.data.length; i += 1) {
-          tempData.push({
-            name: result.data[i].category.name,
-            y: parseFloat(result.data[i].saved.toFixed(2)),
-          });
-        }
-        ls.set('saved_column', tempData, [604800000]);
-        setData(tempData);
-      } catch (e) {
-        console.log(e);
-      }
+      setData(await getEnergySavedAll());
     };
-    if (ls.get('saved_column')) {
-      setData(ls.get('saved_column'));
-    } else {
-      fetchData();
-    }
+    fetchData();
   }, []);
-
+  // Options for Highcharts
   const options = {
     chart: {
       type: 'column',
@@ -40,6 +25,9 @@ function EnergySaved() {
     },
     colors: ['#8AD515', '#00FFFF', '#FEB064', '#CECE00', '#F7A4F7',
       '#FEB064', '#92A8CD', '#A47D7C', '#B5CA92'],
+    credits: {
+      enabled: false,
+    },
     plotOptions: {
       column: {
         colorByPoint: true,
@@ -52,22 +40,30 @@ function EnergySaved() {
         },
       },
     },
-    accessibility: {
-      announceNewData: {
-        enabled: true,
+    series: [
+      {
+        name: 'Bygg',
+        data,
+        showInLegend: false,
       },
-    },
+
+    ],
     title: {
       text: 'Energi spart siden i fjor',
       style: {
         color: 'white',
       },
     },
-    credits: {
-      enabled: false,
-    },
     tooltip: {
       valueSuffix: '%',
+    },
+    xAxis: {
+      type: 'category',
+      labels: {
+        style: {
+          color: 'white',
+        },
+      },
     },
     yAxis: {
       title: {
@@ -81,24 +77,7 @@ function EnergySaved() {
           color: 'white',
         },
       },
-
     },
-    xAxis: {
-      type: 'category',
-      labels: {
-        style: {
-          color: 'white',
-        },
-      },
-    },
-    series: [
-      {
-        name: 'Bygg',
-        data,
-        showInLegend: false,
-      },
-
-    ],
   };
 
   return (

@@ -1,8 +1,8 @@
-import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router';
 import Card from './ComapreWithListCard';
 import style from './compare.module.css';
+import { getBuildings } from '../../../services/buildingsService';
 
 interface Ibuilding {
   name: string,
@@ -16,7 +16,7 @@ interface Ibuilding {
   }
 }
 
-function Compare(props: any) {
+function Compare(props: { currentBuilding: Ibuilding, onChange: any }) {
   // eslint-disable-next-line no-unused-vars
   const { category, id } = useParams<{ category: string, id: string }>();
   const { currentBuilding } = props;
@@ -34,33 +34,36 @@ function Compare(props: any) {
       checked: false,
     },
   ]);
-  useEffect(() => {
-    const allBuildings: any[] = [];
-    const fetchCurrentBuildingData = async () => {
-      const teksatandard = ['TEK17', 'TEK18', 'TEK16'];
-      const energimerke = ['A', 'B', 'C', 'D'];
-      const o = Math.floor(Math.random() * 2);
-      const u = Math.floor(Math.random() * 3);
-      currentBuilding.tek = teksatandard[o];
-      currentBuilding.energyLabel = energimerke[u];
-      const response = await axios.get(`/buildings?category=${currentBuilding.category}`);
-      allBuildings.push(response.data);
-      if (allBuildings.length > 0) {
-        const initialFilterd = allBuildings[0].filter((i: {
-          name: String,
-          year: Number,
-          area: Number
-        }) => (
-          // eslint-disable-next-line max-len
-          (i.year <= currentBuilding.year + 50
+
+  const fetchCurrentBuildingData = async () => {
+    // Creates random tek-standard and energy label for the building
+    // For demonstration purposes as the dataset lacks this information
+    const teksatandard = ['TEK17', 'TEK18', 'TEK16'];
+    const energimerke = ['A', 'B', 'C', 'D'];
+    const o = Math.floor(Math.random() * 2);
+    const u = Math.floor(Math.random() * 3);
+    currentBuilding.tek = teksatandard[o];
+    currentBuilding.energyLabel = energimerke[u];
+    const response = await getBuildings(`?category=${currentBuilding.category}`);
+    const allBuildings: any[] = response;
+    if (allBuildings.length > 0) {
+      const initialFilterd = allBuildings.filter((i: {
+        name: String,
+        year: Number,
+        area: Number
+      }) => (
+        // eslint-disable-next-line max-len
+        (i.year <= currentBuilding.year + 50
               && i.year >= currentBuilding.year - 50)
-            && (i.area <= currentBuilding.area + 500
-            && i.area >= currentBuilding.area - 500)
-        && (i.name !== currentBuilding.name)));
-        setBuildings(initialFilterd);
-        setInitialBuildings(initialFilterd);
-      }
-    };
+          && (i.area <= currentBuilding.area + 500
+          && i.area >= currentBuilding.area - 500)
+          && (i.name !== currentBuilding.name)));
+      setBuildings(initialFilterd);
+      setInitialBuildings(initialFilterd);
+    }
+  };
+
+  useEffect(() => {
     fetchCurrentBuildingData();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);

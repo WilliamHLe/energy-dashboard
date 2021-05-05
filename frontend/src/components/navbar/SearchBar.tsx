@@ -4,18 +4,19 @@ import Autocomplete from 'react-autocomplete';
 import { Link } from 'react-router-dom';
 import style from './navbar.module.css';
 
-function SearchBar(props: { data: any; }) {
+function SearchBar(props: { data: any[]; }) {
   const [inputs, setInputs] = useState('');
   const { data } = props;
+  console.log(data);
 
   return (
     <div className={style.wrapper}>
       <Autocomplete
         className={style.searchbar}
         items={data.map((item: any) => ({
-          id: item.id,
-          label: item.name,
-          category: item.category.name,
+          id: item?.id,
+          label: item?.name,
+          category: item?.category?.name,
         }))}
         shouldItemRender={(it: { label: string }, value: string) => it.label.indexOf(value) > -1}
         getItemValue={(item: { label: string; }) => item.label}

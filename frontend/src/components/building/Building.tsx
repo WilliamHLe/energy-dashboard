@@ -1,17 +1,18 @@
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
 import { useParams } from 'react-router';
 import style from './building.module.css';
-import CategoryUsage from '../buildingCategoryOverview/graphs/CategoryUsage';
+import EnergyUsage from '../buildingCategoryOverview/graphs/EnergyUsage';
 import AverageUsage from './graphs/AverageUsage';
 import Compare from './compare/Compare';
 import HeatMapChart from './heatmap/HeatmapChart';
 import Modal from './compare/Modal/Modal';
 import EnergySaved from './graphs/EnergySaved';
+import { getSpecificBuilding } from '../../services/buildingsService';
 import b1 from './icons/1.svg';
 import b2 from './icons/2.svg';
 import b3 from './icons/3.svg';
-// s
+import { getEnergyUsage } from '../../services/energyService';
+
 function Building() {
   interface Ibuilding {
     name: string,
@@ -24,16 +25,15 @@ function Building() {
       name: string,
     }
   }
-  // ss
   const { id } = useParams<{ category: string, id: string }>();
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [compareWithBuilding, setcompareWithBuilding] = useState<Ibuilding>();
   const [currentBuilding, setCurrentBuilding] = useState<Ibuilding>();
+  const [data, setData] = useState<{ name: string, data: { x: number, y: number }[] }[]>([]);
   useEffect(() => {
     const fetchCurrentBuildingData = async () => {
-      const responseBuilding = await axios.get(`/search?name=${id}`);
-      console.log(responseBuilding.data[0]);
-      setCurrentBuilding(responseBuilding.data[0]);
+      setData(await getEnergyUsage(undefined, id));
+      setCurrentBuilding(await getSpecificBuilding(id));
     };
     fetchCurrentBuildingData();
   }, [id]);
@@ -42,13 +42,12 @@ function Building() {
     setModalIsOpen(!modalIsOpen);
     setcompareWithBuilding(building);
   };
-  console.log(currentBuilding);
   return (
     <div>
       <div>
         <div className={style.building} style={{ opacity: modalIsOpen ? 0.1 : 1.0 }}>
           <div className={`container ${style.energyUsageGraph}`}>
-            <CategoryUsage />
+            <EnergyUsage data={data} height={null} />
           </div>
           <div className={`container ${style.compareBuildings}`}>
             {currentBuilding ? (

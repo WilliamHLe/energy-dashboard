@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { HeatMapGrid } from 'react-grid-heatmap';
-import axios from 'axios';
 import { useParams } from 'react-router';
 import style from './heatmapChart.module.css';
+import { getEnergySavedWeekly } from '../../../services/energyService';
 
 export default function HeatMapChart() {
   const { id } = useParams<{id:string}>();
@@ -12,13 +12,7 @@ export default function HeatMapChart() {
   const [data, setData] = useState<number[][]>([[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]]);
   useEffect(() => {
     const fetchData = async () => {
-      const result = await axios.get(`/energy/saved/weekly/${id}`);
-      const tempData:number[][] = [[], [], [], [], []];
-      for (let i = 0; i < result.data.length; i += 1) {
-        tempData[i % 4][Math.floor(i / 4)] = result.data[i].percentSaved;
-      }
-      tempData.reverse();
-      setData(tempData);
+      setData(await getEnergySavedWeekly(id));
     };
     fetchData();
   }, [id]);

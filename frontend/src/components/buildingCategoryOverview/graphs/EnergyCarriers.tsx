@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import Highcharts from 'highcharts';
 import HighchartsReact from 'highcharts-react-official';
-import axios from 'axios';
 import { useParams } from 'react-router';
 import style from '../category.module.css';
+import { getEnergyCarriersCategory } from '../../../services/energyService';
 
-const ls = require('localstorage-ttl');
-
+/**
+ * Creates a pie chart for the energy carriers of the current building category
+ */
 function EnergyCarriers() {
   const { category } = useParams<{category: string}>();
 
@@ -19,23 +20,14 @@ function EnergyCarriers() {
 
   useEffect(() => {
     const fetchData = async () => {
-      const result = await axios.get(`/energy/carriers/${category}`);
-      const tempData: {name: string, colorByPoint:boolean, data: { name: string; y: number; }[]} = { name: 'Energibærer', colorByPoint: true, data: [] };
-      for (let i = 0; i < result.data.length; i += 1) {
-        tempData.data.push({ name: result.data[i].name, y: result.data[i].amount });
-      }
-      tempData.data.sort((a, b) => ((a.name > b.name) ? 1 : -1));
-      ls.set(`${category}_carries`, tempData, [604800000]);
-      setData(tempData);
+      setData(await getEnergyCarriersCategory(category));
     };
+    // Manually sets the height of the graph
+    // Necessary as the graph would stretch beyond the parent div otherwise
     setHeight(document.getElementsByClassName(style.energyCarriers)[0].clientHeight);
-    if (ls.get(`${category}_carries`)) {
-      setData(ls.get(`${category}_carries`));
-    } else {
-      fetchData();
-    }
+    fetchData();
   }, [category]);
-  //
+  // Options for highcharts
   const options = {
     chart: {
       type: 'pie',
@@ -44,16 +36,19 @@ function EnergyCarriers() {
       plotShadow: false,
       height,
     },
-    title: {
-      text: 'Energibærere',
-      style: {
-        color: 'white',
-      },
-    },
     colors: ['#28d515', '#00FFFF', '#FEB064', '#F7A4F7', '#CECE00',
       '#FEB064', '#92A8CD', '#A47D7C', '#B5CA92'],
     credits: {
       enabled: false,
+    },
+    legend: {
+      itemStyle: {
+        color: 'white',
+      },
+      itemHoverStyle: {
+        color: 'grey',
+      },
+      labelFormat: '{name} ({percentage:.1f}%)',
     },
     plotOptions: {
       pie: {
@@ -70,16 +65,13 @@ function EnergyCarriers() {
         },
       },
     },
-    legend: {
-      itemStyle: {
+    series: data,
+    title: {
+      text: 'Energibærere',
+      style: {
         color: 'white',
       },
-      itemHoverStyle: {
-        color: 'grey',
-      },
-      labelFormat: '{name} ({percentage:.1f}%)',
     },
-    series: data,
   };
 
   return (

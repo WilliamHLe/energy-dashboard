@@ -1,11 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router';
-import axios from 'axios';
 import style from './topList.module.css';
 import SearchBar from '../../navbar/SearchBar';
 import CategoryTopListCard from './CategoryTopListCard';
-
-const ls = require('localstorage-ttl');
+import getHighscoreList from '../../../services/highscoresService';
 
 interface ICategory {
   id: string,
@@ -79,15 +77,9 @@ const CategoryTopList = () => {
   const [data, setData] = useState<ITopListData[]>([]);
   useEffect(() => {
     const fetchData = async () => {
-      const result = await axios.get(`/highscores/${category}`);
-      ls.set(`${category}_highscores`, result.data, [604800000]);
-      setData(result.data);
+      setData(await getHighscoreList(category));
     };
-    if (ls.get(`${category}_highscores`)) {
-      setData(ls.get(`${category}_highscores`));
-    } else {
-      fetchData();
-    }
+    fetchData();
   }, [category]);
 
   return (
@@ -111,7 +103,7 @@ const CategoryTopList = () => {
           for å se mer info om denne. Kanskje kan du hente noen tips?
         </p>
       </div>
-      <SearchBar data={data.map((building:any) => building.building)} />
+      <SearchBar data={data.map((building:any) => building?.building)} />
       <div className={style.info}>
         <p>{`${category[0].toUpperCase()}${category.slice(1)} (${data.length})`}</p>
         <p>Spart %</p>
@@ -119,9 +111,9 @@ const CategoryTopList = () => {
       <div className={style.buildingList}>
         {data.map((building, index) => (
           <CategoryTopListCard
-            buildingName={building.building.name}
+            buildingName={building?.building?.name}
             index={index + 1}
-            score={building.score}
+            score={building?.score}
           />
         ))}
       </div>

@@ -1,63 +1,52 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import Highcharts from 'highcharts/highstock';
 import HighchartsReact from 'highcharts-react-official';
-import { getEnergyUsage } from '../../../../../services/energyService';
 
-function CategoryUsage(props: {sendBuilding: any, sendCompareBuilding: any}) {
-  const { sendBuilding, sendCompareBuilding } = props;
-  const [data, setData] = useState<any>([]);
+require('highcharts/modules/boost')(Highcharts);
 
-  useEffect(() => {
-    const fetchdata = async () => {
-      const responseBuilding = await getEnergyUsage(undefined, sendBuilding);
-      const responseCompareBuilding = await getEnergyUsage(undefined, sendCompareBuilding);
-      setData([responseBuilding[0], responseCompareBuilding[0]]);
-    };
-    fetchdata();
-  }, [sendBuilding, sendCompareBuilding]);
-
+/**
+ * Creates a line chart with the energy usage for all categories, specific category or building
+ * @param {Array} props.data Data to be used in the graph
+ * @param {(string|null)} props.height Height for the graph. Only used in the comparison modal
+ */
+function EnergyUsage(props: {
+  data: {
+    name: string,
+    data: {
+      x: number,
+      y: number }[]
+  }[],
+  height: string | null
+}) {
+  const { data, height } = props;
+  // Options for Highcharts
   const options = {
-    chart: {
-      type: 'line',
-      backgroundColor: null,
-      zoomType: 'x',
-      height: 260,
-      width: 1000,
-    },
-    colors: ['#28d515', '#CE32E7', '#00FFFF', '#CECE00', '#F7A4F7',
-      '#FEB064', '#92A8CD', '#A47D7C', '#B5CA92'],
     boost: {
       useGPUTranslations: true,
     },
-    tooltip: {
-      headerFormat: '<span style="font-size: 10px">{point.key:%Y-%m-%d}</span><br/>',
+    chart: {
+      type: 'line',
+      backgroundColor: null,
+      height,
+      zoomType: 'x',
+      panning: true,
+      panKey: 'shift',
     },
-    title: {
-      text: `Strømforbruk ${sendBuilding} vs ${sendCompareBuilding}`,
-      style: {
-        color: 'white',
-      },
-    },
+    colors: ['#28d515', '#CE32E7', '#00FFFF', '#FEB064', '#CECE00',
+      '#FEB064', '#92A8CD', '#A47D7C', '#B5CA92'],
     credits: {
       enabled: false,
     },
-    yAxis: {
-      title: {
-        text: 'kWh',
-        style: {
-          color: 'white',
-        },
-      },
-      labels: {
-        style: {
-          color: 'white',
-        },
+    legend: {
+      enabled: !height,
+      itemStyle: {
+        color: 'white',
       },
     },
     plotOptions: {
-      column: {
-        colorByPoint: true,
-        color: '#CE32E7',
+      line: {
+        pointInterval: 86400000,
+        pointStart: 1282408923000,
       },
       series: {
         style: {
@@ -65,6 +54,10 @@ function CategoryUsage(props: {sendBuilding: any, sendCompareBuilding: any}) {
         },
         turboThreshold: 0,
       },
+    },
+    navigator: {
+      enabled: true,
+      height: 20,
     },
     rangeSelector: {
       allButtonsEnabled: true,
@@ -106,10 +99,19 @@ function CategoryUsage(props: {sendBuilding: any, sendCompareBuilding: any}) {
         borderRadius: '5px',
       },
     },
-    legend: {
-      itemStyle: {
+    scrollbar: {
+      enabled: false,
+    },
+    series: data,
+    title: {
+      text: 'Forbruk fordelt på ulike byggkategorier',
+      style: {
         color: 'white',
       },
+    },
+    tooltip: {
+      headerFormat: '<span style="font-size: 10px">{point.key:%Y-%m-%d}</span><br/>',
+      valueSuffix: ' kWh',
     },
     xAxis: {
       type: 'datetime',
@@ -120,18 +122,24 @@ function CategoryUsage(props: {sendBuilding: any, sendCompareBuilding: any}) {
         format: '{value:%Y-%b-%e}',
       },
     },
-    navigator: {
-      enabled: true,
-      height: 20,
+    yAxis: {
+      title: {
+        text: 'kWh',
+        style: {
+          color: 'white',
+        },
+      },
+      labels: {
+        style: {
+          color: 'white',
+        },
+      },
+      tickAmount: 6,
     },
-    scrollbar: {
-      enabled: false,
-    },
-    series: data,
   };
   return (
     <HighchartsReact constructorType="stockChart" highcharts={Highcharts} options={options} />
   );
 }
 
-export default CategoryUsage;
+export default EnergyUsage;

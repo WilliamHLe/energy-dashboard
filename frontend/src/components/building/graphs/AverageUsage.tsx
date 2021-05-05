@@ -1,27 +1,55 @@
 import React, { useEffect, useState } from 'react';
 import Highcharts from 'highcharts';
 import HighchartsReact from 'highcharts-react-official';
-import axios from 'axios';
 import { useParams } from 'react-router';
 import style from '../building.module.css';
+import { getEnergyAverage } from '../../../services/energyService';
 
 require('highcharts/highcharts-more')(Highcharts);
 require('highcharts/modules/solid-gauge')(Highcharts);
 
+/**
+ * Creates a gauge chart that compares a buildings average usage to the building category
+ */
 function AverageUsage() {
   const { category, id } = useParams<{category:string, id:string}>();
 
-  const [data, setData] = useState<any>();
+  const [data, setData] = useState<{
+    name: string,
+    type?: string,
+    data?: number[],
+    dial?: {
+      radius:string,
+      baseWidth: number,
+      rearLength: string
+    },
+    dataLabels?: {
+      format: string
+    },
+    showInLegend: boolean,
+  }[]>();
   const [categoryAvg, setCategoryAvg] = useState<{name: string, average: number}>({ name: 'initial', average: 10000 });
   useEffect(() => {
     const fetchData = async () => {
-      const resultBuilding = await axios.get(`/energy/average/${id}`);
-      const resultCategory = await axios.get(`/energy/average/${category}`);
-      // setData(resultBuilding.data.averageEnergy[0].average);
-      setCategoryAvg({ name: category, average: resultCategory.data.averageEnergy[0].average });
-      const tempData:any[] = [{
+      const resultBuilding = await getEnergyAverage(`${id}`);
+      const resultCategory = await getEnergyAverage(`${category}`);
+      setCategoryAvg({ name: category, average: resultCategory.averageEnergy[0].average });
+      const tempData: {
+        name: string,
+        type?: string,
+        data?: number[],
+        dial?: {
+          radius:string,
+          baseWidth: number,
+          rearLength: string
+        },
+        dataLabels?: {
+          format: string
+        },
+        showInLegend: boolean,
+      }[] = [{
         name: id,
-        data: [resultBuilding.data.averageEnergy[0].average],
+        data: [resultBuilding.averageEnergy[0].average],
         dial: {
           radius: '100%',
           baseWidth: 1,
@@ -41,11 +69,27 @@ function AverageUsage() {
     };
     fetchData();
   }, [category, id]);
-
+  // Options for Highcharts
   const options = {
     chart: {
       type: 'solidgauge',
       backgroundColor: null,
+    },
+    credits: {
+      enabled: false,
+    },
+    colors: ['#28d515',
+      '#FEB064', '#92A8CD', '#A47D7C', '#B5CA92'],
+    legend: {
+      verticalAlign: 'middle',
+      layout: 'vertical',
+      y: 80,
+      itemStyle: {
+        color: 'white',
+      },
+      itemHoverStyle: {
+        color: 'white',
+      },
     },
     pane: {
       center: ['50%', '55%'],
@@ -58,42 +102,6 @@ function AverageUsage() {
         outerRadius: '100%',
         shape: 'arc',
       },
-    },
-    title: {
-      text: 'Gjennomsnittlig energiforbruk',
-      style: {
-        color: 'white',
-      },
-    },
-    credits: {
-      enabled: false,
-    },
-    colors: ['#28d515',
-      '#FEB064', '#92A8CD', '#A47D7C', '#B5CA92'],
-    yAxis: {
-      lineWidth: 0,
-      tickWidth: 0,
-      minorTickInterval: null,
-      tickPixelInterval: 400,
-      tickAmount: 2,
-      title: null,
-      labels: {
-        y: 16,
-      },
-      min: 0,
-      max: (categoryAvg.average * 2),
-      plotBands: [{
-        from: categoryAvg.average,
-        to: categoryAvg.average + ((categoryAvg.average * 3) / 100),
-        thickness: '50%',
-        outerRadius: '105%',
-        color: '#FEB064',
-        zIndex: 5,
-        label: {
-          useHTML: true,
-          text: `<span style="background-color: #FEB064;border-radius: 5px;border:1px solid white; padding:2px;">${categoryAvg.name}: ${categoryAvg.average} KWh</span>`,
-        },
-      }],
     },
     plotOptions: {
       column: {
@@ -133,16 +141,15 @@ function AverageUsage() {
         allowPointSelect: false,
       },
     },
-    legend: {
-      verticalAlign: 'middle',
-      layout: 'vertical',
-      y: 80,
-      itemStyle: {
+    series: data,
+    title: {
+      text: 'Gjennomsnittlig energiforbruk',
+      style: {
         color: 'white',
       },
-      itemHoverStyle: {
-        color: 'white',
-      },
+    },
+    tooltip: {
+      enabled: true,
     },
     xAxis: {
       labels: {
@@ -151,10 +158,31 @@ function AverageUsage() {
         },
       },
     },
-    tooltip: {
-      enabled: true,
+    yAxis: {
+      lineWidth: 0,
+      tickWidth: 0,
+      minorTickInterval: null,
+      tickPixelInterval: 400,
+      tickAmount: 2,
+      title: null,
+      labels: {
+        y: 16,
+      },
+      min: 0,
+      max: (categoryAvg.average * 2),
+      plotBands: [{
+        from: categoryAvg.average,
+        to: categoryAvg.average + ((categoryAvg.average * 3) / 100),
+        thickness: '50%',
+        outerRadius: '105%',
+        color: '#FEB064',
+        zIndex: 5,
+        label: {
+          useHTML: true,
+          text: `<span style="background-color: #FEB064;border-radius: 5px;border:1px solid white; padding:2px;">${categoryAvg.name}: ${categoryAvg.average} KWh</span>`,
+        },
+      }],
     },
-    series: data,
   };
   return (
     <>

@@ -1,48 +1,28 @@
 import React, { useEffect, useState } from 'react';
 import Highcharts from 'highcharts';
 import HighchartsReact from 'highcharts-react-official';
-import axios from 'axios';
+import { getEnergyCarriersAll } from '../../../services/energyService';
 
 require('highcharts/modules/sankey')(Highcharts);
-const ls = require('localstorage-ttl');
 
+/**
+ * Creates a sankey diagram for energy carriers
+ */
 function Sankey() {
-  const [data, setData] = useState<any>([]);
+  const [data, setData] = useState<{
+    data: any[];
+    keys: string[];
+    name: string;
+    type: string
+  }[]>([]);
 
   useEffect(() => {
     const fetchData = async () => {
-      const result = await axios.get('/energy/carriers');
-      const tempData:any[] = [{
-        keys: ['from', 'to', 'weight'],
-        data: [],
-        type: 'sankey',
-        name: 'Energibærer',
-      }];
-      for (let i = 0; i < result.data.length; i += 1) {
-        for (let j = 0; j < result.data[i].carriers.length; j += 1) {
-          tempData[0].data.push([
-            result.data[i].carriers[j].name,
-            result.data[i].category.name,
-            result.data[i].carriers[j].amount,
-          ]);
-        }
-      }
-      // Sortering etter bærernavn
-      tempData[0].data.sort((a: string[], b: any[]) => a[0].localeCompare(b[0]));
-      // Sortering etter bærerverdi
-      // tempData[0].data.sort((a: number[], b: number[]) => b[2] - a[2]);
-      // Sortering etter byggnavn
-      tempData[0].data.sort((a: string[], b: any[]) => a[1].localeCompare(b[1]));
-      ls.set('sankey', tempData, [604800000]);
-      setData(tempData);
+      setData(await getEnergyCarriersAll());
     };
-    if (ls.get('sankey')) {
-      setData(ls.get('sankey'));
-    } else {
-      fetchData();
-    }
+    fetchData();
   }, []);
-
+  // Options for Highcharts
   const options = {
     chart: {
       backgroundColor: null,
@@ -51,11 +31,8 @@ function Sankey() {
     colors: ['#CECE00', '#FEB064', '#00ffff', '#28d515',
       '#B5CA92',
       '#FEB064', '#92A8CD', '#A47D7C', '#F7A4F7'],
-    title: {
-      text: 'Energibærere',
-      style: {
-        color: 'white',
-      },
+    credits: {
+      enabled: false,
     },
     plotOptions: {
       sankey: {
@@ -64,10 +41,13 @@ function Sankey() {
         },
       },
     },
-    credits: {
-      enabled: false,
-    },
     series: data,
+    title: {
+      text: 'Energibærere',
+      style: {
+        color: 'white',
+      },
+    },
   };
 
   return (
