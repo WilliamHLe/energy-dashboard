@@ -67,6 +67,7 @@ function Compare(props: { currentBuilding: Ibuilding, onChange: any }) {
     fetchCurrentBuildingData();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
   const filter = (index: number, list: Ibuilding[] | undefined) => {
     const item = checkedItems[index];
     if (item.label === 'energimerke' && currentBuilding !== undefined && list !== undefined) {

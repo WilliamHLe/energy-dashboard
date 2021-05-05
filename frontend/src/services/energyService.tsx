@@ -5,7 +5,7 @@ import { getServerBaseUri } from './getServerBaseUri';
  * Fetches energy usage and transforms the data to be used in a line chart
  * @param {(string|undefined)} category Name of building category
  * @param {(string|undefined)} id       Name of building
- * @return {Array} tempData Transformed data
+ * @return {Array} Transformed data
  */
 export async function getEnergyUsage(category: string | undefined, id: string | undefined) {
   const query = id || category || '';
@@ -42,7 +42,7 @@ export async function getEnergyUsage(category: string | undefined, id: string | 
 
 /**
  * Fetches energy carriers for all building categories to be used in sankey diagram
- * @return {Array} tempData Transformed data
+ * @return {Array} Transformed data
  */
 export async function getEnergyCarriersAll() {
   try {

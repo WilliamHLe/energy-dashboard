@@ -112,9 +112,7 @@ function AverageUsage() {
           color: 'white',
         },
         events: {
-          legendItemClick: function () {
-            return false;
-          },
+          legendItemClick: () => false,
         },
         allowPointSelect: false,
       },
