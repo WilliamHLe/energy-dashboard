@@ -1,6 +1,9 @@
 import React from 'react';
 import style from './energyTips.module.css';
 
+/**
+ * Menu-button. Changes the energy tip displayed when clicked.
+ */
 interface ISideButton {
     title: string;
     id: number;

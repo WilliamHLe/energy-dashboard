@@ -10,6 +10,7 @@ export default function HeatMapChart() {
   const yLabels = ['4', '3', '2', '1'];
 
   const [data, setData] = useState<number[][]>([[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]]);
+  // Fetching how much energy the current building have saved on a weekly basis
   useEffect(() => {
     const fetchData = async () => {
       setData(await getEnergySavedWeekly(id));

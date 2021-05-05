@@ -13,68 +13,11 @@ interface ITopListData {
   building: {id: string, name: string, category:ICategory },
   score: number
 }
-// eslint-disable-next-line no-unused-vars
-const MockData:ITopListData[] = [
-  {
-    building: {
-      id: '4edd40c86762e0fb12000003',
-      name: 'Solsiden Barnehage',
-      category: {
-        id: '4edd40c86762e0fb12000003',
-        name: 'Barnehage',
-      },
-    },
-    score: 98,
-  },
-  {
-    building: {
-      id: '4edd40c86762e0fb12000003',
-      name: 'Solsiden Barnehage',
-      category: {
-        id: '4edd40c86762e0fb12000003',
-        name: 'Barnehage',
-      },
-    },
-    score: 98,
-  },
-  {
-    building: {
-      id: '4edd40c86762e0fb12000003',
-      name: 'Solsiden Barnehage',
-      category: {
-        id: '4edd40c86762e0fb12000003',
-        name: 'Barnehage',
-      },
-    },
-    score: 98,
-  },
-  {
-    building: {
-      id: '4edd40c86762e0fb12000003',
-      name: 'Solsiden Barnehage',
-      category: {
-        id: '4edd40c86762e0fb12000003',
-        name: 'Barnehage',
-      },
-    },
-    score: 98,
-  },
-  {
-    building: {
-      id: '4edd40c86762e0fb12000003',
-      name: 'Solsiden Barnehage',
-      category: {
-        id: '4edd40c86762e0fb12000003',
-        name: 'Barnehage',
-      },
-    },
-    score: 98,
-  },
-];
 
 const CategoryTopList = () => {
   const { category } = useParams<{category:string}>();
   const [data, setData] = useState<ITopListData[]>([]);
+  // Fetching the buildings from a category sorted by energy saved since last year
   useEffect(() => {
     const fetchData = async () => {
       setData(await getHighscoreList(category));
@@ -86,7 +29,6 @@ const CategoryTopList = () => {
     <div className={`container ${style.wrapper}`}>
       <div className={style.textbox}>
         <h1>
-          {/* eslint-disable-next-line no-self-compare */}
           { (category === 'helsebygg' || category === 'idrettsbygg' || category === 'annet') ? 'Hvilket' : 'Hvilken' }
           {' '}
           { (category === 'annet') ? 'annet bygg' : category }
@@ -95,11 +37,8 @@ const CategoryTopList = () => {
         </h1>
         <p>
           Klikk på
-          {' '}
           { (category === 'helsebygg' || category === 'idrettsbygg' || category === 'annet') ? 'et' : 'en' }
-          {' '}
           { (category === 'annet') ? 'annet bygg' : category }
-          {' '}
           for å se mer info om denne. Kanskje kan du hente noen tips?
         </p>
       </div>

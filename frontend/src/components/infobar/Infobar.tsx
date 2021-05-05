@@ -16,7 +16,9 @@ interface building {
 }
 
 const InfoBar = () => {
+  // Using the URL parameters to fetch the correct metrics for the specific page
   const { category, id } = useParams<{category:string | undefined, id:string | undefined}>();
+  // The current metrics for the info bar
   const [data, setData] = useState<building>({
     energyUsed: 0,
     energySaved: 0,
@@ -24,6 +26,7 @@ const InfoBar = () => {
     buildings: 0,
   });
 
+  // Fetching the metrics for a specific building category or the front page using the URL parameter
   useEffect(() => {
     const fetchData = async () => {
       setData(await getMetrics(category));

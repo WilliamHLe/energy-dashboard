@@ -84,8 +84,11 @@ function Building() {
         </div>
         <div>
           {modalIsOpen === true ? (
-          // eslint-disable-next-line max-len
-            <Modal currentBuilding={currentBuilding} compareBuilding={compareWithBuilding} onChange={openModal} />
+            <Modal
+              currentBuilding={currentBuilding}
+              compareBuilding={compareWithBuilding}
+              onChange={openModal}
+            />
           ) : null}
         </div>
       </div>

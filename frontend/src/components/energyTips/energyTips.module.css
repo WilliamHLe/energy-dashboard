@@ -4,6 +4,9 @@ li {
   color: rgba(255, 255, 255, 0.7);
   font-weight: lighter;
 }
+ul{
+  margin: 0; 
+}
 #pageTitle {
   margin: 10px 0px 60px 20px;
 }
@@ -51,9 +54,17 @@ li {
 }
 .energyTipText{
   margin: 30px 20px 0px 20px;
-  width: fit-content;
+  width: 95%;
 }
-
+.subheader {
+  font-weight: normal;
+  color: rgba(255, 255, 255, 0.9);
+  margin-top: 10px;
+  margin-bottom: 5px;
+}
+.source {
+  margin-top: 20px;
+}
 .twoPercent{
   grid-area: twoPercentGoal;
   text-align: left;
