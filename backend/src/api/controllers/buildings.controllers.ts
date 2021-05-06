@@ -215,7 +215,7 @@ const getAverageUsageById = async (
     const { fromDate, toDate } = dateUtil.parseDates(
       req.query.from_date, req.query.to_date,
     );
-    const energyUsage = await energyAverageService.energyAverageBySlug(
+    const energyUsage = await energyAverageService.averageByYearForBuildings(
       [req.params.id], fromDate, toDate,
     );
 

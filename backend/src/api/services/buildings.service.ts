@@ -24,6 +24,11 @@ const buildingsGroupedByCategory = async (): Promise<IBuildingCategory[]> => {
     {
       $unwind: '$category',
     },
+    {
+      $project: {
+        _id: 0,
+      },
+    },
   ];
 
   return Building.aggregate(query);

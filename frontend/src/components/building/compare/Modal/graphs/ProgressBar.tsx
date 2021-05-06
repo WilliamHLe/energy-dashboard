@@ -39,11 +39,11 @@ const ProgressBar = (props: {building: string | Ibuilding | undefined,
           const response = await getEnergyAverage(`${building}`);
           const responseCategory = await getEnergyAverage(`${category}`);
           const tempWidth = (
-            response.averageEnergy[0].average
-              / responseCategory.averageEnergy[0].average
+            response.averageEnergy
+              / responseCategory.averageEnergy
           ) * 100;
           setWidth(tempWidth);
-          setCompleted({ value: response.averageEnergy[0].average, type: 'avg' });
+          setCompleted({ value: response.averageEnergy, type: 'avg' });
         } catch (e) {
           setWidth(null);
           setCompleted({ value: 'Ingen data', type: 'avg' });

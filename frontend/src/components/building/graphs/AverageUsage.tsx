@@ -33,7 +33,7 @@ function AverageUsage() {
     const fetchData = async () => {
       const resultBuilding = await getEnergyAverage(`${id}`);
       const resultCategory = await getEnergyAverage(`${category}`);
-      setCategoryAvg({ name: category, average: resultCategory.averageEnergy[0].average });
+      setCategoryAvg({ name: category, average: resultCategory.averageEnergy });
       const tempData: {
         name: string,
         type?: string,
@@ -49,7 +49,7 @@ function AverageUsage() {
         showInLegend: boolean,
       }[] = [{
         name: id,
-        data: [resultBuilding.averageEnergy[0].average],
+        data: [resultBuilding.averageEnergy],
         dial: {
           radius: '100%',
           baseWidth: 1,
