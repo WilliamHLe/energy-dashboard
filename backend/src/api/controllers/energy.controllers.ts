@@ -1,6 +1,6 @@
 import { Request, Response, NextFunction } from 'express';
 import {
-  ICarrier, ICarrierCategory, IEnergyAverage, IEnergyAverageByCategory, IEnergySaved, IUsage,
+  ICarrier, ICarrierCategory, IEnergyAverageByCategory, IEnergySaved, IUsage,
 } from '../../types/interfaces';
 import Building, { IBuilding } from '../models/buildings.model';
 import Category, { ICategory } from '../models/categories.model';
@@ -166,9 +166,9 @@ const getAverageEnergyBySlug = async (
   next: NextFunction,
 ): Promise<void> => {
   try {
-    const result:IEnergyAverage[] = await bySlug(
+    const result: number = await bySlug(
       req.params.slug,
-      energyAverageService.energyAverageBySlug,
+      energyAverageService.averageByYearForBuildings,
       req.query.from_date,
       req.query.to_date,
     );
@@ -191,7 +191,7 @@ const getAverageEnergy = async (
 ): Promise<void> => {
   try {
     const energyAverage: IEnergyAverageByCategory[] = await
-    energyAverageService.energyAverageGroupedByCategory(
+    energyAverageService.averageByYearForCategories(
       dateUtil.stringToDate(req.query.from_date),
       dateUtil.stringToDate(req.query.to_date),
     );

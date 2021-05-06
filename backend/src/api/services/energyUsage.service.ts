@@ -21,6 +21,9 @@ const sumEnergyUsageByIds = async (
 ): Promise<number> => {
   let query:object[] = [
     {
+      $unwind: '$measurements',
+    },
+    {
       $match: {
         building: { $in: buildingIds.map((id) => mongoose.Types.ObjectId(id)) },
         type: 'Forbruksmåler',

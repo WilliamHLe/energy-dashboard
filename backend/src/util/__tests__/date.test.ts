@@ -34,8 +34,12 @@ describe('getFirstDateInYear', () => {
 describe('previousYear', () => {
   it('Returns same date in the previous year given a date', () => {
     const year = 2021;
-    const date = new Date(year, 4, 7);
+    const day = 7;
+    const month = 4;
+    const date = new Date(year, month, day);
     const result: Date = dateUtil.previousYear(date);
     expect(result.getFullYear()).toBe(year - 1);
+    expect(result.getMonth()).toBe(month);
+    expect(result.getDate()).toBe(day);
   });
 });

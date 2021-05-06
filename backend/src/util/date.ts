@@ -4,10 +4,7 @@ import { IParsedDates } from '../types/interfaces';
  * Input: new Date('2021-05-17T00:00:00.000Z')
  * Output: new Date('2021-01-01T00:00:00.000Z')
  */
-const getFirstDateInYear = (date: Date): Date => {
-  const year = date.getFullYear();
-  return new Date(year, 0, 1);
-};
+const getFirstDateInYear = (date: Date): Date => new Date(date.getFullYear(), 0, 1);
 
 /**
  * Takes a possible datestring and parses it into a Date. Undefined string

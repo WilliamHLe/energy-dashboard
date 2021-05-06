@@ -1,0 +1,22 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`averageByYearForCategories  1`] = `
+Array [
+  Object {
+    "average": 150,
+    "category": Object {
+      "__v": 0,
+      "_id": "6093a8e7c165f7a41d6a6141",
+      "name": "idrettsbygg",
+    },
+  },
+  Object {
+    "average": 5,
+    "category": Object {
+      "__v": 0,
+      "_id": "6093a8e7c165f7a41d6a613b",
+      "name": "skole",
+    },
+  },
+]
+`;

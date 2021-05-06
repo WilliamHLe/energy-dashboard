@@ -5,17 +5,15 @@ import buildingService from './buildings.service';
 import common from '../../util/common';
 
 /**
- * Calculates the average energy by slug.
- * The average is calculated by year if no from or to dates are specified.
- * Slug can either be a specific category or a specific builiding.
+ * Calculates the yearly average energy for the provided buildings (aggregated).
  * @param {string[]} buildingIds - List of building ids
  * @param {Date} [fromDate] - The earliest date to include
  * @param {Date} [toDate] - The latest date to include
- * @returns {ICarrier[]} - Carriers with their summed energy usage for the given buildings
+ * @returns {number} - The average energy useage in kWh
  */
-const energyAverageBySlug = async (
+const averageByYearForBuildings = async (
   buildingIds: string[], fromDate?: Date, toDate?: Date,
-): Promise<IEnergyAverage[]> => {
+): Promise<number> => {
   let query: object[] = [
     {
       $match: {
@@ -62,19 +60,22 @@ const energyAverageBySlug = async (
       },
     },
   ];
+
   query = common.filterQueryBydate(query, 2, fromDate, toDate);
 
-  return Sensor.aggregate(query);
+  const res: IEnergyAverage[] = await Sensor.aggregate(query);
+
+  return res[0]?.average;
 };
 
 /**
-   * Calculates the average energy for each category.
-   * The average is calculated by year if no from or to dates are specified.
-   * @param {Date} [fromDate] - The earliest date to include
-   * @param {Date} [toDate] - The latest date to include
-   * @returns {IEnergyAverageByCategory[]} - List with categories and their energy average
-   */
-const energyAverageGroupedByCategory = async (
+ * Calculates the average energy for each category.
+ * The average is calculated by year if no from or to dates are specified.
+ * @param {Date} [fromDate] - The earliest date to include
+ * @param {Date} [toDate] - The latest date to include
+ * @returns {IEnergyAverageByCategory[]} - List with categories and their energy average
+ */
+const averageByYearForCategories = async (
   fromDate?: Date, toDate?: Date,
 ): Promise<IEnergyAverageByCategory[]> => {
   const buildingsGroupedByCategory = await buildingService.buildingsGroupedByCategory();
@@ -82,12 +83,12 @@ const energyAverageGroupedByCategory = async (
   return Promise.all(
     buildingsGroupedByCategory.map(async (buildingCategory) => ({
       category: buildingCategory.category,
-      average: await energyAverageBySlug(buildingCategory.buildings, fromDate, toDate),
+      average: await averageByYearForBuildings(buildingCategory.buildings, fromDate, toDate),
     })),
   );
 };
 
 export default {
-  energyAverageBySlug,
-  energyAverageGroupedByCategory,
+  averageByYearForBuildings,
+  averageByYearForCategories,
 };

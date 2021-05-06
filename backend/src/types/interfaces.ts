@@ -54,12 +54,11 @@ export interface IEnergyUsageCategory {
 }
 export interface IEnergyAverage {
   average: number,
-  date: string
 }
 
 export interface IEnergyAverageByCategory {
   category: ICategory,
-  average: IEnergyAverage[]
+  average: number
 }
 
 export interface IMetrics {
