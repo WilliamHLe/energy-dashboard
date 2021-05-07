@@ -48,5 +48,6 @@ This requires feeding the applications their environment variables or it will ru
 The project is set up with unit tests. These can be run with `npm run test` or `npm run test:watch` for both the frontend and backend application.
 
 ### License
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+This project is licensed under the GPL-3.0 License - see the [LICENSE](LICENSE) file for details.
+Do note the project uses Highcharts which requires a custom license to use. To run the project you therefore need to obtain a [Highcharts license](http://www.highcharts.com/license) and install the Highcharts dependencies by your self.
 
