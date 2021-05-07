@@ -142,12 +142,6 @@ const getSavedEnergyById = async (
   }
 };
 
-/**
- * Controller to handle finding carriers for a single building based on the building id.
- * @param {Request} req - Express request. Should contain an id.
- * @param {Response} res - Express response
- * @param {NextFunction} next - Express next function
- */
 const getCarriersById = async (
   req: Request<any, any, any, ReqQueryDate>,
   res: Response,
@@ -187,7 +181,6 @@ const getEnergyUsageById = async (
   }
 };
 
-// Get total energy by building ID
 const getTotalEnergyById = async (
   req: Request<any, any, any, ReqQueryDate>,
   res: Response,

@@ -11,7 +11,7 @@ interface ISideButton {
     selected: number;
 }
 
-const SideButton = (props:ISideButton) => {
+const SideButton = (props: ISideButton) => {
   const {
     title, id, onSelect, selected,
   } = props;

@@ -33,22 +33,20 @@ See [API documentation](api-documentation/README.md) for instructions on the API
         |__routes # directory for routes
             |__/buildings # example route
         |__services # directory for services
+            |__ ___tests___
             |__calculateExpectedUsage # example of service
-    |__ ....# other files not api-related
+    |__ types
+    |__ util
     |__index.ts # main file
-|__test # test directory for additional tests
-
-
 
 ````
 The project structure is organized by type and not feature. This is because of the relative small size of this project.
 
-```models/```contains all mongoose models. 
-```controllers/``` generates outputs. There should not be any calculations or other logic here. One controller can be used by several routes.  
-```services/``` contains all logic. This should be kept separate from any routing and models. Available for all the backend. One services can be used by several controllers.  
-```routes/``` all routing. This is what the frontend uses. 
+```api/models/```contains all mongoose models. 
+```api/controllers/``` generates outputs. There should not be any calculations or other logic here. One controller can be used by several routes.  
+```api/services/``` contains all logic. This should be kept separate from any routing and models. Available for all the backend. One services can be used by several controllers.  
+```api/routes/``` all routing. This is what the frontend uses. 
+```types/``` interfaces and types
+```util``` utility functions (database setup etc.)
 
-Test files will be put together with the functionality they test, except for those testing a bigger part of the system.
-These test files will be put in the ```test/``` folder. 
-
-The databases are located in the ```database/`` folder in the root directory. 
+Test files will be put together with the functionality they test in `__test__` folders.

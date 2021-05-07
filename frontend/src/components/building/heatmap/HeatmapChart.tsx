@@ -5,7 +5,7 @@ import style from './heatmapChart.module.css';
 import { getEnergySavedWeekly } from '../../../services/energyService';
 
 export default function HeatMapChart() {
-  const { id } = useParams<{id:string}>();
+  const { id } = useParams<{id: string}>();
   const xLabels = ['jan', 'feb', 'mar', 'apr', 'mai', 'jun', 'jul', 'aug', 'sep', 'okt', 'nov', 'des'];
   const yLabels = ['4', '3', '2', '1'];
 
@@ -61,8 +61,8 @@ export default function HeatMapChart() {
             color: 'rgba(255, 255, 255, .8)',
           })}
           cellStyle={(_x, _y, ratio) => {
-            let backgroundColors:string;
-            let textColor:string = 'rgba(78, 78, 78)';
+            let backgroundColors: string;
+            let textColor: string = 'rgba(78, 78, 78)';
             if (ratio < 0.45) {
               backgroundColors = 'rgb(49, 97, 114)';
               textColor = 'rgba(255, 255, 255, .8)';

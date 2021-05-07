@@ -10,7 +10,7 @@ type CategoryTopListCardProps = {
 }
 
 const CategoryTopListCard = (props:CategoryTopListCardProps) => {
-  const { category } = useParams<{category:string}>();
+  const { category } = useParams<{category: string}>();
   const { buildingName, index, score } = props;
   return (
     <Link to={`/${category}/${buildingName}`} className={style.buildingCard}>

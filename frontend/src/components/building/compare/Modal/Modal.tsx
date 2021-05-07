@@ -25,6 +25,7 @@ function Modal(props: {
     props.onChange();
   };
 
+  // Gets check or cross symbol for a upgrade.
   const getIcon = (building: number[], index: number) => {
     if (currentBuildingUpgrade[index] === 0 && otherBuildingUpgrade[index] === 0) {
       return (<img alt="check" src={check} width={40} height={40} />);
@@ -32,8 +33,13 @@ function Modal(props: {
     if (building[index] === 1) {
       return (<img alt="check" src={check} width={40} height={40} />);
     }
-    return (<img alt="check" src={cross} width={40} height={40} />);
+    return (<img alt="cross" src={cross} width={40} height={40} />);
   };
+
+  /**
+   * Decides at random if a building has an upgrade or not.
+   * This is for demonstration purposes as we do not have data about upgrades
+   */
   const setIcons = () => {
     const arr = [];
     let i = 0;

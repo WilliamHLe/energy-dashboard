@@ -31,7 +31,7 @@ interface IAverage {
  * Creates a gauge chart that compares a buildings average usage to the building category
  */
 function AverageUsage() {
-  const { category, id } = useParams<{category:string, id:string}>();
+  const { category, id } = useParams<{category: string, id: string}>();
 
   const [data, setData] = useState<IAverage[]>();
   const [categoryAvg, setCategoryAvg] = useState<{name: string, average: number}>({ name: 'initial', average: 10000 });
@@ -39,7 +39,7 @@ function AverageUsage() {
     const fetchData = async () => {
       const resultBuilding = await getEnergyAverage(`${id}`);
       const resultCategory = await getEnergyAverage(`${category}`);
-      setCategoryAvg({ name: category, average: resultCategory.averageEnergy[0].average });
+      setCategoryAvg({ name: category, average: resultCategory.averageEnergy });
       const tempData: IAverage[] = [{
         name: id,
         data: [resultBuilding.averageEnergy],

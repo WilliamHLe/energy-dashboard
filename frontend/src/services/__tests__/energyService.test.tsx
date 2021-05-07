@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { mocked } from 'ts-jest/utils';
-import * as energyService from '../services/energyService';
+import * as energyService from '../energyService';
 
 jest.mock('axios');
 const mockedAxios = mocked(axios, true);
@@ -250,7 +250,6 @@ test('Energy usage is transformed correctly', () => {
   ];
   const correctResponse = [
     {
-      cropThreshold: 9999,
       name: 'idrettsbygg',
       data: [
         {
@@ -296,7 +295,6 @@ test('Energy usage is transformed correctly', () => {
       ],
     },
     {
-      cropThreshold: 9999,
       name: 'annet',
       data: [
         {
@@ -342,7 +340,6 @@ test('Energy usage is transformed correctly', () => {
       ],
     },
     {
-      cropThreshold: 9999,
       name: 'helsebygg',
       data: [
         {
@@ -388,7 +385,6 @@ test('Energy usage is transformed correctly', () => {
       ],
     },
     {
-      cropThreshold: 9999,
       name: 'skole',
       data: [
         {
@@ -434,7 +430,6 @@ test('Energy usage is transformed correctly', () => {
       ],
     },
     {
-      cropThreshold: 9999,
       name: 'barnehage',
       data: [
         {
@@ -483,7 +478,7 @@ test('Energy usage is transformed correctly', () => {
   const resp = { data: usage };
   mockedAxios.get.mockResolvedValue(resp);
 
-  return energyService.getEnergyUsage(undefined, undefined)
+  return energyService.getEnergyUsageAll()
     .then((data) => expect(data).toEqual(correctResponse));
 });
 
@@ -532,7 +527,6 @@ test('Energy usage is transformed correctly for specific building or category', 
   ];
   const correctResponse = [
     {
-      cropThreshold: 9999,
       name: 'Rye barneskole',
       data: [
         {
@@ -581,7 +575,7 @@ test('Energy usage is transformed correctly for specific building or category', 
   const resp = { data: usage };
   mockedAxios.get.mockResolvedValue(resp);
 
-  return energyService.getEnergyUsage('skole', 'Rye barneskole')
+  return energyService.getEnergyUsageSlug('Rye barneskole')
     .then((data) => expect(data).toEqual(correctResponse));
 });
 

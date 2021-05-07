@@ -30,15 +30,6 @@ const bySlug = async (slug: string, func: Function, fromDate?: string, toDate?: 
   return func(buildings, dateUtil.stringToDate(fromDate), dateUtil.stringToDate(toDate));
 };
 
-/**
- * Controller to handle fetching carriers for both categories and buildings by name. This is
- * done by first checking if the given req.params.slug is a category or building. If it is a
- * category the buildings of that category are found and used. The buildings are then sent to
- * the service which calculates the carrier usage of the building(s).
- * @param {Request} req - Express request. Should contain a slug.
- * @param {Response} res - Express response
- * @param {NextFunction} next - Express next function
- */
 const getCarriersBySlug = async (
   req: Request<any, any, any, ReqQueryDate>,
   res: Response,
@@ -57,12 +48,6 @@ const getCarriersBySlug = async (
   }
 };
 
-/**
- * Controller to handle finding carriers for all categories, grouped by category.
- * @param {Request} req - Express request
- * @param {Response} res - Express response
- * @param {NextFunction} next - Express next function
- */
 const getEnergyCarriers = async (
   req: Request<any, any, any, ReqQueryDate>,
   res: Response,
@@ -80,7 +65,6 @@ const getEnergyCarriers = async (
   }
 };
 
-// Get total energy of each building category
 const getTotalEnergy = async (
   req: Request<any, any, any, ReqQueryDate>,
   res: Response,
@@ -98,7 +82,6 @@ const getTotalEnergy = async (
   }
 };
 
-// Get total energy by category or building name
 const getTotalEnergyBySlug = async (
   req: Request<any, any, any, ReqQueryDate>,
   res: Response,
@@ -117,7 +100,6 @@ const getTotalEnergyBySlug = async (
   }
 };
 
-// Get time series energy usage of each building category
 const getEnergyUsage = async (
   req: Request<any, any, any, ReqQueryDate>,
   res: Response,
@@ -153,13 +135,6 @@ const getEnergyUsageBySlug = async (
   }
 };
 
-/**
- * Controller to handle finding average energy for slug.
- * Slug can be either a specific building or a specific category.
- * @param {Request} req - Express request
- * @param {Response} res - Express response
- * @param {NextFunction} next - Express next function
- */
 const getAverageEnergyBySlug = async (
   req: Request<any, any, any, ReqQueryDate>,
   res: Response,
@@ -178,12 +153,6 @@ const getAverageEnergyBySlug = async (
   }
 };
 
-/**
- * Controller to handle finding average energy for all categories, grouped by category.
- * @param {Request} req - Express request
- * @param {Response} res - Express response
- * @param {NextFunction} next - Express next function
- */
 const getAverageEnergy = async (
   req: Request<any, any, any, ReqQueryDate>,
   res: Response,

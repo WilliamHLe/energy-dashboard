@@ -4,22 +4,11 @@ import style from './compare.module.css';
 import { getBuildings } from '../../../services/buildingsService';
 import { IBuildingsData } from '../../../types/interfaces';
 
-/* interface Ibuilding {
-  name: string,
-  tek: string,
-  area: number,
-  year: number,
-  energyLabel: string,
-  category: {
-    id: string,
-    name: string,
-  }
-} */
-
 function Compare(props: { currentBuilding: IBuildingsData, onChange: any }) {
   const { currentBuilding } = props;
   const [initalBuildings, setInitialBuildings] = useState<IBuildingsData[]>();
   const [buildings, setBuildings] = useState<IBuildingsData[]>();
+  // items to use for filtering
   const [checkedItems, setCheckedItems] = useState([
     {
       name: 'Energimerke',
@@ -33,6 +22,10 @@ function Compare(props: { currentBuilding: IBuildingsData, onChange: any }) {
     },
   ]);
 
+  /**
+   * As we do not have data on a spesific buildings tekstandard or energylabel,
+   * we assign these properties to each fetched building at random.
+   */
   const fetchCurrentBuildingData = async () => {
     // Creates random tek-standard and energy label for the building
     // For demonstration purposes as the dataset lacks this information
@@ -51,6 +44,12 @@ function Compare(props: { currentBuilding: IBuildingsData, onChange: any }) {
       allBuildings[i].tek = teksatandard[k];
       allBuildings[i].energyLabel = energimerke[l];
     }
+
+    /**
+     * Filter out non-relevant buildings.
+     * We only want to render buildings which is roughly he same size and build
+     * roughly the same year as the current building
+     */
     if (allBuildings.length > 0) {
       const initialFilterd = allBuildings.filter((i: IBuildingsData) => (
         // eslint-disable-next-line max-len
@@ -69,6 +68,7 @@ function Compare(props: { currentBuilding: IBuildingsData, onChange: any }) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  // check which checkboxes the user has selected and filter out buildings
   const filter = (index: number, list: IBuildingsData[] | undefined) => {
     const item = checkedItems[index];
     if (item.label === 'energimerke' && currentBuilding !== undefined && list !== undefined) {
@@ -85,12 +85,15 @@ function Compare(props: { currentBuilding: IBuildingsData, onChange: any }) {
     let index = 0;
     let countFilter = 0;
     checkedItems.forEach(() => {
+      // checks if another checkbox is still checked
       if (checkedItems[index].checked) {
         setBuildings(filter(index, initalBuildings));
         countFilter += 1;
       }
       index += 1;
     });
+
+    // show inital buildings if no checkboxes is checked
     if (countFilter === 0) {
       setBuildings(initalBuildings);
     }

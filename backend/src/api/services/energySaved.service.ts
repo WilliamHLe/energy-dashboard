@@ -1,10 +1,10 @@
-import { IWeeklySaved, IWeeklyUsage } from '../../types/interfaces';
+import { IWeeklySaved, IWeeklyUsage, IWeekSum } from '../../types/interfaces';
 import { IBuilding } from '../models/buildings.model';
 import energyUsageService from './energyUsage.service';
 import metricsService from './metrics.service';
 import dateUtil from '../../util/date';
 
-const sortWeek = (diff: {week:string; sum: number;}[]) => {
+const sortWeek = (diff: IWeekSum[]) => {
   diff.sort((a: IWeeklyUsage, b: IWeeklyUsage) => {
     if (a.week < b.week) {
       return -1;
@@ -15,9 +15,9 @@ const sortWeek = (diff: {week:string; sum: number;}[]) => {
     return 0;
   });
 };
+
 /**
  * Calculates the weekly saved energy for a specific building.
- *
  * @param {IBuilding} building - specific building
  * @returns {IWeeklySaved[]} - list of weeks and percentage saved that week
  */
@@ -60,7 +60,6 @@ const savedWeeklyByBuilding = async (
 
 /**
  * Calculates the percentage of enegy saved for a building
- *
  * @param {IBuilding} buildingId - Specific building
  * @param {Date} currtoDate - The current date
  * @returns {number} - Carriers with their summed energy usage for the given buildings

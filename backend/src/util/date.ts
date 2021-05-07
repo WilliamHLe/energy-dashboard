@@ -1,8 +1,9 @@
 import { IParsedDates } from '../types/interfaces';
 
 /**
- * Input: new Date('2021-05-17T00:00:00.000Z')
- * Output: new Date('2021-01-01T00:00:00.000Z')
+ * Returns a new date with 1st of January of the same year as the given date
+ * @param {Date} date - A date
+ * @returns {Date} - The first date in the year
  */
 const getFirstDateInYear = (date: Date): Date => new Date(date.getFullYear(), 0, 1);
 
@@ -28,6 +29,11 @@ const stringToDate = (datestring?: string): Date | undefined => {
   throw new Error('Invalid datestring');
 };
 
+/**
+ * Returns a new date with the same date as the given date in the previous year
+ * @param {Date} date - A date
+ * @returns {Date} - Returns the same date in the previous year
+ */
 const previousYear = (date: Date): Date => {
   const prevDate = new Date(date);
   const prevYear: number = date.getFullYear() - 1;
@@ -41,6 +47,12 @@ const previousYear = (date: Date): Date => {
  */
 const latestDateInDataset = (): Date => new Date(2019, 12, 0);
 
+/**
+ * Creates date objects if the datestrings are provided, otherwise sets the dates as undefined
+ * @param {Date} fromDate - A date
+ * @param {Date} toDate - A date
+ * @returns {IParseDates} - An object with fromDate and toDate
+ */
 const parseDates = (fromDate?: string, toDate?: string): IParsedDates => {
   const parsedFromDate: Date | undefined = fromDate ? new Date(fromDate) : undefined;
   const parsedToDate: Date | undefined = parsedFromDate && toDate ? new Date(toDate) : undefined;

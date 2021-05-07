@@ -6,12 +6,8 @@
 ####
 
 Buildings:
-  # aasheimskole: /etc/hod/buildings/aasheimskole.ttl
   miniAasheim: /etc/hod/buildings/miniAasheim.ttl
   miniTille: /etc/hod/buildings/miniTiller.ttl
-  # kitten: /etc/hod/buildings/kitten.ttl
-  # tillerhelse: /etc/hod/buildings/tillerhelse.ttl
-  # goodBuildings: /etc/hod/buildings/goodBuilding.ttl
 
 # the location of the database files
 DBPath: _hoddb

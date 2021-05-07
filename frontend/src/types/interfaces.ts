@@ -98,12 +98,8 @@ export interface ISavedWeekly {
     data: ISavedWeeklyData[]
 }
 
-interface IAverageEnergy {
-    average: number
-}
-
 export interface IAverageData {
-    averageEnergy: IAverageEnergy[]
+    averageEnergy: number
 }
 
 export interface IAverage {
@@ -130,7 +126,7 @@ export interface IBuildings {
     data: IBuildingsData[]
 }
 
-interface IHighscoreData {
+export interface IHighscoreData {
     building: IBuildingsData,
     score: number
 }

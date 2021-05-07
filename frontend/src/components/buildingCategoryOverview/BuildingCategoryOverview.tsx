@@ -8,7 +8,7 @@ import { getEnergyUsageSlug } from '../../services/energyService';
 import { IUsageReturn } from '../../types/interfaces';
 
 function BuildingCategoryOverview() {
-  const { category } = useParams<{category:string, id:string}>();
+  const { category } = useParams<{category: string, id: string}>();
   const [data, setData] = useState<IUsageReturn[]>([]);
   useEffect(() => {
     async function fetchData() {

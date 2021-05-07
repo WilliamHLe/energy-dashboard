@@ -1,5 +1,10 @@
 import mongoose, { Connection } from 'mongoose';
 
+/**
+ * Gets the connection string for a mongoose database. Returns undefined if no
+ * string or environment variables are found.
+ * @returns {string | undefined} - The database connection string
+ */
 const getDbUri = (): string | undefined => {
   const connectionString = process.env.DB_CONNECTION_STRING;
 
@@ -20,6 +25,9 @@ const getDbUri = (): string | undefined => {
   return undefined;
 };
 
+/**
+ * Connects to a mongoose database
+ */
 const connectDb = async (): Promise<void> => {
   const uri: string | undefined = getDbUri();
   const options = {

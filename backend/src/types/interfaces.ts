@@ -2,6 +2,10 @@ import mongoose from 'mongoose';
 import { IBuilding } from '../api/models/buildings.model';
 import { ICategory } from '../api/models/categories.model';
 
+export interface IWeekSum {
+  week: string,
+  sum: number
+}
 export interface IBuildingCategory {
   category: ICategory,
   buildings: string[]
@@ -52,6 +56,7 @@ export interface IEnergyUsageCategory {
   category: ICategory,
   usage: IUsage[]
 }
+
 export interface IEnergyAverage {
   average: number,
 }
@@ -80,10 +85,12 @@ export interface IEnergyUsed {
   energyUsedLastYear: number,
   energyUsedCurrentYear: number,
 }
+
 export interface IEnergySaved {
   category: ICategory,
   saved: number,
 }
+
 export interface IParsedDates {
   fromDate: Date | undefined
   toDate: Date | undefined

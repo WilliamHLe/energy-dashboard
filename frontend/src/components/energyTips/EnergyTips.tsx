@@ -9,7 +9,7 @@ const EnergyTips = () => {
   const [selectedTopic, setSelectedTopic] = useState(0);
 
   // Changing the energy tip displayed by clicking one of the side-buttons.
-  function handleSelectTopic(id:number) {
+  function handleSelectTopic(id: number) {
     setSelectedTopic(id);
   }
 

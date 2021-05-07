@@ -2,29 +2,27 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router';
 import style from '../modal.module.css';
 import { getEnergySavedTotal, getEnergyAverage } from '../../../../../services/energyService';
+import { IAverageData } from '../../../../../types/interfaces';
 
-interface Ibuilding {
-    name: string,
-    tek: string,
-    areal: number,
-    year: number,
-    energimerke: string,
-  }
+interface ProgessBarProp {
+  building: string,
+  place: string,
+  data: string,
+}
 
-const ProgressBar = (props: {building: string | Ibuilding | undefined,
-  place: string, data: string}) => {
+const ProgressBar = (props: ProgessBarProp) => {
   const { category } = useParams<{ category:string }>();
   const [completed, setCompleted] = useState<{value:number | string, type:string}>({ value: 0, type: 'spart' });
-  // eslint-disable-next-line no-unused-vars
   const [width, setWidth] = useState<number | null>();
   const { building, place, data } = props;
   const [isLoading, setLoading] = useState(true);
 
+  // get data depending on the type of graph
   useEffect(() => {
     const fetchdata = async () => {
       if (data === 'spart') {
         try {
-          const response = await getEnergySavedTotal(`${building}`);
+          const response = await getEnergySavedTotal(building);
           setWidth(response.percentSaved > 0
             ? Math.min(response.percentSaved * 5, 100)
             : 0);
@@ -36,12 +34,9 @@ const ProgressBar = (props: {building: string | Ibuilding | undefined,
       }
       if (data === 'avg') {
         try {
-          const response = await getEnergyAverage(`${building}`);
-          const responseCategory = await getEnergyAverage(`${category}`);
-          const tempWidth = (
-            response.averageEnergy
-              / responseCategory.averageEnergy
-          ) * 100;
+          const response: IAverageData = await getEnergyAverage(building);
+          const responseCategory: IAverageData = await getEnergyAverage(category);
+          const tempWidth = (response.averageEnergy / responseCategory.averageEnergy) * 100;
           setWidth(tempWidth);
           setCompleted({ value: response.averageEnergy, type: 'avg' });
         } catch (e) {

@@ -44,12 +44,10 @@ export async function getEnergyUsageAll(): Promise<IUsageReturn[]> {
 
 /**
  * Fetches energy usage and transforms the data to be used in a line chart
- * @param {(string|undefined)} query Name of building category or building
+ * @param {string} query Name of building category or building
  * @return {IUsageReturn[]} Transformed data
  */
-export async function getEnergyUsageSlug(
-  query: string,
-): Promise<IUsageReturn[]> {
+export async function getEnergyUsageSlug(query: string): Promise<IUsageReturn[]> {
   try {
     const response: IUsageSlug = await axios.get(`${getServerBaseUri}/energy/usage/${query}`);
     // Temporary stores the transformed data

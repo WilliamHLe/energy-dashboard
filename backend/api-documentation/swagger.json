@@ -1203,13 +1203,6 @@
             "description": "Name of a category",
             "required": true,
             "type": "string"
-          },
-          {
-            "name": "filter",
-            "in": "query",
-            "description": "WIP: Filter query parameters for desired optional filters (TEK standard etc.)",
-            "required": false,
-            "type": "string"
           }
         ],
         "responses": {
@@ -1362,14 +1355,6 @@
         "area": {
           "type": "number",
           "example": 123456
-        },
-        "tek": {
-          "type": "string",
-          "example": "TEK17"
-        },
-        "energyLabel": {
-          "type": "string",
-          "example": "A"
         }
       }
     },
@@ -1477,10 +1462,6 @@
       "type": "object",
       "properties": {
         "average": {
-          "type": "integer",
-          "example": 1234567
-        },
-        "averageCategory": {
           "type": "integer",
           "example": 1234567
         }

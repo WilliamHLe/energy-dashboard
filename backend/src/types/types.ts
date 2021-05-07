@@ -1,4 +1,5 @@
 /* eslint-disable camelcase */
+/* using camel case for url variables */
 
 export type ReqQueryDate = {
     from_date?: string,

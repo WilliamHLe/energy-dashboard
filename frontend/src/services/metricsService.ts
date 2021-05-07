@@ -10,7 +10,7 @@ import { IMetrics, IMetricsData } from '../types/interfaces';
 export default async function getMetrics(category: string | undefined): Promise<IMetricsData> {
   const query = category || '';
   try {
-    const results:IMetrics = await axios.get(`${getServerBaseUri}/metrics/${query}`);
+    const results: IMetrics = await axios.get(`${getServerBaseUri}/metrics/${query}`);
     return results.data;
   } catch (e) {
     return e;

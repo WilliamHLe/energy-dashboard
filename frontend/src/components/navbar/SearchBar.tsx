@@ -20,6 +20,7 @@ function SearchBar(props: { data: IBuildingsData[] }) {
           label: item?.name,
           category: item.category.name || category,
         }))}
+        // only renders buildings matching input
         shouldItemRender={(it: { label: string }, value: string) => it.label.indexOf(value) > -1}
         getItemValue={(item: { label: string; }) => item.label}
         value={inputs}

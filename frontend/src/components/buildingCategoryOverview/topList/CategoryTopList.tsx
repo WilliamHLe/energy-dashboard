@@ -10,12 +10,12 @@ interface ICategory {
   name: string
 }
 interface ITopListData {
-  building: {id: string, name: string, category:ICategory },
+  building: {id: string, name: string, category: ICategory },
   score: number
 }
 
 const CategoryTopList = () => {
-  const { category } = useParams<{category:string}>();
+  const { category } = useParams<{category: string}>();
   const [data, setData] = useState<ITopListData[]>([]);
   // Fetching the buildings from a category sorted by energy saved since last year
   useEffect(() => {
@@ -42,7 +42,7 @@ const CategoryTopList = () => {
           for å se mer info om denne. Kanskje kan du hente noen tips?
         </p>
       </div>
-      <SearchBar data={data.map((building:any) => building?.building)} />
+      <SearchBar data={data.map((building: any) => building?.building)} />
       <div className={style.info}>
         <p>{`${category[0].toUpperCase()}${category.slice(1)} (${data.length})`}</p>
         <p>Spart %</p>
