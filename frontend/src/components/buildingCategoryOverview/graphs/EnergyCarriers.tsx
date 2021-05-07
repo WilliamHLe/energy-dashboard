@@ -4,6 +4,7 @@ import HighchartsReact from 'highcharts-react-official';
 import { useParams } from 'react-router';
 import style from '../category.module.css';
 import { getEnergyCarriersCategory } from '../../../services/energyService';
+import { ICarriersCategoryReturn } from '../../../types/interfaces';
 
 /**
  * Creates a pie chart for the energy carriers of the current building category
@@ -11,11 +12,7 @@ import { getEnergyCarriersCategory } from '../../../services/energyService';
 function EnergyCarriers() {
   const { category } = useParams<{category: string}>();
 
-  const [data, setData] = useState<{
-    name:string,
-    colorByPoint:boolean,
-    data: { name: string; y: number; }[]
-  }>();
+  const [data, setData] = useState<ICarriersCategoryReturn>();
   const [height, setHeight] = useState(0);
 
   useEffect(() => {

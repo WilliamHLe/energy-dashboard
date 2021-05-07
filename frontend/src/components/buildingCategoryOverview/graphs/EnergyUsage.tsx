@@ -1,6 +1,7 @@
 import React from 'react';
 import Highcharts from 'highcharts/highstock';
 import HighchartsReact from 'highcharts-react-official';
+import { IUsageReturn } from '../../../types/interfaces';
 
 require('highcharts/modules/boost')(Highcharts);
 
@@ -10,12 +11,7 @@ require('highcharts/modules/boost')(Highcharts);
  * @param {(string|null)} props.height Height for the graph. Only used in the comparison modal
  */
 function EnergyUsage(props: {
-  data: {
-    name: string,
-    data: {
-      x: number,
-      y: number }[]
-  }[],
+  data: IUsageReturn[],
   height: string | null
 }) {
   const { data, height } = props;
@@ -61,6 +57,8 @@ function EnergyUsage(props: {
     },
     rangeSelector: {
       allButtonsEnabled: true,
+      // Buttons that shows grouping when fully zoomed out
+      // Allows to see total energy usage per month or year
       buttons: [{
         type: 'all',
         text: 'Dager',

@@ -8,46 +8,39 @@ import { getEnergyAverage } from '../../../services/energyService';
 require('highcharts/highcharts-more')(Highcharts);
 require('highcharts/modules/solid-gauge')(Highcharts);
 
+interface IDial {
+  radius:string,
+  baseWidth: number,
+  rearLength: string
+}
+
+interface IDataLabels {
+  format: string
+}
+
+interface IAverage {
+  name: string,
+  type?: string,
+  data?: number[],
+  dial?: IDial,
+  dataLabels?: IDataLabels,
+  showInLegend: boolean,
+}
+
 /**
  * Creates a gauge chart that compares a buildings average usage to the building category
  */
 function AverageUsage() {
   const { category, id } = useParams<{category:string, id:string}>();
 
-  const [data, setData] = useState<{
-    name: string,
-    type?: string,
-    data?: number[],
-    dial?: {
-      radius:string,
-      baseWidth: number,
-      rearLength: string
-    },
-    dataLabels?: {
-      format: string
-    },
-    showInLegend: boolean,
-  }[]>();
+  const [data, setData] = useState<IAverage[]>();
   const [categoryAvg, setCategoryAvg] = useState<{name: string, average: number}>({ name: 'initial', average: 10000 });
   useEffect(() => {
     const fetchData = async () => {
       const resultBuilding = await getEnergyAverage(`${id}`);
       const resultCategory = await getEnergyAverage(`${category}`);
-      setCategoryAvg({ name: category, average: resultCategory.averageEnergy });
-      const tempData: {
-        name: string,
-        type?: string,
-        data?: number[],
-        dial?: {
-          radius:string,
-          baseWidth: number,
-          rearLength: string
-        },
-        dataLabels?: {
-          format: string
-        },
-        showInLegend: boolean,
-      }[] = [{
+      setCategoryAvg({ name: category, average: resultCategory.averageEnergy[0].average });
+      const tempData: IAverage[] = [{
         name: id,
         data: [resultBuilding.averageEnergy],
         dial: {

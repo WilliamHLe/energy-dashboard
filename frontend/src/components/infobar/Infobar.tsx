@@ -6,20 +6,14 @@ import Energy from './icons/energy.svg';
 import Squaremeters from './icons/Group 223.svg';
 import Energygoal from './icons/Group 222.svg';
 import style from './infoItem.module.css';
-import { getMetrics } from '../../services/metricsService';
-
-interface building {
-  energyUsed: number,
-  energySaved: number,
-  area: number,
-  buildings: number
-}
+import getMetrics from '../../services/metricsService';
+import { IMetricsData } from '../../types/interfaces';
 
 const InfoBar = () => {
   // Using the URL parameters to fetch the correct metrics for the specific page
   const { category, id } = useParams<{category:string | undefined, id:string | undefined}>();
-  // The current metrics for the info bar
-  const [data, setData] = useState<building>({
+  // The current metrics for the info bars
+  const [data, setData] = useState<IMetricsData>({
     energyUsed: 0,
     energySaved: 0,
     area: 0,

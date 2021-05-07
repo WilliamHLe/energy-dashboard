@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import style from './twoPercentRace.module.css';
 import Bicycle from '../../../assets/images/bisycle.svg';
 import Girl from '../../../assets/images/Girl.png';
 import Tronder from '../../../assets/images/tronder.png';
+import getMetrics from '../../../services/metricsService';
 
 interface ITwoPercentRace{
     loading: boolean;
@@ -11,8 +12,18 @@ interface ITwoPercentRace{
 const TwoPercentRace = (props: ITwoPercentRace) => {
   const { loading } = props;
   /* Percent saved is supposed to be fetched */
-  const saved = 3.59;
-  const progress = saved * 25;
+  const [saved, setSaved] = useState<number>(3.59);
+  const [progress, setProgress] = useState<number>(saved * 25);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const response = await getMetrics(undefined);
+      setSaved(response.energySaved);
+      setProgress(response.energySaved * 25);
+    };
+    fetchData();
+  }, []);
+
   /* Sets the width of the tronder-bicycle */
   document.documentElement.style.setProperty('--progress-tronder', `${progress.toString()}%`);
 

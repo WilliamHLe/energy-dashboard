@@ -3,26 +3,14 @@ import { NavLink } from 'react-router-dom';
 import style from './navbar.module.css';
 import SearchBar from './SearchBar';
 import { getBuildings } from '../../services/buildingsService';
+import { IBuildingsData } from '../../types/interfaces';
 
 export default function Navbar() {
   // Fetching all the buildings for the navbar search field
-  const [search, setSearch] = useState <{
-    _id: string,
-    name: string,
-    year?: number | null,
-    area?: number,
-    categoryIdEsave?: number,
-    categoryDescription?: number,
-    category: {
-        _id: string,
-        name: string
-    },
-    tek: string,
-    energyLabel: string
-  }[]>([]);
+  const [search, setSearch] = useState <IBuildingsData[]>([]);
   useEffect(() => {
     const fetchdata = async () => {
-      const response = await getBuildings('');
+      const response:IBuildingsData[] = await getBuildings('');
       setSearch(response);
     };
     fetchdata();

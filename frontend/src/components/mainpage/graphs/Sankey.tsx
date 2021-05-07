@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import Highcharts from 'highcharts';
 import HighchartsReact from 'highcharts-react-official';
 import { getEnergyCarriersAll } from '../../../services/energyService';
+import { ICarriersAllReturn } from '../../../types/interfaces';
 
 require('highcharts/modules/sankey')(Highcharts);
 
@@ -9,12 +10,7 @@ require('highcharts/modules/sankey')(Highcharts);
  * Creates a sankey diagram for energy carriers
  */
 function Sankey() {
-  const [data, setData] = useState<{
-    data: any[];
-    keys: string[];
-    name: string;
-    type: string
-  }[]>([]);
+  const [data, setData] = useState<ICarriersAllReturn[]>([]);
 
   useEffect(() => {
     const fetchData = async () => {

@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router';
 import Card from './ComapreWithListCard';
 import style from './compare.module.css';
 import { getBuildings } from '../../../services/buildingsService';
+import { IBuildingsData } from '../../../types/interfaces';
 
-interface Ibuilding {
+/* interface Ibuilding {
   name: string,
   tek: string,
   area: number,
@@ -14,14 +14,12 @@ interface Ibuilding {
     id: string,
     name: string,
   }
-}
+} */
 
-function Compare(props: { currentBuilding: Ibuilding, onChange: any }) {
-  // eslint-disable-next-line no-unused-vars
-  const { category, id } = useParams<{ category: string, id: string }>();
+function Compare(props: { currentBuilding: IBuildingsData, onChange: any }) {
   const { currentBuilding } = props;
-  const [initalBuildings, setInitialBuildings] = useState<Ibuilding[]>();
-  const [buildings, setBuildings] = useState<Ibuilding[]>();
+  const [initalBuildings, setInitialBuildings] = useState<IBuildingsData[]>();
+  const [buildings, setBuildings] = useState<IBuildingsData[]>();
   const [checkedItems, setCheckedItems] = useState([
     {
       name: 'Energimerke',
@@ -44,19 +42,22 @@ function Compare(props: { currentBuilding: Ibuilding, onChange: any }) {
     const u = Math.floor(Math.random() * 3);
     currentBuilding.tek = teksatandard[o];
     currentBuilding.energyLabel = energimerke[u];
-    const response = await getBuildings(`?category=${currentBuilding.category}`);
-    const allBuildings: any[] = response;
+    const allBuildings: IBuildingsData[] = await getBuildings(`?category=${currentBuilding.category}`);
+    // Creates random tek-standard and energy label for all buildings within the category
+    // For demonstration purposes as the dataset lacks this information
+    for (let i = 0; i < allBuildings.length; i += 1) {
+      const k = Math.floor(Math.random() * 2);
+      const l = Math.floor(Math.random() * 3);
+      allBuildings[i].tek = teksatandard[k];
+      allBuildings[i].energyLabel = energimerke[l];
+    }
     if (allBuildings.length > 0) {
-      const initialFilterd = allBuildings.filter((i: {
-        name: String,
-        year: Number,
-        area: Number
-      }) => (
+      const initialFilterd = allBuildings.filter((i: IBuildingsData) => (
         // eslint-disable-next-line max-len
-        (i.year <= currentBuilding.year + 50
-              && i.year >= currentBuilding.year - 50)
-          && (i.area <= currentBuilding.area + 500
-          && i.area >= currentBuilding.area - 500)
+        (currentBuilding.year && i.year ? (i.year <= currentBuilding.year + 50
+              && i.year >= currentBuilding.year - 50) : i.year)
+          && (currentBuilding.area && i.area ? (i.area <= currentBuilding.area + 500
+          && i.area >= currentBuilding.area - 500) : i.area)
           && (i.name !== currentBuilding.name)));
       setBuildings(initialFilterd);
       setInitialBuildings(initialFilterd);
@@ -68,14 +69,14 @@ function Compare(props: { currentBuilding: Ibuilding, onChange: any }) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const filter = (index: number, list: Ibuilding[] | undefined) => {
+  const filter = (index: number, list: IBuildingsData[] | undefined) => {
     const item = checkedItems[index];
     if (item.label === 'energimerke' && currentBuilding !== undefined && list !== undefined) {
-      return list.filter((i: { energyLabel: string; }) => (
+      return list.filter((i) => (
         i.energyLabel === currentBuilding.energyLabel));
     }
     if (item.label === 'tek' && currentBuilding !== undefined && list !== undefined) {
-      return list.filter((i: { tek: string; }) => i.tek === currentBuilding.tek);
+      return list.filter((i) => i.tek === currentBuilding.tek);
     }
     return undefined;
   };
@@ -95,7 +96,7 @@ function Compare(props: { currentBuilding: Ibuilding, onChange: any }) {
     }
   };
 
-  const openModal = (compareBuilding: Ibuilding) => {
+  const openModal = (compareBuilding: IBuildingsData) => {
     props.onChange(compareBuilding);
   };
 
@@ -129,7 +130,7 @@ function Compare(props: { currentBuilding: Ibuilding, onChange: any }) {
         ))}
       </div>
       <div className={style.buildingList}>
-        {buildings?.map((building: Ibuilding) => (
+        {buildings?.map((building: IBuildingsData) => (
           // eslint-disable-next-line
           <a onClick={() => openModal(building)}>
             <Card buildingName={building.name} />

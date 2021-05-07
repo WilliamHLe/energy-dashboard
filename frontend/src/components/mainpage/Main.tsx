@@ -1,22 +1,20 @@
 import React, { useEffect, useState } from 'react';
-
-import { useParams } from 'react-router';
 import Sankey from './graphs/Sankey';
 import EnergyUsage from '../buildingCategoryOverview/graphs/EnergyUsage';
 import style from './main.module.css';
 import EnergySaved from './graphs/EnergySaved';
 import TwoPercentRace from './animation/TwoPercentRace';
-import { getEnergyUsage } from '../../services/energyService';
+import { getEnergyUsageAll } from '../../services/energyService';
+import { IUsageReturn } from '../../types/interfaces';
 
 function Main() {
-  const { category, id } = useParams<{category:string, id:string}>();
-  const [data, setData] = useState<{ name: string, data: { x: number, y: number }[] }[]>([]);
+  const [data, setData] = useState<IUsageReturn[]>([]);
   useEffect(() => {
     async function fetchData() {
-      setData(await getEnergyUsage(category, id));
+      setData(await getEnergyUsageAll());
     }
     fetchData();
-  }, [category, id]);
+  }, []);
 
   return (
     <div className={style.main}>

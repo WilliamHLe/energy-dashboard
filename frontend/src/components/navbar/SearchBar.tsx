@@ -2,21 +2,23 @@ import React, { useState } from 'react';
 // @ts-ignore
 import Autocomplete from 'react-autocomplete';
 import { Link } from 'react-router-dom';
+import { useParams } from 'react-router';
 import style from './navbar.module.css';
+import { IBuildingsData } from '../../types/interfaces';
 
-function SearchBar(props: { data: any[]; }) {
+function SearchBar(props: { data: IBuildingsData[] }) {
+  const { category } = useParams<{category: string | undefined}>();
   const [inputs, setInputs] = useState('');
   const { data } = props;
-  console.log(data);
 
   return (
     <div className={style.wrapper}>
       <Autocomplete
         className={style.searchbar}
-        items={data.map((item: any) => ({
+        items={data.map((item) => ({
           id: item?.id,
           label: item?.name,
-          category: item?.category?.name,
+          category: item.category.name || category,
         }))}
         shouldItemRender={(it: { label: string }, value: string) => it.label.indexOf(value) > -1}
         getItemValue={(item: { label: string; }) => item.label}
@@ -45,7 +47,7 @@ function SearchBar(props: { data: any[]; }) {
             }}
           >
             <li>
-              <Link style={{ textDecoration: 'none', color: 'black' }} to={`${item.category}/${item.label}`}>{item.label}</Link>
+              <Link style={{ textDecoration: 'none', color: 'black' }} to={`/${item.category}/${item.label}`}>{item.label}</Link>
             </li>
           </div>
         )}

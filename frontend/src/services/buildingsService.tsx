@@ -1,14 +1,15 @@
 import axios from 'axios';
 import { getServerBaseUri } from './getServerBaseUri';
+import { IBuilding, IBuildings, IBuildingsData } from '../types/interfaces';
 
 /**
  * Fetches a list of buildings
  * @param {string} query Query for the request
- * @return {Array} request.data Fetched data
+ * @return {IBuildingsData[]} Fetched data
  */
-export async function getBuildings(query: string) {
+export async function getBuildings(query: string): Promise<IBuildingsData[]> {
   try {
-    const response = await axios.get(`${getServerBaseUri}/buildings${query}`);
+    const response: IBuildings = await axios.get(`${getServerBaseUri}/buildings${query}`);
     return response.data;
   } catch (e) {
     return [e];
@@ -18,13 +19,13 @@ export async function getBuildings(query: string) {
 /**
  * Fetches details about specific building by name
  * @param {string} query Name of building
- * @return {Object} response.data[0] Building found
+ * @return {IBuildingsData} Building found
  */
-export async function getSpecificBuilding(query: string) {
+export async function getSpecificBuilding(query: string): Promise<IBuildingsData> {
   try {
-    const response = await axios.get(`${getServerBaseUri}/search?name=${query}`);
-    return response.data[0];
+    const response: IBuilding = await axios.get(`${getServerBaseUri}/search?name=${query}`);
+    return response.data;
   } catch (e) {
-    return [e];
+    return e;
   }
 }

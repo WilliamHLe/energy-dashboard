@@ -2,29 +2,37 @@ import React, { useEffect, useState } from 'react';
 import Highcharts from 'highcharts';
 import { useParams } from 'react-router';
 import style from '../building.module.css';
+import { getEnergySavedTotal } from '../../../services/energyService';
 
 require('highcharts/highcharts-more')(Highcharts);
 require('highcharts/modules/solid-gauge')(Highcharts);
-// ssd
+
+/**
+ * Displays energy saved in percent and how much money that would equal
+ * Currently mocked as the API for money saved has not been implemented
+ */
 function EnergySaved() {
   const { id } = useParams<{id: string}>();
 
-  const [building, setBuilding] = useState<any>();
-  const [saved, setSaved] = useState<any>();
-  const [savedKr, setSavedKr] = useState<any>();
-  const [barPercent, setBarPercent] = useState<any>();
+  const [building, setBuilding] = useState<string>();
+  const [saved, setSaved] = useState<number>();
+  const [savedKr, setSavedKr] = useState<number>();
+  const [barPercent, setBarPercent] = useState<number>();
   useEffect(() => {
-    setBuilding(id);
-    const tempSaved = 5;
-    if (tempSaved < -4) {
-      setBarPercent(0);
-    } else if (tempSaved > 8) {
-      setBarPercent(100);
-    } else {
-      setBarPercent((((tempSaved + 4) / 12) * 100));
-    }
-    setSaved(tempSaved);
-    setSavedKr(23000);
+    const fetchData = async () => {
+      setBuilding(id);
+      const tempSaved = await getEnergySavedTotal(id);
+      if (tempSaved.percentSaved < -4) {
+        setBarPercent(0);
+      } else if (tempSaved.percentSaved > 8) {
+        setBarPercent(100);
+      } else {
+        setBarPercent((((tempSaved.percentSaved + 4) / 12) * 100));
+      }
+      setSaved(tempSaved.percentSaved);
+      setSavedKr(23000);
+    };
+    fetchData();
   }, [id]);
 
   return (

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import Highcharts from 'highcharts';
 import HighchartsReact from 'highcharts-react-official';
 import { getEnergySavedAll } from '../../../services/energyService';
+import { ISavedAllReturn } from '../../../types/interfaces';
 
 require('highcharts/modules/sankey')(Highcharts);
 
@@ -9,7 +10,7 @@ require('highcharts/modules/sankey')(Highcharts);
  * Creates a column chart for how much energy each building category has saved
  */
 function EnergySaved() {
-  const [data, setData] = useState<{ name: string; y: number; }[]>();
+  const [data, setData] = useState<ISavedAllReturn[]>();
 
   useEffect(() => {
     const fetchData = async () => {

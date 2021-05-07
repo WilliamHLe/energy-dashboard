@@ -11,34 +11,24 @@ import { getSpecificBuilding } from '../../services/buildingsService';
 import b1 from './icons/1.svg';
 import b2 from './icons/2.svg';
 import b3 from './icons/3.svg';
-import { getEnergyUsage } from '../../services/energyService';
+import { getEnergyUsageSlug } from '../../services/energyService';
+import { IUsageReturn, IBuildingsData } from '../../types/interfaces';
 
 function Building() {
-  interface Ibuilding {
-    name: string,
-    tek: string,
-    area: number,
-    year: number,
-    energyLabel: string,
-    category: {
-      id: string,
-      name: string,
-    }
-  }
   const { id } = useParams<{ category: string, id: string }>();
   const [modalIsOpen, setModalIsOpen] = useState(false);
-  const [compareWithBuilding, setcompareWithBuilding] = useState<Ibuilding>();
-  const [currentBuilding, setCurrentBuilding] = useState<Ibuilding>();
-  const [data, setData] = useState<{ name: string, data: { x: number, y: number }[] }[]>([]);
+  const [compareWithBuilding, setcompareWithBuilding] = useState<IBuildingsData>();
+  const [currentBuilding, setCurrentBuilding] = useState<IBuildingsData>();
+  const [data, setData] = useState<IUsageReturn[]>([]);
   useEffect(() => {
     const fetchCurrentBuildingData = async () => {
-      setData(await getEnergyUsage(undefined, id));
+      setData(await getEnergyUsageSlug(id));
       setCurrentBuilding(await getSpecificBuilding(id));
     };
     fetchCurrentBuildingData();
   }, [id]);
 
-  const openModal = (building: Ibuilding) => {
+  const openModal = (building: IBuildingsData) => {
     setModalIsOpen(!modalIsOpen);
     setcompareWithBuilding(building);
   };
@@ -83,7 +73,7 @@ function Building() {
           </div>
         </div>
         <div>
-          {modalIsOpen === true ? (
+          {modalIsOpen === true && currentBuilding && compareWithBuilding ? (
             <Modal
               currentBuilding={currentBuilding}
               compareBuilding={compareWithBuilding}

@@ -6,26 +6,20 @@ import closeImage from '../../../../assets/png/close.png';
 import ProgressBar from './graphs/ProgressBar';
 import check from '../../../../assets/png/bi_check.png';
 import cross from '../../../../assets/png/entypo_cross.png';
-import { getEnergyUsage } from '../../../../services/energyService';
+import { getEnergyUsageSlug } from '../../../../services/energyService';
+import { IUsageReturn, IBuildingsData } from '../../../../types/interfaces';
 
-interface Ibuilding {
-  name: string,
-  tek: string,
-  area: number,
-  year: number,
-  energyLabel: string,
-}
 function Modal(props: {
   onChange: any,
-  currentBuilding: Ibuilding | undefined,
-  compareBuilding: Ibuilding | undefined }) {
+  currentBuilding: IBuildingsData,
+  compareBuilding: IBuildingsData }) {
   const { id } = useParams<{ id: string }>();
   const { currentBuilding, compareBuilding } = props;
   const [isLoading, setLoading] = useState(true);
   const [allUpgrades, setUpgrades] = useState(['']);
   const [currentBuildingUpgrade, setCrurrentBuildingUpgrades] = useState([3]);
   const [otherBuildingUpgrade, setOtherBuildingUpgrades] = useState([3]);
-  const [data, setData] = useState<any>([]);
+  const [data, setData] = useState<IUsageReturn[]>([]);
 
   const closeModal = () => {
     props.onChange();
@@ -82,8 +76,8 @@ function Modal(props: {
     };
     randomUpgrade();
     const fetchdata = async () => {
-      const responseBuilding = await getEnergyUsage(undefined, id);
-      const responseCompareBuilding = await getEnergyUsage(undefined, compareBuilding?.name);
+      const responseBuilding = await getEnergyUsageSlug(id);
+      const responseCompareBuilding = await getEnergyUsageSlug(compareBuilding.name);
       setData([responseBuilding[0], responseCompareBuilding[0]]);
     };
     fetchdata();

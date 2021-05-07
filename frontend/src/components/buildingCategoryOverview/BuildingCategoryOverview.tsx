@@ -4,17 +4,18 @@ import style from './category.module.css';
 import EnergyUsage from './graphs/EnergyUsage';
 import EnergyCarriers from './graphs/EnergyCarriers';
 import CategoryTopList from './topList/CategoryTopList';
-import { getEnergyUsage } from '../../services/energyService';
+import { getEnergyUsageSlug } from '../../services/energyService';
+import { IUsageReturn } from '../../types/interfaces';
 
 function BuildingCategoryOverview() {
-  const { category, id } = useParams<{category:string, id:string}>();
-  const [data, setData] = useState<{ name: string, data: { x: number, y: number }[] }[]>([]);
+  const { category } = useParams<{category:string, id:string}>();
+  const [data, setData] = useState<IUsageReturn[]>([]);
   useEffect(() => {
     async function fetchData() {
-      setData(await getEnergyUsage(category, id));
+      setData(await getEnergyUsageSlug(category));
     }
     fetchData();
-  }, [category, id]);
+  }, [category]);
 
   return (
     <div className={style.category}>

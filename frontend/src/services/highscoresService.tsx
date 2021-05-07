@@ -4,7 +4,7 @@ import { getServerBaseUri } from './getServerBaseUri';
 /**
  * Fetches the highscore list for building category
  * @param {string} query Building category name
- * @return {Array} response.data Highscore list
+ * @return {Array} Highscore list
  */
 export default async function getHighscoreList(query: string) {
   try {
